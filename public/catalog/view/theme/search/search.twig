@@ -1,0 +1,115 @@
+{{ header }}
+<div class="wrap_content">
+    {{ content_top }}
+    <div class="container">
+        <div class="row">
+            {{ column_left }}
+            <div class="center_content_resp">
+                <div class="clearfix console_wrap">
+                    <div class="clearfix search_panel">
+                        <div class="heads">
+                            <h2>{{ heading_title }}</h2>
+                            <ul class="breadcrumb clearfix">
+                                {% for breadcrumb in breadcrumbs %}
+                                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="search_wrap">
+                            <div class="upravlen_search">
+                                <form id="page-search" action="{{ action }}" method="get">
+                                    <div class="heads_search clearfix">
+                                        <input type="text" class="search_palez" name="search" value="{{ search }}">
+                                        <button type="submit" class="good_searc">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21"
+                                                 viewBox="0 0 21 21" fill="none">
+                                                <path d="M16.031 14.617L20.314 18.899L18.899 20.314L14.617 16.031C13.0237 17.3082 11.042 18.0029 9 18C4.032 18 0 13.968 0 9C0 4.032 4.032 0 9 0C13.968 0 18 4.032 18 9C18.0029 11.042 17.3082 13.0237 16.031 14.617ZM14.025 13.875C15.2941 12.5699 16.0029 10.8204 16 9C16 5.132 12.867 2 9 2C5.132 2 2 5.132 2 9C2 12.867 5.132 16 9 16C10.8204 16.0029 12.5699 15.2941 13.875 14.025L14.025 13.875Z"
+                                                      fill="#999999"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="variant_search clearfix">
+                                        <label class="container_ch"> Аккаунты
+                                            {% if search_customer %}
+                                            <input type="checkbox" name="search_customer" value="1" checked>
+                                            {% else %}
+                                            <input type="checkbox" name="search_customer" value="1">
+                                            {% endif %}
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="container_ch"> Заказы
+                                            {% if search_order %}
+                                                <input type="checkbox" name="search_order" value="1" checked>
+                                            {% else %}
+                                                <input type="checkbox" name="search_order" value="1">
+                                            {% endif %}
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="results clearfix">
+                                {% if results %}
+                                {% for result in results %}
+                                {% if result.type == 'customer' %}
+                                    <div class="item_s">
+                                        <h4>{{ result.title }}</h4>
+                                        <a href="{{ result.href }}"><img src="{{ result.image }}" alt="{{ result.title }}"></a>
+                                        <p>{% if result.online %}online{% endif %}</p>
+                                    </div>
+                                {% elseif result.type == 'order' %}
+                                    <div class="item_s">
+                                        <a href="{{ result.href }}"><h4>{{ result.title }}</h4></a>
+                                        <p>{{ result.description }}</p>
+                                        <ul class="pagination_s clearfix">
+                                            <li>{{ result.section }}</li>
+                                            <li>{{ result.subject }}</li>
+                                            <li>{{ result.work_type }}</li>
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                                {% endfor %}
+                                {% else %}
+                                    Поиск не дал результатов
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ column_right }}
+        </div>
+    </div>
+    {{ content_bottom }}
+</div>
+<script type="text/javascript">
+    $(document).on('submit', '#page-search', function(e) {
+        e.preventDefault();
+
+        var url = '';
+
+        var search = $(this).find('input[name=search]').val();
+        if (search) {
+            url += "&search=" + encodeURIComponent(search);
+        }
+
+        var search_customer = $(this).find('input[name=search_customer]:checked').val();
+        if (search_customer) {
+            url += "&search_customer=" + encodeURIComponent(search_customer);
+        }
+
+        var search_order = $(this).find('input[name=search_order]:checked').val();
+        if (search_order) {
+            url += "&search_order=" + encodeURIComponent(search_order);
+        }
+
+        location.href = $(this).attr('action') + url;
+    });
+</script>
+{{ footer }}
+
+
+
+
+

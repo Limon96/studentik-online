@@ -1,0 +1,46 @@
+{% if messages %}
+
+    {% if limit < total_messages %}
+        <button class="load-message" onclick="getChatContentPage('{{ chat_id }}', '{{ page }}');$(this).remove();">Показать еще</button>
+    {% endif %}
+
+    {% for message in messages %}
+        <div id="message-{{ message.message_id }}" class="massage user clearfix {% if not message.viewed %}unviewed{% endif %}" {% if not message.is_sender and not message.viewed %}onmouseover="viewedMessage({{ message.message_id }}, this)"{% endif %} data-message_id="{{ message.message_id }}">
+            <div class="logo_my">
+                <img src="{{ message.image }}">
+                {% if message.online %}<span></span>{% endif %}
+            </div>
+            <div class="login_name">
+                <a href="{{ message.href }}">{{ message.name }}</a>
+            </div>
+            <div class="time_my">
+                <span>{{ message.date_added }}</span>
+            </div>
+            <div class="massage_txt">
+                <span>{{ message.text }}</span>
+            </div>
+            <div class="massage_attachments">
+                {% if message.attachment %}
+                    {% for attachment in message.attachment %}
+                        <div class="clearfix file_item">
+                            <div class="logo_file">
+                                <img src="catalog/assets/img/file/{{ attachment.type }}.png">
+                            </div>
+                            <div class="left_cop">
+                                <span>{{ attachment.name }}</span>
+                                <span class="weigt">{{ attachment.size }}</span>
+                            </div>
+                            <div class="right_cop">
+                                <span>{{ attachment.date_added }}</span>
+                                <p>
+                                 {#   <a href="{{ attachment.href }}">{{ button_view }}</a>#}
+                                    <a href="{{ attachment.upload }}">{{ button_upload }}</a>
+                                </p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}

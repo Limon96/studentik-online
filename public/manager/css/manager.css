@@ -1,0 +1,17 @@
+.sh-logo-text img {
+    position: relative;
+    width: 90%;
+}
+
+.form-delete {
+    display: contents;
+}
+
+.card-header .remove-block,
+.card-header .up-block,
+.card-header .down-block
+{
+    cursor: pointer;
+    margin: 2px 5px;
+}
+

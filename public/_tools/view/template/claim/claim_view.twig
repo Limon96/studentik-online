@@ -1,0 +1,322 @@
+{{ header }}{{ column_left }}
+<div id="content">
+    <div class="page-header">
+        <div class="container-fluid">
+            <h1>{{ heading_title }}</h1>
+            <ul class="breadcrumb">
+                {% for breadcrumb in breadcrumbs %}
+                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="panel panel-default clearfix">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-list"></i>{{ title }}</h3>
+            </div>
+            <div class="panel-body randos">
+                <p>{{ text_customer }} <a href="{{ claim.customer_href }}" target="_blank">{{ claim.customer_login }}</a></p>
+                <p>{{ text_defendant }} <a href="{{ claim.defendant_href }}" target="_blank">{{ claim.defendant_login }}</a></p>
+                <p>{{ text_object }} <a href="{{ claim.object_href }}" target="_blank">{{ claim.object_title }}</a></p>
+                <p class="gortertl clearfix">{{ text_comment }} <span>{{ claim.comment }}</span> </p>
+
+                <div class="clearfix claim_rost">
+                    <div id="message-form-unswer-claim{{ claim_id }}" class="unswer_com footer_chat clearfix" style="display: block;">
+                        <div id="smallChat{{ claim_id }}" class="chat_pole content_chat"></div>
+                    </div>
+                    <div class="placeholder">Напишите сообщение...</div>
+                    <div class="textt_input_go clearfix">
+                        <div class="textarea" contenteditable="true" placeholder="Текст Претензии" wrap="hard"> </div>
+
+                    </div>
+
+
+                    <div class="clearfix wrap_add_claim">
+                        <button class="add_claim" data-claim_send="{{ claim_id }}">Отправить</button>
+                    </div>
+
+                    <div class="look_files">
+                        <div id="files" class="files_rools">
+                            {% if attachments %}
+                                <br><br>
+                                <fieldset>
+                                    <legend>Прикрепленные файлы к перетензии</legend>
+                                    {% for attachment in attachments %}
+                                        <div class="clearfix file_item">
+                                            <div class="logo_file">
+                                                <img src="../catalog/assets/img/txt.svg">
+                                            </div>
+                                            <div class="left_cop">
+                                                <span>{{ attachment.name }}</span>
+                                                <span class="weigt">{{ attachment.size }}</span>
+                                            </div>
+                                            <div class="right_cop">
+                                                <span>{{ attachment.date_added }}</span>
+                                                <p class="delete_file_cust clearfix">
+                                                   {# <a href="{{ attachment.href }}">{{ button_view }}</a>#}
+                                                    <a href="{{ attachment.upload }}">{{ button_upload }}</a>
+                                                    <button class="delete_file" data-attachment-id="{{ attachment.attachment_id }}">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" height="329pt" viewBox="0 0 329.26933 329" width="329pt"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"></path></svg>
+                                                    </button>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </fieldset>
+                            {% endif %}
+                        </div>
+                        <form id="form-upload" class="file_clear">
+                            <label>
+                                <p>
+                                    <svg style="position: relative;width: 10px" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" class="sw-icon">
+                                        <path d="M288 248v28c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-28c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm-12 72H108c-6.6 0-12 5.4-12 12v28c0 6.6 5.4 12 12 12h168c6.6 0 12-5.4 12-12v-28c0-6.6-5.4-12-12-12zm108-188.1V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V48C0 21.5 21.5 0 48 0h204.1C264.8 0 277 5.1 286 14.1L369.9 98c9 8.9 14.1 21.2 14.1 33.9zm-128-80V128h76.1L256 51.9zM336 464V176H232c-13.3 0-24-10.7-24-24V48H48v416h288z"></path>
+                                    </svg>
+                                </p>
+                                <input type="file" name="file[]" multiple="multiple" accept=".bmp,.djvu,.doc,.docx,.dwg,.csv,.gif,.jpeg,.jpg,.odf,.odt,.pdf,.png,.ppt,.pptx,.rar,.rtf,.svg,.tga,.tiff,.txt,.xls,.xlsx,.zip,.a3d,.cdt,.cdw,.m3d,.dwf,.cdr,.ai,.ics">
+                                <span>Добавить файл</span>
+                            </label>
+                        </form>
+                    </div>
+
+
+                    <script>
+                        $(document).on('click', '.file_item .delete_file', function(){
+                            var attachment_id = parseInt($(this).data('attachment-id'));
+
+                            if (attachment_id > 0) {
+                                $(this).parents('.file_item').remove();
+                                $.ajax({
+                                    url: 'index.php?route=claim/claim/deleteAttachment&user_token={{ user_token }}&claim_id={{ claim_id }}',
+                                    type: 'post',
+                                    dataType: 'json',
+                                    data: {
+                                        attachment_id: attachment_id
+                                    },
+                                    success: function(json) {
+                                        console.log(json);
+                                    }
+                                });
+                            }
+                        });
+                    </script>
+                </div>
+                <div>
+                    {% if order_attachments %}
+                        <br><br>
+                        <fieldset>
+                            <legend>Прикрепленные к заказу файлы</legend>
+                        {% for attachment in order_attachments %}
+                            <div class="clearfix file_item">
+
+                                <div class="left_cop">
+                                    <span>{{ attachment.name }}</span>
+                                    <span class="weigt">{{ attachment.size }}</span>
+                                </div>
+                                <div class="right_cop">
+                                    <span>{{ attachment.date_added }}</span>
+                                    <p class="delete_file_cust clearfix">
+                                        {# <a href="{{ attachment.href }}">{{ button_view }}</a>#}
+                                        <a href="{{ attachment.upload }}">{{ button_upload }}</a>
+                                        <button class="delete_file" data-attachment-id="{{ attachment.attachment_id }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="329pt" viewBox="0 0 329.26933 329" width="329pt"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"></path></svg>
+                                        </button>
+                                    </p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </fieldset>
+                    {% endif %}
+                </div>
+                <div>
+                    {% if offer_attachments %}
+                        <br>
+                        <fieldset>
+                            <legend>Файлы готовой работы</legend>
+                            {% for attachment in offer_attachments %}
+                                <div class="clearfix file_item">
+
+                                    <div class="left_cop">
+                                        <span>{{ attachment.name }}</span>
+                                        <span class="weigt">{{ attachment.size }}</span>
+                                    </div>
+                                    <div class="right_cop">
+                                        <span>{{ attachment.date_added }}</span>
+                                        <p class="delete_file_cust clearfix">
+                                            {# <a href="{{ attachment.href }}">{{ button_view }}</a>#}
+                                            <a href="{{ attachment.upload }}">{{ button_upload }}</a>
+                                            <button class="delete_file" data-attachment-id="{{ attachment.attachment_id }}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="329pt" viewBox="0 0 329.26933 329" width="329pt"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"></path></svg>
+                                            </button>
+                                        </p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </fieldset>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="btn_action ">
+                {% if claim.status == 0 %}
+                    <h3>Заблокированные средства</h3>
+                    {% if blocked_cash %}
+                        <table class="table blocked-cash">
+                            <tr><td style="width: 150px">Заказ</td><td>{{ blocked_cash.order_title }}</td></tr>
+                            <tr><td>Заказчик</td><td>{{ blocked_cash.customer_login }}</td></tr>
+                            <tr><td>Исполнитель</td><td>{{ blocked_cash.offer_customer_login }}</td></tr>
+                            <tr><td>Сумма</td><td>{{ blocked_cash.balance }}</td></tr>
+                            <tr><td>Начало блокировки</td><td>{{ blocked_cash.date_added }}</td></tr>
+                            <tr><td>Окончание блокировки</td><td>{{ blocked_cash.date_end }}</td></tr>
+                            <tr><td>Вернуть заказчику</td><td><button type="button" onclick="returnBC();" data-toggle="tooltip" title="{{ button_return }}" class="btn btn-primary"><i class="fa fa-undo"></i></button></td></tr>
+                            <tr><td>Оплатить исполнителю</td><td><button type="button" onclick="payBC();" data-toggle="tooltip" title="{{ button_pay }}" class="btn btn-success"><i class="fa fa-money"></i></button></td></tr>
+                        </table>
+                        <script>
+                            function returnBC() {
+                                $.get('{{ blocked_cash.return }}', function () {
+                                    resultBC('Успешно выполнено');
+                                });
+                            }
+
+                            function payBC() {
+                                $.get('{{ blocked_cash.pay }}', function () {
+                                    resultBC('Успешно выполнено');
+                                });
+                            }
+
+                            function resultBC(message) {
+                                $('.btn_action table.blocked-cash').remove();
+                                $('.btn_action h3').after('<div class="alert alert-success">' + message + '</div>');
+                                $('.btn_action h3').after('<h4>В данном заказе нет замороженных средств</h4>');
+                            }
+                        </script>
+                    {% else %}
+                        <h4>В данном заказе нет замороженных средств</h4>
+                    {% endif %}
+
+                    <table class="table close-claim">
+                        <tr><td style="width: 150px">Завершить претензию</td><td><button type="button" onclick="closeClaim();" data-toggle="tooltip" title="{{ button_close }}" class="btn btn-info"><i class="fa fa-check"></i></button></td></tr>
+                    </table>
+                {% else %}
+                    <h4>Претензия закрыта</h4>
+                {% endif %}
+                <table class="table close-order">
+                    {% if claim.object_status %}
+                        <tr><td>Заказ выполнен</td></tr>
+                    {% else %}
+                        <tr><td style="width: 150px">Завершить заказ</td><td><button type="button" onclick="closeOrder();" data-toggle="tooltip" title="{{ button_close }}" class="btn btn-info"><i class="fa fa-check"></i></button></td></tr>
+                    {% endif %}
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var live, xhr, interval = 2000;
+
+    $('#smallChat{{ claim_id }}').load('index.php?route=claim/message&user_token={{ user_token }}&claim_id={{ claim_id }}');
+
+    $(document).on('click', '.randos button.add_claim', function(e){
+        e.preventDefault();
+        var textarea = $(this).parents('.randos').find('.textarea');
+        var claim_id = parseInt($(this).data('claim_send'));
+        var text = $(textarea).text();
+
+        if (claim_id && text) {
+            $.ajax({
+                url : 'index.php?route=claim/message/send&user_token={{ user_token }}&claim_id=' + claim_id,
+                method : 'POST',
+                data : {
+                    claim_id : claim_id,
+                    text : text,
+                },
+                success : function (json) {
+                    if (json['success']) {
+                        connectLive(claim_id);
+                        $(textarea).text('');
+                    }
+                }
+            });
+        }
+    });
+
+    function connectLive(claim_id) {
+        clearInterval(live);
+        if (claim_id) {
+            var last_claim_message_id = $('#smallChat' + claim_id).children().last().data('claim_message_id');
+            if (!last_claim_message_id) {
+                last_claim_message_id = 0;
+            }
+            live = setInterval(function(){
+                if (xhr) xhr.abort();
+
+                xhr = $.ajax({
+                    url : 'index.php?route=claim/message/live&user_token={{ user_token }}',
+                    method : 'POST',
+                    data : {
+                        last_claim_message_id : last_claim_message_id,
+                        claim_id : claim_id
+                    },
+                    success : function(json){
+                        if (json['messages'].length > 0) {
+                            for (var i in json['messages']) {
+                                setClaimMessage(claim_id, json['messages'][i]);
+                            }
+                            var objDiv = document.getElementById('smallChat' + claim_id);
+                            if (objDiv.scrollHeight - objDiv.offsetHeight - 250 < objDiv.scrollTop) {
+                                scrollClaimContentToDown(claim_id);
+                            }
+                        }
+                        connectLive(claim_id);
+                    }
+                });
+            }, interval);
+        }
+    }
+
+    connectLive({{ claim_id }});
+
+    function setClaimMessage(claim_id, message){
+        var temp = '<div id="claim-message-' + message.claim_message_id +'" class="massage user clearfix" data-claim_message_id="' + message.claim_message_id + '">\n' +
+            '        <div class="logo_my">\n' +
+            '            <img src="' + message.image + '">\n' +
+            '        </div>\n' +
+            '        <div class="login_name">\n' +
+            '            <a href="' + message.href + '">' + message.login + '</a>\n' +
+            '        </div>\n' +
+            '        <div class="time_my">\n' +
+            '            <span>' + message.date_added + '</span>\n' +
+            '        </div>\n' +
+            '        <div class="massage_txt">\n' +
+            '            <span>' + message.text + '</span>\n' +
+            '        </div>\n' +
+            '        <div class="massage_attachments">\n' +
+            '        </div>\n' +
+            '    </div>';
+        if ($('#claim-message-' + message.claim_message_id).length > 0) {
+            $('#claim-message-' + message.claim_message_id).replaceWith(temp);
+        } else {
+            $('#smallChat' + claim_id).append(temp);
+        }
+    }
+
+    function scrollClaimContentToDown(claim_id){
+        var objDiv = document.getElementById('smallChat' + claim_id);
+        if (objDiv) {
+            objDiv.scrollTop = objDiv.scrollHeight;
+        }
+    }
+
+    function closeClaim(){
+        $.get('{{ claim.close }}', function () {
+            $('.close-claim').html('<tr><td>Претензия закрыта</td></tr>');
+        });
+    }
+
+    function closeOrder(){
+        $.get('{{ claim.order_close }}', function () {
+            $('.close-order').html('<tr><td>Заказ выполнен</td></tr>');
+        });
+    }
+</script>
+{{ footer }}

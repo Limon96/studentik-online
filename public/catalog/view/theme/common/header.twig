@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+    {% for link in links %}
+        <link href="{{ link.href }}" rel="{{ link.rel }}" />
+    {% endfor %}
+    <title>{{ title }}</title>
+
+
+
+    <meta name="description" content="{{ description }}">
+    <meta name="keywords" content="{{ keywords }}">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta property="vk:image" content="https://studentik.online/new-order/img/logo_razmetki.png" />
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:url" content="{{ current_url }}">
+    <meta property="og:image" content="https://studentik.online/new-order/img/logo_razmetki.png" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:image:secure_url" content="https://studentik.online/new-order/img/logo_razmetki.png">
+
+    <!-- Twitter Meta Tags -->
+    <meta property="twitter:domain" content="{{ domain }}">
+    <meta property="twitter:url" content="{{ current_url }}">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:image" content="https://studentik.online/new-order/img/logo_razmetki.png">
+
+    <link rel="stylesheet" href="../catalog/assets/css/font_awesome/css/all.min.css">
+    <link rel="stylesheet" href="../catalog/assets/css/select2.css?v={{ v }}">
+        <link rel="stylesheet" href="../catalog/assets/css/style.css?v={{ v }}">
+
+
+
+        <link rel="stylesheet" href="../catalog/assets/css/responsive.css?v={{ v }}">
+    {% if not is_logged %}
+        <link rel="stylesheet" href="../catalog/assets/css/header_noreg.css?v={{ v }}">
+    {% endif %}
+
+
+
+
+
+
+
+    {% for style in styles %}
+    <link href="{{ style.href }}?v={{ v }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
+    {% endfor %}
+    <script src="../catalog/assets/js/jquery.min.js?v={{ v }}"></script>
+    <script src="../catalog/assets/js/custom.js?v={{ v }}"></script>
+    {% for script in scripts %}
+    <script src="{{ script }}?v={{ v }}" type="text/javascript"></script>
+    {% endfor %}
+    <script src="../catalog/assets/js/common.js?v={{ v }}" type="text/javascript"></script>
+    {% if is_logged %}
+        <script>
+            var ts = {{ ts }};
+
+            connectLongPoll();
+        </script>
+    {% endif %}
+
+    {% if not is_logged %}
+        <script src="//code-ya.jivosite.com/widget/3x3Y24atbz" async></script>
+    {% endif %}
+
+    <!-- Yandex.Metrika counter -->
+    <script>
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(86008313, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+        });
+    </script>
+    
+    <!-- /Yandex.Metrika counter -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKFYXTJR08"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-JKFYXTJR08');
+    </script>
+    <!-- /Global site tag (gtag.js) - Google Analytics -->
+
+    <!-- VK Pixel -->
+    <script>!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://vk.com/js/api/openapi.js?169",t.onload=function(){VK.Retargeting.Init("VK-RTRG-1136367-eUAqW"),VK.Retargeting.Hit()},document.head.appendChild(t)}();</script>
+    <noscript><img src="https://vk.com/rtrg?p=VK-RTRG-1136367-eUAqW" style="position:fixed; left:-999px;" alt=""/></noscript>
+    <!-- /VK Pixel -->
+</head>
+<body>
+
+
+
+{% if is_logged %}
+    <header class="clearfix ">
+        <div class="container-fluide">
+            <div class="row">
+                <div class="logo_cath">
+                    <a href="/">
+                        <img src="{{ logo }}" alt="{{ name }}" class="logo">
+                    </a>
+                </div>
+                <div class="menu_nav clearfix">
+                    <button class="toogle_menu clearfix">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="clearfix menu_drest">
+                        <li><a href="/orders">Лента заказов</a></li>
+                        {% if not is_logged %}<li><a href="/services">Услуги</a></li>{% endif %}
+                        <li><a href="/experts">Рейтинг авторов</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="{{ contact }}">Поддержка</a></li>
+                    </ul>
+
+                </div>
+                {{ account }}
+            </div>
+        </div>
+    </header>
+{% else %}
+
+
+    <header class="clearfix ">
+        <div class="container">
+            <div class="row rowall ">
+                <div class="logo_cath">
+                    <a href="/">
+                        <img src="{{ logo }}" alt="{{ name }}" class="logo">
+                    </a>
+                </div>
+                <div class="menu_nav clearfix">
+                    <button class="toogle_menu clearfix">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="clearfix menu_drest">
+                        <li><a href="/orders">Лента заказов</a></li>
+                        {% if not is_logged %}<li><a href="/services">Услуги</a></li>{% endif %}
+                        <li><a href="/experts">Рейтинг авторов</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <!--<li><a href="{{ orders }}">Партнерам</a></li>-->
+                    </ul>
+                </div>
+                {{ account }}
+            </div>
+        </div>
+
+    </header>
+
+
+    <style>
+
+
+        header {
+            padding: 10px 0 10px 0;
+            position: fixed;
+            z-index: 10;
+            background: #fff;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+
+
+
+        header .logo_cath {
+            width: 20%;
+            float: left;
+        }
+
+        header .logo {
+            width: 100%;
+            padding: 7px 0 0 0px;
+            max-width: 244px;
+            margin-left: auto;
+            display: block;
+        }
+
+
+
+        header .menu_nav {
+            width: 58%;
+            float: left;
+            padding: 0 0 0px 15px;
+        }
+
+        header .menu_nav ul {
+            padding: 0;
+            margin: 0;
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            -ms-align-items: center;
+            align-items: center;
+            list-style: none;
+        }
+
+        header .menu_nav ul li{
+            float: left;
+        }
+
+        header .menu_nav ul li a {
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 400;
+            display: block;
+            padding: 18px 6px 0px 6px;
+            border-bottom: 1px solid transparent;
+        }
+
+
+        header .menu_nav ul li a:hover {
+            color: #1CB7AD;
+            border-bottom: 1px solid #1CB7AD;
+        }
+
+
+
+
+
+
+
+        header .search_head {
+            width: 8%;
+            float: left;
+            padding: 8px 0 0 0;
+        }
+
+        header .search_head .search_in {
+            position: relative;
+        }
+
+        header .search_head .search_in input {
+            padding-right: 31px;
+        }
+
+        header .search_head .search_in .go_search {
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: transparent;
+            border: 0;
+            padding: 7px 11px 6px 6px;
+        }
+
+        header .search_head  .search_in .go_search img{
+
+        }
+
+
+
+
+
+
+        header .btn_catcher {
+            width: 15%;
+            float: left;
+            display: -webkit-flex;
+            display: -ms-flex;
+            display: flex;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            -ms-align-items: center;
+            align-items: center;
+            list-style: none;
+            padding: 5px 0 0 0;
+        }
+
+
+
+
+        header .btn_catcher .prm {
+            float: left;
+            padding-left: 10px;
+        }
+        header .btn_catcher .prm a {
+            font-size: 14px;
+            line-height: 20px;
+            text-align: center;
+            color: #B2E228;
+            border: 3px solid #b2e228;
+            padding: 8px 7px;
+            font-weight: 700;
+            border-radius: 37px;
+
+        }
+
+
+        header .btn_catcher .prm a:hover{
+            color: #fff;
+            background:#B2E228 ;
+        }
+
+
+
+
+        header .btn_catcher  .msg{
+            float: left;
+        }
+        header .btn_catcher  .msg a{
+
+        }
+        header .btn_catcher  .msg img{
+            width: 38px;
+            margin: 2px 0 0 0;
+        }
+
+
+        header .btn_catcher .cos{
+            float: left;
+        }
+        header .btn_catcher .cos a{
+
+        }
+        header .btn_catcher .cos a img{
+            width: 38px;
+            margin: 2px 0 0 0;
+        }
+
+
+        header .coast {
+            float: left;
+            width: 7%;
+        }
+        header .coast a {
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 700;
+            padding: 16px 8px 0 0;
+            display: block;
+            text-align: right;
+        }
+
+
+        header .akk {
+            float: left;
+            width: 10%;
+            padding-top: 6px;
+        }
+
+
+        header .akk a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+
+
+        header .akk .avatarka {
+            border-radius: 50px;
+            margin: 0 6px 0 0;
+            width: 40px;
+        }
+
+        header .akk .log_name {
+            font-size: 14px;
+            line-height: 25px;
+            color: #1CB7AD;
+            margin: 0 5px 0 0;
+        }
+
+
+        header .akk .arrow{
+
+        }
+
+
+        .akk_enter {
+            float: right;
+            padding: 4px 0 0 0;
+            width: 22%;
+        }
+
+
+        .akk_enter .login{
+
+        }
+
+        .akk_enter .login a.in {
+            background: #B2E228;
+            box-shadow: 0px 4px 15px rgb(178 226 40 / 25%);
+            border-radius: 25px;
+            padding: 15px 24px 15px 24px;
+            margin: 0 10px 0px 0;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 20px;
+            text-align: center;
+            color: #FFFFFF;
+            display: block;
+            max-width: 90px;
+            float: right;
+        }
+
+        .akk_enter .login a.in:hover{
+            background: #9bc425;
+        }
+
+        .akk_enter .login a.regs{
+            background: #1CB7AD;
+            box-shadow: 0px 4px 15px rgba(28, 183, 173, 0.25);
+            border-radius: 25px;
+            padding: 15px 24px 15px 24px;
+            margin: 0 0 0 0;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 20px;
+            text-align: center;
+            color: #FFFFFF;
+            display: block;
+            max-width: 160px;
+            float: right;
+        }
+
+        .akk_enter .login a.regs:hover{
+            background: #168780;
+        }
+
+
+        header .container {
+            max-width: 1200px;
+        }
+
+
+
+
+
+    </style>
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+

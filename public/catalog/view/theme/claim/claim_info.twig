@@ -1,0 +1,210 @@
+{{ header }}
+<div class="wrap_content">
+    {{ content_top }}
+    <div class="container">
+        <div class="row">
+            {{ column_left }}
+            <div class="center_content_resp">
+                <div class="clearfix console_wrap">
+                    <div class="clearfix search_panel">
+                        <div class="heads">
+                            <h2>{{ title }}</h2>
+                            <ul class="breadcrumb clearfix">
+                                {% for breadcrumb in breadcrumbs %}
+                                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="wrap_claim clearfix">
+                            <div class="head_claim clearfix">
+                                <ul class="clearfix">
+                                    <li><p>Истец: </p><span><a href="{{ claim.customer_href }}">{{ claim.customer_login }}</a></span></li>
+                                    <li><p>Дата подачи: </p><span>{{ claim.date_added }}</span></li>
+                                    <li><p>Ответчик: </p><span><a href="{{ claim.defendant_href }}">{{ claim.defendant_login }}</a></span></li>
+                                    <li><p>Объект:</p><span><a href="{{ claim.object_href }}">{{ claim.object_title }}</a></span></li>
+                                    <li><p>Комментарий:</p><span>{{ claim.comment }}</span></li>
+                                </ul>
+                            </div>
+                            <div class="body_claim clearfix">
+                                <div class="text_claim clearfix">
+
+                                    <div id="message-form-unswer-claim{{ claim_id }}" class="unswer_com footer_chat clearfix" style="display: block;">
+                                        <div id="smallChat{{ claim_id }}" class="chat_pole content_chat"></div>
+                                    </div>
+                                    <div class="textt_input_go clearfix">
+                                        <div class="textarea" contenteditable="true" placeholder="Текст Претензии" wrap="hard"> </div>
+                                        <div class="placeholder">Напишите сообщение...</div>
+                                    </div>
+
+
+
+                                    <div id="files" class="files_rools">
+                                        {% if attachments %}
+                                            {% for attachment in attachments %}
+                                                <div class="clearfix file_item">
+                                                    <div class="logo_file">
+                                                        <img src="catalog/assets/img/file/{{ attachment.type }}.png">
+                                                    </div>
+                                                    <div class="left_cop">
+                                                        <span>{{ attachment.name }}</span>
+                                                        <span class="weigt">{{ attachment.size }}</span>
+                                                    </div>
+                                                    <div class="right_cop">
+                                                        <span>{{ attachment.date_added }}</span>
+                                                        <p class="delete_file_cust clearfix">
+                                                          {#  <a href="{{ attachment.href }}">{{ button_view }}</a>#}
+                                                            <a href="{{ attachment.upload }}">{{ button_upload }}</a>
+                                                            {% if attachment.is_owner %}
+                                                                <button class="delete_file" data-attachment-id="{{ attachment.attachment_id }}">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" height="329pt" viewBox="0 0 329.26933 329" width="329pt"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"></path></svg>
+                                                                </button>
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="look_files2">
+                                        <form id="form-upload" class="files_rools">
+                                            <label>
+                                                <p>
+                                                    <svg style="position: relative;width: 10px" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" class="sw-icon">
+                                                        <path d="M288 248v28c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-28c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm-12 72H108c-6.6 0-12 5.4-12 12v28c0 6.6 5.4 12 12 12h168c6.6 0 12-5.4 12-12v-28c0-6.6-5.4-12-12-12zm108-188.1V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V48C0 21.5 21.5 0 48 0h204.1C264.8 0 277 5.1 286 14.1L369.9 98c9 8.9 14.1 21.2 14.1 33.9zm-128-80V128h76.1L256 51.9zM336 464V176H232c-13.3 0-24-10.7-24-24V48H48v416h288z"></path>
+                                                    </svg>
+                                                </p>
+                                                <input type="file" name="file[]" multiple="multiple" accept=".bmp,.djvu,.doc,.docx,.dwg,.csv,.gif,.jpeg,.jpg,.odf,.odt,.pdf,.png,.ppt,.pptx,.rar,.rtf,.svg,.tga,.tiff,.txt,.xls,.xlsx,.zip,.a3d,.cdt,.cdw,.m3d,.dwf,.cdr,.ai,.ics">
+                                                <span>{{ button_attachment }}</span>
+                                            </label>
+                                        </form>
+                                    </div>
+
+                                    <script>
+                                        $(document).on('change', '#form-upload input', function(){
+                                            if (typeof timer != 'undefined') {
+                                                clearInterval(timer);
+                                            }
+
+                                            timer = setInterval(function() {
+                                                if ($('#form-upload input[type=file]').val() != '') {
+                                                    clearInterval(timer);
+
+                                                    $.ajax({
+                                                        url: 'index.php?route=common/upload/upload',
+                                                        type: 'post',
+                                                        dataType: 'json',
+                                                        data: new FormData($('#form-upload')[0]),
+                                                        cache: false,
+                                                        contentType: false,
+                                                        processData: false,
+                                                        beforeSend: function() {
+                                                            $('#button-upload i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
+                                                            $('#button-upload').prop('disabled', true);
+                                                        },
+                                                        complete: function() {
+                                                            $('#button-upload i').replaceWith('<i class="fa fa-upload"></i>');
+                                                            $('#button-upload').prop('disabled', false);
+                                                        },
+                                                        success: function(json) {
+                                                            if (json['error']) {
+                                                                console.log(json['error']);
+                                                            }
+
+                                                            if (json['success']) {
+                                                                if (json['files']) {
+                                                                    for (var i in json['files']) {
+                                                                        var tmpl = '<div class="clearfix file_item">\n' +
+                                                                            '    <div class="logo_file">' +
+                                                                            '       <img src="catalog/assets/img/file/' + json['files'][i]['type'] + '.png">' +
+                                                                            '    </div>\n' +
+                                                                            '    <div class="left_cop">\n' +
+                                                                            '        <span>' + json['files'][i]['name'] + '</span>\n' +
+                                                                            '        <span class="weigt">' + json['files'][i]['size'] + '</span>\n' +
+                                                                            '    </div>\n' +
+                                                                            '    <div class="right_cop">\n' +
+                                                                            '        <span>' + json['files'][i]['date_added'] + '</span>\n' +
+                                                                            '        <p class="delete_file_cust clearfix">\n' +
+                                                                            '            {#  <a href="' + json['files'][i]['href'] + '">{{ button_view }}</a>\n #}' +
+                                                                            '            <a href="' + json['files'][i]['upload'] + '">{{ button_upload }}</a>\n' +
+                                                                            '            <button class="delete_file" data-attachment-id="' + json['files'][i]['attachment_id'] + '">\n' +
+                                                                            '                 <svg xmlns="http://www.w3.org/2000/svg" height="329pt" viewBox="0 0 329.26933 329" width="329pt"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"></path></svg>\n' +
+                                                                            '            </button>' +
+                                                                            '        </p>\n' +
+                                                                            '    </div>\n' +
+                                                                            '</div>';
+                                                                        $('#files').append(tmpl);
+
+                                                                        $.ajax({
+                                                                            url: 'index.php?route=claim/claim/addAttachment&claim_id={{ claim_id }}',
+                                                                            type: 'post',
+                                                                            dataType: 'json',
+                                                                            data: {
+                                                                                attachment_id: json['files'][i]['attachment_id']
+                                                                            },
+                                                                            success: function(json) {
+                                                                                console.log(json);
+                                                                            }
+                                                                        });
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        error: function(xhr, ajaxOptions, thrownError) {
+                                                            console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                                        }
+                                                    });
+                                                }
+                                            }, 500);
+                                        });
+
+                                        $(document).on('click', '.file_item .delete_file', function(){
+                                            var attachment_id = parseInt($(this).data('attachment-id'));
+
+                                            if (attachment_id > 0) {
+                                                $(this).parents('.file_item').remove();
+                                                $.ajax({
+                                                    url: 'index.php?route=claim/claim/deleteAttachment&claim_id={{ claim_id }}',
+                                                    type: 'post',
+                                                    dataType: 'json',
+                                                    data: {
+                                                        attachment_id: attachment_id
+                                                    },
+                                                    success: function(json) {
+                                                        console.log(json);
+                                                    }
+                                                });
+                                            }
+                                        });
+                                    </script>
+                                    <div class="clearfix wrap_add_claim">
+                                        <button class="add_claim" data-claim_send="{{ claim_id }}">Отправить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="body_claim_list clearfix">
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+            {{ column_right }}
+        </div>
+    </div>
+    {{ content_bottom }}
+</div>
+<script>
+    $(document).ready(function(){
+        $('#smallChat{{ claim_id }}').load('index.php?route=claim/message&claim_id={{ claim_id }}');
+    });
+</script>
+{{ footer }}

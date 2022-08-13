@@ -1,0 +1,95 @@
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-money fw"></i> Последние заявки на вывод</h3>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <td class="text-right">{{ column_order_id }}</td>
+            <td>{{ column_customer }}</td>
+            <td>{{ column_status }}</td>
+            <td class="text-right">{{ column_total }}</td>
+            <td>{{ column_date_added }}</td>
+            <td class="text-right">{{ column_action }}</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% if withdrawals %}
+          {% for withdrawal in withdrawals %}
+          <tr>
+            <td class="text-right">{{ withdrawal.withdrawal_id }}</td>
+            <td><a href="{{ withdrawal.customer.href }}">{{ withdrawal.customer.login }}</a></td>
+            <td>{% for status in statuses %}
+                {% if status.id == withdrawal.status %}
+                  <option value="{{ status.id }}" selected="selected">{{ status.name }}</option>
+                {% endif %}
+              {% endfor %}</td>
+            <td class="text-right">{{ withdrawal.amount }}</td>
+            <td>{{ withdrawal.date_added }}</td>
+            <td class="text-right"><a href="{{ withdrawal.view }}" data-toggle="tooltip" title="{{ button_view }}" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
+          </tr>
+          {% endfor %}
+          {% else %}
+          <tr>
+            <td class="text-center" colspan="6">{{ text_no_results }}</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-exclamation-triangle fw"></i>Последние открытые претензии</h3>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+          <td class="text-right">{{ column_order_id }}</td>
+          <td>Объект</td>
+          <td>Истец</td>
+          <td>Статус</td>
+          <td>{{ column_date_added }}
+          <td class="text-right">Действие</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% if claims %}
+          {% for claim in claims %}
+            <tr>
+              <td class="text-right">{{ claim.claim_id }}</td>
+              <td class="text-left">
+                <a href="{{ claim.object_href }}" target="_blank">{{ claim.object_title }}</a>
+              </td>
+              <td class="text-left">
+                <a href="{{ claim.customer_href }}" target="_blank">{{ claim.customer_login }}</a>
+              </td>
+              <td class="text-left">
+                <a href="{{ claim.defendant_href }}" target="_blank">{{ claim.defendant_login }}</a>
+              </td>
+              <td>
+                {% if claim.status %}
+                  Закрыта
+                {% else %}
+                  Открыта
+                {% endif %}
+              <td>{{ claim.date_added }}</td>
+              </td>
+              <td class="text-right"><a href="{{ claim.view }}" data-toggle="tooltip" title="{{ button_view }}" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
+            </tr>
+          {% endfor %}
+        {% else %}
+          <tr>
+            <td class="text-center" colspan="5">{{ text_no_results }}</td>
+          </tr>
+        {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

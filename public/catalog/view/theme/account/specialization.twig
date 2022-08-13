@@ -1,0 +1,113 @@
+{{ header }}
+<div class="wrap_content">
+    {{ content_top }}
+    <div class="container">
+        <div class="row">
+            {{ column_left }}
+            <div class="center_content_resp">
+                    <div class="clearfix console_wrap">
+                        <div class="clearfix search_panel">
+                            <div class="heads">
+                                <h2>Выбор специализации</h2>
+                                <ul class="breadcrumb">
+                                    {% for breadcrumb in breadcrumbs %}
+                                        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="head_spec clearfix">
+                                <div class="search_in clearfix">
+                                    <input type="text" name="spec_search" value="">
+                                    <button class="go_search"><img src="../catalog/assets/img/icons/search.svg" alt="">
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="clearfix hdjii">
+                            <div class="clearfix tabs_spec_ast " >
+                                <div class="btn_cdse">
+                                    <button type="button" class="btn-save">Сохранить</button>
+                                </div>
+
+
+                                <div class="left_wrap">
+                                    <ul class="tabs_spec">
+                                        {% for section in sections %}
+                                            <li class="tab-link" data-tab="tab-{{ section.section_id }}">{{ section.name }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="right_wrap">
+                                    {% for section in sections %}
+                                    <div id="tab-{{ section.section_id }}" class="tab-content_spec">
+                                        <div class="col_in clearfix">
+                                            <div class="razdel_wrap_chek">
+                                                <label class="container_ch">
+                                                    Выбрать все
+                                                    <input type="checkbox" class="general-checkbox" >
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                            {% for subject in section.subjects %}
+                                                <div class="razdel_wrap_chek for-filter-search">
+                                                    <label class="container_ch">
+                                                        {{ subject.name }}
+                                                        {% if subject.subject_id in customer_subjects %}
+                                                            <input type="checkbox" checked name="subjects[]" value="{{ subject.subject_id }}">
+                                                        {% else %}
+                                                            <input type="checkbox" name="subjects[]" value="{{ subject.subject_id }}">
+                                                        {% endif %}
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+            {{ column_right }}
+        </div>
+    </div>
+</div>
+<script>
+    $(document).on('click', 'button.btn-save', function(e) {
+        saveSpecializations();
+    });
+    $(document).on('change', 'input[name=spec_search]', function(e) {
+        filterSpecialisations($(this).val());
+    });
+    $(document).on('keyup', 'input[name=spec_search]', function(e) {
+        filterSpecialisations($(this).val());
+    });
+
+    function filterSpecialisations(str){
+        str = str.trim();
+
+        if (!str) {
+            $('.tab-content_spec .for-filter-search').removeClass('filtered');
+            $('.tab-content_spec .for-filter-search').show();
+            $('.tabs_spec .tab-link').show();
+
+            return;
+        }
+
+        $('.tab-content_spec .for-filter-search').each(function(){
+            if ($(this).text().indexOf(str) <= -1) {
+                $(this).removeClass('filtered');
+                $(this).hide();
+                $(this)
+            } else {
+                $(this).addClass('filtered');
+                $(this).show();
+            }
+        });
+    }
+</script>
+
+{{ footer }}

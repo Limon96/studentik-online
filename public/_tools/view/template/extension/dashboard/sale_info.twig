@@ -1,0 +1,13 @@
+{% if totals %}
+    {% for total in totals %}
+        <div class="col-md-6">
+            <div class="tile tile-info">
+                <div class="tile-heading">{{ total.title }} <span class="pull-right"></span></div>
+                <div class="tile-body"><i class="fa fa-credit-card"></i>
+                    <h2 class="pull-right">{{ total.total }}</h2>
+                </div>
+                <div class="tile-footer"><a href="{{ total.href }}">{{ text_view }}</a></div>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}

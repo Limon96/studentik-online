@@ -1,0 +1,81 @@
+
+{{ header }}
+
+<div class="wrap_content">
+    {{ content_top }}
+    <div class="container">
+        <div class="row">
+            {{ column_left }}
+            <div class="center_content_resp">
+                <div class="clearfix console_wrap">
+                    <div class="clearfix search_panel">
+                        <div class="heads">
+                            <h2>Купите PRO-аккаунт для получения всех преимуществ сервиса</h2>
+                            <ul class="breadcrumb clearfix">
+                                {% for breadcrumb in breadcrumbs %}
+                                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                   <div class="boodfar clearfix">
+                       <div class="legend clearfix">
+                           <div class="inner_leg clearfix">
+                           <div class="hertd">
+                               <p>Бонусы для экспертов</p>
+                           </div>
+                           <div class="wrap_igm">
+                               <img src="catalog/assets/img/worker.png" >
+                           </div>
+                           <div class="wrap_enter">
+                               <ul>
+                                   <li>Комиссия снижена на 2%</li>
+                                   <li>Видны предложения других экспертов</li>
+                                   <li>Больше доверия со стороны заказчика</li>
+                               </ul>
+                           </div>
+                       </div>
+                       </div>
+                       <div class="legend clearfix">
+                           <div class="inner_leg clearfix">
+                           <div class="hertd">
+                               <p>Бонусы для заказчиков</p>
+                           </div>
+                           <div class="wrap_igm">
+                               <img src="catalog/assets/img/stud.png" >
+                           </div>
+                           <div class="wrap_enter">
+                               <ul>
+                                   <li>Размещение в платном каталоге — 50 ₽</li>
+                                   <li>Больше доверия со стороны эксперта</li>
+                               </ul>
+                           </div>
+                           </div>
+                       </div>
+                       <div class="tovar clearfix">
+                           <h3>Тарифы:</h3>
+                           {% for item in pro %}
+                               <div class="pro_product clearfix">
+                                   <div class="inner_rert clearfix">
+                                       <img src="catalog/assets/img/dollar.svg">
+                                       <p>{{ item.title }}</p>
+                                       <span>{{ item.description }}</span>
+                                       <h4>{{ item.price }}</h4>
+                                       <button>{{ button_buy }}</button>
+                                   </div>
+                               </div>
+                           {% endfor %}
+                       </div>
+                   </div>
+
+                    </div>
+                </div>
+
+            </div>
+            {{ column_right }}
+        </div>
+    </div>
+    {{ content_bottom }}
+</div>
+{{ footer }}
+
+

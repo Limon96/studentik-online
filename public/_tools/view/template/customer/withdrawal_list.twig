@@ -1,0 +1,285 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="button" data-toggle="tooltip" title="{{ button_filter }}" onclick="$('#filter-withdrawal').toggleClass('hidden-sm hidden-xs');" class="btn btn-default hidden-md hidden-lg"><i class="fa fa-filter"></i></button>
+        <a href="{{ add }}" data-toggle="tooltip" title="{{ button_add }}" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+        <button type="button" data-toggle="tooltip" title="{{ button_delete }}" class="btn btn-danger" onclick="confirm('{{ text_confirm }}') ? $('#form-withdrawal').submit() : false;"><i class="fa fa-trash-o"></i></button>
+      </div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">{% if error_warning %}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    {% if success %}
+    <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="row">
+      <div id="filter-withdrawal" style="display:none;" class="col-md-3 col-md-push-9 col-sm-12 hidden-sm hidden-xs">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-filter"></i> {{ text_filter }}</h3>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label class="control-label" for="input-login">{{ entry_login }}</label>
+              <input type="text" name="filter_login" value="{{ filter_login }}" placeholder="{{ entry_login }}" id="input-login" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="input-email">{{ entry_email }}</label>
+              <input type="text" name="filter_email" value="{{ filter_email }}" placeholder="{{ entry_email }}" id="input-email" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="input-withdrawal-group">{{ entry_withdrawal_group }}</label>
+              <select name="filter_withdrawal_group_id" id="input-withdrawal-group" class="form-control">
+                <option value=""></option>
+                {% for withdrawal_group in withdrawal_groups %}
+                {% if withdrawal_group.withdrawal_group_id == filter_withdrawal_group_id %}
+                <option value="{{ withdrawal_group.withdrawal_group_id }}" selected="selected">{{ withdrawal_group.name }}</option>
+                {% else %}
+                <option value="{{ withdrawal_group.withdrawal_group_id }}">{{ withdrawal_group.name }}</option>
+                {% endif %}
+                {% endfor %}
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="input-status">{{ entry_status }}</label>
+              <select name="filter_status" id="input-status" class="form-control">
+                <option value=""></option>
+                {% if filter_status == '1' %}
+                <option value="1" selected="selected">{{ text_enabled }}</option>
+                {% else %}
+                <option value="1">{{ text_enabled }}</option>
+                {% endif %}
+                {% if filter_status == '0' %}
+                <option value="0" selected="selected">{{ text_disabled }}</option>
+                {% else %}
+                <option value="0">{{ text_disabled }}</option>
+                {% endif %}
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="input-ip">{{ entry_ip }}</label>
+              <input type="text" name="filter_ip" value="{{ filter_ip }}" placeholder="{{ entry_ip }}" id="input-ip" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="input-date-added">{{ entry_date_added }}</label>
+              <div class="input-group date">
+                <input type="text" name="filter_date_added" value="{{ filter_date_added }}" placeholder="{{ entry_date_added }}" data-date-format="YYYY-MM-DD" id="input-date-added" class="form-control" />
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                </span>
+              </div>
+            </div>
+            <div class="form-group text-right">
+              <button type="button" id="button-filter" class="btn btn-default"><i class="fa fa-filter"></i> {{ button_filter }}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+     {# <div class="col-md-9 col-md-pull-3 col-sm-12">#}
+      <div class="col-md-12 col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-list"></i> {{ text_list }}</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+            <div class="col-md-12 col-sm-12">
+            <div class="table-responsive">
+              <form action="{{ delete }}" method="post" enctype="multipart/form-data" id="form-withdrawal">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>
+                      <td class="text-left">Клиент</td>
+                      <td class="text-left">Сумма</td>
+                      <td class="text-left">Способ вывода</td>
+                      <td class="text-left">Реквизиты</td>
+                      <td class="text-left">Статус</td>
+                      <td class="text-left">Комментарий</td>
+                      <td class="text-left">Дата создания</td>
+                      <td class="text-left">Дата обновления</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% if withdrawals %}
+                  {% for withdrawal in withdrawals %}
+                  <tr>
+                    <td class="text-center">{% if withdrawal.withdrawal_id in selected %}
+                      <input type="checkbox" name="selected[]" value="{{ withdrawal.withdrawal_id }}" checked="checked" />
+                      {% else %}
+                      <input type="checkbox" name="selected[]" value="{{ withdrawal.withdrawal_id }}" />
+                      {% endif %}
+                    </td>
+                    <td class="text-left">
+                      <a href="{{ withdrawal.customer.href }}" target="_blank">{{ withdrawal.customer.login }}</a>
+                    </td>
+                    <td class="text-left">{{ withdrawal.amount }}</td>
+                    <td class="text-left">{{ withdrawal.method }}</td>
+                    <td class="text-left">{{ withdrawal.card_number }}</td>
+                    <td class="text-left">
+                      <select name="status" class="form-control" onchange="updateField('status', {{ withdrawal.withdrawal_id }}, this);">
+                        {% for status in statuses %}
+                        {% if status.id == withdrawal.status %}
+                          <option value="{{ status.id }}" selected>{{ status.name }}</option>
+                        {% else %}
+                          <option value="{{ status.id }}">{{ status.name }}</option>
+                        {% endif %}
+                        {% endfor %}
+                      </select>
+                    </td>
+                    <td class="text-left"><textarea class="form-control" name="comment" onchange="updateField('comment', {{ withdrawal.withdrawal_id }}, this);" cols="30" rows="2">{{ withdrawal.comment }}</textarea></td>
+                    <td class="text-left">{{ withdrawal.date_added }}</td>
+                    <td class="text-left">{{ withdrawal.date_updated }}</td>
+                  </tr>
+                  {% endfor %}
+                  {% else %}
+                  <tr>
+                    <td class="text-center" colspan="8">{{ text_no_results }}</td>
+                  </tr>
+                  {% endif %}
+                  </tbody>
+              </table>
+            </form>
+          </div>
+          </div>
+          </div>
+
+            <div class="row">
+              <div class="col-sm-6 text-left">{{ pagination }}</div>
+              <div class="col-sm-6 text-right">{{ results }}</div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript"><!--
+  $('.table-responsive').on('shown.bs.dropdown', function (e) {
+    var t = $(this),
+      m = $(e.target).find('.dropdown-menu'),
+      tb = t.offset().top + t.height(),
+      mb = m.offset().top + m.outerHeight(true),
+      d = 20;
+    if (t[0].scrollWidth > t.innerWidth()) {
+      if (mb + d > tb) {
+        t.css('padding-bottom', ((mb + d) - tb));
+      }
+    } else {
+      t.css('overflow', 'visible');
+    }
+  }).on('hidden.bs.dropdown', function () {
+    $(this).css({'padding-bottom': '', 'overflow': ''});
+  });
+  //--></script>
+  <script type="text/javascript"><!--
+  $('#button-filter').on('click', function() {
+    url = 'index.php?route=customer/withdrawal&user_token={{ user_token }}';
+    var filter_login = $('input[name=\'filter_login\']').val();
+    if (filter_login) {
+      url += '&filter_login=' + encodeURIComponent(filter_login);
+    }
+    var filter_email = $('input[name=\'filter_email\']').val();
+    if (filter_email) {
+      url += '&filter_email=' + encodeURIComponent(filter_email);
+    }
+    var filter_withdrawal_group_id = $('select[name=\'filter_withdrawal_group_id\']').val();
+    if (filter_withdrawal_group_id !== '') {
+      url += '&filter_withdrawal_group_id=' + encodeURIComponent(filter_withdrawal_group_id);
+    }
+    var filter_status = $('select[name=\'filter_status\']').val();
+    if (filter_status !== '') {
+      url += '&filter_status=' + encodeURIComponent(filter_status); 
+    }
+    var filter_ip = $('input[name=\'filter_ip\']').val();
+    if (filter_ip) {
+      url += '&filter_ip=' + encodeURIComponent(filter_ip);
+    }
+    var filter_date_added = $('input[name=\'filter_date_added\']').val();
+    if (filter_date_added) {
+      url += '&filter_date_added=' + encodeURIComponent(filter_date_added);
+    }
+    location = url;
+  });
+  //--></script>
+  <script type="text/javascript"><!--
+  $('input[name=\'filter_name\']').autocomplete({
+    'source': function(request, response) {
+      $.ajax({
+        url: 'index.php?route=customer/withdrawal/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
+        dataType: 'json',
+        success: function(json) {
+          response($.map(json, function(item) {
+            return {
+              label: item['name'],
+              value: item['withdrawal_id']
+            }
+          }));
+        }
+      });
+    },
+    'select': function(item) {
+      $('input[name=\'filter_name\']').val(item['label']);
+    }
+  });
+  $('input[name=\'filter_email\']').autocomplete({
+    'source': function(request, response) {
+      $.ajax({
+        url: 'index.php?route=customer/withdrawal/autocomplete&user_token={{ user_token }}&filter_email=' +  encodeURIComponent(request),
+        dataType: 'json',
+        success: function(json) {
+          response($.map(json, function(item) {
+            return {
+              label: item['email'],
+              value: item['withdrawal_id']
+            }
+          }));
+        }
+      });
+    },
+    'select': function(item) {
+      $('input[name=\'filter_email\']').val(item['label']);
+    }
+  });
+  function updateField(field, id, that) {
+    var value = $(that).val();
+    var data = {};
+
+    data['withdrawal_id'] = id;
+    data[field] = value;
+    $('.alert').remove();
+    $.ajax({
+      url: 'index.php?route=customer/withdrawal/edit&user_token={{ user_token }}',
+      method : 'POST',
+      data : data,
+      dataType: 'json',
+      success: function(json) {
+        if (json['error_warning']) {
+          $('#form-withdrawal').prepend('<div class="alert alert-warning">' + json['error_warning'] + '</div>');
+        }
+        if (json['success']) {
+          $('#form-withdrawal').prepend('<div class="alert alert-success">' + json['success'] + '</div>');
+        }
+      }
+    });
+  }
+  //--></script>
+  <script type="text/javascript"><!--
+  $('.date').datetimepicker({
+    language: '{{ datepicker }}',
+    pickTime: false
+  });
+  //--></script>
+</div>
+{{ footer }}

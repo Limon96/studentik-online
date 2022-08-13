@@ -1,0 +1,752 @@
+{{ header }}
+<script type="text/javascript">
+    var commission = {{ commission }};
+</script>
+{% if alert_success %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            alertSuccess('{{ alert_success }}');
+        });
+    </script>
+{% endif %}
+
+<div class="wrap_content">
+{{ content_top }}
+<div id="order-info" class="container">
+    <div class="row">
+        {{ column_left }}
+        <div id="content" class="center_content_resp">
+
+
+            <div class="clearfix wrap_zakaz">
+                <div class="info_work clearfix">
+                    <div class="head">
+                        <h1>{{ title }}</h1>
+                        <ul class="breadcrumb">
+                            {% for breadcrumb in breadcrumbs %}
+                                <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="head_inf clearfix">
+                        <div class="master clearfix">
+                            <div class="logof clearfix">
+                                <div class="img_face">
+                                    <img src="{{ customer.image }}" alt="{{ customer.login }}">
+                                    {% if customer.online %}<span class="{{ customer.online }}"></span>{% endif %}
+                                </div>
+                                <div class="login">
+                                    <a href="{{ customer.href }}">{{ customer.login }}</a>
+                                    <span class="last_time">{{ customer.last_seen }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lable_dop clearfix">
+                            {% if hot %}
+                            <div class=" wraps_warning red">
+                                <img src="../catalog/assets/img/icons/ogony.svg">
+                                <span>{{ text_hot }}</span>
+                            </div>
+                            {% endif %}
+                            {% if premium %}
+                            <div class=" wraps_warning yellow">
+                                <img src="../catalog/assets/img/icons/screpka.svg">
+                                <span>{{ text_premium }}</span>
+                            </div>
+                            {% endif %}
+                            <div class=" wraps_warning status">
+                                <span>{{ order_status }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about_zak">
+                        <div class="clearfix zak_fom">
+                            <div class="col-6">
+                                <div class="toopfert">{{ text_order_id }} <span> {{ order_id }}</span></div>
+                                <div class="toopfert">{{ text_section }} <span> {{ section }}</span></div>
+                                <div class="toopfert">{{ text_subject }} <span> {{ subject }}</span></div>
+                                <div class="toopfert">{{ text_work_type }} <span> {{ work_type }}</span></div>
+                                <div class="toopfert">{{ text_plagiarism_check }} <span> {{ plagiarism_check }}</span>
+
+
+                                <div class="my_plag clearfix">
+                                    {% if plagiarism %}
+                                        {% for item in plagiarism %}
+                                            {% if item == 'Антиплагиат' %}
+                                                <div class="rors"><img src="../catalog/assets/img/antiplagiat.svg"  class="all_tooltyp4" data-tooltip="Антиплагиат"></div>
+                                            {% endif %}
+                                            {% if item == 'eTXT' %}
+                                                <div class="rors"><img src="../catalog/assets/img/eTXT.svg" class="all_tooltyp4" data-tooltip="eTXT"></div>
+                                            {% endif %}
+                                            {% if item == 'Антиплагиат.ВУЗ' %}
+                                                <div class="rors"><img src="../catalog/assets/img/logo-ap-vuz.svg" class="all_tooltyp4" data-tooltip="Антиплагиат.ВУЗ"></div>
+                                            {% endif %}
+                                            {% if item == 'Руконтекст' %}
+                                                <div class="rors"><img src="../catalog/assets/img/rukon.png" class="all_tooltyp4" data-tooltip="Руконтекст"></div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+
+
+
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="toopfert">{{ text_date_end }} <span> {{ date_end }}</span></div>
+                                <div class="toopfert">{{ text_price }} <span> {{ price }}</span></div>
+                                <div class="toopfert">{{ text_date_added }} <span> {{ date_added }}</span></div>
+                                <div class="toopfert">{{ text_viewed }} <span> {{ viewed }}</span></div>
+                                <div class="toopfert">{{ text_payment_blocking }} <span data-tooltip="После скачивания работы должно пройти 15
+                                        суток, для того чтобы начислить средства на счёт исполнителя"> 15 дней </span></div>
+
+
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+                        {% if is_owner or offer_assigned_is_owner or customer_group_id == 2 %}
+                        <div class="order-control clearfix">
+                            {% if customer_group_id == 2 %}
+                            <a href="{{ customer.chat }}" class="review_add">Написать сообщение</a>
+                            {% endif %}
+                            {% if is_owner and (order_status_id == config_open_order_status_id) %}
+                            <button id="button-cancel-order" class="button-cancel-order" data-order_id="{{ order_id }}">{{ button_cancel_order }}</button>
+                            {% endif %}
+                            {% if is_owner and (order_status_id == config_canceled_order_status_id) %}
+                            <button id="button-open-order" class="button-open-order" data-order_id="{{ order_id }}">{{ button_open_order }}</button>
+                            {% endif %}
+                            {% if is_owner and (order_status_id == config_verification_order_status_id or order_status_id == config_revision_order_status_id) %}
+                            <button id="button-complete-order" class="button-complete-order" data-order_id="{{ order_id }}">{{ button_complete_order }}</button>
+                            {% endif %}
+                            {% if is_owner and (order_status_id == config_verification_order_status_id or order_status_id == config_complete_order_status_id) %}
+                            <button id="button-revision-order"  class="button-revision-order" data-order_id="{{ order_id }}">{{ button_revision_order }}</button>
+                            {% endif %}
+
+                            {% if not is_exists_review %}
+                            {% if order_status_id == config_verification_order_status_id or order_status_id == config_complete_order_status_id %}
+                            <a href="{{ review_add }}" class="review_add">Оставить отзыв</a>
+                            {% endif %}
+                            {% endif %}
+
+                            {% if order_status_id == config_verification_order_status_id or order_status_id == config_complete_order_status_id or order_status_id == config_awaiting_order_status_id or order_status_id == config_revision_order_status_id or order_status_id == config_progress_order_status_id %}
+                            {% if claim %}<a href="{{ claim }}" class="claim">Подать претензию</a>{% endif %}
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                        <div class="clearfix zak_descr">
+                            <h3>{{ text_description }}</h3>
+                            <p>{{ description }}</p>
+                            {% if is_owner and order_status_id == config_open_order_status_id %}
+                                <a href="{{ edit }}">{{ button_edit }}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {% if not is_logged %}
+                    <div class="need_this_order clearfix">
+                        <form id="guest-order-form">
+                            <div class="integer clearfix">
+                                <h4>Нужна аналогичная работа?</h4>
+                                <p>Оформи быстрый заказ и узнай стоимость</p>
+                                <input type="text" name="title" placeholder="Введите название работы" class="name_worck">
+                                <div class="razdel_wrap">
+                                    <select name="work_type" class="giveSelect2">
+                                        <option value="0">{{ text_all_work_type }}</option>
+                                        {% for work_type in work_types %}
+                                            {% if work_type.work_type_id == work_type_id %}
+                                                <option value="{{ work_type.work_type_id }}" selected>{{ work_type.name }}</option>
+                                            {% else %}
+                                                <option value="{{ work_type.work_type_id }}">{{ work_type.name }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <input type="email" name="email" placeholder="E-mail"  class="name_email">
+                                <a href="#" id="guest-order" class="go_me_order">Разместить заказ</a>
+                            </div>
+                        </form>
+                        <script>
+                            $(document).on('click', '#guest-order', function (e) {
+                                e.preventDefault();
+                                $('#guest-order-form').submit();
+                            })
+
+                            $(document).on('submit', '#guest-order-form', function (e) {
+                                e.preventDefault();
+                                $('.has-error').remove();
+                                $.ajax({
+                                    url : '../index.php?route=account/register/guestOrder',
+                                    method : 'post',
+                                    data : $('#guest-order-form input, #guest-order-form select'),
+                                    dataType : 'json',
+                                    success : function (json) {
+                                        if (json['error_email']) {
+                                            $('#guest-order-form input[name=email]').before('<div class="has-error">' + json['error_email'] + '</div>');
+                                        }
+
+                                        if (json['error_subject']) {
+                                            $('#guest-order-form select[name=subject]').before('<div class="has-error">' + json['error_subject'] + '</div>');
+                                        }
+
+                                        if (json['error_work_type']) {
+                                            $('#guest-order-form select[name=work_type]').before('<div class="has-error">' + json['error_work_type'] + '</div>');
+                                        }
+
+                                        if (json['error_title']) {
+                                            $('#guest-order-form input[name=title]').before('<div class="has-error">' + json['error_title'] + '</div>');
+                                        }
+
+                                        if (json['error_warning']) {
+                                            $('#guest-order-form').before('<div class="has-error">' + json['error_warning'] + '</div>');
+                                        }
+
+                                        if (json['redirect']) {
+                                            location.href = json['redirect'];
+                                        }
+                                    }
+                                });
+                            });
+                        </script>
+                    </div>
+                    <div class="reclama_wrap clearfix">
+                        <div class="remastr clearfix">
+                            <div class="img_alaby">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="479pt" viewBox="0 0 479 479.84995" width="479pt"><path d="m293.773438 195.351562-72.097657 68.097657-34.601562-35.597657c-3.835938-3.949218-10.152344-4.039062-14.097657-.203124-3.949218 3.839843-4.039062 10.152343-.203124 14.101562l41.5 42.601562c3.855468 3.878907 10.085937 4.011719 14.101562.296876l79.300781-74.796876c1.925781-1.816406 3.050781-4.324218 3.125-6.96875.074219-2.644531-.90625-5.210937-2.726562-7.132812-3.859375-4.011719-10.222657-4.1875-14.300781-.398438zm0 0"/><path d="m240.273438 90.550781c-82.398438 0-149.398438 67-149.398438 149.398438 0 82.402343 67 149.402343 149.398438 149.402343 82.402343 0 149.402343-67 149.402343-149.402343 0-82.398438-67-149.398438-149.402343-149.398438zm0 278.800781c-71.398438 0-129.398438-58.101562-129.398438-129.402343s58-129.398438 129.398438-129.398438c71.46875 0 129.402343 57.933594 129.402343 129.398438 0 71.464843-57.933593 129.402343-129.402343 129.402343zm0 0"/><path d="m445.875 184.949219 3.300781-59.300781c.230469-3.980469-1.933593-7.71875-5.5-9.5l-52.800781-26.699219-26.699219-52.800781c-1.816406-3.535157-5.53125-5.6875-9.5-5.5l-59.402343 3.203124-49.5-32.703124c-3.335938-2.199219-7.660157-2.199219-11 0l-49.5 32.703124-59.296876-3.300781c-3.984374-.234375-7.71875 1.929688-9.5 5.5l-26.703124 52.800781-52.796876 26.699219c-3.539062 1.8125-5.6875 5.527344-5.5 9.5l3.296876 59.300781-32.699219 49.5c-2.199219 3.335938-2.199219 7.660157 0 11l32.601562 49.597657-3.300781 59.300781c-.230469 3.980469 1.929688 7.71875 5.5 9.5l52.800781 26.699219 26.699219 52.800781c1.8125 3.539062 5.527344 5.6875 9.5 5.5l59.300781-3.300781 49.5 32.699219c3.316407 2.269531 7.683594 2.269531 11 0l49.5-32.699219 59.300781 3.300781c3.980469.230469 7.714844-1.933594 9.5-5.5l26.699219-52.800781 52.800781-26.699219c3.535157-1.816406 5.6875-5.527344 5.5-9.5l-3.300781-59.300781 32.699219-49.5c2.199219-3.335938 2.199219-7.664063 0-11zm-18.601562 101.800781c-1.21875 1.789062-1.785157 3.941406-1.597657 6.101562l3.097657 56.097657-49.898438 25.199219c-1.902344.953124-3.445312 2.5-4.398438 4.402343l-25.203124 49.898438-56.097657-3.097657c-2.148437-.078124-4.269531.476563-6.101562 1.597657l-46.800781 30.902343-46.796876-30.902343c-1.625-1.097657-3.539062-1.691407-5.5-1.699219h-.5l-56.101562 3.101562-25.199219-49.902343c-.953125-1.902344-2.496093-3.445313-4.402343-4.398438l-50-25.101562 3.101562-56.097657c.078125-2.148437-.480469-4.269531-1.601562-6.101562l-30.898438-46.800781 30.898438-46.800781c1.222656-1.785157 1.789062-3.941407 1.601562-6.097657l-3.101562-56.101562 49.902343-25.199219c1.902344-.953125 3.445313-2.496094 4.398438-4.398438l25.199219-49.902343 56.101562 3.101562c2.144531.074219 4.265625-.480469 6.101562-1.601562l46.796876-30.898438 46.800781 30.898438c1.789062 1.222656 3.945312 1.789062 6.101562 1.601562l56.097657-3.101562 25.203124 49.902343c.953126 1.902344 2.496094 3.445313 4.398438 4.398438l49.898438 25.199219-3.097657 56.101562c-.078125 2.144531.480469 4.265625 1.597657 6.097657l30.902343 46.800781zm0 0"/></svg>
+                            </div>
+                            <div class="text_alaby">
+                                <span>Гарантированные бесплатные доработки</span>
+                            </div>
+                        </div>
+                        <div class="remastr clearfix">
+                            <div class="img_alaby">
+                                <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 443.294 443.294" height="512" viewBox="0 0 443.294 443.294" width="512"><path d="m221.647 0c-122.214 0-221.647 99.433-221.647 221.647s99.433 221.647 221.647 221.647 221.647-99.433 221.647-221.647-99.433-221.647-221.647-221.647zm0 415.588c-106.941 0-193.941-87-193.941-193.941s87-193.941 193.941-193.941 193.941 87 193.941 193.941-87 193.941-193.941 193.941z"/><path d="m235.5 83.118h-27.706v144.265l87.176 87.176 19.589-19.589-79.059-79.059z"/></svg>
+                            </div>
+                            <div class="text_alaby">
+                                <span>Быстрое выполнение от 2-х часов</span>
+                            </div>
+                        </div>
+                        <div class="remastr clearfix">
+                            <div class="img_alaby">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 214.27 214.27" style="enable-background:new 0 0 214.27 214.27;" xml:space="preserve">
+<g>
+    <path d="M196.926,55.171c-0.11-5.785-0.215-11.25-0.215-16.537c0-4.142-3.357-7.5-7.5-7.5c-32.075,0-56.496-9.218-76.852-29.01   c-2.912-2.832-7.546-2.831-10.457,0c-20.354,19.792-44.771,29.01-76.844,29.01c-4.142,0-7.5,3.358-7.5,7.5   c0,5.288-0.104,10.755-0.215,16.541c-1.028,53.836-2.436,127.567,87.331,158.682c0.796,0.276,1.626,0.414,2.456,0.414   c0.83,0,1.661-0.138,2.456-0.414C199.36,182.741,197.954,109.008,196.926,55.171z M107.131,198.812   c-76.987-27.967-75.823-89.232-74.79-143.351c0.062-3.248,0.122-6.396,0.164-9.482c30.04-1.268,54.062-10.371,74.626-28.285   c20.566,17.914,44.592,27.018,74.634,28.285c0.042,3.085,0.102,6.231,0.164,9.477C182.961,109.577,184.124,170.844,107.131,198.812   z"/>
+    <path d="M132.958,81.082l-36.199,36.197l-15.447-15.447c-2.929-2.928-7.678-2.928-10.606,0c-2.929,2.93-2.929,7.678,0,10.607   l20.75,20.75c1.464,1.464,3.384,2.196,5.303,2.196c1.919,0,3.839-0.732,5.303-2.196l41.501-41.5   c2.93-2.929,2.93-7.678,0.001-10.606C140.636,78.154,135.887,78.153,132.958,81.082z"/>
+</g>
+</svg>
+                            </div>
+                            <div class="text_alaby">
+                                <span>Проверка работы на плагиат</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                 {% if attachments or is_owner or is_admin %}
+
+
+                    {% if is_logged %}
+                    <div class="look_files">
+                        <h3>{{ text_attachments }}</h3>
+                        <div id="files">
+                        {% if attachments %}
+                        {% for attachment in attachments %}
+                            <div class="clearfix file_item">
+                                <div class="logo_file">
+                                    <img src="../catalog/assets/img/file/{{ attachment.type }}.png">
+                                </div>
+                                <div class="left_cop">
+                                    <span>{{ attachment.name }}</span>
+                                    <span class="weigt">{{ attachment.size }}</span>
+                                </div>
+                                <div class="right_cop">
+                                    <span>{{ attachment.date_added }}</span>
+                                    <p class="delete_file_cust clearfix">
+                                       <!-- <a href="{{ attachment.href }}">{{ button_view }}</a>-->
+                                        <a href="{{ attachment.upload }}">{{ button_upload }}</a>
+                                        {% if is_owner %}
+                                        <button class="delete_file" data-attachment-id="{{ attachment.attachment_id }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="329pt" viewBox="0 0 329.26933 329" width="329pt"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"></path></svg>
+                                        </button>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+                        </div>
+                        {% if is_owner %}
+                            <form id="form-upload" class="file_clear">
+                                <label>
+                                    <p>
+                                        <svg style="position: relative;width: 10px" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" class="sw-icon">
+                                            <path d="M288 248v28c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-28c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm-12 72H108c-6.6 0-12 5.4-12 12v28c0 6.6 5.4 12 12 12h168c6.6 0 12-5.4 12-12v-28c0-6.6-5.4-12-12-12zm108-188.1V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V48C0 21.5 21.5 0 48 0h204.1C264.8 0 277 5.1 286 14.1L369.9 98c9 8.9 14.1 21.2 14.1 33.9zm-128-80V128h76.1L256 51.9zM336 464V176H232c-13.3 0-24-10.7-24-24V48H48v416h288z"></path>
+                                        </svg>
+                                    </p>
+                                    <input type="file" name="file[]" multiple="multiple" accept=".bmp,.djvu,.doc,.docx,.dwg,.csv,.gif,.jpeg,.jpg,.odf,.odt,.pdf,.png,.ppt,.pptx,.rar,.rtf,.svg,.tga,.tiff,.txt,.xls,.xlsx,.zip,.a3d,.cdt,.cdw,.m3d,.dwf,.cdr,.ai,.ics">
+                                   <span>{{ button_attachment }}</span>
+                                </label>
+                            </form>
+                            <script>
+                                $(document).on('change', '#form-upload input', function(){
+                                    if (typeof timer != 'undefined') {
+                                        clearInterval(timer);
+                                    }
+
+                                    timer = setInterval(function() {
+                                        if ($('#form-upload input[type=file]').val() != '') {
+                                            clearInterval(timer);
+
+                                            $.ajax({
+                                                url: '../index.php?route=common/upload/upload',
+                                                type: 'post',
+                                                dataType: 'json',
+                                                data: new FormData($('#form-upload')[0]),
+                                                cache: false,
+                                                contentType: false,
+                                                processData: false,
+                                                beforeSend: function() {
+                                                    $('#button-upload i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
+                                                    $('#button-upload').prop('disabled', true);
+                                                },
+                                                complete: function() {
+                                                    $('#button-upload i').replaceWith('<i class="fa fa-upload"></i>');
+                                                    $('#button-upload').prop('disabled', false);
+                                                },
+                                                success: function(json) {
+                                                    if (json['error']) {
+                                                        console.log(json['error']);
+                                                    }
+
+                                                    if (json['success']) {
+                                                        if (json['files']) {
+                                                            for (var i in json['files']) {
+                                                                var tmpl = '<div class="clearfix file_item">\n' +
+                                                                    '    <div class="logo_file">\n' +
+                                                                    '       <img src="../catalog/assets/img/file/' + json['files'][i]['type'] + '.png">\n' +
+                                                                    '    </div>' +
+                                                                    '    <div class="left_cop">\n' +
+                                                                    '        <span>' + json['files'][i]['name'] + '</span>\n' +
+                                                                    '        <span class="weigt">' + json['files'][i]['size'] + '</span>\n' +
+                                                                    '    </div>\n' +
+                                                                    '    <div class="right_cop">\n' +
+                                                                    '        <span>' + json['files'][i]['date_added'] + '</span>\n' +
+                                                                    '        <p class="delete_file_cust clearfix">\n' +
+                                                                    '            <!--<a href="' + json['files'][i]['href'] + '">{{ button_view }}</a>\n-->' +
+                                                                    '            <a href="' + json['files'][i]['upload'] + '">{{ button_upload }}</a>\n' +
+                                                                    '            <button class="delete_file" data-attachment-id="' + json['files'][i]['attachment_id'] + '">\n' +
+                                                                    '                 <svg xmlns="http://www.w3.org/2000/svg" height="329pt" viewBox="0 0 329.26933 329" width="329pt"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"></path></svg>\n' +
+                                                                    '            </button>' +
+                                                                    '        </p>\n' +
+                                                                    '    </div>\n' +
+                                                                    '</div>';
+                                                                $('#files').append(tmpl);
+
+                                                                $.ajax({
+                                                                    url: '../index.php?route=order/order/addAttachment&order_id={{ order_id }}',
+                                                                    type: 'post',
+                                                                    dataType: 'json',
+                                                                    data: {
+                                                                        attachment_id: json['files'][i]['attachment_id']
+                                                                    },
+                                                                    success: function(json) {
+                                                                        console.log(json);
+                                                                    }
+                                                                });
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                error: function(xhr, ajaxOptions, thrownError) {
+                                                    console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                                }
+                                            });
+                                        }
+                                    }, 500);
+                                });
+
+                                $(document).on('click', '.file_item .delete_file', function(){
+                                    var attachment_id = parseInt($(this).data('attachment-id'));
+
+                                    if (attachment_id > 0) {
+                                        $(this).parents('.file_item').remove();
+                                        $.ajax({
+                                            url: '../index.php?route=order/order/deleteAttachment&order_id={{ order_id }}',
+                                            type: 'post',
+                                            dataType: 'json',
+                                            data: {
+                                                attachment_id: attachment_id
+                                            },
+                                            success: function(json) {
+                                                console.log(json);
+                                            }
+                                        });
+                                    }
+                                });
+
+                                $(document).on('click', '#button-complete-order', function() {
+                                    $.ajax({
+                                        url: '../index.php?route=order/offer/completeOffer&order_id={{ order_id }}',
+                                        type: 'get',
+                                        dataType: 'json',
+                                        success: function(json) {
+                                            if (json['success']) {
+                                                $('#content').load(location.href + ' #content > div');
+
+                                                alertSuccess(json['success']);
+                                            }
+                                        }
+                                    });
+                                });
+
+                                $(document).on('click', '#button-revision-order', function() {
+                                    $.ajax({
+                                        url: '../index.php?route=order/offer/revisionOffer&order_id={{ order_id }}',
+                                        type: 'get',
+                                        dataType: 'json',
+                                        success: function(json) {
+                                            if (json['success']) {
+                                                $('#content').load(location.href + ' #content > div');
+
+                                                alertSuccess(json['success']);
+                                            }
+                                        }
+                                    });
+                                });
+                            </script>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+
+                    {% endif %}
+
+                    {% if offer_attachments and is_owner or offer_assigned_is_owner or is_admin %}
+                    <div class="look_files">
+                        <h3>{{ text_offer_attachments }}</h3>
+                        <div id="files-offer">
+                        {% if offer_attachments %}
+                        {% for attachment in offer_attachments %}
+                            <div class="clearfix file_item">
+                                <div class="logo_file">
+                                    <img src="../catalog/assets/img/file/{{ attachment.type }}.png">
+                                </div>
+                                <div class="left_cop">
+                                    <span>{{ attachment.name }}</span>
+                                    <span class="weigt">{{ attachment.size }}</span>
+                                </div>
+                                <div class="right_cop">
+                                    <span>{{ attachment.date_added }}</span>
+                                    <p class="delete_file_cust clearfix">
+                                        <a href="{{ attachment.upload }}">{{ button_upload }}</a>
+                                        {% if offer_assigned_is_owner %}
+                                            <button class="delete_file delete_offer_file" data-attachment-id="{{ attachment.attachment_id }}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="329pt" viewBox="0 0 329.26933 329" width="329pt"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"></path></svg>
+                                            </button>
+                                        {% endif %}
+                                    </p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+                        </div>
+                        {% if offer_assigned_is_owner %}
+                            <script>
+                                $(document).on('click', '#files-offer .file_item .delete_offer_file', function(){
+                                    var attachment_id = parseInt($(this).data('attachment-id'));
+                                    console.log($(this), attachment_id);
+                                    if (attachment_id > 0) {
+                                        $(this).parents('.file_item').remove();
+                                        $.ajax({
+                                            url: '../index.php?route=order/order/deleteOfferAttachment&order_id={{ order_id }}',
+                                            type: 'post',
+                                            dataType: 'json',
+                                            data: {
+                                                attachment_id: attachment_id
+                                            },
+                                            success: function(json) {
+                                                console.log(json);
+                                                $('#files-offer').load(location.href + ' #files-offer > div');
+                                            }
+                                        });
+                                    }
+                                });
+                            </script>
+                        {% endif %}
+                        {% if offer_assigned_is_owner and (order_status_id == config_progress_order_status_id or order_status_id == config_awaiting_order_status_id or order_status_id == config_verification_order_status_id or order_status_id == config_revision_order_status_id) %}
+                            <form id="form-upload-complete" class="file_clear">
+                                <label>
+                                    <p>
+                                        <svg style="position: relative;width: 10px" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" class="sw-icon">
+                                            <path d="M288 248v28c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-28c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm-12 72H108c-6.6 0-12 5.4-12 12v28c0 6.6 5.4 12 12 12h168c6.6 0 12-5.4 12-12v-28c0-6.6-5.4-12-12-12zm108-188.1V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V48C0 21.5 21.5 0 48 0h204.1C264.8 0 277 5.1 286 14.1L369.9 98c9 8.9 14.1 21.2 14.1 33.9zm-128-80V128h76.1L256 51.9zM336 464V176H232c-13.3 0-24-10.7-24-24V48H48v416h288z"></path>
+                                        </svg>
+                                    </p>
+                                    <input type="file" name="file[]" multiple="multiple" accept=".bmp,.djvu,.doc,.docx,.dwg,.csv,.gif,.jpeg,.jpg,.odf,.odt,.pdf,.png,.ppt,.pptx,.rar,.rtf,.svg,.tga,.tiff,.txt,.xls,.xlsx,.zip,.a3d,.cdt,.cdw,.m3d,.dwf,.cdr,.ai,.ics">
+                                   <span>{{ button_attachment }}</span>
+                                </label>
+                            </form>
+                            <script>
+                                $(document).on('change', '#form-upload-complete input', function(){
+                                    if (typeof timer != 'undefined') {
+                                        clearInterval(timer);
+                                    }
+
+                                    timer = setInterval(function() {
+                                        if ($('#form-upload-complete input[type=file]').val() != '') {
+                                            clearInterval(timer);
+
+                                            $.ajax({
+                                                url: '../index.php?route=common/upload/upload',
+                                                type: 'post',
+                                                dataType: 'json',
+                                                data: new FormData($('#form-upload-complete')[0]),
+                                                cache: false,
+                                                contentType: false,
+                                                processData: false,
+                                                beforeSend: function() {
+                                                    $('#button-upload-complete i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
+                                                    $('#button-upload-complete').prop('disabled', true);
+                                                },
+                                                complete: function() {
+                                                    $('#button-upload-complete i').replaceWith('<i class="fa fa-upload"></i>');
+                                                    $('#button-upload-complete').prop('disabled', false);
+                                                },
+                                                success: function(json) {
+                                                    if (json['error']) {
+                                                        console.log(json['error']);
+                                                    }
+
+                                                    if (json['success']) {
+                                                        if (json['files']) {
+                                                            for (var i in json['files']) {
+                                                                var tmpl = '<div class="clearfix file_item">\n' +
+                                                                    '    <div class="logo_file">\n' +
+                                                                    '       <img src="../catalog/assets/img/file/' + json['files'][i]['type'] + '.png">\n' +
+                                                                    '    </div>' +
+                                                                    '    <div class="left_cop">\n' +
+                                                                    '        <span>' + json['files'][i]['name'] + '</span>\n' +
+                                                                    '        <span class="weigt">' + json['files'][i]['size'] + '</span>\n' +
+                                                                    '    </div>\n' +
+                                                                    '    <div class="right_cop">\n' +
+                                                                    '        <span>' + json['files'][i]['date_added'] + '</span>\n' +
+                                                                    '        <p class="delete_file_cust clearfix">\n' +
+                                                                    '            <a href="' + json['files'][i]['upload'] + '">{{ button_upload }}</a>\n' +
+                                                                    '        </p>\n' +
+                                                                    '    </div>\n' +
+                                                                    '</div>';
+                                                                $('#files-offer').append(tmpl);
+
+                                                                $.ajax({
+                                                                    url: '../index.php?route=order/order/addOfferAttachment&order_id={{ order_id }}',
+                                                                    type: 'post',
+                                                                    dataType: 'json',
+                                                                    data: {
+                                                                        attachment_id: json['files'][i]['attachment_id']
+                                                                    },
+                                                                    success: function(json) {
+                                                                        $('#files-offer').load(location.href + ' #files-offer > div');
+                                                                    }
+                                                                });
+                                                                {% if order_status_id == config_progress_order_status_id or  order_status_id == config_revision_order_status_id %}
+                                                                $.ajax({
+                                                                    url : '../index.php?route=order/offer/awaitingOffer&order_id={{ order_id }}',
+                                                                    method : 'GET',
+                                                                    success : function (json) {
+                                                                        if (json['success']) {
+                                                                            //location.reload();
+                                                                            $('#content').load(location.href + ' #content > div');
+                                                                            alertSuccess(json['success']);
+                                                                        }
+                                                                    }
+                                                                });
+                                                                {% endif %}
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                error: function(xhr, ajaxOptions, thrownError) {
+                                                    console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                                }
+                                            });
+                                        }
+                                    }, 500);
+                                });
+
+                            </script>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+
+
+                    {% if is_owner or customer_group_id == 2 or is_admin %}
+
+                    <div class="change_history">
+
+                        <button class="accordion_history clearfix">
+                            <span class="name_k">История изменений</span>
+                            <img class="arrow_tr" src="../../../../catalog/assets/img/icons/arrow.svg">
+                        </button>
+                        <div class="panel_climd">
+                            <div class="change_wrap clearfix">
+
+                                {% if history %}
+                                    {% for item in history %}
+                                        <div class="item_history">
+                                            <span class="date_root">{{ item.date_added }}</span>
+                                            <p class="wincent">{{ item.text }}</p>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+
+                {% if is_owner or customer_group_id == 2 or is_admin %}
+                <div class="unswer">
+                    <h3>Ответы</h3>
+                    <div class="wrap_ofers">
+                    {% if offers %}
+                    {% for offer in offers %}
+                    <div class="item_unswer clearfix {% if offer.assigned %}assigned{% endif %}">
+                        <div class="lefter clearfix">
+                            <div class="item_worker clearfix">
+                                <div class="img_face clearfix">
+                                    <img src="{{ offer.image }}">
+                                    {% if offer.online %}<span></span>{% endif %}
+                                </div>
+                                <div class="info_worker clearfix">
+                                    <div class="lit_hed clearfix">
+                                        <a href="{{ offer.href }}">{{ offer.login }}{% if offer.assigned %}<span class="uor_like">Выбран исполнителем</span>{% endif %}</a>
+
+                                        {% if offer.pro %}<span class="premium">PREMIUM</span>{% endif %}
+                                    </div>
+                                    <div class="lit_foot clearfix">
+                                        <div class="enter clearfix">
+                                            <span class="name">Рейтинг:</span>
+                                            <span class="rating">{{ offer.rating }}</span>
+                                            {% if offer.new_rating %}<span class="bonus">+{{ offer.new_rating }}</span>{% endif %}
+                                        </div>
+                                        <div class="enter_like clearfix">
+                                            <img src="../catalog/assets/img/icons/like.svg">
+                                            <span class="like">{{ offer.total_reviews_positive }}</span>
+                                            <img src="../catalog/assets/img/icons/dislike.svg">
+                                            <span class="dislike">{{ offer.total_reviews_negative }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="righter clearfix">
+                            {% if offer.is_owner %}
+                                {% if offer.earned %}
+                                <div class="amount">
+                                    <img src="../catalog/assets/img/icons/eye_ser.svg">
+                                    <span>{{ offer.earned }}</span>
+                                </div>
+                                {% endif %}
+                            {% endif %}
+                            <div class="amount">
+                                <img src="../catalog/assets/img/icons/eye_ser.svg">
+                                <span>{{ offer.bet }}</span>
+                            </div>
+                        </div>
+                        <div class="unswer_text">
+                            <p>{{ offer.text }}</p>
+                        </div>
+                        <div class="btn_uprava clearfix">
+                            {% if is_owner or offer.is_owner or is_admin %}<a class="send_wopr" data-offer_id="{{ offer.offer_id }}">Обсудить заказ</a>{% endif %}
+                            {% if is_owner %}<a href="{{ offer.chat }}" class="go_chat">Перейти в чат</a>{% endif %}
+                            {% if is_owner %}{% if order_status_id == config_open_order_status_id %}<a class="go_worck assign_offer" data-order_id="{{ order_id }}" data-offer_id="{{ offer.offer_id }}">Выбрать исполнителем</a>{% endif %}{% endif %}
+                            {% if order_status_id == config_pending_order_status_id and offer.is_owner and offer.assigned %}<a href="#" id="accept_offer" class="accepted" data-order_id="{{ order_id }}" data-offer_id="{{ offer.offer_id }}">Принять</a>{% endif %}
+                            {% if order_status_id == config_pending_order_status_id and (offer.is_owner or is_owner) and offer.assigned %}<a href="#" class="blocked cancel_offer" data-order_id="{{ order_id }}" data-offer_id="{{ offer.offer_id }}">Отклонить предложение</a>{% endif %}
+                            {% if order_status_id == config_open_order_status_id and offer.is_owner %}<a class="edit_my_ofer" data-order_id="{{ order_id }}" data-offer_id="{{ offer.offer_id }}">Редактировать</a>{% endif %}
+                        </div>
+                        {% if is_owner or offer.is_owner or is_admin %}
+                        <div id="message-form-unswer-offer{{ offer.offer_id }}" class="unswer_com footer_chat clearfix">
+                            <div id="smallChat{{ offer.offer_id }}" class="chat_pole content_chat"></div>
+                            <div class="text_gg clearfix">
+                                <div class="text_wrap clearfix">
+                                    <textarea name="text" placeholder="Введите ваше сообщение"></textarea>
+                                </div>
+                                <div class="btn_send clearfix">
+                                    <button data-offer_send="{{ offer.offer_id }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                            <path d="M8 0H12C14.1217 0 16.1566 0.842855 17.6569 2.34315C19.1571 3.84344 20 5.87827 20 8C20 10.1217 19.1571 12.1566 17.6569 13.6569C16.1566 15.1571 14.1217 16 12 16V19.5C7 17.5 0 14.5 0 8C0 5.87827 0.842855 3.84344 2.34315 2.34315C3.84344 0.842855 5.87827 0 8 0ZM10 14H12C12.7879 14 13.5681 13.8448 14.2961 13.5433C15.0241 13.2417 15.6855 12.7998 16.2426 12.2426C16.7998 11.6855 17.2417 11.0241 17.5433 10.2961C17.8448 9.56815 18 8.78793 18 8C18 7.21207 17.8448 6.43185 17.5433 5.7039C17.2417 4.97595 16.7998 4.31451 16.2426 3.75736C15.6855 3.20021 15.0241 2.75825 14.2961 2.45672C13.5681 2.15519 12.7879 2 12 2H8C6.4087 2 4.88258 2.63214 3.75736 3.75736C2.63214 4.88258 2 6.4087 2 8C2 11.61 4.462 13.966 10 16.48V14Z" fill="#999999"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                        <p>На это задание пока никто не делал предложений</p>
+                    {% endif %}
+                </div>
+                </div>
+                {% endif %}
+                {% if customer_group_id == 2 %}
+                <div id="offer" class="my_unswer">
+                    <h3>Моё предложение</h3>
+                    {% if exist_offer %}
+                    <div class="block_my_u clearfix">
+                        Вы уже ответили на заказ
+                    </div>
+                    {% else %}
+                    <div class="block_offer_form clearfix">
+                        <div class="block_my_u clearfix">
+                            <input type="hidden" name="order_id" value="{{ order_id }}">
+                            <textarea name="text" id="textunsver" placeholder="Комментарий к заказу без ставки (Необязательное поле)"></textarea>
+                        </div>
+                        <div class="wrap_paranetrs clearfix">
+                            <div class="lop_lert">
+                                <label for="c1">Ваша ставка</label>
+                                <input type="number" name="bet" placeholder="0" id="c1" >
+                                <span class="symbol">
+                                    <svg data-v-597fc010="" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" class="sw-icon" data-v-79b0c030=""><path d="M243.128 314.38C324.987 314.38 384 257.269 384 172.238S324.987 32 243.128 32H76c-6.627 0-12 5.373-12 12v215.807H12c-6.627 0-12 5.373-12 12v30.572c0 6.627 5.373 12 12 12h52V352H12c-6.627 0-12 5.373-12 12v24c0 6.627 5.373 12 12 12h52v68c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-68h180c6.627 0 12-5.373 12-12v-24c0-6.627-5.373-12-12-12H128v-37.62h115.128zM128 86.572h105.61c53.303 0 86.301 31.728 86.301 85.666 0 53.938-32.998 87.569-86.935 87.569H128V86.572z"></path></svg>
+                                </span>
+                            </div>
+                            <div class="lop_lert">
+                                <label for="c2">Вы получаете</label>
+                                <input type="number" name="earned" placeholder="0" id="c2">
+                                <span class="symbol">
+                                    <svg data-v-597fc010="" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" class="sw-icon" data-v-79b0c030=""><path d="M243.128 314.38C324.987 314.38 384 257.269 384 172.238S324.987 32 243.128 32H76c-6.627 0-12 5.373-12 12v215.807H12c-6.627 0-12 5.373-12 12v30.572c0 6.627 5.373 12 12 12h52V352H12c-6.627 0-12 5.373-12 12v24c0 6.627 5.373 12 12 12h52v68c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-68h180c6.627 0 12-5.373 12-12v-24c0-6.627-5.373-12-12-12H128v-37.62h115.128zM128 86.572h105.61c53.303 0 86.301 31.728 86.301 85.666 0 53.938-32.998 87.569-86.935 87.569H128V86.572z"></path></svg>
+                                </span>
+                            </div>
+                            <div class="lop_lert">
+                                <button class="add">Отправить</button>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+            {{ content_bottom }}
+        </div>
+        {{ column_right }}</div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="take_man" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog take_man" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Выбор исполнителя</h4>
+            </div>
+            <div class="modal-body "></div>
+        </div>
+    </div>
+</div>
+{{ footer }}
+

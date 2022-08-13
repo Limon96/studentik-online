@@ -1,0 +1,33 @@
+
+
+{{ header }}
+<div class="wrap_content">
+  <div class="container">
+    {{ content_top }}
+    <div class="row">
+      {{ column_left }}
+      <div class="center_content_resp">
+        <div class="clearfix console_wrap">
+          <div class="clearfix search_panel">
+            <div class="heads">
+              <h2>{{ heading_title }}</h2>
+              <ul class="breadcrumb clearfix">
+                {% for breadcrumb in breadcrumbs %}
+                  <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="suppurt_tab clearfix">
+              {{ description }}
+            </div>
+          </div>
+        </div>
+      </div>
+      {{ column_right }}
+    </div>
+    {{ content_bottom }}
+  </div>
+  {{ content_bottom }}
+</div>
+
+{{ footer }}

@@ -1,0 +1,199 @@
+{{ header }}
+<div class="wrap_content">
+{{ content_top }}
+<div class="container">
+    <div class="row">
+        {{ column_left }}
+        <div class="center_content_resp">
+            <div class="clearfix console_wrap">
+                <div class="clearfix search_panel">
+                    <div class="heads">
+                        <h1>{{ heading_title }}</h1>
+                        <ul class="breadcrumb clearfix">
+                            {% for breadcrumb in breadcrumbs %}
+                                <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div id="order-search" class="parametrs clearfix">
+                        <div class="line_search clearfix">
+                            <div class="search_in">
+                                <input type="text" name="search" value="{{ search }}">
+                                <button class="go_search"><img src="catalog/assets/img/icons/search.svg" alt="">
+                                </button>
+                            </div>
+
+                            <div class="clearfix balitarda">
+                                <div class="razdel_wrap">
+                                    <select name="filter_section_id" class="templatingSelect2">
+                                        <option value="0">{{ text_all_section }}</option>
+                                        {% for section in sections %}
+                                            {% if section.section_id == filter_section_id %}
+                                                <option value="{{ section.section_id }}"
+                                                        selected>{{ section.name }}</option>
+                                            {% else %}
+                                                <option value="{{ section.section_id }}">{{ section.name }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <div class="razdel_wrap">
+                                    {% if subjects %}
+                                        <select name="filter_subject_id" class="templatingSelect2">
+                                            <option value="0">{{ text_all_subject }}</option>
+                                            {% for subject in subjects %}
+                                                {% if subject.subject_id == filter_subject_id %}
+                                                    <option value="{{ subject.subject_id }}" selected>{{ subject.name }}</option>
+                                                {% else %}
+                                                    <option value="{{ subject.subject_id }}">{{ subject.name }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                    {% else %}
+                                        <select name="filter_subject_id" class="templatingSelect2" disabled>
+                                            <option value="0">{{ text_all_subject }}</option>
+                                        </select>
+                                    {% endif %}
+                                </div>
+                                <div class="razdel_wrap">
+                                    <select name="filter_work_type_id" class="templatingSelect2">
+                                        <option value="0">{{ text_all_work_type }}</option>
+                                        {% for work_type in work_types %}
+                                            {% if work_type.work_type_id == filter_work_type_id %}
+                                                <option value="{{ work_type.work_type_id }}" selected>{{ work_type.name }}</option>
+                                            {% else %}
+                                                <option value="{{ work_type.work_type_id }}">{{ work_type.name }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="clearfix cadoks">
+                                <div class="razdel_wrap_chek">
+                                    <label class="container_ch">Без предложений
+                                        {% if filter_no_offer %}
+                                            <input type="checkbox" name="filter_no_offer" value="1" checked="checked">
+                                            <span class="checkmark"></span>
+                                        {% else %}
+                                            <input type="checkbox" name="filter_no_offer" value="1">
+                                            <span class="checkmark"></span>
+                                        {% endif %}
+                                    </label>
+                                </div>
+                                <div class="razdel_wrap_chek">
+                                    <label class="container_ch">Моя специализация
+                                        {% if filter_my_specialization %}
+                                            <input type="checkbox" name="filter_my_specialization" value="1" checked="checked">
+                                            <span class="checkmark"></span>
+                                        {% else %}
+                                            <input type="checkbox" name="filter_my_specialization" value="1">
+                                            <span class="checkmark"></span>
+                                        {% endif %}
+                                    </label>
+                                </div>
+                                <div class="razdel_wrap_chek">
+                                    <label class="container_ch">Мои типы работ
+                                        {% if filter_my_work_type %}
+                                            <input type="checkbox" name="filter_my_work_type" value="1" checked="checked">
+                                            <span class="checkmark"></span>
+                                        {% else %}
+                                            <input type="checkbox" name="filter_my_work_type" value="1">
+                                            <span class="checkmark"></span>
+                                        {% endif %}
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="rezult_search">
+                                <p>{{ text_total }}</p>
+                            </div>
+                            <div class="btn_search">
+                                <button>{{ button_search }}</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                {{ pagination }}
+                <div class="wrap_results clearfix">
+                    {% if orders %}
+                        {% for order in orders %}
+                        <div class="item_result clearfix">
+                            <div class="lable_dop clearfix">
+                                {% if order.hot %}
+                                    <div class=" wraps_warning red">
+                                        <img src="catalog/assets/img/icons/ogony.svg">
+                                        <span>{{ label_hot }}</span>
+                                    </div>
+                                {% endif %}
+                                {% if order.premium %}
+                                    <div class=" wraps_warning yellow">
+                                        <img src="catalog/assets/img/icons/screpka.svg">
+                                        <span>{{ label_premium }}</span>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="head">
+                                <a href="{{ order.href }}"><h3>{{ order.title }}</h3></a>
+                            </div>
+                            <div class="opis">
+                                <p>{{ order.description }}</p>
+
+                                <ul class="bread clearfix">
+                                    <li>{{ order.work_type }} /</li>
+                                    <li>{{ order.subject }} /</li>
+                                    <li>{{ order.section }}</li>
+                                </ul>
+
+
+                                <div class="logof clearfix">
+                                    {% set customer = order.customer %}
+                                    <div class="img_face">
+                                        <img src="{{ customer.image }}" alt="{{ customer.login }}">
+                                        {% if customer.online %}<span></span>{% endif %}
+                                    </div>
+                                    <div class="login">
+                                        <a href="{{ customer.href }}">{{ customer.login }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="descript clearfix">
+                                <ul>
+                                    <li>
+                                        <img src="catalog/assets/img/icons/papka.svg">
+                                        <p>{{ text_price }} <span>{{ order.price }}</span></p>
+                                    </li>
+                                    <li>
+                                        <img src="catalog/assets/img/icons/book_green.svg">
+                                        <p>{{ text_date_end }} <span class="tonk">{{ order.date_end }}</span></p>
+                                    </li>
+                                </ul>
+                                <div class="div_coner clearfix">
+                                    <div class="look">
+                                        <img src="catalog/assets/img/icons/eye_ser.svg">
+                                        <span>{{ order.viewed }}</span>
+                                    </div>
+                                    <div class="answer">
+                                        <img src="catalog/assets/img/icons/massage_min.svg">
+                                        <span>{{ order.count_offer }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="no_results">Поиск не дал результатов</p>
+                    {% endif %}
+                </div>
+                {{ pagination }}
+            </div>
+        </div>
+        {{ column_right }}
+    </div>
+</div>
+{{ content_bottom }}
+</div>
+{{ footer }}

@@ -1,0 +1,56 @@
+{{ header }}
+<div class="wrap_content">
+    {{ content_top }}
+    <div class="container">
+        <div class="row">
+            {{ column_left }}
+            <div class="center_content_resp">
+                <div class="wrap_faq">
+                    <div class="info_faq">
+                        <h1 class="heading-title">{{ heading_title }}</h1>
+                        <span class="title-tag">{{ last_update }}</span>
+                                    {% if faq %}
+                                        {% for item in faq %}
+                                            <div class="faq_acc">
+                                                <button class="accordion_faq clearfix">
+                                                    <span class="name_k">{{ item.question }}</span>
+                                                    <img class="arrow_tr" src="../../../../catalog/assets/img/icons/arrow.svg">
+                                                </button>
+                                                <div class="panelclim">
+                                                    <p class="hider_mar"></p>
+                                                    {{ item.answer }}
+                                                    <p class="hider_mar"></p>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                    </div>
+                </div>
+
+            </div>
+
+
+            {{ column_right }}
+        </div>
+    </div>
+
+
+</div>
+{{ footer }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

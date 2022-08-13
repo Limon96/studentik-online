@@ -1,0 +1,19 @@
+{% if messages %}
+{% for message in messages %}
+    <div id="claim-message-{{ message.claim_message_id }}" class="massage user clearfix" data-claim_message_id="{{ message.claim_message_id }}">
+        <div class="logo_my">
+            <img src="{{ message.image }}">
+        </div>
+        <div class="login_name">
+            <a href="{{ message.href }}">{{ message.login }}</a>
+        </div>
+        <div class="time_my">
+            <span>{{ message.date_added }}</span>
+        </div>
+        <div class="massage_txt">
+            <span>{{ message.text }}</span>
+        </div>
+
+    </div>
+{% endfor %}
+{% endif %}

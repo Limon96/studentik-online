@@ -1,0 +1,254 @@
+{{ header }}
+
+
+<div class="wrap_content">
+    {{ content_top }}
+    <div class="container">
+        <div class="row">
+            {{ column_left }}
+            <div class="center_content_resp">
+                <div class="clearfix console_wrap">
+                    <div class="clearfix search_panel">
+                        <div class="heads">
+                            <h2>{{ heading_title }}</h2>
+                            <ul class="breadcrumb clearfix">
+                                {% for breadcrumb in breadcrumbs %}
+                                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div id="account-order" class="searc_keruv clearfix">
+                            
+                          {#  <div class="category_status clearfix">
+                                <ul class="clearfix">
+                                    <li><a href="#">Активные <span>1</span></a></li>
+                                    <li class="active"><a href="#">Выполненные<span>12</span></a></li>
+                                    <li><a href="#">Отмененные<span>123</span></a></li>
+                                </ul>
+                            </div>#}
+
+                            <div class="filtr_search clearfix">
+                                    <div class="razdel_wrap clearfix">
+                                        <select name="filter_work_type_id" class="templa2">
+                                            <option value="0">{{ text_all_work_type }}</option>
+                                            {% for work_type in work_types %}
+                                                {% if work_type.work_type_id == filter_work_type_id %}
+                                                    <option value="{{ work_type.work_type_id }}" selected>{{ work_type.name }}</option>
+                                                {% else %}
+                                                    <option value="{{ work_type.work_type_id }}">{{ work_type.name }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                <div class="razdel_wrap clearfix">
+                                    <select name="filter_section_id" class="templa2">
+                                        <option value="0">{{ text_all_section }}</option>
+                                        {% for section in sections %}
+                                            {% if section.section_id == filter_section_id %}
+                                                <option value="{{ section.section_id }}"
+                                                        selected>{{ section.name }}</option>
+                                            {% else %}
+                                                <option value="{{ section.section_id }}">{{ section.name }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="razdel_wrap clearfix">
+                                    {% if subjects %}
+                                    <select name="filter_subject_id" class="templa2">
+                                        <option value="0">{{ text_all_subject }}</option>
+                                        {% for subject in subjects %}
+                                            {% if subject.subject_id == filter_subject_id %}
+                                                <option value="{{ subject.subject_id }}" selected>{{ subject.name }}</option>
+                                            {% else %}
+                                                <option value="{{ subject.subject_id }}">{{ subject.name }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                    {% else %}
+                                        <select name="filter_subject_id" class="templa2" disabled>
+                                            <option value="0">{{ text_all_subject }}</option>
+                                        </select>
+                                    {% endif %}
+                                </div>
+                                <div class="razdel_wrap clearfix">
+                                    <select name="filter_order_status_id" class="templa2">
+                                        <option value="0">{{ text_all_order_status }}</option>
+                                        {% for order_status in order_statuses %}
+                                            {% if order_status.order_status_id == filter_order_status_id %}
+                                                <option value="{{ order_status.order_status_id }}" selected>{{ order_status.name }}</option>
+                                            {% else %}
+                                                <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="razdel_wrap clearfix">
+                                    <input type="text" name="filter_customer" value="{{ filter_customer }}" placeholder="Поиск по заказчику">
+                                </div>
+                                <div class="razdel_wrap clearfix">
+                                    <input type="text" name="search" value="{{ search }}" placeholder="Поиск по наименованию">
+                                </div>
+
+                            </div>
+
+
+                            <div class="upravlen clearfix">
+                                <p>{{ text_total }}</p>
+                                <button id="account-search">
+                                    <i class="fa fa-search"></i>
+                                    <span>Поиск</span>
+                                </button>
+                            </div>
+                            
+                            
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+                        <div id="list-order" class="strips_work clearfix">
+                            {% if orders %}
+                                {% for order in orders %}
+                                    <div class="item_work">
+                                        <div class="header clearfix">
+                                            <div class="left_rip clearfix">
+                                                {% if order.premium %}<span class="l_goth premium"><i class="fas fa-fire"></i> ВАЖНО</span>{% endif %}
+                                                {% if order.hot %}<span class="l_goth speed"><i class="fas fa-rocket"></i> СРОЧНЫЙ</span>{% endif %}
+                                            </div>
+                                           <div class="right_rip clearfix">
+                                                <span class="status"><i class="fa fa-flag"></i>{{ order.order_status }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="title clearfix">
+                                            <a href="{{ order.href }}"> <h4>{{ order.title }}</h4></a>
+                                            <ul class="bread clearfix">
+                                                <li>{{ order.work_type }} / </li>
+                                                <li>{{ order.subject }} / </li>
+                                                <li>{{ order.section }}</li>
+                                            </ul>
+                                        </div>
+                                        <div class="long_line clearfix">
+                                            <div class="user_zad">
+                                                {% set customer = order.customer %}
+                                                <div class="img_face">
+                                                    <img src="{{ customer.image }}" alt="{{ customer.login }}">
+                                                </div>
+                                                <div class="login ">
+                                                    <a href="{{ customer.href }}">{{ customer.login }}</a>
+                                                </div>
+                                            </div>
+                                            <div class="date clearfix">
+                                                <div class="date_start clearfix">
+                                                    <i class="far fa-calendar-times"></i>
+                                                    <span data-tooltip="Дата создания заказа">{{ order.date_added }}</span>
+                                                </div>
+                                                <div class="date_finish clearfix">
+                                                    <i class="far fa-calendar-check"></i>
+                                                    <span data-tooltip="Дата сдачи заказа">{{ order.date_end }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="loock clearfix">
+                                                <i class="far fa-eye"></i>
+                                                <span>{{ order.viewed }}</span>
+                                            </div>
+                                            <div class="otklick clearfix">
+                                                <i class="far fa-comment"></i>
+                                                <span>{{ order.count_offer }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <p class="text_empty">{{ text_empty }}</p>
+                            {% endif %}
+                            {% if limit < total_orders %}
+                            <div class="buttons clearfix">
+                                <a href="{{ continue }}" class="btn-primary btn-continue">{{ button_continue }}</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                </div>
+            </div>
+            {{ column_right }}
+        </div>
+    </div>
+    {{ content_bottom }}
+</div>
+<script>
+    $(document).on('click', '#account-search', function(e){
+        e.preventDefault();
+        var url = [];
+
+        var search = $('#account-order input[name=search]').val();
+        if (search != '') {
+            url.push('search=' + search);
+        }
+
+        var filter_customer = $('#account-order input[name=filter_customer]').val();
+        if (filter_customer != '') {
+            url.push('filter_customer=' + filter_customer);
+        }
+
+        var filter_section_id = $('#account-order select[name=filter_section_id]').val();
+        if (filter_section_id > 0) {
+            url.push('filter_section_id=' + filter_section_id);
+        }
+
+        var filter_subject_id = $('#account-order select[name=filter_subject_id]').val();
+        if (filter_subject_id > 0) {
+            url.push('filter_subject_id=' + filter_subject_id);
+        }
+
+        var filter_work_type_id = $('#account-order select[name=filter_work_type_id]').val();
+        if (filter_work_type_id > 0) {
+            url.push('filter_work_type_id=' + filter_work_type_id);
+        }
+
+        var filter_order_status_id = $('#account-order select[name=filter_order_status_id]').val();
+        if (filter_order_status_id > 0) {
+            url.push('filter_order_status_id=' + filter_order_status_id);
+        }
+
+        if (url.length > 0) {
+            location.href = '{{ account_order }}' + '&' + url.join('&');
+        } else {
+            location.href = '{{ account_order }}'
+        }
+    });
+
+    $(document).on('click', '.btn-continue', function (e){
+        e.preventDefault();
+        var temp = $('#list-order .item_work');
+
+        $('#list-order').load($(this).attr('href') + " #list-order > *", function(response, status, xhr) {
+            $('#list-order').prepend(temp);
+        });
+    });
+</script>
+{{ footer }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

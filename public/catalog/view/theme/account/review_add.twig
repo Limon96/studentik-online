@@ -1,0 +1,85 @@
+{{ header }}
+<div class="wrap_content">
+    {{ content_top }}
+    <div class="container">
+        <div class="row">
+            {{ column_left }}
+            <div class="center_content_resp">
+                <div class="clearfix console_wrap">
+                    <div class="clearfix search_panel">
+                        <div class="heads">
+                            <h2>Оставить отзыв</h2>
+                            <ul class="breadcrumb clearfix">
+                                {% for breadcrumb in breadcrumbs %}
+                                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="body_hert clearfix">
+                            <div class="about_man clearfix">
+                                <p class="name_workers"> Оставить отзыв о работе пользователя
+                                    <a href="{{ customer.href }}">
+                                        <img src="{{ customer.image }}"><span>{{ customer.login }}</span>
+                                    </a>
+                                </p>
+                            </div>
+                            
+
+                        </div>
+                        <div id="review_add" class="uprav clearfix">
+
+                            <div class="clearfix status_ot">
+                                <div class="wrap_user_change clearfix">
+                                    <label class="container_rad"><img src="catalog/assets/img/icons/like.svg">Положительный
+                                        <input type="radio" name="positive" value="1" >
+                                        <span class="checkmark_rad"></span>
+                                    </label>
+                                    <label class="container_rad"><img src="catalog/assets/img/icons/dislike.svg">Отрицательный
+                                        <input type="radio" name="positive" value="0">
+                                        <span class="checkmark_rad"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="wrap_otziv clearfix">
+                               {# <textarea name="text" placeholder="Напишите свой отзыв"></textarea>
+#}
+                                <div class="textt_input_go clearfix">
+                                    <div class="textarea" contenteditable="true" placeholder="Текст Претензии" wrap="hard"> </div>
+                                    <div class="placeholder">Напишите свой отзыв</div>
+                                </div>
+
+                            </div>
+                            {% if customer_group_id == 1 %}
+                            <div class="time_sdelan">
+                                <p>Оцените срок выполнения работы:</p>
+                                <div class="wrap_user_change clearfix">
+                                    <label class="container_rad">Сделана в срок
+                                        <input type="radio" name="time" value="1" >
+                                        <span class="checkmark_rad"></span>
+                                    </label>
+                                    <label class="container_rad">Раньше срока
+                                        <input type="radio" name="time" value="2">
+                                        <span class="checkmark_rad"></span>
+                                    </label>
+                                    <label class="container_rad">Просрочил
+                                        <input type="radio"  name="time" value="0">
+                                        <span class="checkmark_rad"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            {% endif %}
+                            <div class="btn_wraps">
+                                <input type="hidden" name="order_id" value="{{ order.order_id }}">
+                                <input type="hidden" name="customer_id" value="{{ customer.customer_id }}">
+                                <button class="sub_rev">Оставить отзыв</button>
+                            </div>
+                        </div>
+                    </div>
+                    {{ column_right }}
+                </div>
+            </div>
+            {{ content_bottom }}
+        </div>
+    </div>
+</div>
+{{ footer }}

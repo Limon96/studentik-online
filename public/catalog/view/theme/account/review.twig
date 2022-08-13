@@ -1,0 +1,130 @@
+
+{{ header }}
+<div class="wrap_content">
+    <div class="container">
+        {{ content_top }}
+        <div class="row">
+            {{ column_left }}
+            <div class="center_content_resp">
+                <div class="clearfix console_wrap">
+                    <div class="clearfix search_panel">
+
+                        <div id="common-success" class="container">
+                            <ul class="breadcrumb">
+                                {% for breadcrumb in breadcrumbs %}
+                                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                                {% endfor %}
+                            </ul>
+
+
+
+                            <div id="content" class="{{ class }} jkdsiim_rr">
+                                <h1>{{ heading_title }}</h1>
+                                <div class="history_reviews otziv clearfix">
+
+                                    <div class="separate ">
+                                        <ul class="clearfix">
+                                            <li><a href="{{ reviews_all }}" class="all">Все отзывы <span>{{ total_reviews_all }}</span></a></li>
+                                            <li><a href="{{ reviews_positive }}" class="bad">Положительные <span>{{ total_reviews_positive }}</span></a></li>
+                                            <li><a href="{{ reviews_negative }}" class="good">Отрицательные <span>{{ total_reviews_negative }}</span></a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="change_wrap clearfix">
+                                        {% if reviews %}
+                                            {% for item in reviews %}
+                                                {% if item.positive %}
+                                                    <div class="item_history clearfix good_rev">
+                                                    <div class="nazva_otziv clearfix">
+                                                    <p class="headers clearfix"><a href="{{ item.href }}">
+                                                    <img src="{{ item.image }}" class="avatr">
+                                                    {{ item.login }}</a> написал(а)
+
+                                                    <span class="otrp good"> положительный отзыв </span>
+                                                {% else %}
+                                                    <div class="item_history clearfix bad_rev">
+                                                        <div class="nazva_otziv clearfix">
+                                                    <p class="headers clearfix"><a href="{{ item.href }}">
+                                                    <img src="{{ item.image }}" class="avatr">
+                                                    {{ item.login }}</a> написал(а)
+
+                                                    <span class="otrp bad"> отрицательный отзыв </span>
+                                                {% endif %}
+
+                                                <span class="date">{{ item.date_added }}</span></p>
+                                                <p class="contents">{{ item.text }}</p>
+                                                <p class="footert">{% if item.order_id %}<a href="{{ item.order_href }}">{{ item.order_title }}</a>{% endif %}</p>
+                                                </div>
+                                                </div>
+
+                                            {% endfor %}
+                                        {% else %}
+                                            <div>Нет отзывов</div>
+                                        {% endif %}
+
+                                    </div>
+                                    {% if next %}
+                                        <div class="pagination rwer">
+                                            <a class="next" href="{{ next }}">Показать ещё</a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {{ column_right }}
+        </div>
+        {{ content_bottom }}
+    </div>
+    {{ content_bottom }}
+</div>
+<script>
+    $(document).on('click', '.pagination .next', function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            url : $(this).attr('href'),
+            success : function(response){
+                $('.change_wrap').append($(response).find('.change_wrap > div.item_history'));
+
+                if ($(response).find('.pagination').length) {
+                    $('.pagination').replaceWith($(response).find('.pagination'));
+                } else {
+                    $('.pagination').remove();
+                }
+            }
+        });
+    });
+</script>
+{{ footer }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

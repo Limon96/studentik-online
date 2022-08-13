@@ -1,0 +1,298 @@
+{{ header }}{{ column_left }}
+<div id="content">
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="pull-right">
+                <button type="submit" form="form-category" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+                <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+            <h1>{{ heading_title }}</h1>
+            <ul class="breadcrumb">
+                {% for breadcrumb in breadcrumbs %}
+                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        {% if error_warning %}
+            <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        {% endif %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_form }}</h3>
+            </div>
+            <div class="panel-body">
+                <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-category" class="form-horizontal">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab-general" data-toggle="tab">{{ tab_general }}</a></li>
+                        <li><a href="#tab-attachment" data-toggle="tab">{{ tab_attachment }}</a></li>
+                        <li><a href="#tab-attachment-complete" data-toggle="tab">{{ tab_offer_attachment }}</a></li>
+                        <li><a href="#tab-actions" data-toggle="tab">{{ tab_actions }}</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab-general">
+                            <div class="form-group required">
+                                <label class="col-sm-2 control-label" for="input-title">{{ entry_title }}</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="title" value="{{ title }}" placeholder="{{ entry_title }}" id="input-title" class="form-control" />
+                                    {% if error_title %}
+                                        <div class="text-danger">{{ error_title }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group required">
+                                <label class="col-sm-2 control-label" for="input-description">{{ entry_description }}</label>
+                                <div class="col-sm-10">
+                                    <textarea data-toggle="summernote" data-lang="{{ summernote }}"  name="description" placeholder="{{ entry_description }}" id="input-description" class="form-control ">{{ description }}</textarea>
+                                    {% if error_description %}
+                                        <div class="text-danger">{{ error_description }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-section">{{ entry_section }}</label>
+                                <div class="col-sm-10">
+                                    <select name="section_id" id="input-section" class="form-control">
+                                        {% for section in sections %}
+                                            {% if section.section_id == section_id %}
+                                                <option value="{{ section.section_id }}" selected="selected">{{ section.name }}</option>
+                                            {% else %}
+                                                <option value="{{ section.section_id }}">{{ section.name }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-subject">{{ entry_subject }}</label>
+                                <div class="col-sm-10">
+                                    <select name="subject_id" id="input-subject" class="form-control">
+                                        {% for subject in subjects %}
+                                            {% if subject.subject_id == subject_id %}
+                                                <option value="{{ subject.subject_id }}" selected="selected">{{ subject.name }}</option>
+                                            {% else %}
+                                                <option value="{{ subject.subject_id }}">{{ subject.name }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-work_type">{{ entry_work_type }}</label>
+                                <div class="col-sm-10">
+                                    <select name="work_type_id" id="input-work_type" class="form-control">
+                                        {% for work_type in work_types %}
+                                            {% if work_type.work_type_id == work_type_id %}
+                                                <option value="{{ work_type.work_type_id }}" selected="selected">{{ work_type.name }}</option>
+                                            {% else %}
+                                                <option value="{{ work_type.work_type_id }}">{{ work_type.name }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-premium">{{ entry_premium }}</label>
+                                <div class="col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            {% if premium %}
+                                                <input type="checkbox" name="premium" value="1" checked="checked" id="input-premium" />
+                                            {% else %}
+                                                <input type="checkbox" name="premium" value="1" id="input-hot" />
+                                            {% endif %}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-hot">{{ entry_hot }}</label>
+                                <div class="col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            {% if hot %}
+                                                <input type="checkbox" name="hot" value="1" checked="checked" id="input-hot" />
+                                            {% else %}
+                                                <input type="checkbox" name="hot" value="1" id="input-hot" />
+                                            {% endif %}
+                                            &nbsp; </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-date_end">{{ entry_date_end }}</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="date_end" value="{{ date_end }}" placeholder="{{ entry_date_end }}" id="input-date_end" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-price">{{ entry_price }}</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="price" value="{{ price }}" placeholder="{{ entry_price }}" id="input-price" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-seo_url"><span data-toggle="tooltip" title="{{ help_seo_url }}">{{ entry_seo_url }}</span></label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="seo_url" value="{{ seo_url }}" placeholder="{{ entry_seo_url }}" id="input-seo_url" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-order-status">{{ entry_order_status }}</label>
+                                <div class="col-sm-10">
+                                    <select name="order_status_id" id="input-order-status" class="form-control">
+                                        {% for order_status in order_statuses %}
+                                            {% if order_status.order_status_id == order_status_id %}
+                                                <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}</option>
+                                            {% else %}
+                                                <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+                                <div class="col-sm-10">
+                                    <select name="status" id="input-status" class="form-control">
+                                        {% if status %}
+                                            <option value="1" selected="selected">{{ text_enabled }}</option>
+                                            <option value="0">{{ text_disabled }}</option>
+                                        {% else %}
+                                            <option value="1">{{ text_enabled }}</option>
+                                            <option value="0" selected="selected">{{ text_disabled }}</option>
+                                        {% endif %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-attachment">
+                            {% if order_attachments %}
+                                {% for attachment in order_attachments %}
+                                    <div class="clearfix file_item">
+
+                                        <div class="left_cop">
+                                            <span>{{ attachment.name }}</span>
+                                            <span class="weigt">{{ attachment.size }}</span>
+                                        </div>
+                                        <div class="right_cop">
+                                            <span>{{ attachment.date_added }}</span>
+                                            <p class="delete_file_cust clearfix">
+                                               {# <a href="{{ attachment.href }}">{{ button_view }}</a>#}
+                                                <a href="{{ attachment.upload }}">{{ button_upload }}</a>
+                                                <button class="delete_file" data-attachment-id="{{ attachment.attachment_id }}">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="329pt" viewBox="0 0 329.26933 329" width="329pt"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"></path></svg>
+                                                </button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="tab-pane" id="tab-attachment-complete">
+                            {% if offer_attachments %}
+                                {% for attachment in offer_attachments %}
+                                    <div class="clearfix file_item">
+
+                                        <div class="left_cop">
+                                            <span>{{ attachment.name }}</span>
+                                            <span class="weigt">{{ attachment.size }}</span>
+                                        </div>
+                                        <div class="right_cop">
+                                            <span>{{ attachment.date_added }}</span>
+                                            <p class="delete_file_cust clearfix">
+                                               {# <a href="{{ attachment.href }}">{{ button_view }}</a>#}
+                                                <a href="{{ attachment.upload }}">{{ button_upload }}</a>
+                                                <button class="delete_file delete_offer_file" data-attachment-id="{{ attachment.order_offer_attachment_id }}">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="329pt" viewBox="0 0 329.26933 329" width="329pt"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"></path></svg>
+                                                </button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <script>
+                                $(document).on('click', '#tab-attachment-complete .file_item .delete_offer_file', function(e){
+                                    e.preventDefault();
+                                    var attachment_id = parseInt($(this).data('attachment-id'));
+                                    console.log($(this), attachment_id);
+                                    if (attachment_id > 0) {
+                                        $(this).parents('.file_item').remove();
+                                        $.ajax({
+                                            url: '../_tools/index.php?route=order/order/deleteOfferAttachment&order_id={{ order_id }}&user_token={{ user_token }}',
+                                            type: 'post',
+                                            dataType: 'json',
+                                            data: {
+                                                attachment_id: attachment_id
+                                            },
+                                            success: function(json) {
+                                                console.log(json);
+                                                $('#files-offer').load(location.href + ' #files-offer > div');
+                                            }
+                                        });
+                                    }
+                                });
+                            </script>
+                        </div>
+                        <div class="tab-pane" id="tab-actions">
+                            <h3>{{ text_return_money }}</h3>
+
+                            {% if blocked_cash %}
+
+                                <table class="table">
+                                    <tr><td style="width: 200px">Заказ</td><td>{{ blocked_cash.order_title }}</td></tr>
+                                    <tr><td>Заказчик</td><td>{{ blocked_cash.customer_login }}</td></tr>
+                                    <tr><td>Исполнитель</td><td>{{ blocked_cash.offer_customer_login }}</td></tr>
+                                    <tr><td>Сумма</td><td>{{ blocked_cash.balance }}</td></tr>
+                                    <tr><td>Сумма к выплате</td><td>{{ blocked_cash.cash }}</td></tr>
+                                    <tr><td>Начало блокировки</td><td>{{ blocked_cash.date_added }}</td></tr>
+                                    <tr><td>Окончание блокировки</td><td>{{ blocked_cash.date_end }}</td></tr>
+                                    <tr><td>{{ text_return_money_customer }} ({{ blocked_cash.balance }})</td><td><button type="button" onclick="returnBC();" data-toggle="tooltip" title="{{ button_return }}" class="btn btn-primary"><i class="fa fa-undo"></i></button></td></tr>
+                                    <tr><td>{{ text_return_money_performer }} ({{ blocked_cash.cash }})</td><td><button type="button" onclick="payBC();" data-toggle="tooltip" title="{{ button_pay }}" class="btn btn-success"><i class="fa fa-money"></i></button></td></tr>
+                                </table>
+                                <script>
+                                    function returnBC() {
+                                        $.get('{{ blocked_cash.return }}', function () {
+                                            resultBC('Успешно выполнено');
+                                        });
+                                    }
+
+                                    function payBC() {
+                                        $.get('{{ blocked_cash.pay }}', function () {
+                                            resultBC('Успешно выполнено');
+                                        });
+                                    }
+
+                                    function resultBC(message) {
+                                        $('#tab-actions table').remove();
+                                        $('#tab-actions h3').after('<div class="alert alert-success">' + message + '</div>');
+                                        $('#tab-actions h3').after('<h4>В данном заказе нет замороженных средств</h4>');
+                                    }
+                                </script>
+                            {% else %}
+                                <h4>В данном заказе нет замороженных средств</h4>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <input type="hidden" name="order_id" value="{{ order_id }}" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <link href="view/javascript/codemirror/lib/codemirror.css" rel="stylesheet" />
+    <link href="view/javascript/codemirror/theme/monokai.css" rel="stylesheet" />
+    <script type="text/javascript" src="view/javascript/codemirror/lib/codemirror.js"></script>
+    <script type="text/javascript" src="view/javascript/codemirror/lib/xml.js"></script>
+    <script type="text/javascript" src="view/javascript/codemirror/lib/formatting.js"></script>
+
+    <script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
+    <link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
+    <script type="text/javascript" src="view/javascript/summernote/summernote-image-attributes.js"></script>
+    <script type="text/javascript" src="view/javascript/summernote/opencart.js"></script>
+
+
+    </div>
+{{ footer }}

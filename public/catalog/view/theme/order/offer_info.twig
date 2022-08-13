@@ -1,0 +1,41 @@
+<div class="clearfix worker_stav">
+    <div class="img_face clearfix">
+        <a href="{{ customer.href }}">
+            <img src="{{ customer.image }}" alt="{{ customer.login }}">
+        </a>
+    </div>
+    <div class="info_worker clearfix">
+        <div class="lit_hed clearfix">
+            <a href="{{ customer.href }}">{{ customer.login }}</a>
+        </div>
+        <div class="lit_foot clearfix">
+            <div class="enter clearfix">
+                <span class="name">Рейтинг:</span>
+                <span class="rating">{{ customer.rating }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="bitl_clearfix">
+        <p>Ставка</p>
+        <span>{{ bet }}</span>
+    </div>
+</div>
+<div class="upay clearfix">
+    <h3>К оплате</h3>
+    <div class="clearfix pay_line">
+        <p>Ставка автора {% if commission %} <span>+{{ commission}}%</span> {% endif %}</p>
+        <span>{{ earned }}</span>
+    </div>
+</div><div class="promo clearfix"></div>
+<!--<div class="promo clearfix">
+    <div class="hed">
+        <a class="open_promod">Есть промокод на скидку?</a>
+    </div>
+    <div class="hiden_promo">
+        <input type="text" placeholder="Введите свой промокод">
+        <span>Промокод активируется после оплаты </span>
+    </div>
+</div>-->
+<div class="footers clearfix">
+    <button id="assign_offer" class="btn_sucs" data-order_id="{{ order_id }}" data-offer_id="{{ offer_id }}">Подтвердить и оплатить</button>
+</div>

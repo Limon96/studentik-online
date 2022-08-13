@@ -1,0 +1,175 @@
+{{ header }}
+<div class="wrap_content">
+    <div class="container">
+        {{ content_top }}
+        <div class="row">
+            {{ column_left }}
+            <div class="center_content_resp">
+                <div class="clearfix console_wrap">
+                    <div class="clearfix search_panel">
+                        <div class="heads">
+                            <h2>Написать в поддержку</h2>
+                            <!--  <ul class="breadcrumb clearfix">
+                                {% for breadcrumb in breadcrumbs %}
+                                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                                {% endfor %}
+                            </ul>-->
+                        </div>
+                        <div class="suppurt_tab clearfix">
+                            <div class="body_claim clearfix">
+                                <div id="form-contact-support" class="text_claim clearfix">
+                                   <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam aliquid consequuntur, cum delectus dolore dolorum esse explicabo facilis fugiat ipsam itaque libero natus odio, possimus rerum tempora temporibus unde.</p>
+-->
+                                    <div class="razdel_wrap">
+                                        <p class="event1">Тема сообщения</p>
+                                        <select name="subject" class="temelect2">
+
+                                            <option>Пополнение счёта</option>
+                                            <option>Вывод средств</option>
+                                            <option>Настройки профиля</option>
+                                            <option>Общие вопросы</option>
+                                            <option>Проблема с загрузкой файлов</option>
+                                            <option>Проблема с почтой</option>
+                                            <option>Ошибка на сайте</option>
+                                            <option>Помощь по претензии</option>
+                                            <option>Проблема с экспертом</option>
+                                            <option>Проблема с заказчиком</option>
+                                            <option>Другое</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="textt_input_go clearfix">
+                                        <p class="event2">Описание</p>
+                                        <textarea class="textarea" placeholder="Напишите сообщение..." name="text"></textarea>
+                                    </div>
+
+                                    <div id="files" class="files_rools"></div>
+                                    <div class="add_file">
+                                        <form id="form-upload">
+                                            <label class="add_works">
+                                        <span>
+                                            <svg style="position: relative;width: 10px" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" class="sw-icon">
+                                                <path d="M288 248v28c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-28c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm-12 72H108c-6.6 0-12 5.4-12 12v28c0 6.6 5.4 12 12 12h168c6.6 0 12-5.4 12-12v-28c0-6.6-5.4-12-12-12zm108-188.1V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V48C0 21.5 21.5 0 48 0h204.1C264.8 0 277 5.1 286 14.1L369.9 98c9 8.9 14.1 21.2 14.1 33.9zm-128-80V128h76.1L256 51.9zM336 464V176H232c-13.3 0-24-10.7-24-24V48H48v416h288z"></path>
+                                            </svg>
+                                        </span>
+                                                <input type="file" name="file[]" multiple="multiple" accept=".bmp,.djvu,.doc,.docx,.dwg,.csv,.gif,.jpeg,.jpg,.odf,.odt,.pdf,.png,.ppt,.pptx,.rar,.rtf,.svg,.tga,.tiff,.txt,.xls,.xlsx,.zip,.a3d,.cdt,.cdw,.m3d,.dwf,.cdr,.ai,.ics">
+                                                {{ button_attachment }}
+                                            </label>
+                                        </form>
+                                        <input type="hidden" name="type" value="{{ type }}">
+                                        <input type="hidden" name="object_id" value="{{ object_id }}">
+                                        <input type="hidden" name="defendant_id" value="{{ defendant_id }}">
+                                    </div>
+                                    <div class="clearfix wrap_add_claim">
+                                        <button class="add_claim">Отправить</button>
+                                    </div>
+                                </div>
+                            </div>
+                          <!--  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam aliquid consequuntur, cum delectus dolore dolorum esse explicabo facilis fugiat ipsam itaque libero natus odio, possimus rerum tempora temporibus unde.</p>
+-->
+                            <div class="loonsa">
+                                <h4>Мы в соцсетях</h4>
+                                <ul class="social clearfix">
+                                    <li><a target="_blank" href="https://vk.com/studentik.online"><img src="catalog/assets/img/icons/vk.svg"></a></li>
+                                    <li><a href="tg://resolve?domain=studentik_online"><img src="catalog/assets/img/icons/telegram.svg"></a></li>
+                                    <li><a target="_blank" href="https://www.instagram.com/studentik.online/"><img src="catalog/assets/img/icons/instg.svg"></a></li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ column_right }}
+        </div>
+        {{ content_bottom }}
+    </div>
+    {{ content_bottom }}
+</div>
+
+
+<script>
+    $(document).on('change', '#form-upload input', function(){
+        if (typeof timer != 'undefined') {
+            clearInterval(timer);
+        }
+
+        timer = setInterval(function() {
+            if ($('#form-upload input[type=file]').val() != '') {
+                clearInterval(timer);
+
+                $.ajax({
+                    url: 'index.php?route=common/upload/upload',
+                    type: 'post',
+                    dataType: 'json',
+                    data: new FormData($('#form-upload')[0]),
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function() {
+                        $('#button-upload i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
+                        $('#button-upload').prop('disabled', true);
+                    },
+                    complete: function() {
+                        $('#button-upload i').replaceWith('<i class="fa fa-upload"></i>');
+                        $('#button-upload').prop('disabled', false);
+                    },
+                    success: function(json) {
+                        if (json['error']) {
+                            console.log(json['error']);
+                        }
+
+                        if (json['success']) {
+                            if (json['files']) {
+                                for (var i in json['files']) {
+                                    var tmpl = '<div class="clearfix file_item">\n' +
+                                        '<div class="logo_file"><img src="catalog/assets/img/file/' + json['files'][i]['type'] + '.png"></div>\n' +
+                                        '    <div class="left_cop">\n' +
+                                        '        <span>' + json['files'][i]['name'] + '</span>\n' +
+                                        '        <span class="weigt">' + json['files'][i]['size'] + '</span>\n' +
+                                        '        <input type="hidden" name="attachment[]" value="' + json['files'][i]['attachment_id'] + '">\n' +
+                                        '    </div>\n' +
+                                        '    <div class="right_cop">\n' +
+                                        '        <span>' + json['files'][i]['date_added'] + '</span>\n' +
+                                        '        <p class="delete_file_cust clearfix">\n' +
+                                        '            <button class="delete_file">\n' +
+                                        '               <svg xmlns="http://www.w3.org/2000/svg" height="329pt" viewBox="0 0 329.26933 329" width="329pt"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"/></svg>\n' +
+                                        '          </button>\n' +
+                                        '        </p>\n' +
+                                        '    </div>\n' +
+                                        '</div>';
+                                    $('#files').append(tmpl);
+                                }
+                            }
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    }
+                });
+            }
+        }, 500);
+    });
+
+    $(document).on('click', '.file_item .delete_file', function(){
+        $(this).parents('.file_item').remove();
+    });
+
+    $(document).on('click', '#form-contact-support .add_claim', function(e){
+        e.preventDefault();
+        $.ajax({
+            url : 'index.php?route=information/contact/send',
+            method : 'POST',
+            data : $('#form-contact-support input, #form-contact-support select, #form-contact-support textarea'),
+            dataType : 'json',
+            success : function (json) {
+
+                if (json['redirect']) {
+                    location.href = json['redirect'].replace('&amp;', '&');
+                }
+            }
+        });
+    });
+</script>
+{{ footer }}

@@ -1,0 +1,175 @@
+{{ header }}
+
+<div class="wrap_content">
+    {{ content_top }}
+    <div class="container">
+        <div class="row">
+            {{ column_left }}
+            <div class="center_content_resp">
+                <div class="clearfix console_wrap">
+                    <div class="clearfix search_panel">
+                        <div class="heads">
+                            <h1>{{ heading_title }}</h1>
+                            <ul class="breadcrumb clearfix">
+                                {% for breadcrumb in breadcrumbs %}
+                                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="parametrs clearfix">
+                            <div class="line_search clearfix">
+                                <div class="search_in">
+                                    <input type="text" name="search" value="{{ search }}">
+                                    <button class="go_search"><img src="catalog/assets/img/icons/search.svg" alt="">
+                                    </button>
+                                </div>
+
+                                <div class="rezult_search">
+                                    <p>{{ text_total }}</p>
+                                </div>
+                                <div class="btn_search">
+                                    <button>{{ button_search }}</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="strips_work clearfix">
+                            {% if experts %}
+                                {% for customer in experts %}
+                                    <div class="item_work clearfix">
+                                        <div class="item_worker clearfix">
+                                            <div class="img_face clearfix">
+                                                <img src="{{ customer.image }}">
+                                                {% if customer.online %}<span></span>{% endif %}
+                                            </div>
+                                            <div class="info_worvert clearfix">
+                                                <div class="lit_hed clearfix">
+                                                    <a href="{{ customer.href }}">{{ customer.login }}</a>
+                                                    {% if customer.pro %}<span class="premium">PREMIUM</span>{% endif %}
+                                                </div>
+                                                <div class="lit_foot clearfix">
+                                                    <div class="enter clearfix">
+                                                        <span class="name">Рейтинг:</span>
+                                                        <span class="rating">{{ customer.rating }}</span>
+                                                        {% if customer.new_rating %}<span class="bonus">+{{ customer.new_rating }}</span>{% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="otziv">
+                                                {#<p>отзывы:</p>
+                                                <div class="enter_like clearfix">
+                                                    <img src="catalog/assets/img/icons/like.svg">
+                                                    <span class="like">{{ customer.total_reviews_positive }}</span>
+                                                    <img src="catalog/assets/img/icons/dislike.svg">
+                                                    <span class="dislike">{{ customer.total_reviews_negative }}</span>
+                                                </div>#}
+                                            </div>
+                                            <div class="rabotyu clearfix">
+                                                <p>{{ customer.total_orders }}</p>
+                                                <div class="work_zrobl clearfix" >
+                                                    <span class="good" style="width: {{ customer.percent_reviews_positive }}%"></span>
+                                                   {# <span class="super_good"></span>#}
+                                                    <span class="no_good" style="width: {{ customer.percent_reviews_negative }}%"></span>
+                                                    <div class="all_tooltyp" data-tooltip="<p>Позитивные отзывы {{ customer.total_reviews_positive }} ({{ customer.percent_reviews_positive }}%)</p><p>Отрицательные отзывы {{ customer.total_reviews_negative }} ({% if customer.total_reviews %}{{ customer.percent_reviews_negative }}{% else %}0{% endif %}%)</p>"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+
+                            {% if limit < total_experts %}
+                                <div class="more">
+                                    <a class="btn-continue" href="{{ continue }}">{{ button_continue }}</a>
+                                </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ column_right }}
+        </div>
+    </div>
+    {{ content_bottom }}
+</div>
+<script>
+    $(document).on('click', '.btn-continue', function (e){
+        e.preventDefault();
+        var temp = $('.strips_work .item_work');
+
+        $('.strips_work').load($(this).attr('href') + " .strips_work > *", function(response, status, xhr) {
+            $('.strips_work').prepend(temp);
+        });
+    });
+</script>
+<script>
+    $(document).on('click', '.btn_search', function(e){
+        e.preventDefault();
+
+        var url = 'index.php?route=expert/expert';
+
+{# var filter_section_id = parseInt($('select[name=filter_section_id]').val());
+        if (filter_section_id) {
+            url += '&filter_section_id=' + filter_section_id;
+        }
+
+        var filter_subject_id = parseInt($('select[name=filter_subject_id]').val());
+        if (filter_subject_id) {
+            url += '&filter_subject_id=' + filter_subject_id;
+        }#}
+
+        var search = $('input[name=search]').val();
+        if (search) {
+            url += '&search=' + search;
+        }
+
+        location.href = url;
+    });
+    {#
+    $(document).on('change', 'select[name=filter_section_id]', function () {
+        getSubjects($(this).val());
+    });
+
+    function getSubjects(section_id){
+        $.ajax({
+            url : 'index.php?route=order/subject/autocomplete&filter_section_id=' + section_id,
+            dataType : 'json',
+            success : function (json) {
+                $('select[name=filter_subject_id]').prop('disabled', true);
+                $('select[name=filter_subject_id]').html('<option value="0">' + json['text_all_subject'] + '</option>');
+                if(json['subject'].length > 0) {
+                    for(var i in json['subject']) {
+                        $('select[name=filter_subject_id]').append('<option value="' + json['subject'][i]['subject_id'] + '">' + json['subject'][i]['name'] + '</option>');
+                    }
+                    $('select[name=filter_subject_id]').prop('disabled', false);
+                }
+                $("select[name=filter_subject_id]").select2("destroy").select2({
+                    templateResult: setCurrency,
+                    templateSelection: setCurrency
+                });
+                $('select[name=filter_subject_id]').prop('disabled', true);
+                $('select[name=filter_subject_id]').html('<option value="0">' + json['text_all_subject'] + '</option>');
+                if(json['subject'].length > 0) {
+                    for(var i in json['subject']) {
+                        $('select[name=filter_subject_id]').append('<option value="' + json['subject'][i]['subject_id'] + '">' + json['subject'][i]['name'] + '</option>');
+                    }
+                    $('select[name=filter_subject_id]').prop('disabled', false);
+                }
+                $("select[name=filter_subject_id]").select2("destroy").select2({
+                    templateResult: setCurrency,
+                    templateSelection: setCurrency
+                });
+            }
+        });
+    }
+
+    function setCurrency (currency) {
+        if (!currency.id) { return currency.text; }
+        var $currency = $('<span class="glyphicon glyphicon-' + currency.element.value + '">' + currency.text + '</span>');
+        return $currency;
+    } #}
+</script>
+{{ footer }}

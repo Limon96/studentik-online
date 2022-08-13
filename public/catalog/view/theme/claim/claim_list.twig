@@ -1,0 +1,94 @@
+{{ header }}
+<div class="wrap_content">
+    {{ content_top }}
+    <div class="container">
+        <div class="row">
+            {{ column_left }}
+            <div class="center_content_resp">
+                <div class="clearfix console_wrap">
+                    <div class="clearfix search_panel">
+                        <div class="heads">
+                            <h2>Мои претензии</h2>
+                            <ul class="breadcrumb clearfix">
+                                {% for breadcrumb in breadcrumbs %}
+                                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="wrap_claim_list clearfix">
+                            <div class="head_list_claim clearfix">
+                                <div class="clearfix cadoks">
+                                    <div class="razdel_wrap_chek">
+                                        <label class="container_ch">Закрытые
+                                            {% if filter_status_off %}
+                                            <input type="checkbox" name="filter_status_off" value="1" checked>
+                                            {% else %}
+                                            <input type="checkbox" name="filter_status_off" value="1">
+                                            {% endif %}
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="razdel_wrap_chek">
+                                        <label class="container_ch">Открытые
+                                            {% if filter_status_on %}
+                                                <input type="checkbox" name="filter_status_on" value="1" checked>
+                                            {% else %}
+                                                <input type="checkbox" name="filter_status_on" value="1">
+                                            {% endif %}
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{ pagination }}
+                    <div class="body_claim_list clearfix">
+                        {% if claims %}
+                        {% for claim in claims %}
+                        <div class="item_clim {% if claim.status %}closed{% else %}open{% endif %} clearfix">
+                            <div class="status">{% if claim.status %}<span>Закрыта</span>{% else %}<span>Открыта</span>{% endif %}</div>
+                            <div class="date"><span>{{ claim.date_added }}</span></div>
+                            <div class="title"><span>{{ claim.object_title }}</span></div>
+
+                            <div class="user_istez"><p>Истец: <a href="{{ claim.customer_href }}">{{ claim.customer_login }}</a></p></div>
+                            <div class="user_otvet"><p>Ответчик: <a href="{{ claim.defendant_href }}">{{ claim.defendant_login }}</a></p></div>
+                            <div class="text_claim"><span>{{ claim.comment }}</span></div>
+                            <div class="btn_claim"><a href="{{ claim.href }}">Перейти к претензии</a></div>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                    {{ pagination }}
+
+                </div>
+
+
+
+            </div>
+            {{ column_right }}
+        </div>
+    </div>
+    {{ content_bottom }}
+</div>
+<script>
+    $(document).on('change', '.head_list_claim input[type=checkbox]', function(e){
+        console.log($(this).attr('name'));
+        var url = '';
+
+        var filter_status_off = $('input[name=filter_status_off]').prop('checked');
+
+        if (filter_status_off) {
+            url += "&filter_status_off=1";
+        }
+
+        var filter_status_on = $('input[name=filter_status_on]').prop('checked');
+
+        if (filter_status_on) {
+            url += "&filter_status_on=1";
+        }
+
+        location.href = 'index.php?route=claim/claim' + url;
+    });
+</script>
+{{ footer }}

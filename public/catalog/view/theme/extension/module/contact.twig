@@ -1,0 +1,30 @@
+<div class="contact_right clearfix">
+    <h3>{{ text_contact }}</h3>
+    {#<a href="tel:{{ telephone }}" class="phone">{{ telephone }}</a>#}
+    <a href="mailto:{{ email }}" class="mail">{{ email }}</a>
+    {% if terms %}<a href="{{ terms.href }}" class="polit">{{ terms.title }}</a>{% endif %}
+    {% if privacy %}<a href="{{ privacy.href }}" class="polit">{{ privacy.title }}</a>{% endif %}
+    <h4>{{ text_social }}</h4>
+    <ul class="social clearfix">
+        <li><a target="_blank" href="https://vk.com/studentik.online"><img src="../catalog/assets/img/icons/vk.svg"></a></li>
+        <li><a href="tg://resolve?domain=studentik_online"><img src="../catalog/assets/img/icons/telegram.svg"></a></li>
+        <li><a target="_blank" href="https://www.instagram.com/studentik.online/"><img src="../catalog/assets/img/icons/instg.svg"></a></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+    {% if customer_group_id == 1 %}
+        <a href="{{ write }}" class="btn_mod">{{ button_write }}</a>
+    {% elseif customer_group_id == 2 %}
+        <a href="{{ write }}" class="btn_mod">{{ button_write }}</a>
+    {% endif %}
+
+
+</div>

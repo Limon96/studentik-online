@@ -1,0 +1,21 @@
+{% if chats %}
+{% for chat in chats %}
+    <div  id="chat-{{ chat.chat_id }}" class="speeker_numb clearfix {% if chat.active %}active{% endif %} {% if chat.unviewed %}new_massage{% endif %}" data-chat_id="{{ chat.chat_id }}">
+        <div class="logo">
+            <img src="{{ chat.image }}">
+            {% if chat.online %}<span></span>{% endif %}
+        </div>
+        <div class="name clearfix">
+            <a href="{{ chat.href }}">{{ chat.name }}</a>
+            <span>{{ chat.date_added }}</span>
+            <p>{{ chat.text }}</p>
+            {% if chat.unread %}<i class="no_reed"></i>{% endif %}
+        </div>
+        <div class="delete">
+            <button class="delete_file">
+                <span>x</span>
+            </button>
+        </div>
+    </div>
+{% endfor %}
+{% endif %}

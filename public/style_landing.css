@@ -1,0 +1,850 @@
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('font/Montserrat-Light.eot');
+    src: local('Montserrat Light'), local('Montserrat-Light'),
+    url('font/Montserrat-Light.eot?#iefix') format('embedded-opentype'),
+    url('font/Montserrat-Light.woff') format('woff'),
+    url('font/Montserrat-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('font/Montserrat-Thin.eot');
+    src: local('Montserrat Thin'), local('Montserrat-Thin'),
+    url('font/Montserrat-Thin.eot?#iefix') format('embedded-opentype'),
+    url('font/Montserrat-Thin.woff') format('woff'),
+    url('font/Montserrat-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('font/Montserrat-SemiBold.eot');
+    src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'),
+    url('font/Montserrat-SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('font/Montserrat-SemiBold.woff') format('woff'),
+    url('font/Montserrat-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('font/Montserrat-ExtraLight.eot');
+    src: local('Montserrat ExtraLight'), local('Montserrat-ExtraLight'),
+    url('font/Montserrat-ExtraLight.eot?#iefix') format('embedded-opentype'),
+    url('font/Montserrat-ExtraLight.woff') format('woff'),
+    url('font/Montserrat-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('font/Montserrat-Bold.eot');
+    src: local('Montserrat Bold'), local('Montserrat-Bold'),
+    url('font/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
+    url('font/Montserrat-Bold.woff') format('woff'),
+    url('font/Montserrat-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('font/Montserrat-Regular.eot');
+    src: local('Montserrat Regular'), local('Montserrat-Regular'),
+    url('font/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
+    url('font/Montserrat-Regular.woff') format('woff'),
+    url('font/Montserrat-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('font/Montserrat-Medium.eot');
+    src: local('Montserrat Medium'), local('Montserrat-Medium'),
+    url('font/Montserrat-Medium.eot?#iefix') format('embedded-opentype'),
+    url('font/Montserrat-Medium.woff') format('woff'),
+    url('font/Montserrat-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('font/Montserrat-ExtraBold.eot');
+    src: local('Montserrat ExtraBold'), local('Montserrat-ExtraBold'),
+    url('font/Montserrat-ExtraBold.eot?#iefix') format('embedded-opentype'),
+    url('font/Montserrat-ExtraBold.woff') format('woff'),
+    url('font/Montserrat-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('font/Montserrat-Black.eot');
+    src: local('Montserrat Black'), local('Montserrat-Black'),
+    url('font/Montserrat-Black.eot?#iefix') format('embedded-opentype'),
+    url('font/Montserrat-Black.woff') format('woff'),
+    url('font/Montserrat-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+
+
+
+
+
+
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 500;
+    color: #222222;
+}
+
+
+
+
+body {
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    margin: 0;
+    padding: 0;
+}
+
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.container-fluide::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+
+
+.container{
+    max-width: 1200px;
+    padding: 0 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+
+
+
+
+
+/* The container */
+.container1 {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container1 input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container1:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container1 input:checked ~ .checkmark {
+    background-color: #1cb7ad;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container1 input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container1 .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+
+
+/********************************************header******************************************************/
+
+
+.menu {
+    background-image: url(img/bgup.png);
+    position: relative;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    padding: 20px 0 44px;
+    background-size: cover;
+}
+
+.menu .logo{
+
+}
+
+.menu .logo img {
+    max-width: 240px;
+}
+
+
+
+
+.info {
+    z-index: 5;
+    position: relative;
+}
+
+.info .wrap_tops {
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.info .outer_blo {
+    background: #FFFFFF;
+    border: 1px solid rgba(206, 192, 213, 0.3);
+    box-shadow: 0px 4px 25px rgb(206 192 213 / 30%);
+    border-radius: 20px;
+    padding: 30px 30px;
+}
+
+
+.info .left {
+    width: 630px;
+}
+
+
+.info  .left h1{
+    font-weight: bold;
+    font-size: 34px;
+    line-height: 37px;
+    color: #00324F;
+    margin: 0 0 30px 0;
+}
+
+
+.info .left h3 {
+    font-size: 14px;
+    line-height: 17px;
+    color: #666666;
+    margin: 0 0 55px 0;
+}
+
+
+.info  .block_form{
+
+}
+
+.info .block_form input {
+    background: #FFFFFF;
+    border: 1px solid rgba(206, 192, 213, 0.3);
+    border-radius: 20px;
+    display: block;
+    width: 100%;
+    padding: 13px 15px 13px 15px;
+    margin: 15px 0;
+}
+.info  .block_form input::placeholder{
+    color: #717171;
+}
+
+.info .block_form .eror {
+    color: #ff0505;
+    text-align: center;
+    display: block;
+    margin: 5px 0;
+}
+.mini_footer span.eror {
+    font-size: 12px;
+    color: #ff0505;
+}
+.info .block_go {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px 0 0 0;
+}
+
+.info  .block_go a{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+    color: #00324F;
+    display: inline-block;
+    padding: 0px 0 0 0;
+    margin: 0 0 0 0;
+    border-bottom: 1px solid #00324F;
+}
+
+.info  .block_go a:hover{
+    color: #044063; cursor: pointer;
+}
+
+.info  .block_go button{
+    background: #1CB7AD;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 15px 0 15px 0;
+    display: block;
+    width: 100%;
+    border: 0;
+    max-width: 230px;
+}
+
+.info  .block_go button:hover{
+    cursor: pointer;
+    background: #168d85;
+}
+
+
+
+.info .mini_footer {
+    margin: 40px 0 5px 0;
+}
+
+.info  .mini_footer .container1{
+
+}
+
+.info  .mini_footer .container1 p{
+
+}
+.info .mini_footer .container1 p a {
+    color: #1cb7ad;
+    text-decoration: underline;
+}
+.info  .mini_footer .container1 p a:hover{
+    color: #17958d;
+}
+
+
+
+.info .right {
+    width: 400px;
+    height: 20px;
+    position: relative;
+}
+.info .right .img_wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.info .right .img_wrap img {
+    position: absolute;
+    left: -123px;
+    top: -63px;
+    width: 420px;
+}
+
+footer {
+    background-image: url(img/bgdown.png);
+    position: absolute;
+    background-position: left top;
+    background-repeat: no-repeat;
+    padding: 41px 0 33px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-size: cover;
+}
+
+footer .left_col {
+    max-width: 600px;
+}
+
+
+
+footer .left_col .one{
+
+}
+
+footer .left_col .one .item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+footer .left_col .one .item img {
+    width: 30px;
+    margin-right: 15px;
+    height: 30px;
+}
+
+footer .left_col .one .item p {
+    color: #585858;
+    font-weight: 600;
+}
+
+footer .left_col .two {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer .left_col .two .item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+footer .left_col .two .item img{
+    width: 30px;
+    margin-right: 15px;
+    height: 30px;
+}
+
+footer .left_col .two .item p{
+    color: #585858;
+    font-weight: 600;
+}
+
+
+
+footer .left_col_visa {
+    margin: 20px 0 0 0;
+    width: 100%;
+    max-width: 600px;
+    padding: 0 0 0 80px;
+}
+
+
+footer .left_col_visa p {
+    color: #868686;
+}
+
+
+footer .left_col_visa ul {
+    display: flex;
+    align-items: center;
+}
+footer .left_col_visa ul li {
+    margin-right: 27px;
+}
+
+footer .left_col_visa ul li img{
+
+}
+
+
+
+
+
+footer .oputert{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer .pilorem_left{
+
+}
+
+
+
+
+footer .pilorem_right{
+
+}
+
+footer .pilorem_right .contact_right{
+
+}
+
+
+footer .pilorem_right .contact_right h3 {
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 700;
+    color: #00324F;
+    margin: 0px 0 6px 0;
+}
+
+footer .pilorem_right .contact_right p {
+    margin: 0 0 6px 0;
+    color: #585858;
+    font-weight: 600;
+}
+
+footer .pilorem_right .contact_right a.mail{
+    color: #00324F;
+    display: block;
+    font-size: 16px;
+    margin: 0 0 12px 0;
+}
+
+footer .pilorem_right .contact_right a.polit {
+    color: #00324F;
+    display: block;
+    font-size: 14px;
+    margin: 0px 0 9px 0;
+    width: fit-content;
+}
+
+footer .pilorem_right .contact_right h4 {
+    color: #00324F;
+    display: block;
+    font-size: 14px;
+    margin: 0 0 5px 0;
+}
+
+
+footer .pilorem_right .contact_right .social{
+
+}
+
+
+footer .pilorem_right .contact_right .social li{
+    float: left;
+    margin-right: 10px;
+}
+
+footer .pilorem_right .contact_right .social li a{
+
+}
+
+footer .pilorem_right .contact_right .social li img{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 1920px) and (max-width: 5000px){
+
+}
+
+
+
+@media (min-width: 1440px) and (max-width: 1919px){
+
+}
+
+
+@media (min-width: 1366px) and (max-width: 1439px){
+
+}
+
+
+
+@media (min-width: 1200px) and (max-width: 1365px){
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+    .info .right .img_wrap img {
+        left: 15px;
+        top: 3px;
+        width: 330px;
+    }
+}
+
+
+
+
+@media (min-width: 768px) and (max-width: 991px){
+    .info .right .img_wrap img {
+        position: absolute;
+        left: 0;
+        top: 30px;
+        width: 285px;
+    }
+}
+
+
+@media (min-width: 320px) and (max-width: 767px){
+
+    .info .right {
+        display: none;
+    }
+
+    body {
+        height: auto;
+        overflow: inherit;
+    }
+
+
+    .info .left h1 {
+        font-size: 25px;
+        line-height: 30px;
+    }
+
+    .info .left h3 {
+        margin: 0 0 25px 0;
+    }
+
+
+
+    .info .outer_blo {
+        padding: 30px 15px;
+    }
+    .info .block_go button {
+        font-size: 14px;
+        line-height: 20px;
+        max-width: 170px;
+    }
+
+
+
+
+    footer {
+        background-image: url(img/bgdown.png);
+        position: relative;
+        background-position: left top;
+        background-repeat: no-repeat;
+        padding: 41px 0 33px;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+
+
+    footer {
+        position: relative;
+        padding: 41px 0 33px;
+        left: 0;
+        bottom: 0;
+        background-size: cover;
+    }
+
+
+    footer .left_col .two {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+
+    footer .left_col_visa {
+        margin: 20px 0 0 0;
+        width: 100%;
+        max-width: 600px;
+        padding: 0 0 0 0;
+    }
+
+
+    footer .left_col_visa ul {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    footer .left_col_visa ul li {
+        margin: 10px;
+    }
+
+    footer .left_col_visa p {
+        color: #868686;
+        text-align: center;
+    }
+    .menu {
+        background-size: cover;
+    }
+
+
+
+.oputert{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+
+
+    footer .pilorem_right .contact_right h3 {
+        margin: 15px 0 6px 0;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+@media (min-height: 1080px) and (max-height: 2000px){
+    .info {
+        margin-top: 136px;
+    }
+}
+
+
+@media (min-height: 1024px) and (max-height: 1079px){
+    .info {
+        margin-top: 120px;
+    }
+}
+
+
+@media (min-height: 900px) and (max-height: 1023px){
+    .info {
+        margin-top: 30px;
+    }
+}
+
+@media (min-height: 800px) and (max-height: 899px){
+    .info {
+        margin-top: 0px;
+    }
+}
+
+@media (min-height: 768px) and (max-height: 799px){
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

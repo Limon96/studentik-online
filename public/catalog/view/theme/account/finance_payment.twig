@@ -1,0 +1,129 @@
+{{ header }}
+<div class="wrap_content">
+    <div class="container">
+        {{ content_top }}
+        <div class="row">
+            {{ column_left }}
+            <div class="center_content_resp">
+                <div class="clearfix console_wrap">
+                    <div class="clearfix search_panel">
+                        <div class="heads">
+                            <h2>Пополнение счёта</h2>
+                            <ul class="breadcrumb clearfix">
+                                {% for breadcrumb in breadcrumbs %}
+                                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="finance_tab clearfix">
+                            {% for method in payment_methods %}
+                                <div class="item_pay clearfix">
+                                    <div class="item_pay_inner clearfix">
+                                        <div class="wraps_img_logo clearfix" href="{{ method.href }}">
+                                            <img src="{{ method.thumb }}" class="logo_pay" title="{{ method.name }}" alt="{{ method.name }}">
+                                        </div>
+                                        <p>Комиссия : <span>{{ method.commission }}</span></p>
+                                       {# <a class="info_pay" data-toggle="modal" data-target="#payInfo-1">i</a>#}
+                                        <a class="vvod_sr" href="{{ method.href }}">Пополнить счёт</a>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+            {{ column_right }}
+        </div>
+        {{ content_bottom }}
+    </div>
+    {{ content_bottom }}
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="payInfo-1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Название промокода</h4>
+            </div>
+            <div class="modal-body">
+                <h3>Заголовок</h3>
+                <p>текст 1</p>
+                <p>текст 2</p>
+                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi cupiditate dolor facere fugit placeat, totam vero! Asperiores beatae, blanditiis dignissimos eaque error esse illo, ipsum mollitia perferendis placeat quam temporibus.</span>
+                <ul>
+                    <li>пункт1 пункт1 пункт1 </li>
+                    <li>пункт2 пункт2 пункт2 </li>
+                    <li>пункт3 пункт3 пункт3</li>
+                </ul>
+                <h3>Заголовок</h3>
+                <p>текст 1</p>
+                <p>текст 2</p>
+                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi cupiditate dolor facere fugit placeat, totam vero! Asperiores beatae, blanditiis dignissimos eaque error esse illo, ipsum mollitia perferendis placeat quam temporibus.</span>
+                <ul>
+                    <li>пункт1 пункт1 пункт1 </li>
+                    <li>пункт2 пункт2 пункт2 </li>
+                    <li>пункт3 пункт3 пункт3</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="payPay-1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Пополнить счёт через сервис</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="modal_up_pay clearfix">
+                    <div class="modal_logo clearfix">
+                        <img src="catalog/assets/img/yuyu.png" class="logo_pay">
+                    </div>
+                    <h3>ЮMONEY</h3>
+                    <p>комиссия : 3% </p>
+                    <div class="color_bink clearfix">
+                        <input type="text" placeholder="Сумма пополнения">
+                        <div class="wrap_btn_ultima clearfix">
+                            <button class="popolnyan">Пополнить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    {% if amount > 0 %}
+    $(document).ready(function(){
+        $('.vvod_sr').eq(1).click();
+    });
+
+    {% endif %}
+    $(document).on('click', '.finance_tab .vvod_sr', function(e){
+        e.preventDefault();
+        var href = $(this).attr('href');
+        //$('#payPay-1 .modal-body .modal_up_pay').load(href + ' .modal_up_pay');
+        $.ajax({
+            url : href,
+            method : 'get',
+            success : function (html) {
+                $('#payPay-1 .modal-body').html(html);
+
+                $('#payPay-1').modal('show');
+            }
+        });
+    });
+</script>
+{{ footer }}

@@ -1,0 +1,125 @@
+<?php
+$_['code'] = 'ru';
+$_['direction'] = 'ltr';
+$_['date_format_short'] = 'd.m.Y';
+$_['date_format_long'] = 'l, d F Y';
+$_['date_format_chat'] = 'd.m.Y';
+$_['date_format_chat_full'] = 'd.m.Y H:i';
+$_['time_format'] = 'H:i:s';
+$_['datetime_format'] = 'd/m/Y H:i:s';
+$_['decimal_point'] = '.';
+$_['thousand_point'] = '';
+
+$_['text_home'] = '<i class="fa fa-home"></i>';
+$_['text_yes'] = 'Да';
+$_['text_no'] = 'Нет';
+$_['text_none'] = ' --- Не выбрано --- ';
+$_['text_select'] = ' --- Выберите --- ';
+$_['text_all_zones'] = 'Все зоны';
+$_['text_pagination'] = 'Показано с %d по %d из %d (всего %d страниц)';
+$_['text_loading'] = 'Загрузка...';
+$_['text_no_results'] = 'Нет данных!';
+$_['text_negotiable_price'] = 'Договорная';
+$_['text_all_work_type'] = 'Все типы работ';
+$_['text_all_subject'] = 'Все предметы';
+$_['text_all_order_status'] = 'Все статусы';
+$_['text_payment_name'] = 'Метод оплаты';
+$_['text_unknown'] = 'не определена';
+$_['text_access_denied'] = 'Доступ запрещен!';
+
+$_['text_subject_new_order']       = 'Новый заказ!';
+$_['text_subject_new_offer']       = 'Новый отклик в заказе!';
+$_['text_subject_edit_offer']       = 'Исполнитель изменил ставку в заказе!';
+$_['text_subject_assigned_offer']       = 'Выбран исполнитель!';
+$_['text_subject_cancel_offer']         = 'Исполнитель отказался!';
+$_['text_subject_cancel_offer_order_owner'] = 'Заказчик отменил выбор исполнителя!';
+$_['text_subject_accept_offer']         = 'Исполнитель потвердил начало работы!';
+$_['text_subject_awaiting_offer']       = 'Заказ ожидает проверку!';
+$_['text_subject_verification_offer']   = 'Заказчик начал проверку готовой работы!';
+$_['text_subject_revision_offer']       = 'Заказ отправлен на доработку!';
+$_['text_subject_complete_offer']       = 'Заказчик подтвердил готовность работы!';
+$_['text_subject_cancel_order']       = 'Заказчик отменил заказ!';
+$_['text_subject_open_order']       = 'Заказчик открыл заказ!';
+$_['text_subject_new_message']       = 'Пришло новое сообщение!';
+$_['text_subject_attachment_claim']       = 'Прикреплен файл к претензии!';
+
+$_['subject_claim_created']             = 'Новая претензия!';
+
+$_['button_address_add'] = 'Добавить адрес';
+$_['button_back'] = 'Назад';
+$_['button_continue'] = 'Продолжить';
+$_['button_cart'] = 'Купить';
+$_['button_cancel'] = 'Отмена';
+$_['button_compare'] = 'В сравнение';
+$_['button_wishlist'] = 'В закладки';
+$_['button_checkout'] = 'Оформление заказа';
+$_['button_confirm'] = 'Подтверждение заказа';
+$_['button_coupon'] = 'Применение купона';
+$_['button_delete'] = 'Удалить';
+$_['button_download'] = 'Скачать';
+$_['button_edit'] = 'Редактировать';
+$_['button_filter'] = 'Поиск';
+$_['button_new_address'] = 'Новый адрес';
+$_['button_change_address'] = 'Изменить адрес';
+$_['button_reviews'] = 'Отзывы';
+$_['button_write'] = 'Написать отзыв';
+$_['button_login'] = 'Войти';
+$_['button_update'] = 'Обновить';
+$_['button_remove'] = 'Удалить';
+$_['button_register'] = 'Зарегистрироваться';
+$_['button_reorder'] = 'Дополнительный заказ';
+$_['button_return'] = 'Вернуть';
+$_['button_shopping'] = 'Продолжить покупки';
+$_['button_search'] = 'Поиск';
+$_['button_shipping'] = 'Применить Доставку';
+$_['button_submit'] = 'Применить';
+$_['button_guest'] = 'Оформление заказа без регистрации';
+$_['button_view'] = 'Просмотр';
+$_['button_voucher'] = 'Применить подарочный сертификат';
+$_['button_upload'] = 'Загрузить файл';
+$_['button_reward'] = 'Применить бонусные баллы';
+$_['button_quote'] = 'Узнать цены';
+$_['button_list'] = 'Список';
+$_['button_grid'] = 'Сетка';
+$_['button_map'] = 'Посмотреть карту';
+$_['button_buy'] = 'Купить';
+$_['button_attachment'] = 'Добавить файл';
+
+$_['label_premium'] = 'важно';
+$_['label_hot'] = 'срочно';
+
+$_['error_unknown']     = 'Произошла неизвестная ошибка';
+$_['error_exception']   = 'Ошибка кода(%s): %s в %s на строке %s';
+$_['error_upload_1'] = 'Предупреждение: Размер загружаемого файла превышает значение upload_max_filesize в php.ini!';
+$_['error_upload_2'] = 'Предупреждение: Загруженный файл превышает MAX_FILE_SIZE значение, которая была указана в настройках!';
+$_['error_upload_3'] = 'Предупреждение: Загруженные файлы были загружены лишь частично!';
+$_['error_upload_4'] = 'Предупреждение: Нет файлов для загрузки!';
+$_['error_upload_6'] = 'Предупреждение: Временная папка!';
+$_['error_upload_7'] = 'Предупреждение: Ошибка записи!';
+$_['error_upload_8'] = 'Предупреждение: Запрещено загружать файл с данным расширением!';
+$_['error_upload_999'] = 'Предупреждение: Неизвестная ошибка!';
+$_['error_curl'] = 'CURL: Ошибка кода(%s): %s';
+
+$_['datepicker'] = 'ru';
+
+$_['notification_new_order'] = "%s разместил(а) новый заказ <a href='%s'> %s </a>";
+$_['notification_new_offer'] = "%s разместил(а) новое предложение в заказе <a href='%s'> %s </a><br>Ставка: %s";
+$_['notification_edit_offer'] = "%s отредактировал(а) предложение в заказе <a href='%s'> %s </a><br>Ставка: %s";
+$_['notification_assign_offer'] = "%s принял(а) %s в заказе <a href='%s'>%s</a>. %s";
+$_['notification_accept_offer'] = "%s подтвердил(а) начало работы над заказом <a href='%s'> %s </a>";
+$_['notification_cancel_offer'] = "%s отклонил(а) своё предложение в заказе <a href='%s'> %s </a>";
+$_['notification_cancel_offer_order_owner'] = "%s отменил(а) выбор исполнителя в заказе <a href='%s'> %s </a>";
+$_['notification_verification_offer'] = "%s начал(а) проверку готовности работы в заказе <a href='%s'> %s </a>";
+$_['notification_revision_offer'] = "%s отправил(а) заказ <a href='%s'> %s </a> на доработку";
+$_['notification_complete_offer'] = "%s подтвердил(а) выполнение работы в заказе <a href='%s'> %s </a>";
+$_['notification_offer_attachment_add'] = "%s загрузил(а) файл готовой работы %s в заказе <a href='%s'> %s </a>";
+$_['notification_comment_offer'] = "%s оставил(а) комментарий в заказе <a href='%s'> %s </a>";
+$_['notification_cancel_order_owner'] = "%s отменил(а) заказ <a href='%s'> %s </a>";
+$_['notification_open_order_owner'] = "%s открыл(а) заказ <a href='%s'> %s </a>";
+$_['notification_new_message'] = 'Пришло новое сообщение ';
+
+
+$_['notification_claim_created'] = "%s подал претензию на <a href='%s'> %s </a>";
+$_['notification_message_claim'] = "Новое сообщение <a href='%s'> %s </a>";
+$_['notification_attachment_claim'] = "%s прикрепил новый файл к <a href='%s'> %s </a>";
+$_['notification_change_password'] = 'Пароль успешно изменен';

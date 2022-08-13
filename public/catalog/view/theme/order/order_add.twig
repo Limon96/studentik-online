@@ -1,0 +1,399 @@
+{{ header }}
+<div class="wrap_content">
+    {{ content_top }}
+    <div id="order-order-add" class="container">
+        <div class="row">
+            {{ column_left }}
+            <div id="order-create" class="center_content_resp">
+                <div class="clearfix search_panel">
+                    <div class="heads">
+                        <h2>Разместить заказ</h2>
+                        <ul class="breadcrumb clearfix">
+                            {% for breadcrumb in breadcrumbs %}
+                                <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="clearfix brathers">
+                        <input type="text" name="title" placeholder="Введите название работы" value="{{ title }}">
+                    </div>
+
+                    <div class="parametrs clearfix">
+                        <div class="balitarda">
+                            <div class="razdel_wrap first">
+                                <select name="work_type" id="select-work-type" class="templatingSelect3">
+                                    <option value="0">{{ text_all_work_type }}</option>
+                                    {% for work_type in work_types %}
+                                        {% if work_type.work_type_id == work_type_id %}
+                                            <option value="{{ work_type.work_type_id }}" selected>{{ work_type.name }}</option>
+                                        {% else %}
+                                            <option value="{{ work_type.work_type_id }}">{{ work_type.name }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="razdel_wrap thecond">
+                                <select name="subject" id="select-section-subject" class="templatingSelect4">
+                                    <option value="0">{{ text_all_subject }}</option>
+                                    {% for section in sections %}
+                                        <optgroup label="{{ section.name }}">
+                                            {% for subject in section.subjects %}
+                                                {% if subject.subject_id == subject_id %}
+                                                    <option value="{{ subject.subject_id }}" selected>{{ subject.name }}</option>
+                                                {% else %}
+                                                    <option value="{{ subject.subject_id }}">{{ subject.name }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </optgroup>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="date_file clearfix">
+                        <div class="add_file">
+                            <form id="form-upload">
+                                <label class="add_works">
+                                        <span>
+                                            <svg style="position: relative;width: 10px" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" class="sw-icon">
+                                                <path d="M288 248v28c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-28c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm-12 72H108c-6.6 0-12 5.4-12 12v28c0 6.6 5.4 12 12 12h168c6.6 0 12-5.4 12-12v-28c0-6.6-5.4-12-12-12zm108-188.1V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V48C0 21.5 21.5 0 48 0h204.1C264.8 0 277 5.1 286 14.1L369.9 98c9 8.9 14.1 21.2 14.1 33.9zm-128-80V128h76.1L256 51.9zM336 464V176H232c-13.3 0-24-10.7-24-24V48H48v416h288z"></path>
+                                            </svg>
+                                        </span>
+                                    <input type="file" name="file[]" multiple="multiple" accept=".bmp,.djvu,.doc,.docx,.dwg,.csv,.gif,.jpeg,.jpg,.odf,.odt,.pdf,.png,.ppt,.pptx,.rar,.rtf,.svg,.tga,.tiff,.txt,.xls,.xlsx,.zip,.a3d,.cdt,.cdw,.m3d,.dwf,.cdr,.ai,.ics">
+                                    {{ button_attachment }}
+                                </label>
+                            </form>
+                        </div>
+                        <div class="date_rools">
+                            <input type="date" name="date_end" value="{{ date_end }}">
+                        </div>
+                        <div class="know_date">
+                            <label class="container_ch">Срок неизвестен
+                                <input type="checkbox" name="date_unknown" value="1">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div id="files" class="files_rools"></div>
+
+                        <script>
+                            $(document).on('change', '#form-upload input', function(){
+                                if (typeof timer != 'undefined') {
+                                    clearInterval(timer);
+                                }
+
+                                timer = setInterval(function() {
+                                    if ($('#form-upload input[type=file]').val() != '') {
+                                        clearInterval(timer);
+
+                                        $.ajax({
+                                            url: 'index.php?route=common/upload/upload',
+                                            type: 'post',
+                                            dataType: 'json',
+                                            data: new FormData($('#form-upload')[0]),
+                                            cache: false,
+                                            contentType: false,
+                                            processData: false,
+                                            beforeSend: function() {
+                                                $('#button-upload i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
+                                                $('#button-upload').prop('disabled', true);
+                                            },
+                                            complete: function() {
+                                                $('#button-upload i').replaceWith('<i class="fa fa-upload"></i>');
+                                                $('#button-upload').prop('disabled', false);
+                                            },
+                                            success: function(json) {
+                                                if (json['error']) {
+                                                    console.log(json['error']);
+                                                }
+
+                                                if (json['success']) {
+                                                    if (json['files']) {
+                                                        for (var i in json['files']) {
+                                                            var tmpl = '<div class="clearfix file_item">\n' +
+                                                                '<div class="logo_file"><img src="catalog/assets/img/file/' + json['files'][i]['type'] + '.png"></div>\n' +
+                                                                '    <div class="left_cop">\n' +
+                                                                '        <span>' + json['files'][i]['name'] + '</span>\n' +
+                                                                '        <span class="weigt">' + json['files'][i]['size'] + '</span>\n' +
+                                                                '        <input type="hidden" name="attachment[]" value="' + json['files'][i]['attachment_id'] + '">\n' +
+                                                                '    </div>\n' +
+                                                                '    <div class="right_cop">\n' +
+                                                                '        <span>' + json['files'][i]['date_added'] + '</span>\n' +
+                                                                '        <p class="delete_file_cust clearfix">\n' +
+                                                                '            <button class="delete_file">\n' +
+                                                                '               <svg xmlns="http://www.w3.org/2000/svg" height="329pt" viewBox="0 0 329.26933 329" width="329pt"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"/></svg>\n' +
+                                                                '            </button>\n' +
+                                                                '        </p>\n' +
+                                                                '    </div>\n' +
+                                                                '</div>';
+                                                            $('#files').append(tmpl);
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            error: function(xhr, ajaxOptions, thrownError) {
+                                                console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                            }
+                                        });
+                                    }
+                                }, 500);
+                            });
+
+                            $(document).on('click', '.file_item .delete_file', function(){
+                                $(this).parents('.file_item').remove();
+                            });
+                        </script>
+                    </div>
+
+                    <div class="opis_works clearfix">
+                        <div class="textt_input_go clearfix">
+                            <textarea class="textarea" name="description" id="textarea-description" placeholder="Описание работы" wrap="hard"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="uvel_st clearfix">
+                        <h4>Увеличить количество откликов в 2 раза</h4>
+                        <div class="point_c clearfix">
+                            <label class="container_ch clearfix">
+                                <div class="img_wrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 491.203 491.203" height="512" viewBox="0 0 491.203 491.203" width="512"><g><path d="m326.309 128.277-39.769-120h-82.175l-39.532 120z"/><path d="m88 8.277-88 120h133.248l39.53-120z"/><path d="m491.203 128.277-88-120h-85.058l39.769 120z"/><path d="m365.07 158.277-73.522 263.709 199.54-263.709z"/><path d="m245.602 482.926 87.52-324.078h-176.253z"/><path d="m.154 158.277 198.415 262.267-72.436-262.267z"/></g></svg>
+                                </div>
+                                <div class="text_wrap">
+                                    <p>Важный заказ</p>
+                                    <span>Приоритетное размещение в ленте на 24 часа</span>
+                                </div>
+                                <div class="price_w"><span> 100 ₽</span></div>
+                                <input type="checkbox" name="premium" id="uvel1" value="1">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="point_c clearfix">
+                            <label class="container_ch clearfix">
+                                <div class="img_wrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="512pt" viewBox="-91 0 512 512.00141" width="512pt"><path d="m315 211h-124.144531l107.167969-188.558594c2.652343-4.644531 2.636718-10.34375-.042969-14.972656-2.695313-4.625-7.632813-7.46875-12.980469-7.46875h-180c-6.457031 0-12.1875 4.132812-14.222656 10.253906l-90 271c-1.539063 4.570313-.761719 9.609375 2.050781 13.519532 2.828125 3.914062 7.355469 6.226562 12.171875 6.226562h127.253906l-81.035156 190.097656c-2.902344 6.753906-.46875 14.621094 5.742188 18.558594 6.109374 3.90625 14.316406 2.878906 19.246093-2.691406l240-271c3.925781-4.410156 4.894531-10.726563 2.476563-16.101563-2.417969-5.390625-7.777344-8.863281-13.683594-8.863281zm0 0"/></svg>
+                                </div>
+                                <div class="text_wrap">
+                                    <p>Срочный заказ</p>
+                                    <span>Яркое выделение заказа в ленте</span>
+                                </div>
+                                <div class="price_w"><span> 100 ₽</span></div>
+                                <input type="checkbox" name="hot" id="uvel2" value="1">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                   <!-- <div class="promocode">
+                        <h4>Есть промокод на скидку?</h4>
+                        <input type="text" placeholder="Ваш промокод">
+                        <span class="warning">Промокод не может быть активирован</span>
+                        <span class="normal">Промокод будет активирован</span>
+                    </div>-->
+
+
+
+
+                     <!--<div class="comissia clearfix">
+                        <div class="left_legart">
+                            <p>Срок блокировки оплаты</p>
+                        </div>
+                        <div class="right_legart">
+                            <select  class="templatingSelect5" name="payment_blocking_id">
+                                {% for payment_blocking in payment_blockings %}
+                                <option value="{{ payment_blocking.payment_blocking_id }}">{{ payment_blocking.name }}</option>
+                                {% endfor %}
+                            </select>
+
+
+
+                        </div>
+                    </div>-->
+                    <input type="hidden" name="payment_blocking_id" value="3">
+                    <div class="plagiat clearfix">
+                        <div class="left_legart">
+                            <label class="container_ch">Проверка на плагиат
+                                <input type="checkbox" name="plagiarism_check_unknown" value="1" id="openVAr">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="right_legart dub clearfix hide_select">
+                            <select class="templatingSelect5 hide_select_procent" name="plagiarism_check_id" disabled>
+                                <option value="0">Не указан</option>
+                                {% for plagiarism_check in plagiarism_checks %}
+                                    <option value="{{ plagiarism_check.plagiarism_check_id }}">{{ plagiarism_check.name }}</option>
+                                {% endfor %}
+                            </select>
+                            <p class="ribde">уникальность текста</p>
+                        </div>
+                    </div>
+                    <div class="variant_plag clearfix">
+                        <label class="container_ch"><img src="catalog/assets/img/antiplagiat.svg"> Антиплагиат
+                            <input type="checkbox" name="plagiarism[]" value="Антиплагиат">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container_ch"><img src="catalog/assets/img/eTXT.svg"> eTXT
+                            <input type="checkbox" name="plagiarism[]" value="eTXT">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container_ch"><img src="catalog/assets/img/logo-ap-vuz.svg"> Антиплагиат.ВУЗ <a data-toggle="modal" data-target="#plag1"><span>?</span></a>
+                            <input type="checkbox" name="plagiarism[]" value="Антиплагиат.ВУЗ">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container_ch"><img src="catalog/assets/img/rukon.png"> Руконтекст <a data-toggle="modal" data-target="#plag2"><span>?</span></a>
+                            <input type="checkbox" name="plagiarism[]" value="Руконтекст">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="coast_pan clearfix">
+                        <div class="wrap_price">
+                            <input type="text" name="price" placeholder="стоимость">
+                            <p>Сумма, которую вы готовы заплатить эксперту</p>
+                        </div>
+                        <div class="rigt_go">
+                            <button id="form-submit">Разместить заказ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ column_right }}
+        </div>
+        {{ content_bottom }}
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- plag1 -->
+<div class="modal fade" id="plag1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Антиплагиат.ВУЗ </h4>
+            </div>
+            <div class="modal-body">
+                <p>Необходимо предоставить доступ к системе Антиплагиат.ВУЗ</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- plag2 -->
+<div class="modal fade" id="plag2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Руконтекст</h4>
+            </div>
+            <div class="modal-body">
+                <p>Необходимо предоставить доступ к системе Руконтекст</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+    $(document).on('change', '.date_file input[name=date_unknown]', function () {
+        $('.date_file input[name=date_end]').prop('disabled', $(this).prop('checked'));
+    });
+
+    $(document).on('keydown', '#order-create input[name=price]', function () {
+        var price = parseFloat($(this).val());
+        $(this).val(price > 0 ? price: '');
+    });
+    $(document).on('change', '#order-create input[name=price]', function () {
+        var price = parseFloat($(this).val());
+        $(this).val(price > 0 ? price: '');
+    });
+
+    $(document).on('click', '#form-submit', function (e) {
+        if ($('#form-submit').prop('disabled') == true) return;
+
+        $('.has-error, .alert').remove();
+
+       // $('#order-create textarea').val($('#textarea-description').html());
+        $.ajax({
+            url : "index.php?route=order/order/create",
+            data : $('#order-create input[type=date], #order-create input[type=text], #order-create input[type=hidden], #order-create input[type=checkbox]:checked, #order-create select, #order-create textarea'),
+            method : 'POST',
+            dataType : 'json',
+            beforeSend : function() {
+                $('#form-submit').prop('disabled', true);
+            },
+            success : function (json) {
+                $('#form-submit').prop('disabled', false);
+
+                if (json['error_subject']) {
+                    $('#order-create select[name=subject]').after('<div class="has-error">' + json['error_subject'] + '</div>');
+                }
+                if (json['error_work_type']) {
+                    $('#order-create select[name=work_type]').after('<div class="has-error">' + json['error_work_type'] + '</div>');
+                }
+                if (json['error_date_end']) {
+                    $('#order-create input[name=date_end]').after('<div class="has-error">' + json['error_date_end'] + '</div>');
+                }
+                if (json['error_description']) {
+                    $('#order-create textarea[name=description]').after('<div class="has-error">' + json['error_description'] + '</div>');
+                }
+                if (json['error_title']) {
+                    $('#order-create input[name=title]').after('<div class="has-error">' + json['error_title'] + '</div>');
+                }
+
+                if (json['error_title']) {
+                    $('#order-create input[name=title]').focus();
+                    $('html, body').animate({
+                        scrollTop: $('#order-create input[name=title]').offset().top - 250  // класс объекта к которому приезжаем
+                    }, 1000);
+                } else if (json['error_subject']) {
+                    $('#order-create select[name=subject]').focus();
+                    $('html, body').animate({
+                        scrollTop: $('#order-create select[name=subject]').offset().top - 250  // класс объекта к которому приезжаем
+                    }, 1000);
+                } else if (json['error_work_type']) {
+                    $('#order-create select[name=work_type]').focus();
+                    $('html, body').animate({
+                        scrollTop: $('#order-create select[name=work_type]').offset().top - 250  // класс объекта к которому приезжаем
+                    }, 1000);
+                } else if (json['error_date_end']) {
+                    $('#order-create input[name=date_end]').focus();
+                    $('html, body').animate({
+                        scrollTop: $('#order-create input[name=date_end]').offset().top - 250  // класс объекта к которому приезжаем
+                    }, 1000);
+                } else if (json['error_description']) {
+                    $('#order-create textarea[name=description]').focus();
+                    $('html, body').animate({
+                        scrollTop: $('#order-create textarea[name=description]').offset().top - 250  // класс объекта к которому приезжаем
+                    }, 1000);
+                }
+
+
+                if (json['error_balance']) {
+                    window.open(json['balance_redirect'].replace('&amp;','&'));
+                }
+
+                if (json['success']) {
+                    $('#order-create').prepend('<div class="alert alert-success">' + json['error_date_end'] + '</div>');
+                }
+
+                if (json['redirect']) {
+                    location.href = json['redirect'].replace('&amp;','&');
+                }
+            }
+        });
+    });
+</script>
+{{ footer }}

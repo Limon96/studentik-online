@@ -1,0 +1,20 @@
+{% if messages %}
+{% for message in messages %}
+    <div id="offer-message-{{ message.offer_message_id }}" class="massage user clearfix" data-offer_message_id="{{ message.offer_message_id }}">
+        <div class="logo_my">
+            <img src="{{ message.image }}">
+        </div>
+        <div class="login_name">
+            <a href="{{ message.href }}">{{ message.login }}</a>
+        </div>
+        <div class="time_my">
+            <span>{{ message.date_added }}</span>
+        </div>
+        <div class="massage_txt">
+            <span>{{ message.text }}</span>
+        </div>
+        <div class="massage_attachments">
+        </div>
+    </div>
+{% endfor %}
+{% endif %}

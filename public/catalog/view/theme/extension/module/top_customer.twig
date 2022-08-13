@@ -1,0 +1,38 @@
+{% if customers %}
+<div class="clearfix worker_right">
+    <h3>{{ heading_title }}</h3>
+    {% for customer in customers %}
+    <div class="item_worker clearfix">
+        <div class="img_face clearfix">
+            <a href="{{ customer.href }}"><img src="{{ customer.image }}" alt="{{ customer.login }}"></a>
+            {% if customer.online %}<span></span>{% endif %}
+        </div>
+        <div class="info_worker clearfix">
+            <div class="lit_hed clearfix">
+                <a href="{{ customer.href }}">{{ customer.login }}</a>
+                {% if customer.pro %}<span class="premium">PREMIUM</span>{% endif %}
+            </div>
+            <div class="lit_foot clearfix">
+                <div class="enter clearfix">
+                    <span class="name">{{ text_rating }}</span>
+                    <span class="rating">{{ customer.rating }}</span>
+                    {% if customer.new_rating %}<span class="bonus">+{{ customer.new_rating }}</span>{% endif %}
+                </div>
+                <div class="enter_like clearfix">
+                    <img src="../catalog/assets/img/icons/like.svg">
+                    <span class="like">{{ customer.total_reviews_positive }}</span>
+                    <img src="../catalog/assets/img/icons/dislike.svg">
+                    <span class="dislike">{{ customer.total_reviews_negative }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="foot_worker clearfix">
+        <a href="{{ experts }}">
+            <img src="../catalog/assets/img/icons/eye.svg">
+            <span>{{ text_experts }}</span>
+        </a>
+    </div>
+</div>
+{% endif %}

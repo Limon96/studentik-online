@@ -1,0 +1,199 @@
+{{ header }}
+<div class="wrap_content">
+    <div class="container">
+        {{ content_top }}
+        <div class="row">
+            {{ column_left }}
+            <div class="center_content_resp">
+                <div class="clearfix console_wrap">
+                    <div class="clearfix search_panel">
+                        <div class="heads">
+                            <h2>Вывести деньги</h2>
+                            <ul class="breadcrumb clearfix">
+                                {% for breadcrumb in breadcrumbs %}
+                                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="body_output clearfix">
+                            <form id="withdrawal">
+                                <div class="money_my">
+                                    <p>Доступно для вывода средств</p>
+                                    <span>{{ balance }}</span>
+                                </div>
+                                <div class="money_bank clearfix">
+                                    <div class=" information_stan">
+                                        <h4>Выберите способ вывода денежных средств:</h4>
+                                        <div class="wrap_user_change clearfix">
+                                            <label class="container_rad23">
+                                                <p class="nazdert">Банковская карта</p>
+                                                <p class="comissiya">без комиссии</p>
+                                                <input type="radio" checked name="method" value="Карта VISA / MASTERCARD">
+                                                <span class="checkmark_rad23"></span>
+                                            </label>
+                                            {#<label class="container_rad23">
+                                                <p class="nazdert">WebMoney</p>
+                                                <p class="comissiya">без комиссии</p>
+                                                <input type="radio" name="output" value="2">
+                                                <span class="checkmark_rad23"></span>
+                                            </label>
+                                            <label class="container_rad23">
+                                                <p class="nazdert">Qiwi</p>
+                                                <p class="comissiya">без комиссии</p>
+                                                <input type="radio"  name="output" value="0">
+                                                <span class="checkmark_rad23"></span>
+                                            </label>#}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="figer clearfix">
+                                    <div class=" information_stan">
+                                        <h6>Если вы хотите вывести средства на ЮMoney или QIWI <a href="/index.php?route=information/contact" style="color: #1cb7ad;">напишите в поддержку</a></h6>
+
+                                    </div>
+                                </div>
+                                <div class="polit_card clearfix">
+                                    <div class="larets clearfix">
+                                        <h4>Введите сумму вывода</h4>
+                                        <input type="text" name="amount" placeholder="0 руб">
+                                        <span>Введите сумму от 100 руб. до 50 000 руб.</span>
+                                    </div>
+                                    <div class="larets clearfix">
+                                        <h4>Введите номер карты</h4>
+                                        <input type="text" name="card_number" placeholder=XXXX-XXXX-XXXX-XXXX>
+                                        <span>Например 1234 5678 9101 1121</span>
+                                    </div>
+                                    <div class="larets clearfix">
+                                        <button>Вывести деньги</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="hystory_opera2 clearfix">
+                            <h3>История операций</h3>
+                            <div class="clearfix main_whith">
+                            <div class="ekran_legend clearfix">
+                                <p>Статус</p>
+                                <p>Сумма</p>
+                                <p>Остаток</p>
+                                <p>Комментарий</p>
+                                <p>Реквизиты</p>
+                                <p>Дата</p>
+                            </div>
+                            <div class="wrap_list_history clearfix">
+
+                                {% for item in withdrawals %}
+                                <div class="item_fif clearfix">
+                                    {% if item.status == 0 %}
+                                        <p class="weyt">Ожидание <button data-withdrawal_id="{{ item.withdrawal_id }}">Отменить</button></p>
+                                    {% elseif item.status == 1 %}
+                                        <p class="pluss">Выполнен</p>
+                                    {% else %}
+                                        <p class="minus">Не выполнен</p>
+                                    {% endif %}
+                                    <p>-{{ item.amount }}</p>
+                                    <p>{{ item.balance }}</p>
+                                    <p>{{ item.comment }}</p>
+                                    <p>{{ item.card_number }}</p>
+                                    <p>{{ item.date_added }}</p>
+                                </div>
+                                {% endfor %}
+                                {% if start < total_withdrawals %}
+                                    <button class="open_more" data-page="{{ page + 1 }}">Показать ещё</button>
+                                {% endif %}
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            {{ column_right }}
+        </div>
+        {{ content_bottom }}
+    </div>
+    {{ content_bottom }}
+</div>
+<script>
+    $(document).on('click', '.hystory_opera2 .open_more', function (e) {
+        e.preventDefault();
+        $.ajax({
+            url : 'index.php?route=account/finance/output&page=' + $(this).data('page'),
+            method : 'GET',
+            beforeSend : function() {
+                $('.hystory_opera2 .open_more').remove();
+            },
+            success : function (html) {
+                $('.wrap_list_history').append($(html).find('.wrap_list_history').html());
+            }
+        });
+    });
+
+    $(document).on('submit', '#withdrawal', function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            url : 'index.php?route=account/finance/output_add&page=' + $(this).data('page'),
+            method : 'POST',
+            data : $(this).serialize(),
+            dataType : 'json',
+            beforeSend : function() {
+                $('#withdrawal button').prop('disabled', true);
+            },
+            success : function (json) {
+                $('#withdrawal button').prop('disabled', false);
+                if (json['success']) {
+                    alertSuccess(json['success']);
+                    refreshHistory();
+                } else {
+                    if (json['error_method']) {
+                        alertWarning(json['error_method']);
+                    }
+                    if (json['error_amount']) {
+                        alertWarning(json['error_amount']);
+                    }
+                    if (json['error_card_number']) {
+                        alertWarning(json['error_card_number']);
+                    }
+                }
+            }
+        });
+    });
+
+    $(document).on('click', '.wrap_list_history .item_fif button', function(e) {
+        e.preventDefault();
+        var that = this;
+        $.ajax({
+            url : 'index.php?route=account/finance/output_delete&withdrawal_id=' + $(this).data('withdrawal_id'),
+            method : 'POST',
+            data : $(this).serialize(),
+            dataType : 'json',
+            beforeSend : function() {
+                $(that).prop('disabled', true);
+            },
+            success : function (json) {
+                $(that).prop('disabled', false);
+                alertSuccess(json['success']);
+                refreshHistory();
+            }
+        });
+    });
+
+    function refreshHistory() {
+        $.ajax({
+            url : 'index.php?route=account/finance/output',
+            method : 'GET',
+            beforeSend : function() {
+                $('.hystory_opera2 .open_more').remove();
+            },
+            success : function (html) {
+                $('.wrap_list_history').html($(html).find('.wrap_list_history').html());
+                $('.money_my').html($(html).find('.money_my').html());
+                $('.coast').html($(html).find('.coast').html());
+            }
+        });
+    }
+</script>
+{{ footer }}

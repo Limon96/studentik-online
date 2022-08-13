@@ -1,0 +1,179 @@
+{{ header }}
+<div class="wrap_content">
+    {{ content_top }}
+    <div class="container">
+        <div class="row">
+            {{ column_left }}
+            <div class="center_content_resp">
+                <div class="clearfix console_wrap">
+                    <div class="clearfix search_panel">
+                        <div class="heads">
+                            <h2>Подать претензию</h2>
+                            <ul class="breadcrumb clearfix">
+                                {% for breadcrumb in breadcrumbs %}
+                                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <div class="wrap_claim clearfix">
+                            <div class="head_claim clearfix">
+                                <ul class="clearfix">
+                                    <li><p>Истец: </p><span><a href="{{ customer.href }}">{{ customer.login }}</a></span></li>
+                                    {#<li><p>Дата подачи: </p><span>{{ date_add }}</span></li>#}
+                                    <li><p>Ответчик: </p><span><a href="{{ defendant.href }}">{{ defendant.login }}</a></span></li>
+                                    <li><p>Объект:</p><span><a href="{{ object.href }}">{{ object.title }}</a></span></li>
+                                </ul>
+                            </div>
+                            <div class="body_claim clearfix">
+                                <div id="form-claim-add" class="text_claim clearfix">
+                                    <div class="textt_input_go clearfix">
+                                        <textarea name="comment" class="textarea" id="textarea-comment" cols="30" rows="10" placeholder="Описание проблемы..."></textarea>
+                                    </div>
+
+                                    <div id="files" class="files_rools"></div>
+                                    <div class="add_file">
+                                        <form id="form-upload">
+                                            <label class="add_works">
+                                        <span>
+                                            <svg style="position: relative;width: 10px" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" class="sw-icon">
+                                                <path d="M288 248v28c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-28c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm-12 72H108c-6.6 0-12 5.4-12 12v28c0 6.6 5.4 12 12 12h168c6.6 0 12-5.4 12-12v-28c0-6.6-5.4-12-12-12zm108-188.1V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V48C0 21.5 21.5 0 48 0h204.1C264.8 0 277 5.1 286 14.1L369.9 98c9 8.9 14.1 21.2 14.1 33.9zm-128-80V128h76.1L256 51.9zM336 464V176H232c-13.3 0-24-10.7-24-24V48H48v416h288z"></path>
+                                            </svg>
+                                        </span>
+                                                <input type="file" name="file[]" multiple="multiple" accept=".bmp,.djvu,.doc,.docx,.dwg,.csv,.gif,.jpeg,.jpg,.odf,.odt,.pdf,.png,.ppt,.pptx,.rar,.rtf,.svg,.tga,.tiff,.txt,.xls,.xlsx,.zip,.a3d,.cdt,.cdw,.m3d,.dwf,.cdr,.ai,.ics">
+                                                {{ button_attachment }}
+                                            </label>
+                                        </form>
+                                        <input type="hidden" name="type" value="{{ type }}">
+                                        <input type="hidden" name="object_id" value="{{ object_id }}">
+                                        <input type="hidden" name="defendant_id" value="{{ defendant_id }}">
+                                    </div>
+
+                                    <div class="clearfix wrap_rools_all">
+                                        <a  data-toggle="modal" data-target="#pravila" class="roolse_btn" >Правила подачи притензии</a>
+                                    </div>
+                                    <div class="clearfix wrap_add_claim">
+                                        <button class="add_claim">Подать претензию</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ column_right }}
+        </div>
+    </div>
+    {{ content_bottom }}
+</div>
+
+
+<!-- plag1 -->
+<div class="modal fade" id="pravila" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Правила подачи претензий</h4>
+            </div>
+            <div class="modal-body">
+
+                <p>При открытой претензии на пользователя, все операции по выводу денежных средств сразу блокируются. После закрытия претензии, заявки на вывод средств будут обработаны в течение суток с момента закрытия претензии.
+                </p>
+                <p>Время рассмотрения претензии зависит от сложности спорной ситуации.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $(document).on('change', '#form-upload input', function(){
+        if (typeof timer != 'undefined') {
+            clearInterval(timer);
+        }
+
+        timer = setInterval(function() {
+            if ($('#form-upload input[type=file]').val() != '') {
+                clearInterval(timer);
+
+                $.ajax({
+                    url: 'index.php?route=common/upload/upload',
+                    type: 'post',
+                    dataType: 'json',
+                    data: new FormData($('#form-upload')[0]),
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function() {
+                        $('#button-upload i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
+                        $('#button-upload').prop('disabled', true);
+                    },
+                    complete: function() {
+                        $('#button-upload i').replaceWith('<i class="fa fa-upload"></i>');
+                        $('#button-upload').prop('disabled', false);
+                    },
+                    success: function(json) {
+                        if (json['error']) {
+                            console.log(json['error']);
+                        }
+
+                        if (json['success']) {
+                            if (json['files']) {
+                                for (var i in json['files']) {
+                                    var tmpl = '<div class="clearfix file_item">\n' +
+                                        '<div class="logo_file"><img src="catalog/assets/img/file/' + json['files'][i]['type'] + '.png"></div>\n' +
+                                        '    <div class="left_cop">\n' +
+                                        '        <span>' + json['files'][i]['name'] + '</span>\n' +
+                                        '        <span class="weigt">' + json['files'][i]['size'] + '</span>\n' +
+                                        '        <input type="hidden" name="attachment[]" value="' + json['files'][i]['attachment_id'] + '">\n' +
+                                        '    </div>\n' +
+                                        '    <div class="right_cop">\n' +
+                                        '        <span>' + json['files'][i]['date_added'] + '</span>\n' +
+                                        '        <p class="delete_file_cust clearfix">\n' +
+                                        '            <button class="delete_file">\n' +
+                                        '               <svg xmlns="http://www.w3.org/2000/svg" height="329pt" viewBox="0 0 329.26933 329" width="329pt"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"/></svg>\n' +
+                                        '          </button>\n' +
+                                        '        </p>\n' +
+                                        '    </div>\n' +
+                                        '</div>';
+                                    $('#files').append(tmpl);
+                                }
+                            }
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    }
+                });
+            }
+        }, 500);
+    });
+
+    $(document).on('click', '.file_item .delete_file', function(){
+        $(this).parents('.file_item').remove();
+    });
+
+    $(document).on('click', '#form-claim-add .add_claim', function(e){
+        e.preventDefault();
+        $.ajax({
+            url : 'index.php?route=claim/claim/create',
+            method : 'POST',
+            data : $('#form-claim-add input , #form-claim-add textarea'),
+            dataType : 'json',
+            beforeSend : function() {
+                $('#form-claim-add .add_claim').prop('disabled', true);
+                console.log($('#form-claim-add .add_claim').prop('disabled'));
+            },
+            success : function (json) {
+                $('#form-claim-add .add_claim').prop('disabled', false);
+                console.log($('#form-claim-add .add_claim').prop('disabled'));
+                if (json['redirect']) {
+                    location.href = json['redirect'];
+                }
+            }
+        });
+    });
+</script>
+{{ footer }}
