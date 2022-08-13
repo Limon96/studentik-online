@@ -32,7 +32,7 @@
     <meta name="twitter:description" content="@yield('description')">
     <meta name="twitter:image" content="https://studentik.online/new-order/img/logo_razmetki.png">
 
-    <link rel="stylesheet" href="{{ asset('catalog/assets/css/font_awesome/css/all.min.css')">
+    <link rel="stylesheet" href="{{ asset('catalog/assets/css/font_awesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('catalog/assets/css/select2.css?v=' . $v) }}">
     <link rel="stylesheet" href="{{ asset('catalog/assets/css/style.css?v=' . $v) }}">
 
