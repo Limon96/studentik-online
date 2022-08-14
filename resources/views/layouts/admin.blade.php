@@ -11,14 +11,14 @@
     <title>@yield('title') {{ config('app.name', 'Laravel') }}</title>
 
     <!-- Vendor css -->
-    <link href="{{ asset('lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/Ionicons/css/ionicons.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/datatables/jquery.dataTables.css') }}" rel="stylesheet">
-    <link href="{{ asset('lib/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('manager/lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('manager/lib/Ionicons/css/ionicons.css') }}" rel="stylesheet">
+    <link href="{{ asset('manager/lib/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
+    <link href="{{ asset('manager/lib/datatables/jquery.dataTables.css') }}" rel="stylesheet">
+    <link href="{{ asset('manager/lib/select2/css/select2.min.css') }}" rel="stylesheet">
     <!-- Shamcey CSS -->
-    <link href="{{ asset('css/shamcey.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/manager.css') }}" rel="stylesheet">
+    <link href="{{ asset('manager/css/shamcey.css') }}" rel="stylesheet">
+    <link href="{{ asset('manager/css/manager.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -196,18 +196,18 @@
 </div>
 
 
-<script src="{{ asset('lib/jquery/jquery.js') }}"></script>
-<script src="{{ asset('lib/popper.js/popper.js') }}"></script>
-<script src="{{ asset('lib/bootstrap/bootstrap.js') }}"></script>
-<script src="{{ asset('lib/jquery-ui/jquery-ui.js') }}"></script>
-<script src="{{ asset('lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js') }}"></script>
-<script src="{{ asset('lib/moment/moment.js') }}"></script>
-<script src="{{ asset('lib/Flot/jquery.flot.js') }}"></script>
-<script src="{{ asset('lib/Flot/jquery.flot.resize.js') }}"></script>
-<script src="{{ asset('lib/flot-spline/jquery.flot.spline.js') }}"></script>
+<script src="{{ asset('manager/lib/jquery/jquery.js') }}"></script>
+<script src="{{ asset('manager/lib/popper.js/popper.js') }}"></script>
+<script src="{{ asset('manager/lib/bootstrap/bootstrap.js') }}"></script>
+<script src="{{ asset('manager/lib/jquery-ui/jquery-ui.js') }}"></script>
+<script src="{{ asset('manager/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js') }}"></script>
+<script src="{{ asset('manager/lib/moment/moment.js') }}"></script>
+<script src="{{ asset('manager/lib/Flot/jquery.flot.js') }}"></script>
+<script src="{{ asset('manager/lib/Flot/jquery.flot.resize.js') }}"></script>
+<script src="{{ asset('manager/lib/flot-spline/jquery.flot.spline.js') }}"></script>
 
-<script src="{{ asset('js/shamcey.js') }}"></script>
-<script src="{{ asset('js/dashboard.js') }}"></script>
+<script src="{{ asset('manager/js/shamcey.js') }}"></script>
+<script src="{{ asset('manager/js/dashboard.js') }}"></script>
 @yield('scripts')
 </body>
 </html>

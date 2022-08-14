@@ -13,5 +13,11 @@
                 <span>Страницы</span>
             </a>
         </li><!-- nav-item -->
+        <li class="nav-item">
+            <a href="{{ route('admin.blog.index') }}" class="nav-link @if(Route::is('admin.blog.index')) active @endif">
+                <i class="icon ion-ios-paper-outline"></i>
+                <span>Блог</span>
+            </a>
+        </li><!-- nav-item -->
     </ul>
 </div>

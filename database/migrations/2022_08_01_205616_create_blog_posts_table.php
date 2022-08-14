@@ -15,6 +15,15 @@ class CreateBlogPostsTable extends Migration
     {
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('slug')->unique()->index();
+            $table->text('intro')->nullable();
+            $table->longText('text');
+            $table->string('image')->default('')->nullable();
+            $table->string('meta_title')->default('')->nullable();
+            $table->string('meta_description')->default('')->nullable();
+            $table->string('meta_keywords')->default('')->nullable();
+            $table->integer('views')->default(0)->nullable();
             $table->timestamps();
         });
     }

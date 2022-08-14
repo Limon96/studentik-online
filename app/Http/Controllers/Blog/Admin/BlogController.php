@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Blog\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\BlogPost;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -14,7 +15,11 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $paginate = BlogPost::paginate(20);
+
+        return view('blog.admin.index', compact(
+            'paginate'
+        ));
     }
 
     /**
