@@ -23,7 +23,10 @@ class CreateBlogPostsTable extends Migration
             $table->string('meta_title')->default('')->nullable();
             $table->string('meta_description')->default('')->nullable();
             $table->string('meta_keywords')->default('')->nullable();
+            $table->string('tags')->default('')->nullable();
             $table->integer('views')->default(0)->nullable();
+            $table->integer('status')->default(0)->nullable();
+            $table->integer('publish_at')->default(0)->nullable();
             $table->timestamps();
         });
     }

@@ -13,9 +13,11 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $paginate = BlogPost::paginate(20);
+        $paginate = BlogPost::paginate(
+            $request->get('limit', 10)
+        );
 
         return view('blog.admin.index', compact(
             'paginate'

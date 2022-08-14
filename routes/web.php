@@ -17,11 +17,11 @@ include 'admin.php';
 
 Route::prefix('new-order')->group(function () {
     Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
     Route::get('/{slug}', [\App\Http\Controllers\Landing\LandingController::class, 'index'])->name('landing.show');
 });
 
 
 Route::prefix('blog')->group(function () {
     Route::get('/', [\App\Http\Controllers\Blog\BlogController::class, 'index'])->name('blog.index');
+    Route::get('/{slug}', [\App\Http\Controllers\Blog\BlogController::class, 'index'])->name('blog.show');
 });
