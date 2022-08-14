@@ -32,3 +32,4 @@ yarn-error.log
 /storage/framework/testing/
 /storage/logs/
 /public/system/storage/upload/
+htdocs
