@@ -6,16 +6,25 @@
     {{ config('app.name', 'Laravel') }}
 @endsection
 @section('styles')
-
+    <link rel="stylesheet" href="{{ asset('manager/lib/quill/quill.core.css') }}">
+    <link rel="stylesheet" href="{{ asset('manager/lib/quill/quill.show.css') }}">
 @endsection
 @section('scripts')
+    <script src="{{ asset('manager/lib/quill/quill.min.js') }}"></script>
+    <script src="{{ asset('manager/lib/quill/quill.core.js') }}"></script>
+    <script>
+        var editor = new Quill('#textarea-text', {
+            //modules: { toolbar: '#toolbar' },
+            //theme: 'snow',
+        });
+    </script>
 
 @endsection
 @section('content')
     <div class="sh-breadcrumb">
         <nav class="breadcrumb">
             <a class="breadcrumb-item" href="{{ route('admin.dashboard') }}">{{ __('Панель управления') }}</a>
-            <a class="breadcrumb-item" href="{{ route('admin.blog.index') }}">{{ __('Блог') }}<</a>
+            <a class="breadcrumb-item" href="{{ route('admin.blog.index') }}">{{ __('Блог') }}</a>
             <span class="breadcrumb-item active">@yield('title')</span>
         </nav>
     </div><!-- sh-breadcrumb -->
@@ -43,7 +52,7 @@
 
         <div class="sh-pagebody">
             <div class="row row-sm mt-3 mb-3">
-                <div class="col-lg-12">
+                <div class="col-lg-9">
                     @if(session('success'))
                         <div class="row justify-content-center">
                             <div class="col-md-12">
@@ -95,8 +104,18 @@
                                         <label class="form-control-label" for="input-title">Заголовок</label>
                                         <input class="form-control"
                                                id="input-title" type="text"
-                                               name="name"
+                                               name="title"
                                                value="{{ old('title', $item->title ?? '') }}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-control-label"
+                                               for="textarea-intro">Введение</label>
+                                        <textarea class="form-control"
+                                                  id="textarea-intro"
+                                                  name="intro"
+                                                  cols="30"
+                                                  rows="7">{{ old('intro', $item->intro ?? '') }}</textarea>
                                     </div>
 
                                     <div class="form-group">
@@ -157,44 +176,16 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image-image" class="form-control-label">Изображение</label>
-                                        <label class="file-changer">
-                                            <input type="hidden" name="image" value="{{ old('image', $item->image) }}">
-                                            @if($item->image && \Illuminate\Support\Facades\Storage::exists(old('image', $item->image)))
-                                                @include('admin.partials.file_preview', ['path' => old('image', $item->image)])
-                                            @else
-                                                @include('admin.partials.file_preview_default')
-                                            @endif
-                                        </label>
+                                        <label class="form-label" for="file-image">Изображение</label>
+                                        <input type="hidden" name="image" value="{{ $item->image }}">
+                                        <input type="file" id="file-image" name="image" class="form-control-file">
+                                        @if($item->image)
+                                            <div class="mt-3">
+                                                <img src="{{ $item->image }}" class="img-thumbnail w-25" alt="Preview">
+                                            </div>
+                                        @endif
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="image-file" class="form-control-label">Файл</label>
-                                        <label class="file-changer">
-                                            <input type="hidden" name="file" value="{{ old('file', $item->file) }}">
-                                            @if($item->file && \Illuminate\Support\Facades\Storage::exists(old('file', $item->file)))
-                                                @include('admin.partials.file_preview', ['path' => old('file', $item->file)])
-                                            @else
-                                                @include('admin.partials.file_preview_default')
-                                            @endif
-                                        </label>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="image-video" class="form-control-label">Видео</label>
-                                        <label class="file-changer">
-                                            <input type="hidden" name="video" value="{{ old('video', $item->video ?? config('app.default_image')) }}">
-                                            @if($item->video && \Illuminate\Support\Facades\Storage::exists(old('video', $item->video)))
-                                                @include('admin.partials.file_preview', ['path' => old('video', $item->video)])
-                                            @else
-                                                @include('admin.partials.file_preview_default')
-                                            @endif
-                                        </label>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="input-link" class="form-control-label">Ссылка</label>
-                                        <input id="input-link" class="form-control select2" name="link" value="{{ old('link', $item->link) }}">
-                                    </div>
                                     <div class="form-group">
                                         <label for="select-status" class="form-control-label">Статус</label>
                                         <select id="select-status" class="form-control select2" name="status">
@@ -206,6 +197,13 @@
                             </div><!-- card-body -->
                         </div>
 
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="card bd">
+                        <div class="card-header bd-b">Статистика</div>
+                        <div class="card-body"></div>
                     </div>
                 </div>
             </div>

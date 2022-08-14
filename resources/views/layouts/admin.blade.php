@@ -37,7 +37,7 @@
     <div class="sh-headpanel-left">
 
         <!-- START: HIDDEN IN MOBILE -->
-        {{--<a href="" class="sh-icon-link">
+        <a href="" class="sh-icon-link">
             <div>
                 <i class="icon ion-ios-folder-outline"></i>
                 <span>Directory</span>
@@ -54,11 +54,11 @@
                 <i class="icon ion-ios-gear-outline"></i>
                 <span>Settings</span>
             </div>
-        </a>--}}
+        </a>
         <!-- END: HIDDEN IN MOBILE -->
 
         <!-- START: DISPLAYED IN MOBILE ONLY -->
-        {{--<div class="dropdown dropdown-app-list">
+        <div class="dropdown dropdown-app-list">
             <a href="" data-toggle="dropdown" class="dropdown-link">
                 <i class="icon ion-ios-keypad tx-18"></i>
             </a>
@@ -90,7 +90,7 @@
                     </div><!-- col-4 -->
                 </div><!-- row -->
             </div><!-- dropdown-menu -->
-        </div><!-- dropdown -->--}}
+        </div><!-- dropdown -->
         <!-- END: DISPLAYED IN MOBILE ONLY -->
 
     </div><!-- sh-headpanel-left -->
