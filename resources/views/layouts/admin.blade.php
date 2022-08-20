@@ -19,6 +19,7 @@
     <!-- Shamcey CSS -->
     <link href="{{ asset('manager/css/shamcey.css') }}" rel="stylesheet">
     <link href="{{ asset('manager/css/manager.css') }}" rel="stylesheet">
+    @yield('styles')
 </head>
 
 <body>

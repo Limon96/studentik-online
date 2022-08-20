@@ -55,7 +55,7 @@
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit"
-                                                    class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i></button>
+                                                    class="btn btn-sm btn-danger btn-delete point_c" onclick="return confirm('Действительно хотите удалить запись?');"><i class="fa fa-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>

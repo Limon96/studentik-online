@@ -54,7 +54,7 @@ class BlogController extends Controller
 
         if ($item) {
             return redirect()
-                ->route('admin.blog.index ')
+                ->route('admin.blog.index')
                 ->with(['success' => "Запись [{$item->id}] успешно сохранена"]);
         } else {
             return back()
@@ -105,7 +105,7 @@ class BlogController extends Controller
         $item->update($data);
 
         return redirect()
-            ->route('blod.admin.index')
+            ->route('admin.blog.index')
             ->with(['success' => "Запись [$id] успешно сохранена"]);
     }
 
@@ -122,7 +122,7 @@ class BlogController extends Controller
         $item->forceDelete();
 
         return redirect()
-            ->route('blod.admin.index')
+            ->route('admin.blog.index')
             ->with(['success' => "Запись [$id] удалена"]);
     }
 }

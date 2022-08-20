@@ -6,17 +6,55 @@
     {{ config('app.name', 'Laravel') }}
 @endsection
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('manager/lib/quill/quill.core.css') }}">
-    <link rel="stylesheet" href="{{ asset('manager/lib/quill/quill.show.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css" />
+
+    <!-- Theme included stylesheets -->
+    {{--<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">--}}
+    {{--<link href="{{ asset('manager/lib/quill/quill.core.css') }}" rel="stylesheet">--}}
+    <link href="{{ asset('manager/lib/quill/quill.snow.css') }}" rel="stylesheet">
 @endsection
 @section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <!-- Main Quill library -->
     <script src="{{ asset('manager/lib/quill/quill.min.js') }}"></script>
-    <script src="{{ asset('manager/lib/quill/quill.core.js') }}"></script>
     <script>
-        var editor = new Quill('#textarea-text', {
-            //modules: { toolbar: '#toolbar' },
-            //theme: 'snow',
+        var container = document.getElementById('editor-text');
+
+        var options = {
+            modules: {
+                formula: true,
+                syntax: true,
+                toolbar: '#toolbar-container'
+            },
+            placeholder: 'Начните вводить текст...',
+            theme: 'snow'
+        };
+
+        var quill = new Quill(container, options);
+
+        quill.on('text-change', function(delta, oldDelta, source) {
+            $('#textarea-text').val($('#editor-text .ql-editor').html());
         });
+
+    </script>
+
+    <script>
+        var loadFile = function(event) {
+            var src = URL.createObjectURL(event.target.files[0])
+
+            if (!$('#preview img').length) {
+                $('#preview').prepend('<img class="img-thumbnail">');
+            }
+
+            $('#preview img').attr('src', src);
+
+            $('#preview img').onload = function() {
+                URL.revokeObjectURL(src) // free memory
+            }
+        };
     </script>
 
 @endsection
@@ -87,124 +125,181 @@
                         @error('slug')<div class="alert alert-danger">{{ $message }}</div>@enderror
                         @error('image')<div class="alert alert-danger">{{ $message }}</div>@enderror
 
-                        <div class="card bd">
-                            <div class="card-header bd-b">
-                                <ul class="nav nav-tabs card-header-tabs">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="#tab-general">Основные</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#tab-data">Дополнительно</a>
-                                    </li>
-                                </ul>
-                            </div><!-- card-header -->
-                            <div class="card-body color-gray-lighter">
-                                <div id="tab-general" class="tab-card active">
-                                    <div class="form-group">
-                                        <label class="form-control-label" for="input-title">Заголовок</label>
-                                        <input class="form-control"
-                                               id="input-title" type="text"
-                                               name="title"
-                                               value="{{ old('title', $item->title ?? '') }}">
-                                    </div>
+                        <div class="card-header bd-b">Основные</div>
+                        <!-- card-header -->
+                        <div class="card-body color-gray-lighter">
+                            <div id="tab-general" class="tab-card active">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-title">Заголовок</label>
+                                    <input class="form-control"
+                                           id="input-title" type="text"
+                                           name="title"
+                                           value="{{ old('title', $item->title ?? '') }}">
+                                </div>
 
-                                    <div class="form-group">
-                                        <label class="form-control-label"
-                                               for="textarea-intro">Введение</label>
-                                        <textarea class="form-control"
-                                                  id="textarea-intro"
-                                                  name="intro"
-                                                  cols="30"
-                                                  rows="7">{{ old('intro', $item->intro ?? '') }}</textarea>
-                                    </div>
+                                <div class="form-group">
+                                    <label class="form-control-label"
+                                           for="textarea-intro">Введение</label>
+                                    <textarea class="form-control"
+                                              id="textarea-intro"
+                                              name="intro"
+                                              cols="30"
+                                              rows="7">{{ old('intro', $item->intro ?? '') }}</textarea>
+                                </div>
 
-                                    <div class="form-group">
-                                        <label class="form-control-label"
-                                               for="textarea-text">Текст</label>
+                                <div class="form-group">
+                                    <label class="form-control-label"
+                                           for="textarea-text">Текст</label>
+
+                                    <div id="standalone-container">
+                                        <div id="toolbar-container">
+                                            <span class="ql-formats">
+                                              <select class="ql-font"></select>
+                                              <select class="ql-size"></select>
+                                            </span>
+                                            <span class="ql-formats">
+                                              <button class="ql-bold"></button>
+                                              <button class="ql-italic"></button>
+                                              <button class="ql-underline"></button>
+                                              <button class="ql-strike"></button>
+                                            </span>
+                                            <span class="ql-formats">
+                                              <select class="ql-color"></select>
+                                              <select class="ql-background"></select>
+                                            </span>
+                                            <span class="ql-formats">
+                                              <button class="ql-script" value="sub"></button>
+                                              <button class="ql-script" value="super"></button>
+                                            </span>
+                                            <span class="ql-formats">
+                                              <button class="ql-header" value="1"></button>
+                                              <button class="ql-header" value="2"></button>
+                                              <button class="ql-blockquote"></button>
+                                              <button class="ql-code-block"></button>
+                                            </span>
+                                            <span class="ql-formats">
+                                              <button class="ql-list" value="ordered"></button>
+                                              <button class="ql-list" value="bullet"></button>
+                                              <button class="ql-indent" value="-1"></button>
+                                              <button class="ql-indent" value="+1"></button>
+                                            </span>
+                                            <span class="ql-formats">
+                                              <button class="ql-direction" value="rtl"></button>
+                                              <select class="ql-align"></select>
+                                            </span>
+                                            <span class="ql-formats">
+                                              <button class="ql-link"></button>
+                                              <button class="ql-image"></button>
+                                              <button class="ql-video"></button>
+                                              <button class="ql-formula"></button>
+                                            </span>
+                                            <span class="ql-formats">
+                                              <button class="ql-clean"></button>
+                                            </span>
+                                        </div>
+                                        <div id="editor-text">{!! old('text', $item->text ?? '') !!}</div>
                                         <textarea class="form-control"
+                                                  style="display: none"
                                                   id="textarea-text"
                                                   name="text"
                                                   cols="30"
                                                   rows="7">{{ old('text', $item->text ?? '') }}</textarea>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label class="form-control-label"
-                                               for="input-meta-title">Meta Title</label>
-                                        <input class="form-control"
-                                               id="input-meta-title" type="text"
-                                               name="meta_title"
-                                               value="{{ old('meta_title', $item->meta_title ?? '') }}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="form-control-label"
-                                               for="textarea-meta_description">Meta Description</label>
-                                        <textarea class="form-control"
-                                                  id="textarea-meta_description"
-                                                  name="meta_description"
-                                                  cols="30"
-                                                  rows="3">{{ old('meta_description', $item->meta_description ?? '') }}</textarea>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="form-control-label"
-                                               for="textarea-meta_keywords">Meta Keywords</label>
-                                        <textarea class="form-control"
-                                                  id="textarea-meta_keywords"
-                                                  name="meta_keywords"
-                                                  cols="30"
-                                                  rows="3">{{ old('meta_keywords', $item->meta_keywords ?? '') }}</textarea>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="form-control-label"
-                                               for="textarea-tags">Теги</label>
-                                        <textarea class="form-control"
-                                                  id="textarea-tags"
-                                                  name="tags"
-                                                  cols="30"
-                                                  rows="3">{{ old('tags', $item->tags ?? '') }}</textarea>
-                                    </div>
-
 
                                 </div>
-                                <div id="tab-data" class="tab-card">
-                                    <div class="form-group">
-                                        <label for="input-slug" class="form-control-label">SEO URL</label>
-                                        <input id="input-slug" class="form-control select2" name="slug" value="{{ old('slug', $item->slug) }}">
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label class="form-label" for="file-image">Изображение</label>
-                                        <input type="hidden" name="image" value="{{ $item->image }}">
-                                        <input type="file" id="file-image" name="image" class="form-control-file">
-                                        @if($item->image)
-                                            <div class="mt-3">
-                                                <img src="{{ $item->image }}" class="img-thumbnail w-25" alt="Preview">
-                                            </div>
-                                        @endif
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="select-status" class="form-control-label">Статус</label>
-                                        <select id="select-status" class="form-control select2" name="status">
-                                            <option value="0" @if(old('status', $item->status) == 0) selected @endif>Отключен</option>
-                                            <option value="1" @if(old('status', $item->status) == 1) selected @endif>Включен</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group">
+                                    <label class="form-control-label"
+                                           for="input-meta-title">Meta Title</label>
+                                    <input class="form-control"
+                                           id="input-meta-title" type="text"
+                                           name="meta_title"
+                                           value="{{ old('meta_title', $item->meta_title ?? '') }}">
                                 </div>
-                            </div><!-- card-body -->
-                        </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label"
+                                           for="textarea-meta_description">Meta Description</label>
+                                    <textarea class="form-control"
+                                              id="textarea-meta_description"
+                                              name="meta_description"
+                                              cols="30"
+                                              rows="3">{{ old('meta_description', $item->meta_description ?? '') }}</textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label"
+                                           for="textarea-meta_keywords">Meta Keywords</label>
+                                    <textarea class="form-control"
+                                              id="textarea-meta_keywords"
+                                              name="meta_keywords"
+                                              cols="30"
+                                              rows="3">{{ old('meta_keywords', $item->meta_keywords ?? '') }}</textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label"
+                                           for="textarea-tags">Теги</label>
+                                    <textarea class="form-control"
+                                              id="textarea-tags"
+                                              name="tags"
+                                              cols="30"
+                                              rows="3">{{ old('tags', $item->tags ?? '') }}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-slug" class="form-control-label">SEO URL</label>
+                                    <input id="input-slug" class="form-control select2" name="slug" value="{{ old('slug', $item->slug) }}">
+                                </div>
+                            </div>
+                        </div><!-- card-body -->
 
                     </div>
                 </div>
 
                 <div class="col-lg-3">
                     <div class="card bd">
-                        <div class="card-header bd-b">Статистика</div>
-                        <div class="card-body"></div>
+                        <div class="card-header bd-b">Изображение</div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div id="preview">
+                                    @if($item->image)
+                                        <img src="{{ thumbnail($item->image, 480) }}" class="img-thumbnail" alt="Preview">
+                                    @endif
+                                    <input type="hidden" name="image" value="{{ $item->image }}">
+                                    <label for="file-image" class="btn btn-dark w-100 mt-3">
+                                        <input type="file" id="file-image" name="image" class="form-control-file" accept="image/*" onchange="loadFile(event)" style="display: none">
+                                        Загрузить
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <div class="card bd mt-4">
+                        <div class="card-header bd-b">Дополнительно</div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="select-status" class="form-control-label">Статус</label>
+                                <select id="select-status" class="form-control select2" name="status">
+                                    <option value="0" @if(old('status', $item->status) == 0) selected @endif>Отключен</option>
+                                    <option value="1" @if(old('status', $item->status) == 1) selected @endif>Включен</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    @if($item->views)
+                    <div class="card bd mt-4">
+                        <div class="card-header bd-b">Статистика</div>
+                        <div class="card-body p-0">
+                            <table class="table table-responsive mb-0">
+                                <tr>
+                                    <th>Просмотры</th>
+                                    <td>{{ $item->views }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>
