@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Blog\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\BlogPost\StoreRequest;
-use App\Http\Requests\Admin\BlogPost\UpdateRequest;
+use App\Http\Requests\Admin\BlogCategory\StoreRequest;
+use App\Http\Requests\Admin\BlogCategory\UpdateRequest;
 use App\Models\BlogCategory;
-use App\Models\BlogPost;
 use Illuminate\Http\Request;
 
-class BlogController extends Controller
+class BlogCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,17 +17,16 @@ class BlogController extends Controller
      */
     public function index(Request $request)
     {
-        $items = BlogPost::select([
+        $items = BlogCategory::select([
             'id',
             'title',
             'created_at',
             'updated_at',
-            'publish_at',
             'status',
             'slug',
         ])->get();
 
-        return view('blog.admin.index', compact(
+        return view('blog_category.admin.index', compact(
             'items'
         ));
     }
@@ -40,12 +38,10 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $categories = BlogCategory::orderBy('title')->get();
-        $item = BlogPost::make();
+        $item = BlogCategory::make();
 
-        return view('blog.admin.form', compact(
-            'item',
-            'categories'
+        return view('blog_category.admin.form', compact(
+            'item'
         ));
     }
 
@@ -59,11 +55,11 @@ class BlogController extends Controller
     {
         $data = $request->validated();
 
-        $item = BlogPost::create($data);
+        $item = BlogCategory::create($data);
 
         if ($item) {
             return redirect()
-                ->route('admin.blog.index')
+                ->route('admin.blog_category.index')
                 ->with(['success' => "Запись [{$item->id}] успешно сохранена"]);
         } else {
             return back()
@@ -91,13 +87,10 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        $item = BlogPost::findOrFail($id);
+        $item = BlogCategory::findOrFail($id);
 
-        $categories = BlogCategory::orderBy('title')->get();
-
-        return view('blog.admin.form', compact(
-            'item',
-            'categories'
+        return view('blog_category.admin.form', compact(
+            'item'
         ));
     }
 
@@ -110,14 +103,13 @@ class BlogController extends Controller
      */
     public function update(UpdateRequest $request, $id)
     {
-        $item = BlogPost::findOrFail($id);
-
+        $item = BlogCategory::findOrFail($id);
         $data = $request->validated();
 
         $item->update($data);
 
         return redirect()
-            ->route('admin.blog.index')
+            ->route('admin.blog_category.index')
             ->with(['success' => "Запись [$id] успешно сохранена"]);
     }
 
@@ -129,12 +121,12 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        $item = BlogPost::findOrFail($id);
+        $item = BlogCategory::findOrFail($id);
 
         $item->forceDelete();
 
         return redirect()
-            ->route('admin.blog.index')
+            ->route('admin.blog_category.index')
             ->with(['success' => "Запись [$id] удалена"]);
     }
 }

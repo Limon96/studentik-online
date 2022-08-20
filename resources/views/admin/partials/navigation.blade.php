@@ -19,5 +19,11 @@
                 <span>Блог</span>
             </a>
         </li><!-- nav-item -->
+        <li class="nav-item">
+            <a href="{{ route('admin.blog_category.index') }}" class="nav-link @if(Route::is('admin.blog_category.index')) active @endif">
+                <i class="icon ion-ios-list-outline"></i>
+                <span>Категории</span>
+            </a>
+        </li><!-- nav-item -->
     </ul>
 </div>

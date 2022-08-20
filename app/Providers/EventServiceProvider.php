@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\BlogCategory;
 use App\Models\BlogPost;
 use App\Models\Landing;
+use App\Observers\BlogCategoryObserver;
 use App\Observers\BlogPostObserver;
 use App\Observers\LandingObserver;
 use Illuminate\Auth\Events\Registered;
@@ -32,5 +34,6 @@ class EventServiceProvider extends ServiceProvider
     {
         Landing::observe(LandingObserver::class);
         BlogPost::observe(BlogPostObserver::class);
+        BlogCategory::observe(BlogCategoryObserver::class);
     }
 }

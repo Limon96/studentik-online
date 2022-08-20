@@ -117,13 +117,15 @@
                     @endif
 
                     <div class="card">
-                        @error('name')<div class="alert alert-danger">{{ $message }}</div>@enderror
+                        @error('title')<div class="alert alert-danger">{{ $message }}</div>@enderror
                         @error('meta_title')<div class="alert alert-danger">{{ $message }}</div>@enderror
                         @error('meta_desc')<div class="alert alert-danger">{{ $message }}</div>@enderror
                         @error('meta_keywords')<div class="alert alert-danger">{{ $message }}</div>@enderror
+                        @error('blog_category_id')<div class="alert alert-danger">{{ $message }}</div>@enderror
                         @error('tags')<div class="alert alert-danger">{{ $message }}</div>@enderror
                         @error('slug')<div class="alert alert-danger">{{ $message }}</div>@enderror
                         @error('image')<div class="alert alert-danger">{{ $message }}</div>@enderror
+                        @error('publish_at')<div class="alert alert-danger">{{ $message }}</div>@enderror
 
                         <div class="card-header bd-b">Основные</div>
                         <!-- card-header -->
@@ -258,32 +260,29 @@
                 </div>
 
                 <div class="col-lg-3">
-                    <div class="card bd">
-                        <div class="card-header bd-b">Изображение</div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <div id="preview">
-                                    @if($item->image)
-                                        <img src="{{ thumbnail($item->image, 480) }}" class="img-thumbnail" alt="Preview">
-                                    @endif
-                                    <input type="hidden" name="image" value="{{ $item->image }}">
-                                    <label for="file-image" class="btn btn-dark w-100 mt-3">
-                                        <input type="file" id="file-image" name="image" class="form-control-file" accept="image/*" onchange="loadFile(event)" style="display: none">
-                                        Загрузить
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @include('components.admin.preview_image')
+
                     <div class="card bd mt-4">
                         <div class="card-header bd-b">Дополнительно</div>
                         <div class="card-body">
                             <div class="form-group">
+                                <label for="select-category" class="form-control-label">Категория</label>
+                                <select id="select-category" class="form-control select2" name="blog_category_id">
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}" @if(old('blog_category_id', $item->blog_category_id) == $category->id) selected @endif>{{ $category->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="select-status" class="form-control-label">Статус</label>
                                 <select id="select-status" class="form-control select2" name="status">
-                                    <option value="0" @if(old('status', $item->status) == 0) selected @endif>Отключен</option>
-                                    <option value="1" @if(old('status', $item->status) == 1) selected @endif>Включен</option>
+                                    <option value="0" @if(old('status', $item->status) == 0) selected @endif>Черновик</option>
+                                    <option value="1" @if(old('status', $item->status) == 1) selected @endif>Опубликовано</option>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-publish_at" class="form-control-label">Дата публикации</label>
+                                <input id="input-publish_at" class="form-control" type="datetime-local" name="publish_at" value="{{ old('publish_at', $item->publish_at) }}">
                             </div>
                         </div>
                     </div>

@@ -5,29 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BlogPost extends Model
+class BlogCategory extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'title',
         'slug',
-        'intro',
-        'text',
         'image',
         'meta_title',
         'meta_description',
         'meta_keywords',
-        'tags',
-        'views',
         'status',
-        'publish_at',
-        'blog_category_id',
     ];
 
-    public function category()
+    public function posts()
     {
-        return $this->belongsTo(BlogCategory::class, 'blog_category_id', 'id');
+        return $this->hasMany(BlogPost::class, 'blog_category_id', 'id');
     }
 
 }

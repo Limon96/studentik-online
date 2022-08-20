@@ -21,7 +21,11 @@ Route::prefix('_manager')->group(function() {
 
         Route::get('pagebuilder/{block}', [App\Http\Controllers\PageBuilder\PageBuilderController::class, 'index'])->name('admin.pagebuilder.index');
 
-        Route::resource('blog', App\Http\Controllers\Blog\Admin\BlogController::class)->names('admin.blog');
-
+        Route::name('admin.')->group(function() {
+            Route::resources([
+                'blog' => App\Http\Controllers\Blog\Admin\BlogController::class,
+                'blog_category' => App\Http\Controllers\Blog\Admin\BlogCategoryController::class,
+            ]);
+        });
     });
 });
