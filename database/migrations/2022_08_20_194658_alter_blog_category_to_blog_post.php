@@ -14,7 +14,7 @@ class AlterBlogCategoryToBlogPost extends Migration
     public function up()
     {
         Schema::table('blog_posts', function (Blueprint $table) {
-            $table->foreignId('blog_category_id')->constrained('blog_categories')->onDelete('cascade');
+            $table->foreignId('blog_category_id');
         });
     }
 
@@ -26,7 +26,7 @@ class AlterBlogCategoryToBlogPost extends Migration
     public function down()
     {
         Schema::table('blog_posts', function (Blueprint $table) {
-            $table->dropConstrainedForeignId('blog_category_id');
+            $table->dropForeign('blog_category_id');
         });
     }
 }
