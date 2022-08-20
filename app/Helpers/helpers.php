@@ -14,7 +14,7 @@ if(!function_exists('thumbnail')) {
         }
 
         if (!file_exists(dirname($thumbnailFilePath))) {
-            mkdir(dirname($thumbnailFilePath), 666, true);
+            mkdir(dirname($thumbnailFilePath), 0777, true);
         }
 
         $img = \Intervention\Image\Facades\Image::make($imageFilePath);
