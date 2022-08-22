@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\BlogPost\StoreRequest;
 use App\Http\Requests\Admin\BlogPost\UpdateRequest;
 use App\Models\BlogCategory;
 use App\Models\BlogPost;
+use App\Repositories\BlogCategoryRepository;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -40,7 +41,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $categories = BlogCategory::orderBy('title')->get();
+        $categories = app(BlogCategoryRepository::class)->forSelect();
         $item = BlogPost::make();
 
         return view('blog.admin.form', compact(
@@ -93,7 +94,7 @@ class BlogController extends Controller
     {
         $item = BlogPost::findOrFail($id);
 
-        $categories = BlogCategory::orderBy('title')->get();
+        $categories = app(BlogCategoryRepository::class)->forSelect();
 
         return view('blog.admin.form', compact(
             'item',

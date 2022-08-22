@@ -150,6 +150,18 @@
                         <div class="card-header bd-b">Дополнительно</div>
                         <div class="card-body">
                             <div class="form-group">
+                                <label for="select-category" class="form-control-label">Родительская категория</label>
+                                <select id="select-category" class="form-control select2" name="blog_category_id">
+                                    <option value="0">-- Не выбрано --</option>
+                                    @foreach($categories as $category)
+                                        @include('components.admin.select_option_categories', [
+                                            'option' => $category,
+                                            'selected_id' => old('blog_category_id', $item->blog_category_id)
+                                        ])
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="select-status" class="form-control-label">Статус</label>
                                 <select id="select-status" class="form-control select2" name="status">
                                     <option value="0" @if(old('status', $item->status) == 0) selected @endif>Отключен</option>

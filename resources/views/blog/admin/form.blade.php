@@ -174,8 +174,8 @@
                                               <button class="ql-script" value="super"></button>
                                             </span>
                                             <span class="ql-formats">
-                                              <button class="ql-header" value="1"></button>
                                               <button class="ql-header" value="2"></button>
+                                                <button class="ql-header tx-bold" value="3">H<small>3</small></button>
                                               <button class="ql-blockquote"></button>
                                               <button class="ql-code-block"></button>
                                             </span>
@@ -269,7 +269,10 @@
                                 <label for="select-category" class="form-control-label">Категория</label>
                                 <select id="select-category" class="form-control select2" name="blog_category_id">
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" @if(old('blog_category_id', $item->blog_category_id) == $category->id) selected @endif>{{ $category->title }}</option>
+                                        @include('components.admin.select_option_categories', [
+                                            'option' => $category,
+                                            'selected_id' => old('blog_category_id', $item->blog_category_id)
+                                        ])
                                     @endforeach
                                 </select>
                             </div>

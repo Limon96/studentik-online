@@ -17,7 +17,18 @@ class BlogCategory extends Model
         'meta_description',
         'meta_keywords',
         'status',
+        'blog_category_id',
     ];
+
+    public function parent()
+    {
+        return $this->belongsTo(BlogCategory::class, 'blog_category_id', 'id');
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(BlogCategory::class, 'blog_category_id', 'id');
+    }
 
     public function posts()
     {

@@ -41,24 +41,9 @@
                         </thead>
                         <tbody>
                             @foreach($items as $item)
-                                <tr>
-                                    <td>{{ $item->id }}</td>
-                                    <td>{{ $item->title }}</td>
-                                    <td>@if($item->status) Опубликован @else Черновик @endif</td>
-                                    <td>{{ $item->created_at }}</td>
-                                    <td>{{ $item->updated_at }}</td>
-                                    <td>
-                                        <a href="{{ route('blog.show', $item->slug) }}" class="btn btn-sm btn-info" target="_blank"><i class="fa fa-eye"></i></a>
-                                        <a href="{{ route('admin.blog_category.edit', $item->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
-                                        <form method="post" class="form-delete"
-                                              action="{{ route('admin.blog_category.destroy', $item->id) }}">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit"
-                                                    class="btn btn-sm btn-danger btn-delete point_c" onclick="return confirm('Действительно хотите удалить запись?');"><i class="fa fa-trash"></i></button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                @include('blog_category.admin.category_item', [
+                                    'category_item' => $item
+                                ])
                             @endforeach
                         </tbody>
                     </table>

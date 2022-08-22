@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\BlogCategory\StoreRequest;
 use App\Http\Requests\Admin\BlogCategory\UpdateRequest;
 use App\Models\BlogCategory;
+use App\Repositories\BlogCategoryRepository;
 use Illuminate\Http\Request;
 
 class BlogCategoryController extends Controller
@@ -17,14 +18,7 @@ class BlogCategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $items = BlogCategory::select([
-            'id',
-            'title',
-            'created_at',
-            'updated_at',
-            'status',
-            'slug',
-        ])->get();
+        $items = app(BlogCategoryRepository::class)->all();
 
         return view('blog_category.admin.index', compact(
             'items'
@@ -40,8 +34,11 @@ class BlogCategoryController extends Controller
     {
         $item = BlogCategory::make();
 
+        $categories = app(BlogCategoryRepository::class)->forSelect();;
+
         return view('blog_category.admin.form', compact(
-            'item'
+            'item',
+            'categories'
         ));
     }
 
@@ -89,8 +86,11 @@ class BlogCategoryController extends Controller
     {
         $item = BlogCategory::findOrFail($id);
 
+        $categories = app(BlogCategoryRepository::class)->forSelect();;
+
         return view('blog_category.admin.form', compact(
-            'item'
+            'item',
+            'categories'
         ));
     }
 

@@ -31,6 +31,7 @@ class StoreRequest extends FormRequest
             'meta_description' => 'max:255',
             'meta_keywords' => 'max:255',
             'status' => 'integer',
+            'blog_category_id' => 'required',
         ];
     }
 }
