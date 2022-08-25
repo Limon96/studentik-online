@@ -9383,6 +9383,517 @@ header .menu_nav ul li a:hover{
 
 
 
+/*****************************Блог***********************************/
+
+
+.blog_wrap {
+    margin: 30px 0 0;
+}
+
+.blog_wrap .baner_blog{
+    height: 180px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-size: cover;
+    background-position: center;
+}
+
+.blog_wrap .blog_description {
+
+}
+
+
+.blog_wrap .kat_wrap {
+    border-top: 1px solid #d7d7d7;
+    margin: 15px 0 0 0;
+    padding: 15px 0 0 0;
+}
+
+.blog_wrap .kat_wrap h2{
+    margin: 0 0 15px 0;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.blog_wrap .kat_wrap .list_category_blog {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.blog_wrap .kat_wrap .list_category_blog .item {
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.blog_wrap .kat_wrap .list_category_blog .item a {
+    display: flex;
+    align-items: center;
+}
+
+.blog_wrap .kat_wrap .list_category_blog .item .img_svg{
+
+}
+
+.blog_wrap .kat_wrap .list_category_blog .item .img_svg svg {
+    width: 20px;
+}
+
+.blog_wrap .kat_wrap .list_category_blog .item .text{
+    margin: 0 5px 0 5px;
+}
+
+.blog_wrap .kat_wrap .list_category_blog .item .count {
+    background: #1cb7ad;
+    padding: 2px 4px;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 12px;
+    width: 28px;
+    text-align: center;
+}
+
+.stipe_work_list {
+    padding: 30px;
+}
+
+
+h2.h2_article{
+    margin: 0 0 15px 0;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.list_article{
+
+}
+
+.list_article .article{
+    background: #FFFFFF;
+    border: 1px solid rgba(206, 192, 213, 0.3);
+    box-sizing: border-box;
+    box-shadow: 0px 4px 25px rgb(206 192 213 / 30%);
+    border-radius: 20px;
+    padding: 25px 15px 25px 15px;
+    margin-bottom: 10px;
+    position: relative;
+    display: flex;
+}
+
+.list_article .article .left_fon {
+    margin-right: 20px;
+}
+.list_article .article .left_fon .img_r {
+    width: 180px;
+    height: 140px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+
+.list_article .article .rigt_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.list_article .article .rigt_content .title {
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    font-size: 16px;
+}
+.list_article .article .rigt_content .title:hover {
+    text-decoration: underline;
+}
+
+
+
+.list_article .article .rigt_content .extention{
+    font-size: 12px;
+}
+
+.list_article .article .rigt_content .look_date {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list_article .article .rigt_content .look_date .look {
+    display: flex;
+    align-items: center;
+    width: 50px;
+}
+
+.list_article .article .rigt_content .look_date .look svg{
+    width: 13px;
+}
+
+.list_article .article .rigt_content .look_date .look span {
+    margin-left: 5px;
+    color: #757575;
+}
+
+.list_article .article .rigt_content .look_date .date{
+    color: #757575;
+}
+
+
+
+
+
+.content_single {
+    padding: 30px;
+}
+
+.content_single .list_words{
+
+}
+.content_single .list_words h2{
+    margin: 0 0 15px 0;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.content_single .list_words ul{
+
+}
+
+
+.content_single .list_words ul li{
+
+}
+.content_single .list_words ul li a{
+    color: #1CB7AD;
+    padding: 0 0 6px 0;
+    display: block;
+}
+
+.content_single .list_words ul li a:hover{
+    color: #199a92;
+}
+
+.content_single .baner_single {
+    height: 194px;
+    margin: 20px 0;
+    border-radius: 10px;
+    background-position: center;
+    background-size: cover;
+}
+
+.content_single .mini_single_extention {
+    padding: 15px 10px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.content_single .table_of_contents{
+
+}
+
+.content_single .table_of_contents .title_by {
+    margin: 0 0 15px 0;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
