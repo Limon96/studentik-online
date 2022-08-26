@@ -3827,9 +3827,16 @@
     }
 
 
+    .item_blog_side .img_bg .baner_s{
+        width: 50px;
+        height: 50px;
+    }
 
-
-
+    .item_blog_side .info_bgh .title a {
+        font-size: 12px;
+        line-height: 1.1;
+        display: block;
+    }
 
 
 

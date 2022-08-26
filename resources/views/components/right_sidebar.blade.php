@@ -92,6 +92,119 @@
         </div>
     </div>
 
+    <div class="clearfix worker_right">
+        <h3>Новое в блоге</h3>
+        <div class="item_blog_side clearfix">
+            <div class="img_bg clearfix">
+                <a href="#/">
+                    <div class="baner_s"
+                         style="background-image: url(../../../../catalog/assets/img/polez.svg)">
+
+                    </div>
+                </a>
+            </div>
+            <div class="info_bgh clearfix">
+                <div class="title">
+                    <a href="#/">
+                        СУпер пупер интересная статья про мышей и кроликов в зоопарке
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="item_blog_side clearfix">
+            <div class="img_bg clearfix">
+                <a href="#/">
+                    <div class="baner_s"
+                         style="background-image: url(../../../../catalog/assets/img/polez.svg)">
+
+                    </div>
+                </a>
+            </div>
+            <div class="info_bgh clearfix">
+                <div class="title">
+                    <a href="#/">
+                        СУпер пупер интересная статья про мышей и кроликов в зоопарке
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="item_blog_side clearfix">
+            <div class="img_bg clearfix">
+                <a href="#/">
+                    <div class="baner_s"
+                         style="background-image: url(../../../../catalog/assets/img/polez.svg)">
+
+                    </div>
+                </a>
+            </div>
+            <div class="info_bgh clearfix">
+                <div class="title">
+                    <a href="#/">
+                        СУпер пупер интересная статья про мышей и кроликов в зоопарке
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="item_blog_side clearfix">
+            <div class="img_bg clearfix">
+                <a href="#/">
+                    <div class="baner_s"
+                         style="background-image: url(../../../../catalog/assets/img/polez.svg)">
+
+                    </div>
+                </a>
+            </div>
+            <div class="info_bgh clearfix">
+                <div class="title">
+                    <a href="#/">
+                        СУпер пупер интересная статья про мышей и кроликов в зоопарке
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="item_blog_side clearfix">
+            <div class="img_bg clearfix">
+                <a href="#/">
+                    <div class="baner_s"
+                         style="background-image: url(../../../../catalog/assets/img/polez.svg)">
+
+                    </div>
+                </a>
+            </div>
+            <div class="info_bgh clearfix">
+                <div class="title">
+                    <a href="#/">
+                        СУпер пупер интересная статья про мышей и кроликов в зоопарке
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="item_blog_side clearfix">
+            <div class="img_bg clearfix">
+                <a href="#/">
+                    <div class="baner_s"
+                         style="background-image: url(../../../../catalog/assets/img/polez.svg)">
+
+                    </div>
+                </a>
+            </div>
+            <div class="info_bgh clearfix">
+                <div class="title">
+                    <a href="#/">
+                        СУпер пупер интересная статья про мышей и кроликов в зоопарке
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="foot_worker clearfix">
+            <a href="https://studentik.online/experts">
+                <img src="../catalog/assets/img/icons/eye.svg">
+                <span>Смотреть все</span>
+            </a>
+        </div>
+    </div>
+
     <div class="contact_right clearfix">
         <h3>Контакты</h3>
         <a href="mailto:studentik.online@mail.ru" class="mail">studentik.online@mail.ru</a>
