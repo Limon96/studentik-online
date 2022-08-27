@@ -64,3 +64,7 @@
         скрытый блок - не видимый блок
     </div>
 </div>
+
+<script>
+    $('.left_content_resp').load('/orders .left_content_resp > *');
+</script>

@@ -1,6 +1,4 @@
 <?php
-include __DIR__ . '/laravel.php';
-exit;
 
 if (isLaravelUrl()) {
     include __DIR__ . '/laravel.php';
