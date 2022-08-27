@@ -4,7 +4,7 @@
     @foreach($customers as $customer)
     <div class="item_worker clearfix">
         <div class="img_face clearfix">
-            <a href="/user/{{ $customer->login }}"><img src="{{ thumbnail($customer->image ?? 'image/cache/profile-80x80.png', 80) }}" alt="{{ $customer->login }}"></a>
+            <a href="/user/{{ $customer->login }}"><img src="{{ thumbnail($customer->getImage(), 80) }}" alt="{{ $customer->login }}"></a>
         </div>
         <div class="info_worker clearfix">
             <div class="lit_hed clearfix">
@@ -13,13 +13,13 @@
             <div class="lit_foot clearfix">
                 <div class="enter clearfix">
                     <span class="name">Рейтинг:</span>
-                    <span class="rating">{{ $customer->rating()->sum('rating') }}</span>
+                    <span class="rating">{{ $customer->rating()->sum('rating') }} @if($customer->getNewRating()){{ $customer->getNewRating() }}@endif</span>
                 </div>
                 <div class="enter_like clearfix">
                     <img src="../catalog/assets/img/icons/like.svg">
-                    <span class="like">13</span>
+                    <span class="like">{{ $customer->getCountPositiveReviews() }}</span>
                     <img src="../catalog/assets/img/icons/dislike.svg">
-                    <span class="dislike">1</span>
+                    <span class="dislike">{{ $customer->getCountNegativeReviews() }}</span>
                 </div>
             </div>
         </div>

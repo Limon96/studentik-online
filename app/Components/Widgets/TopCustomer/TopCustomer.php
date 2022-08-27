@@ -27,7 +27,7 @@ class TopCustomer {
                 'rating',
                 'timezone',
             ])
-            ->with(['rating'])
+            ->with(['rating', 'reviews'])
             ->orderByDesc('rating')
             ->limit(3)
             ->get();
