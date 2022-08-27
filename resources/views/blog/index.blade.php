@@ -1,9 +1,8 @@
 @extends('layouts.base')
 
-{{--статья--}}
-
-
-
+@section('title'){{ $item->meta_title }}@endsection
+@section('description'){{ $item->meta_description }}@endsection
+@section('keywords'){{ $item->meta_keywords }}@endsection
 
 @section("content")
 

@@ -22,6 +22,7 @@ class BlogPostRepository extends CoreRepository
     {
         $item = $this->startConditions()
             ->whereSlug($slug)
+            ->where('publish_at', '<', date('Y.m.d H:i:s'))
             ->where('status', 1)
             ->first();
 
@@ -37,11 +38,16 @@ class BlogPostRepository extends CoreRepository
         return $this->startConditions()->find($id);
     }
 
-    public function getPagination($limit)
+    public function paginate($limit = 20)
     {
         return $this
             ->startConditions()
-            ->orderBy('created_at', 'desc')
+            ->select([
+                'id', 'title', 'intro', 'slug', 'image', 'views', 'publish_at'
+            ])
+            ->where('publish_at', '<', date('Y.m.d H:i:s'))
+            ->where('status', 1)
+            ->orderBy('publish_at', 'desc')
             ->paginate($limit);
     }
 

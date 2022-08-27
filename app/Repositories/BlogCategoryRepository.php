@@ -21,6 +21,7 @@ class BlogCategoryRepository extends CoreRepository
     public function findSlug($slug)
     {
         $item = $this->startConditions()
+            ->with(['posts'])
             ->whereSlug($slug)
             ->where('status', 1)
             ->first();
