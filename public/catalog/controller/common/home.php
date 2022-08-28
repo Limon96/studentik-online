@@ -51,4 +51,27 @@ class ControllerCommonHome extends Controller {
 
 		$this->response->setOutput($this->load->view('common/home', $data));
 	}
+
+    public function send()
+    {
+        $mail = new Mail($this->config->get('config_mail_engine'));
+
+        $mail->parameter = $this->config->get('config_mail_parameter');
+        $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
+        $mail->smtp_username = $this->config->get('config_mail_smtp_username');
+        $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+        $mail->smtp_port = $this->config->get('config_mail_smtp_port');
+        $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+
+        $mail->setFrom($this->config->get('config_mail_smtp_sender_mail'));
+        $mail->setSender(html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
+        $mail->setSubject("Test");
+        $mail->setHTML("<h1>Hello world</h1>");
+
+        foreach (['nicker08@inbox.ru', 'nicker.pro25@gmail.com', 'radik-hamitov@bk.ru'] as $to) {
+            $mail->setTo($to);
+            $mail->send();
+        }
+
+    }
 }
