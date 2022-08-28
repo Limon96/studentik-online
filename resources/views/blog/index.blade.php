@@ -4,6 +4,30 @@
 @section('description'){{ $item->meta_description }}@endsection
 @section('keywords'){{ $item->meta_keywords }}@endsection
 
+@section('scripts')
+    <script>
+        $(document).ready(function () {
+
+            var $headers = $('.table_of_contents h2, .table_of_contents h3');
+
+            if ($headers.length < 1) {
+                $('#content-list').remove();
+                return;
+            }
+
+            $headers.each(function (i, e) {
+                var tagName =  $(e).prop("tagName");
+                var nav_id = tagName.toLowerCase() + '-' + i;
+                var name = (tagName === 'H3' ? "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;": '') + $(e).text();
+
+                $(e).attr('id', nav_id);
+
+                $('#content-list ul').append("<li><a href='#" + nav_id + "'>" + name + "</a></li>");
+            });
+        });
+    </script>
+@endsection
+
 @section("content")
 
 
@@ -22,20 +46,13 @@
 
 
                         <div class="content_single">
-                            <div class="list_words">
+                            <div id="content-list" class="list_words">
                                 <h2>Содержание</h2>
                                 <ul>
-                                    <li><a href="id1">1. Содержание ссылка 1</a></li>
-                                    <li><a href="id2">2. Содержание ссылка 2</a></li>
-                                    <li><a href="id3">3. Содержание ссылка 3</a></li>
-                                    <li><a href="id4">4. Содержание ссылка 4</a></li>
-                                    <li><a href="id5">5. Содержание ссылка 5</a></li>
+
                                 </ul>
                             </div>
-                            <div class="baner_single"
-                                 style="background-image: url(../../../../catalog/assets/img/polez.svg)">
-
-                            </div>
+                            <div class="baner_single" style="background-image: url(../../../../catalog/assets/img/polez.svg)"></div>
                             <div class="mini_single_extention">
                                 Окружающий нас мир не перестает меняться и адаптироваться под современность. Новые
                                 научные открытия и изобретения делают жизнь человека проще, но за счет этого многие
@@ -44,17 +61,7 @@
                             </div>
 
                             <div class="table_of_contents">
-                                <div id="id1" class="title_by">Содержание ссылка 1</div>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolores error iste natus
-                                quas sit tempore, tenetur unde! Accusantium alias delectus dignissimos ea ipsa laborum
-                                magni omnis totam ullam voluptatem?
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolores error iste natus
-                                quas sit tempore, tenetur unde! Accusantium alias delectus dignissimos ea ipsa laborum
-                                magni omnis totam ullam voluptatem?
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dolores error iste natus
-                                quas sit tempore, tenetur unde! Accusantium alias delectus dignissimos ea ipsa laborum
-                                magni omnis totam ullam voluptatem?
-
+                                {!! $item->text !!}
                             </div>
 
 
