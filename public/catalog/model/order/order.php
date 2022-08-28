@@ -3,7 +3,7 @@ class ModelOrderOrder extends Model {
 
     public function addOrder($data)
     {
-        $query = "INSERT INTO " . DB_PREFIX . "order SET
+        $query = "INSERT INTO `" . DB_PREFIX . "order` SET
                         store_id = '" . (int)$this->config->get('config_store_id') . "',
                         customer_id = '" . (int)$this->customer->getId() . "',
                         customer_group_id = '" . (int)$this->customer->getGroupId() . "',
@@ -83,7 +83,7 @@ class ModelOrderOrder extends Model {
 
     public function editOrder($order_id, $data)
     {
-        $query = "UPDATE " . DB_PREFIX . "order SET
+        $query = "UPDATE `" . DB_PREFIX . "order` SET
                     work_type_id = '" . (int)$data['work_type'] . "',
                     subject_id = '" . (int)$data['subject'] . "',
                     section_id = (SELECT s.section_id FROM " . DB_PREFIX . "subject s WHERE s.subject_id = '" . (int)$data['subject'] . "' LIMIT 1),
@@ -109,7 +109,7 @@ class ModelOrderOrder extends Model {
 
     public function cancelOrder($order_id)
     {
-        $query = "UPDATE " . DB_PREFIX . "order SET
+        $query = "UPDATE `" . DB_PREFIX . "order` SET
                     order_status_id = '" . $this->config->get('config_canceled_order_status_id') . "',
                     date_modified = NOW()
                 WHERE order_id = '" . (int)$order_id . "'";
@@ -119,7 +119,7 @@ class ModelOrderOrder extends Model {
 
     public function openOrder($order_id)
     {
-        $query = "UPDATE " . DB_PREFIX . "order SET
+        $query = "UPDATE `" . DB_PREFIX . "order` SET
                     order_status_id = '" . $this->config->get('config_open_order_status_id') . "',
                     date_modified = NOW()
                 WHERE order_id = '" . (int)$order_id . "'";
@@ -129,7 +129,7 @@ class ModelOrderOrder extends Model {
 
     public function setOrderStatus($order_id, $order_status_id)
     {
-        $this->db->query("UPDATE " . DB_PREFIX . "order SET order_status_id = '" . (int)$order_status_id . "' WHERE order_id = '" . (int)$order_id . "'");
+        $this->db->query("UPDATE `" . DB_PREFIX . "order` SET order_status_id = '" . (int)$order_status_id . "' WHERE order_id = '" . (int)$order_id . "'");
     }
 
     public function getOrder($order_id) {
@@ -145,14 +145,14 @@ class ModelOrderOrder extends Model {
                 (SELECT pb.name FROM `" .DB_PREFIX  ."payment_blocking` pb WHERE pb.language_id = '" . (int)$this->config->get('config_language_id') . "' AND pb.payment_blocking_id = o.payment_blocking_id) AS `payment_blocking`,
                 (SELECT pc.name FROM `" .DB_PREFIX  ."plagiarism_check` pc WHERE pc.language_id = '" . (int)$this->config->get('config_language_id') . "' AND pc.plagiarism_check_id = o.plagiarism_check_id) AS `plagiarism_check`,
                 (SELECT n.text FROM `" .DB_PREFIX  ."order_note` n WHERE n.customer_id = '" . ($this->customer->isLogged() ? (int)$this->customer->getId() : 0). "' AND n.order_id = o.order_id) AS `note`
-            FROM " . DB_PREFIX . "order o
+            FROM `" . DB_PREFIX . "order` o
             WHERE o.order_id = '" . (int)$order_id . "'"
         );
         return $query->row;
     }
 
     public function getOrders($data = array()) {
-        $sql = "SELECT * FROM " . DB_PREFIX . "order o WHERE customer_id > 0";
+        $sql = "SELECT * FROM `" . DB_PREFIX . "order` o WHERE customer_id > 0";
 
         if (isset($data['filter_order_status_id']) && $data['filter_order_status_id']) {
             $sql .= " AND order_status_id = '" . (int)$data['filter_order_status_id'] . "'";
@@ -243,7 +243,7 @@ class ModelOrderOrder extends Model {
     }
 
     public function getTotalOrders($data = array()) {
-        $sql = "SELECT COUNT(1) AS total FROM " . DB_PREFIX . "order o WHERE customer_id > 0";
+        $sql = "SELECT COUNT(1) AS total FROM `" . DB_PREFIX . "order` o WHERE customer_id > 0";
 
         if (isset($data['filter_order_status_id']) && $data['filter_order_status_id']) {
             $sql .= " AND order_status_id = '" . (int)$data['filter_order_status_id'] . "'";
@@ -354,7 +354,7 @@ class ModelOrderOrder extends Model {
 
     public function updateViewed($order_id)
     {
-        $this->db->query("UPDATE " . DB_PREFIX . "order SET viewed = viewed + 1 WHERE order_id = '" . (int)$order_id . "'");
+        $this->db->query("UPDATE `" . DB_PREFIX . "order` SET viewed = viewed + 1 WHERE order_id = '" . (int)$order_id . "'");
     }
 
     public function addAttachment($order_id, $attachment_id)

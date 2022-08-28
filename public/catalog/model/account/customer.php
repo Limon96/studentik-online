@@ -373,7 +373,7 @@ class ModelAccountCustomer extends Model {
             c.timezone,
             (SELECT SUM(cr.rating) FROM " . DB_PREFIX . "customer_rating cr WHERE cr.customer_id = c.customer_id AND cr.date_added > " . (time() - 604800) . ") as new_rating,
             c.setting_email_notify,
-            (SELECT COUNT(1) AS total FROM " . DB_PREFIX . "offer of1 LEFT JOIN " . DB_PREFIX . "order or1 ON of1.order_id=or1.order_id WHERE of1.customer_id=c.customer_id AND or1.order_status_id='" . $this->config->get('config_complete_order_status_id') . "' AND of1.assigned = 1) AS total_orders,
+            (SELECT COUNT(1) AS total FROM " . DB_PREFIX . "offer of1 LEFT JOIN `" . DB_PREFIX . "order` or1 ON of1.order_id=or1.order_id WHERE of1.customer_id=c.customer_id AND or1.order_status_id='" . $this->config->get('config_complete_order_status_id') . "' AND of1.assigned = 1) AS total_orders,
             (SELECT COUNT(1) AS total FROM " . DB_PREFIX . "customer_review cr LEFT JOIN " . DB_PREFIX . "review r ON cr.review_id = r.review_id WHERE cr.customer_id = c.customer_id) AS total_reviews,
             (SELECT COUNT(1) AS total FROM " . DB_PREFIX . "customer_review cr LEFT JOIN " . DB_PREFIX . "review r ON cr.review_id = r.review_id WHERE cr.customer_id = c.customer_id AND r.positive = 1) AS total_reviews_positive,
             (SELECT COUNT(1) AS total FROM " . DB_PREFIX . "customer_review cr LEFT JOIN " . DB_PREFIX . "review r ON cr.review_id = r.review_id WHERE cr.customer_id = c.customer_id AND r.positive = 0) AS total_reviews_negative,
