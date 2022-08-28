@@ -52,7 +52,7 @@ class ModelClaimClaim extends Model {
     {
         $claim_info = $this->getClaim($claim_id);
 
-        $this->db->query("UPDATE " . DB_PREFIX . "order SET order_status_id='" . (int)$this->config->get('config_complete_order_status_id') . "' WHERE order_id = '" . $claim_info['object_id'] . "'");
+        $this->db->query("UPDATE `" . DB_PREFIX . "order` SET order_status_id='" . (int)$this->config->get('config_complete_order_status_id') . "' WHERE order_id = '" . $claim_info['object_id'] . "'");
     }
 
     public function closeClaim($claim_id)

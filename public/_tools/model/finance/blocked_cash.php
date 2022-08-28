@@ -10,7 +10,7 @@ class ModelFinanceBlockedCash extends Model {
     public function getBlockedCash($customer_blocked_cash_id) {
         $query = $this->db->query("SELECT *,
                     (SELECT c.login FROM " . DB_PREFIX . "customer c WHERE c.customer_id = cbs.customer_id) AS customer_login,
-                    (SELECT o.title FROM " . DB_PREFIX . "order o WHERE o.order_id = cbs.order_id) AS order_title,
+                    (SELECT o.title FROM `" . DB_PREFIX . "order` o WHERE o.order_id = cbs.order_id) AS order_title,
                     (SELECT oo.customer_id FROM " . DB_PREFIX . "customer oc LEFT JOIN " . DB_PREFIX . "offer oo ON oc.customer_id = oo.customer_id WHERE oo.offer_id = cbs.offer_id) AS offer_customer_id,
                     (SELECT oc.login FROM " . DB_PREFIX . "customer oc LEFT JOIN " . DB_PREFIX . "offer oo ON oc.customer_id = oo.customer_id WHERE oo.offer_id = cbs.offer_id) AS offer_customer_login
                 FROM " . DB_PREFIX . "customer_blocked_cash cbs WHERE cbs.customer_blocked_cash_id = '" . (int)$customer_blocked_cash_id . "'");
@@ -21,7 +21,7 @@ class ModelFinanceBlockedCash extends Model {
     public function getBlockedCashByOrder($order_id) {
         $query = $this->db->query("SELECT *,
                     (SELECT c.login FROM " . DB_PREFIX . "customer c WHERE c.customer_id = cbs.customer_id) AS customer_login,
-                    (SELECT o.title FROM " . DB_PREFIX . "order o WHERE o.order_id = cbs.order_id) AS order_title,
+                    (SELECT o.title FROM `" . DB_PREFIX . "order` o WHERE o.order_id = cbs.order_id) AS order_title,
                     (SELECT oo.customer_id FROM " . DB_PREFIX . "customer oc LEFT JOIN " . DB_PREFIX . "offer oo ON oc.customer_id = oo.customer_id WHERE oo.offer_id = cbs.offer_id) AS offer_customer_id,
                     (SELECT oc.login FROM " . DB_PREFIX . "customer oc LEFT JOIN " . DB_PREFIX . "offer oo ON oc.customer_id = oo.customer_id WHERE oo.offer_id = cbs.offer_id) AS offer_customer_login
                 FROM " . DB_PREFIX . "customer_blocked_cash cbs WHERE cbs.order_id = '" . (int)$order_id . "'");
@@ -30,10 +30,10 @@ class ModelFinanceBlockedCash extends Model {
     }
 
     public function getBlockedCashs($data = array()) {
-        $sql = "SELECT 
+        $sql = "SELECT
                    *,
                     (SELECT c.login FROM " . DB_PREFIX . "customer c WHERE c.customer_id = cbs.customer_id) AS customer_login,
-                    (SELECT o.title FROM " . DB_PREFIX . "order o WHERE o.order_id = cbs.order_id) AS order_title,
+                    (SELECT o.title FROM `" . DB_PREFIX . "order` o WHERE o.order_id = cbs.order_id) AS order_title,
                     (SELECT oo.customer_id FROM " . DB_PREFIX . "customer oc LEFT JOIN " . DB_PREFIX . "offer oo ON oc.customer_id = oo.customer_id WHERE oo.offer_id = cbs.offer_id) AS offer_customer_id,
                     (SELECT oc.login FROM " . DB_PREFIX . "customer oc LEFT JOIN " . DB_PREFIX . "offer oo ON oc.customer_id = oo.customer_id WHERE oo.offer_id = cbs.offer_id) AS offer_customer_login
                 FROM " . DB_PREFIX . "customer_blocked_cash cbs";

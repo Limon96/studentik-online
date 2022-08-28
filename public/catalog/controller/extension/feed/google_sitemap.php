@@ -39,7 +39,7 @@ class ControllerExtensionFeedGoogleSitemap extends Controller {
         $output .= $this->getUrl($this->url->link('support/faq'), time());
 
         // Orders
-        $result = $this->db->query("SELECT order_id, date_added, date_modified FROM " . DB_PREFIX . "order WHERE status = 1 ORDER BY date_added DESC");
+        $result = $this->db->query("SELECT order_id, date_added, date_modified FROM `" . DB_PREFIX . "order` WHERE status = 1 ORDER BY date_added DESC");
 
         if ($result->row['date_modified'] !== '0000-00-00 00:00:00') {
             $lastmod = strtotime($result->row['date_modified']);

@@ -9,21 +9,21 @@ class ModelAccountOrder extends Model
                 IF(o.customer_id = '" . $this->customer->getId() . "', 1, 0) AS is_owner,
                 IF((SELECT COUNT(1) FROM " .DB_PREFIX  ."offer oo WHERE oo.order_id = o.order_id AND customer_id = '" . (int)$this->customer->getId() . "'), 1, 0) AS exist_offer,
                 (SELECT COUNT(1) FROM " .DB_PREFIX  ."offer co WHERE co.order_id = o.order_id) AS count_offer,
-                (SELECT s.name FROM `" .DB_PREFIX  ."section` s WHERE s.language_id = '" . (int)$this->config->get('config_language_id') . "' AND s.section_id = o.section_id) AS `section`, 
-                (SELECT sj.name FROM `" .DB_PREFIX  ."subject` sj WHERE sj.language_id = '" . (int)$this->config->get('config_language_id') . "' AND sj.subject_id = o.subject_id) AS `subject`, 
-                (SELECT wt.name FROM `" .DB_PREFIX  ."work_type` wt WHERE wt.language_id = '" . (int)$this->config->get('config_language_id') . "' AND wt.work_type_id = o.work_type_id) AS `work_type`, 
+                (SELECT s.name FROM `" .DB_PREFIX  ."section` s WHERE s.language_id = '" . (int)$this->config->get('config_language_id') . "' AND s.section_id = o.section_id) AS `section`,
+                (SELECT sj.name FROM `" .DB_PREFIX  ."subject` sj WHERE sj.language_id = '" . (int)$this->config->get('config_language_id') . "' AND sj.subject_id = o.subject_id) AS `subject`,
+                (SELECT wt.name FROM `" .DB_PREFIX  ."work_type` wt WHERE wt.language_id = '" . (int)$this->config->get('config_language_id') . "' AND wt.work_type_id = o.work_type_id) AS `work_type`,
                 (SELECT os.name FROM `" .DB_PREFIX  ."order_status` os WHERE os.language_id = '" . (int)$this->config->get('config_language_id') . "' AND os.order_status_id = o.order_status_id) AS `order_status` ,
                 (SELECT pb.name FROM `" .DB_PREFIX  ."payment_blocking` pb WHERE pb.language_id = '" . (int)$this->config->get('config_language_id') . "' AND pb.payment_blocking_id = o.payment_blocking_id) AS `payment_blocking`,
                 (SELECT pc.name FROM `" .DB_PREFIX  ."plagiarism_check` pc WHERE pc.language_id = '" . (int)$this->config->get('config_language_id') . "' AND pc.plagiarism_check_id = o.plagiarism_check_id) AS `plagiarism_check`,
-                (SELECT n.text FROM `" .DB_PREFIX  ."order_note` n WHERE n.customer_id = '" . ($this->customer->isLogged() ? (int)$this->customer->getId() : 0). "' AND n.order_id = o.order_id) AS `note` 
-            FROM " . DB_PREFIX . "order o
+                (SELECT n.text FROM `" .DB_PREFIX  ."order_note` n WHERE n.customer_id = '" . ($this->customer->isLogged() ? (int)$this->customer->getId() : 0). "' AND n.order_id = o.order_id) AS `note`
+            FROM `" . DB_PREFIX . "order` o
             WHERE o.order_id = '" . (int)$order_id . "'"
         );
         return $query->row;
     }
 
     public function getOrders($data = array()) {
-        $sql = "SELECT * FROM " . DB_PREFIX . "order o WHERE customer_id > 0";
+        $sql = "SELECT * FROM `" . DB_PREFIX . "order` o WHERE customer_id > 0";
 
         if (isset($data['filter_order_status_id']) && $data['filter_order_status_id']) {
             $sql .= " AND order_status_id = '" . (int)$data['filter_order_status_id'] . "'";
@@ -118,7 +118,7 @@ class ModelAccountOrder extends Model
     }
 
     public function getTotalOrders($data = array()) {
-        $sql = "SELECT COUNT(1) AS total FROM " . DB_PREFIX . "order o WHERE customer_id > 0";
+        $sql = "SELECT COUNT(1) AS total FROM `" . DB_PREFIX . "order` o WHERE customer_id > 0";
 
         if (isset($data['filter_order_status_id']) && $data['filter_order_status_id']) {
             $sql .= " AND order_status_id = '" . (int)$data['filter_order_status_id'] . "'";

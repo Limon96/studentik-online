@@ -23,12 +23,12 @@ class ModelSearchSearch extends Model
                     customer_id AS id,
                     login AS title,
                     'customer' AS type,
-                    IF(" . time() . " - c.last_seen  < 900, 1, 0) AS online, 
-                    image, 
+                    IF(" . time() . " - c.last_seen  < 900, 1, 0) AS online,
+                    image,
                     '' AS section,
                     '' AS subject,
                     '' AS work_type,
-                    '' AS description                        
+                    '' AS description
                 FROM
                     " . DB_PREFIX . "customer c";
         }
@@ -37,15 +37,15 @@ class ModelSearchSearch extends Model
             $tables[] = "SELECT
                     order_id AS id,
                     title,
-                    'order' AS type, 
-                    '' AS image,                       
-                    '' AS online,                       
-                    (SELECT s.name FROM `" . DB_PREFIX . "section` s WHERE s.language_id = '1' AND s.section_id = o.section_id) AS `section`, 
-                    (SELECT sj.name FROM `" . DB_PREFIX . "subject` sj WHERE sj.language_id = '1' AND sj.subject_id = o.subject_id) AS `subject`, 
+                    'order' AS type,
+                    '' AS image,
+                    '' AS online,
+                    (SELECT s.name FROM `" . DB_PREFIX . "section` s WHERE s.language_id = '1' AND s.section_id = o.section_id) AS `section`,
+                    (SELECT sj.name FROM `" . DB_PREFIX . "subject` sj WHERE sj.language_id = '1' AND sj.subject_id = o.subject_id) AS `subject`,
                     (SELECT wt.name FROM `" . DB_PREFIX . "work_type` wt WHERE wt.language_id = '1' AND wt.work_type_id = o.work_type_id) AS `work_type`,
                     description
                 FROM
-                    " . DB_PREFIX . "order o";
+                    `" . DB_PREFIX . "order` o";
         }
 
         if (count($tables) > 0) {

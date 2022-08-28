@@ -4,15 +4,15 @@ class ModelAccountReview extends Model {
 
     public function addReview($data)
     {
-        $query = "INSERT INTO " . DB_PREFIX . "review SET 
-                        customer_id = '" . (int)$this->customer->getId() . "', 
-                        customer_group_id = '" . (int)$this->customer->getGroupId() . "', 
-                        order_id = '" . (int)$data['order_id'] . "', 
-                        text = '" . $this->db->escape($data['text']) . "', 
-                        positive = '" . (int)$data['positive'] . "', 
-                        `time` = '" . (int)$data['time'] . "', 
-                        ip = '" . $this->request->server['REMOTE_ADDR'] . "', 
-                        date_added = '" . time() . "', 
+        $query = "INSERT INTO " . DB_PREFIX . "review SET
+                        customer_id = '" . (int)$this->customer->getId() . "',
+                        customer_group_id = '" . (int)$this->customer->getGroupId() . "',
+                        order_id = '" . (int)$data['order_id'] . "',
+                        text = '" . $this->db->escape($data['text']) . "',
+                        positive = '" . (int)$data['positive'] . "',
+                        `time` = '" . (int)$data['time'] . "',
+                        ip = '" . $this->request->server['REMOTE_ADDR'] . "',
+                        date_added = '" . time() . "',
                         date_updated = 0";
 
         $this->db->query($query);
@@ -26,7 +26,7 @@ class ModelAccountReview extends Model {
 
     public function editReview($review_id, $data)
     {
-        $query = "UPDATE " . DB_PREFIX . "order SET 
+        $query = "UPDATE `" . DB_PREFIX . "order` SET
                     text = '" . $this->db->escape($data['text']) . "',
                     date_modified = '" . time() . "'
                 WHERE review_id = '" . (int)$review_id . "'";
@@ -37,7 +37,7 @@ class ModelAccountReview extends Model {
     public function getReview($review_id) {
         $query = $this->db->query(
             "SELECT *,
-                (SELECT o.title FROM " . DB_PREFIX . "order o WHERE o.order_id = r.order_id) AS order_title
+                (SELECT o.title FROM `" . DB_PREFIX . "order` o WHERE o.order_id = r.order_id) AS order_title
             FROM " . DB_PREFIX . "review r
             WHERE r.review_id = '" . (int)$review_id . "'"
         );
