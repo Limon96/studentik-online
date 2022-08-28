@@ -51,6 +51,20 @@ class BlogPostRepository extends CoreRepository
             ->paginate($limit);
     }
 
+    public function latest($limit = 20)
+    {
+        return $this
+            ->startConditions()
+            ->select([
+                'id', 'title', 'slug', 'image', 'views', 'publish_at'
+            ])
+            ->where('publish_at', '<', date('Y.m.d H:i:s'))
+            ->where('status', 1)
+            ->orderBy('publish_at', 'desc')
+            ->limit($limit)
+            ->get();
+    }
+
     public function all()
     {
         return $this

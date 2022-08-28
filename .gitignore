@@ -24,12 +24,14 @@ yarn-error.log
 /public/system/storage/logs/error.log
 /public/system/storage/modification/
 /public/system/storage/session/
+/public/system/storage/upload/
 /public/*.log
 /public/catalog/sitemap.txt
+
+# Laravel
 /storage/framework/cache/
 /storage/framework/sessions/
 /storage/framework/views/
 /storage/framework/testing/
 /storage/logs/
-/public/system/storage/upload/
 htdocs

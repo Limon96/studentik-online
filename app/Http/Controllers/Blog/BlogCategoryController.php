@@ -29,6 +29,8 @@ class BlogCategoryController extends Controller {
             $blogPosts = app(BlogPostRepository::class)->paginate(10);
         }
 
+        get_widget('top_customer');
+
         return view('blog_category.index', compact(
             'item',
             'blogCategories',

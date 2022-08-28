@@ -1,6 +1,6 @@
 <?php
 
-if(!function_exists('thumbnail')) {
+if (!function_exists('thumbnail')) {
 
     function thumbnail($imagePublicPath, int $width = 640, int $height = null)
     {
@@ -24,6 +24,25 @@ if(!function_exists('thumbnail')) {
         })->save($thumbnailFilePath);
 
         return asset($thumbnailPublicPath);
+    }
+
+}
+
+if (!function_exists('get_widget')) {
+
+    function get_widget(string $widgetName)
+    {
+        $widgetName = join('', array_map(function ($item) {
+            return ucfirst(strtolower($item));
+        }, explode('_', $widgetName)));
+
+        $widgetClassName = 'App\\Components\\Widgets\\' . $widgetName . '\\' . $widgetName;
+
+        if (class_exists($widgetClassName)) {
+            return $widgetClassName::run();
+        }
+
+        return '';
     }
 
 }

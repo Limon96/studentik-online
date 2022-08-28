@@ -2,41 +2,18 @@
 
 namespace App\Components\Widgets\TopCustomer;
 
-use App\Models\Customer;
-use Illuminate\Support\Facades\DB;
+use App\Components\Widgets\Widget;
+use App\Repositories\CustomerRepository;
 
-class TopCustomer {
+class TopCustomer implements Widget {
 
     public static function run()
     {
-        $customers = Customer
-            ::select([
-                'customer_id',
-                'customer_group_id',
-                'firstname',
-                'login',
-                'gender',
-                'image',
-                'date_added',
-                'last_seen',
-                'languages',
-                'bdate',
-                'comment',
-                'email',
-                'telephone',
-                'rating',
-                'timezone',
-            ])
-            ->with(['rating', 'reviews'])
-            ->orderByDesc('rating')
-            ->limit(3)
-            ->get();
+        $customers = app(CustomerRepository::class)->getTopCustomer(3);
 
         return view('widgets.top_customer', compact(
             'customers'
         ));
     }
-
-
 
 }

@@ -8,7 +8,7 @@ if (isLaravelUrl()) {
 
 function getPrep($str)
 {
-    return '/\/' . addslashes($str) . '\/(.*)/m';
+    return '/\/' . addslashes($str) . '(.*)/m';
 }
 
 function isLaravelUrl()
