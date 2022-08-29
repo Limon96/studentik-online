@@ -27,7 +27,7 @@ class Email {
             return ['error' => 'Empty message'];
         }
 
-        $unsubscribe_token = (new \Model\Subscribe($this->db))->generateUnsubscribeToken($this->to);
+        $unsubscribe_token = (new \Model\Subscribe($this->db))->generateUnsubscribeToken($object->to);
 
         $mail = new \Mail($this->config->get('config_mail_engine'));
         $mail->parameter = $this->config->get('config_mail_parameter');
