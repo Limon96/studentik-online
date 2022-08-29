@@ -926,26 +926,24 @@ class ControllerOrderOffer extends Controller {
             $order_customer_info = $this->model_account_customer->getCustomerInfo($order_info['customer_id']);
 
             // Уведомление order owner
+
+            $notice_message = sprintf(
+                $this->language->get('notification_complete_offer'),
+                'Я',
+                $this->url->link('order/order/info', 'order_id=' . $order_info['order_id']),
+                $order_info['title']
+            );
+
             $this->model_tool_notification->set([
                 'type' => 'order',
                 'customer_id' => $order_info['customer_id'],
-                'text' => sprintf(
-                    $this->language->get('notification_complete_offer'),
-                    'Я',
-                    $this->url->link('order/order/info', 'order_id=' . $order_info['order_id']),
-                    $order_info['title']
-                ),
+                'text' => $notice_message,
             ]);
 
             if ($order_customer_info['setting_email_notify']) {
                 $this->load->model('setting/setting');
 
-                $data['message'] = sprintf(
-                    $this->language->get('notification_complete_offer'),
-                    'Я',
-                    $this->url->link('order/order/info', 'order_id=' . $order_info['order_id']),
-                    $order_info['title']
-                );
+                $data['message'] = $notice_message;
 
                 $data['comment'] = '';
                 $data['link'] = $this->url->link('order/order/info', 'order_id=' . $order_id);
@@ -967,26 +965,22 @@ class ControllerOrderOffer extends Controller {
             }
 
             // Уведомление offer owner
+            $notice_message = sprintf(
+                $this->language->get('notification_complete_offer'),
+                '<a href="' . $this->url->link('account/customer', 'customer_id=' . $order_customer_info['customer_id']) . '">' . $order_customer_info['login'] . '</a>',
+                $this->url->link('order/order/info', 'order_id=' . $order_info['order_id']),
+                $order_info['title']
+            );
             $this->model_tool_notification->set([
                 'type' => 'order',
                 'customer_id' => $offer_info['customer_id'],
-                'text' => sprintf(
-                    $this->language->get('notification_complete_offer'),
-                    '<a href="' . $this->url->link('account/customer', 'customer_id=' . $order_customer_info['customer_id']) . '">' . $order_customer_info['login'] . '</a>',
-                    $this->url->link('order/order/info', 'order_id=' . $order_info['order_id']),
-                    $order_info['title']
-                ),
+                'text' => $notice_message,
             ]);
 
             if ($offer_customer_info['setting_email_notify']) {
                 $this->load->model('setting/setting');
 
-                $data['message'] = sprintf(
-                    $this->language->get('notification_complete_offer'),
-                    '<a href="' . $this->url->link('account/customer', 'customer_id=' . $order_customer_info['customer_id']) . '">' . $order_customer_info['login'] . '</a>',
-                    $this->url->link('order/order/info', 'order_id=' . $order_info['order_id']),
-                    $order_info['title']
-                );
+                $data['message'] = $notice_message;
 
                 $data['comment'] = '';
                 $data['link'] = $this->url->link('order/order/info', 'order_id=' . $order_id);
