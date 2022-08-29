@@ -105,7 +105,7 @@ $_['datepicker'] = 'ru';
 $_['notification_new_order'] = "%s разместил(а) новый заказ <a href='%s'> %s </a>";
 $_['notification_new_offer'] = "%s разместил(а) новое предложение в заказе <a href='%s'> %s </a><br>Ставка: %s";
 $_['notification_edit_offer'] = "%s отредактировал(а) предложение в заказе <a href='%s'> %s </a><br>Ставка: %s";
-$_['notification_assign_offer'] = "%s принял(а) %s в заказе <a href='%s'>%s</a>. %s";
+$_['notification_assign_offer'] = "%s принял(а) %s в заказе <a href='%s'> %s </a>. %s";
 $_['notification_accept_offer'] = "%s подтвердил(а) начало работы над заказом <a href='%s'> %s </a>";
 $_['notification_cancel_offer'] = "%s отклонил(а) своё предложение в заказе <a href='%s'> %s </a>";
 $_['notification_cancel_offer_order_owner'] = "%s отменил(а) выбор исполнителя в заказе <a href='%s'> %s </a>";
