@@ -74,7 +74,7 @@ class Manager {
                 }
 
                 if (isset($result['error'])) {
-                    $this->taskModel->failure($task->id);
+                    $this->taskModel->failure($task->task_id);
 
                     $this->log->write('[TaskManager@get] error: ' . print_r($result['error'], true));
                     $this->log->write('[TaskManager@get] task: ' . print_r($task, true));

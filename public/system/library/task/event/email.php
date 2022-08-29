@@ -13,7 +13,6 @@ class Email {
     {
         $this->config = $config;
         $this->db = $db;
-        $this->log = \Log('error.log');
     }
 
     public function send($object)
@@ -47,9 +46,7 @@ class Email {
 
         try {
             $mail->send();
-        } catch (\Exception $e) {
-            $this->log->write('Email: error in library/task/event/email on line 44 ' . "\n" . print_r($e, true));
-        }
+        } catch (\Exception $e) {}
 
         time_nanosleep(0, 500000000);
 
