@@ -5,17 +5,17 @@ class ModelMessageMessage extends Model
 
     public function getMessages($data = [])
     {
-        $sql = "SELECT * FROM " . DB_PREFIX . "message WHERE message_id > 0";
+        $sql = "SELECT * FROM `" . DB_PREFIX . "message` WHERE message_id > 0";
 
         if (isset($data['search'])) {
             $sql .= " AND text LIKE '%" . $this->db->escape($data['search']) . "%'";
         }
 
-        if (isset($data['filter_sender_id']) && $data['filter_sender_id'] != 0) {
+        if (isset($data['filter_sender_id']) && $data['filter_sender_id'] > 0) {
             $sql .= " AND sender_id = '" . (int)$data['filter_sender_id'] . "'";
         }
 
-        if (isset($data['filter_recipient_id']) && $data['filter_recipient_id'] != 0) {
+        if (isset($data['filter_recipient_id']) && $data['filter_recipient_id'] > 0) {
             $sql .= " AND recipient_id = '" . (int)$data['filter_recipient_id'] . "'";
         }
 
@@ -65,17 +65,17 @@ class ModelMessageMessage extends Model
 
     public function getTotalMessages($data = [])
     {
-        $sql = "SELECT COUNT(1) AS total FROM " . DB_PREFIX . "message WHERE message_id > 0";
+        $sql = "SELECT COUNT(1) AS total FROM `" . DB_PREFIX . "message` WHERE message_id > 0";
 
         if (isset($data['search'])) {
             $sql .= " AND text LIKE '%" . $this->db->escape($data['search']) . "%'";
         }
 
-        if (isset($data['filter_sender_id']) && $data['filter_sender_id'] != 0) {
+        if (isset($data['filter_sender_id']) && $data['filter_sender_id'] > 0) {
             $sql .= " AND sender_id = '" . (int)$data['filter_sender_id'] . "'";
         }
 
-        if (isset($data['filter_recipient_id']) && $data['filter_recipient_id'] != 0) {
+        if (isset($data['filter_recipient_id']) && $data['filter_recipient_id'] > 0) {
             $sql .= " AND recipient_id = '" . (int)$data['filter_recipient_id'] . "'";
         }
 
@@ -145,6 +145,6 @@ class ModelMessageMessage extends Model
             }
         }
         $this->db->query("DELETE FROM " . DB_PREFIX . "message_attachment WHERE message_id = '" . (int)$message_id . "'");
-        $this->db->query("DELETE FROM " . DB_PREFIX . "message WHERE message_id = '" . (int)$message_id . "'");
+        $this->db->query("DELETE FROM `" . DB_PREFIX . "message` WHERE message_id = '" . (int)$message_id . "'");
     }
 }
