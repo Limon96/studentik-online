@@ -4,19 +4,19 @@ namespace Cart;
 use Crypt\Crypt;
 
 class Customer {
-	private $customer_id;
-	private $firstname;
-	private $login;
-	private $customer_group_id;
-	private $email;
-	private $telephone;
-	private $customer_gender_id;
-	private $customer_status_id;
-	private $balance;
-	private $blocked_cash;
-	private $pro;
-	private $timezone;
-	private $gender;
+    private $customer_id;
+    private $firstname;
+    private $login;
+    private $customer_group_id;
+    private $email;
+    private $telephone;
+    private $customer_gender_id;
+    private $customer_status_id;
+    private $balance;
+    private $blocked_cash;
+    private $pro;
+    private $timezone;
+    private $gender;
 
     public function __construct($registry) {
         $this->config = $registry->get('config');
@@ -52,9 +52,9 @@ class Customer {
                 // Get blocked cash
                 if ($customer_query->row['customer_group_id'] == 2) {
                     $query = $this->db->query(
-                        "SELECT (SUM(cbc.balance)  / (1 + " . (int)$this->config->get('config_commission_customer') . " / 100) * (1 - " . (int)$this->config->get('config_commission') ." / 100)) AS blocked_cash FROM `j83p2_offer` off 
-                            LEFT JOIN `j83p2_order` o ON (off.order_id = o.order_id)
-                            LEFT JOIN `j83p2_customer_blocked_cash` cbc ON (o.customer_id = cbc.customer_id AND o.order_id = cbc.order_id AND off.offer_id = cbc.offer_id)
+                        "SELECT (SUM(cbc.balance)  / (1 + " . (int)$this->config->get('config_commission_customer') . " / 100) * (1 - " . (int)$this->config->get('config_commission') ." / 100)) AS blocked_cash FROM `" . DB_PREFIX . "offer` off
+                            LEFT JOIN `" . DB_PREFIX . "order` o ON (off.order_id = o.order_id)
+                            LEFT JOIN `" . DB_PREFIX . "customer_blocked_cash` cbc ON (o.customer_id = cbc.customer_id AND o.order_id = cbc.order_id AND off.offer_id = cbc.offer_id)
                         WHERE off.customer_id = '" . (int)$this->customer_id . "' AND o.order_status_id = 5"
                     );
                 } else {
@@ -222,7 +222,7 @@ class Customer {
         } else {
             $key = Crypt::generate('sha1', md5($this->getLogin() . '$' . microtime(true))) . sha1(md5($this->getLogin() . '$' . microtime(true)));
 
-           $this->db->query("INSERT INTO " . DB_PREFIX . "customer_longpoll SET
+            $this->db->query("INSERT INTO " . DB_PREFIX . "customer_longpoll SET
                 customer_id = '" . $this->getId() . "',
                 `key` = '" . $key . "',
                 expired = '" . (time() + 86400) . "',
