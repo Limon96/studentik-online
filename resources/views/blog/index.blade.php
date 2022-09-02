@@ -62,6 +62,12 @@
 
                             <div class="table_of_contents">
                                 {!! $item->text !!}
+
+
+
+
+
+
                             </div>
 
 
