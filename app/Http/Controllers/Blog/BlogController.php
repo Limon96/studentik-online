@@ -19,6 +19,10 @@ class BlogController extends Controller {
     {
         $item = app(BlogPostRepository::class)->findSlug($slug);
 
+        if (!$item) {
+            return abort(404);
+        }
+
         return view('blog.index', compact(
             'item'
         ));
