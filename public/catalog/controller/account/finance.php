@@ -128,11 +128,17 @@ class ControllerAccountFinance extends Controller
                 'commission' => '3%',
                 'href' => str_replace('&amp;','&',$this->url->link('extension/payment/yookassa', 'type=bank_card' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('3%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/bans.png&name=Банковской картой'))
             ],
-            [
+            /*[
                 'name' => 'WebMoney',
                 'thumb' => HTTP_SERVER . 'catalog/assets/img/webmoney.png',
                 'commission' => '6%',
                 'href' => str_replace('&amp;','&',$this->url->link('extension/payment/yookassa', 'type=webmoney' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('6%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/webmoney.png&name=WebMoney'))
+            ],*/
+            [
+                'name' => 'СПБ',
+                'thumb' => HTTP_SERVER . 'catalog/assets/img/sbp.png',
+                'commission' => '1%',
+                'href' => str_replace('&amp;','&',$this->url->link('extension/payment/yookassa', 'type=sbp' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('1%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/sbp.png&name=SBP'))
             ],
             [
                 'name' => 'QIWI',

@@ -5,7 +5,7 @@ require_once DIR_SYSTEM . 'library/yookassa/yookassa.php';
 class ControllerExtensionPaymentYookassa extends Controller {
 
 
-    private $white_list = ['bank_card', 'yoo_money', 'webmoney', 'qiwi'];
+    private $white_list = ['bank_card', 'yoo_money', 'webmoney', 'qiwi', 'sbp'];
 
     public function index()
     {
@@ -106,6 +106,9 @@ class ControllerExtensionPaymentYookassa extends Controller {
                     break;
                 case 'yoo_money':
                     $percent = 1.04;
+                    break;
+                case 'sbp':
+                    $percent = 1.01;
                     break;
                 /* case 'webmoney':
                     $percent = 1.06;
@@ -220,5 +223,5 @@ class ControllerExtensionPaymentYookassa extends Controller {
 
         $this->response->redirect($this->url->link('account/finance/canceled', '', true));
     }
-    
+
 }
