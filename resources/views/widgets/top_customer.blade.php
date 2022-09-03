@@ -16,9 +16,9 @@
                     <span class="rating">{{ $customer->rating()->sum('rating') }} @if($customer->getNewRating()){{ $customer->getNewRating() }}@endif</span>
                 </div>
                 <div class="enter_like clearfix">
-                    <img src="../catalog/assets/img/icons/like.svg">
+                    <img src="{{ asset('catalog/assets/img/icons/like.svg') }}">
                     <span class="like">{{ $customer->getCountPositiveReviews() }}</span>
-                    <img src="../catalog/assets/img/icons/dislike.svg">
+                    <img src="{{ asset('catalog/assets/img/icons/dislike.svg') }}">
                     <span class="dislike">{{ $customer->getCountNegativeReviews() }}</span>
                 </div>
             </div>
@@ -28,7 +28,7 @@
 
     <div class="foot_worker clearfix">
         <a href="/experts">
-            <img src="../catalog/assets/img/icons/eye.svg">
+            <img src="{{ asset('catalog/assets/img/icons/eye.svg') }}">
             <span>Смотреть все</span>
         </a>
     </div>

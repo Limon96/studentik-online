@@ -24,9 +24,9 @@
         <a href="mailto:studentik.online@mail.ru" class="mail">studentik.online@mail.ru</a>
         <a href="https://studentik.online/index.php?route=information/information&amp;information_id=5" class="polit">Пользовательское соглашение</a>    <a href="https://studentik.online/index.php?route=information/information&amp;information_id=3" class="polit">Политика конфиденциальности</a>    <h4>Мы в соцсетях</h4>
         <ul class="social clearfix">
-            <li><a target="_blank" href="https://vk.com/studentik.online"><img src="../catalog/assets/img/icons/vk.svg"></a></li>
-            <li><a href="tg://resolve?domain=studentik_online"><img src="../catalog/assets/img/icons/telegram.svg"></a></li>
-            <li><a target="_blank" href="https://www.instagram.com/studentik.online/"><img src="../catalog/assets/img/icons/instg.svg"></a></li>
+            <li><a target="_blank" href="https://vk.com/studentik.online"><img src="{{ asset('catalog/assets/img/icons/vk.svg') }}"></a></li>
+            <li><a href="tg://resolve?domain=studentik_online"><img src="{{ asset('catalog/assets/img/icons/telegram.svg') }}"></a></li>
+            <li><a target="_blank" href="https://www.instagram.com/studentik.online/"><img src="{{ asset('catalog/assets/img/icons/instg.svg') }}"></a></li>
         </ul>
 
 

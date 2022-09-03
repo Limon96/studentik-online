@@ -18,7 +18,7 @@
 
     <div class="foot_worker clearfix">
         <a href="{{ route('blog_category.index') }}">
-            <img src="../catalog/assets/img/icons/eye.svg">
+            <img src="{{ asset('catalog/assets/img/icons/eye.svg') }}">
             <span>Смотреть все</span>
         </a>
     </div>
