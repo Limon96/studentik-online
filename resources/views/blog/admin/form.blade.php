@@ -118,6 +118,8 @@
 
                     <div class="card">
                         @error('title')<div class="alert alert-danger">{{ $message }}</div>@enderror
+                        @error('intro')<div class="alert alert-danger">{{ $message }}</div>@enderror
+                        @error('text')<div class="alert alert-danger">{{ $message }}</div>@enderror
                         @error('meta_title')<div class="alert alert-danger">{{ $message }}</div>@enderror
                         @error('meta_desc')<div class="alert alert-danger">{{ $message }}</div>@enderror
                         @error('meta_keywords')<div class="alert alert-danger">{{ $message }}</div>@enderror
