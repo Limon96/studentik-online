@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2020 "YooMoney", NBСO LLC
+ * Copyright (c) 2022 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -66,7 +66,7 @@ interface TransferInterface
     public function getAmount();
 
     /**
-     * Проверяет была ли установлена сумма оплаты
+     * Проверяет, была ли установлена сумма оплаты
      *
      * @return bool True если сумма оплаты была установлена, false если нет
      */
@@ -86,7 +86,7 @@ interface TransferInterface
     public function getPlatformFeeAmount();
 
     /**
-     * Проверяет была ли установлена комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу
+     * Проверяет, была ли установлена комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу
      *
      * @return bool True если комиссия была установлена, false если нет
      */
@@ -123,7 +123,7 @@ interface TransferInterface
     public function getMetadata();
 
     /**
-     * Проверяет были ли установлены метаданные
+     * Проверяет, были ли установлены метаданные
      *
      * @return bool True если метаданные были установлены, false если нет
      */

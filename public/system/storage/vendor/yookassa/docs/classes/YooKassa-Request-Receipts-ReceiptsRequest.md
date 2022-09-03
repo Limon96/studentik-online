@@ -7,11 +7,13 @@
 
 Класс объекта запроса к API списка возвратов магазина
 
+
 ---
 ### Constants
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
 | public | [MAX_LIMIT_VALUE](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#constant_MAX_LIMIT_VALUE) |  | Максимальное количество объектов чеков в выборке |
+
 ---
 ### Properties
 | Visibility | Name | Flag | Summary |
@@ -25,6 +27,7 @@
 | public | [$paymentId](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#property_paymentId) |  | Идентификатор платежа |
 | public | [$refundId](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#property_refundId) |  | Идентификатор возврата |
 | public | [$status](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#property_status) |  | Статус возврата |
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -37,25 +40,25 @@
 | public | [builder()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_builder) |  | Возвращает инстанс билдера объектов запросов списка возвратов магазина |
 | public | [clearValidationError()](../classes/YooKassa-Common-AbstractRequest.md#method_clearValidationError) |  | Очищает статус валидации текущего запроса |
 | public | [fromArray()](../classes/YooKassa-Common-AbstractObject.md#method_fromArray) |  | Устанавливает значения свойств текущего объекта из массива |
-| public | [getCreatedAtGt()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_getCreatedAtGt) |  | Возвращает дату создания от которой будут возвращены возвраты или null если дата не была установлена |
-| public | [getCreatedAtGte()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_getCreatedAtGte) |  | Возвращает дату создания от которой будут возвращены возвраты или null если дата не была установлена |
-| public | [getCreatedAtLt()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_getCreatedAtLt) |  | Возвращает дату создания до которой будут возвращены возвраты или null если дата не была установлена |
-| public | [getCreatedAtLte()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_getCreatedAtLte) |  | Возвращает дату создания до которой будут возвращены возвраты или null если дата не была установлена |
+| public | [getCreatedAtGt()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_getCreatedAtGt) |  | Возвращает дату создания от которой будут возвращены возвраты или null, если дата не была установлена |
+| public | [getCreatedAtGte()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_getCreatedAtGte) |  | Возвращает дату создания от которой будут возвращены возвраты или null, если дата не была установлена |
+| public | [getCreatedAtLt()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_getCreatedAtLt) |  | Возвращает дату создания до которой будут возвращены возвраты или null, если дата не была установлена |
+| public | [getCreatedAtLte()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_getCreatedAtLte) |  | Возвращает дату создания до которой будут возвращены возвраты или null, если дата не была установлена |
 | public | [getCursor()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_getCursor) |  | Возвращает токен для получения следующей страницы выборки |
 | public | [getLastValidationError()](../classes/YooKassa-Common-AbstractRequest.md#method_getLastValidationError) |  | Возвращает последнюю ошибку валидации |
 | public | [getLimit()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_getLimit) |  | Ограничение количества объектов платежа |
 | public | [getPaymentId()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_getPaymentId) |  | Возвращает идентификатор платежа если он задан или null |
 | public | [getRefundId()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_getRefundId) |  | Возвращает идентификатор возврата |
-| public | [getStatus()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_getStatus) |  | Возвращает статус выбираемых возвратов или null если он до этого не был установлен |
-| public | [hasCreatedAtGt()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_hasCreatedAtGt) |  | Проверяет была ли установлена дата создания от которой выбираются возвраты |
-| public | [hasCreatedAtGte()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_hasCreatedAtGte) |  | Проверяет была ли установлена дата создания от которой выбираются возвраты |
-| public | [hasCreatedAtLt()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_hasCreatedAtLt) |  | Проверяет была ли установлена дата создания до которой выбираются возвраты |
-| public | [hasCreatedAtLte()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_hasCreatedAtLte) |  | Проверяет была ли установлена дата создания до которой выбираются возвраты |
-| public | [hasCursor()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_hasCursor) |  | Проверяет был ли установлен токен следующей страницы |
-| public | [hasLimit()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_hasLimit) |  | Проверяет был ли установлено ограничение количества объектов платежа |
+| public | [getStatus()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_getStatus) |  | Возвращает статус выбираемых возвратов или null, если он до этого не был установлен |
+| public | [hasCreatedAtGt()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_hasCreatedAtGt) |  | Проверяет, была ли установлена дата создания от которой выбираются возвраты |
+| public | [hasCreatedAtGte()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_hasCreatedAtGte) |  | Проверяет, была ли установлена дата создания от которой выбираются возвраты |
+| public | [hasCreatedAtLt()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_hasCreatedAtLt) |  | Проверяет, была ли установлена дата создания до которой выбираются возвраты |
+| public | [hasCreatedAtLte()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_hasCreatedAtLte) |  | Проверяет, была ли установлена дата создания до которой выбираются возвраты |
+| public | [hasCursor()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_hasCursor) |  | Проверяет, был ли установлен токен следующей страницы |
+| public | [hasLimit()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_hasLimit) |  | Проверяет, было ли установлено ограничение количества объектов платежа |
 | public | [hasPaymentId()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_hasPaymentId) |  | Проверяет, был ли задан идентификатор платежа |
-| public | [hasRefundId()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_hasRefundId) |  | Проверяет был ли установлен идентификатор возврата |
-| public | [hasStatus()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_hasStatus) |  | Проверяет был ли установлен статус выбираемых возвратов |
+| public | [hasRefundId()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_hasRefundId) |  | Проверяет, был ли установлен идентификатор возврата |
+| public | [hasStatus()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_hasStatus) |  | Проверяет, был ли установлен статус выбираемых возвратов |
 | public | [jsonSerialize()](../classes/YooKassa-Common-AbstractObject.md#method_jsonSerialize) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации |
 | public | [offsetExists()](../classes/YooKassa-Common-AbstractObject.md#method_offsetExists) |  | Проверяет наличие свойства |
 | public | [offsetGet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetGet) |  | Возвращает значение свойства |
@@ -67,13 +70,14 @@
 | public | [setCreatedAtLte()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_setCreatedAtLte) |  | Устанавливает дату создания до которой выбираются возвраты |
 | public | [setCursor()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_setCursor) |  | Устанавливает токен следующей страницы выборки |
 | public | [setLimit()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_setLimit) |  | Устанавливает ограничение количества объектов платежа |
-| public | [setPaymentId()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_setPaymentId) |  | Устанавливает идентификатор платежа или null если требуется его удалить |
+| public | [setPaymentId()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_setPaymentId) |  | Устанавливает идентификатор платежа или null, если требуется его удалить |
 | public | [setRefundId()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_setRefundId) |  | Устанавливает идентификатор возврата |
 | public | [setStatus()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_setStatus) |  | Устанавливает статус выбираемых возвратов |
 | public | [toArray()](../classes/YooKassa-Common-AbstractObject.md#method_toArray) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации Является алиасом метода AbstractObject::jsonSerialize() |
 | public | [validate()](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md#method_validate) |  | Проверяет валидность текущего объекта запроса |
 | protected | [getUnknownProperties()](../classes/YooKassa-Common-AbstractObject.md#method_getUnknownProperties) |  | Возвращает массив свойств которые не существуют, но были заданы у объекта |
 | protected | [setValidationError()](../classes/YooKassa-Common-AbstractRequest.md#method_setValidationError) |  | Устанавливает ошибку валидации |
+
 ---
 ### Details
 * File: [lib/Request/Receipts/ReceiptsRequest.php](../../lib/Request/Receipts/ReceiptsRequest.php)
@@ -84,6 +88,7 @@
   * \YooKassa\Request\Receipts\ReceiptsRequest
 * Implements:
   * [\YooKassa\Request\Receipts\ReceiptsRequestInterface](../classes/YooKassa-Request-Receipts-ReceiptsRequestInterface.md)
+
 ---
 ## Constants
 <a name="constant_MAX_LIMIT_VALUE" class="anchor"></a>
@@ -93,6 +98,7 @@
 ```php
 MAX_LIMIT_VALUE = 100
 ```
+
 
 
 ---
@@ -212,7 +218,7 @@ MAX_LIMIT_VALUE = 100
 #### public __construct() : mixed
 
 ```php
-public __construct(array  data = array()) : mixed
+public __construct(array $data = array()) : mixed
 ```
 
 **Summary**
@@ -221,6 +227,7 @@ AbstractObject constructor.
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -233,7 +240,7 @@ AbstractObject constructor.
 #### public __get() : mixed
 
 ```php
-public __get(string  propertyName) : mixed
+public __get(string $propertyName) : mixed
 ```
 
 **Summary**
@@ -242,6 +249,7 @@ public __get(string  propertyName) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -254,7 +262,7 @@ public __get(string  propertyName) : mixed
 #### public __isset() : bool
 
 ```php
-public __isset(string  propertyName) : bool
+public __isset(string $propertyName) : bool
 ```
 
 **Summary**
@@ -263,6 +271,7 @@ public __isset(string  propertyName) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -275,7 +284,7 @@ public __isset(string  propertyName) : bool
 #### public __set() : mixed
 
 ```php
-public __set(string  propertyName, mixed  value) : mixed
+public __set(string $propertyName, mixed $value) : mixed
 ```
 
 **Summary**
@@ -284,6 +293,7 @@ public __set(string  propertyName, mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -297,7 +307,7 @@ public __set(string  propertyName, mixed  value) : mixed
 #### public __unset() : mixed
 
 ```php
-public __unset(string  propertyName) : mixed
+public __unset(string $propertyName) : mixed
 ```
 
 **Summary**
@@ -306,6 +316,7 @@ public __unset(string  propertyName) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -352,7 +363,7 @@ public clearValidationError() : mixed
 #### public fromArray() : mixed
 
 ```php
-public fromArray(array|\Traversable  sourceArray) : mixed
+public fromArray(array|\Traversable $sourceArray) : mixed
 ```
 
 **Summary**
@@ -361,6 +372,7 @@ public fromArray(array|\Traversable  sourceArray) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -378,7 +390,7 @@ public getCreatedAtGt() : \DateTime|null
 
 **Summary**
 
-Возвращает дату создания от которой будут возвращены возвраты или null если дата не была установлена
+Возвращает дату создания от которой будут возвращены возвраты или null, если дата не была установлена
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
@@ -395,7 +407,7 @@ public getCreatedAtGte() : \DateTime|null
 
 **Summary**
 
-Возвращает дату создания от которой будут возвращены возвраты или null если дата не была установлена
+Возвращает дату создания от которой будут возвращены возвраты или null, если дата не была установлена
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
@@ -412,7 +424,7 @@ public getCreatedAtLt() : \DateTime|null
 
 **Summary**
 
-Возвращает дату создания до которой будут возвращены возвраты или null если дата не была установлена
+Возвращает дату создания до которой будут возвращены возвраты или null, если дата не была установлена
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
@@ -429,7 +441,7 @@ public getCreatedAtLte() : \DateTime|null
 
 **Summary**
 
-Возвращает дату создания до которой будут возвращены возвраты или null если дата не была установлена
+Возвращает дату создания до которой будут возвращены возвраты или null, если дата не была установлена
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
@@ -531,7 +543,7 @@ public getStatus() : string|null
 
 **Summary**
 
-Возвращает статус выбираемых возвратов или null если он до этого не был установлен
+Возвращает статус выбираемых возвратов или null, если он до этого не был установлен
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
@@ -548,7 +560,7 @@ public hasCreatedAtGt() : bool
 
 **Summary**
 
-Проверяет была ли установлена дата создания от которой выбираются возвраты
+Проверяет, была ли установлена дата создания от которой выбираются возвраты
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
@@ -565,7 +577,7 @@ public hasCreatedAtGte() : bool
 
 **Summary**
 
-Проверяет была ли установлена дата создания от которой выбираются возвраты
+Проверяет, была ли установлена дата создания от которой выбираются возвраты
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
@@ -582,7 +594,7 @@ public hasCreatedAtLt() : bool
 
 **Summary**
 
-Проверяет была ли установлена дата создания до которой выбираются возвраты
+Проверяет, была ли установлена дата создания до которой выбираются возвраты
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
@@ -599,7 +611,7 @@ public hasCreatedAtLte() : bool
 
 **Summary**
 
-Проверяет была ли установлена дата создания до которой выбираются возвраты
+Проверяет, была ли установлена дата создания до которой выбираются возвраты
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
@@ -616,7 +628,7 @@ public hasCursor() : bool
 
 **Summary**
 
-Проверяет был ли установлен токен следующей страницы
+Проверяет, был ли установлен токен следующей страницы
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
@@ -633,7 +645,7 @@ public hasLimit() : bool
 
 **Summary**
 
-Проверяет был ли установлено ограничение количества объектов платежа
+Проверяет, было ли установлено ограничение количества объектов платежа
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
@@ -667,7 +679,7 @@ public hasRefundId() : bool
 
 **Summary**
 
-Проверяет был ли установлен идентификатор возврата
+Проверяет, был ли установлен идентификатор возврата
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
@@ -684,7 +696,7 @@ public hasStatus() : bool
 
 **Summary**
 
-Проверяет был ли установлен статус выбираемых возвратов
+Проверяет, был ли установлен статус выбираемых возвратов
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
@@ -713,7 +725,7 @@ public jsonSerialize() : array
 #### public offsetExists() : bool
 
 ```php
-public offsetExists(string  offset) : bool
+public offsetExists(string $offset) : bool
 ```
 
 **Summary**
@@ -722,6 +734,7 @@ public offsetExists(string  offset) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -734,7 +747,7 @@ public offsetExists(string  offset) : bool
 #### public offsetGet() : mixed
 
 ```php
-public offsetGet(string  offset) : mixed
+public offsetGet(string $offset) : mixed
 ```
 
 **Summary**
@@ -743,6 +756,7 @@ public offsetGet(string  offset) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -755,7 +769,7 @@ public offsetGet(string  offset) : mixed
 #### public offsetSet() : mixed
 
 ```php
-public offsetSet(string  offset, mixed  value) : mixed
+public offsetSet(string $offset, mixed $value) : mixed
 ```
 
 **Summary**
@@ -764,6 +778,7 @@ public offsetSet(string  offset, mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -777,7 +792,7 @@ public offsetSet(string  offset, mixed  value) : mixed
 #### public offsetUnset() : mixed
 
 ```php
-public offsetUnset(string  offset) : mixed
+public offsetUnset(string $offset) : mixed
 ```
 
 **Summary**
@@ -786,6 +801,7 @@ public offsetUnset(string  offset) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -798,7 +814,7 @@ public offsetUnset(string  offset) : mixed
 #### public setCreatedAtGt() : mixed
 
 ```php
-public setCreatedAtGt(\DateTime|string|int|null  value) : mixed
+public setCreatedAtGt(\DateTime|string|int|null $value) : mixed
 ```
 
 **Summary**
@@ -807,10 +823,12 @@ public setCreatedAtGt(\DateTime|string|int|null  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, от (не включая) или null чтобы удалить значение |
+| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, от (не включая) или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -824,7 +842,7 @@ public setCreatedAtGt(\DateTime|string|int|null  value) : mixed
 #### public setCreatedAtGte() : mixed
 
 ```php
-public setCreatedAtGte(\DateTime|string|int|null  value) : mixed
+public setCreatedAtGte(\DateTime|string|int|null $value) : mixed
 ```
 
 **Summary**
@@ -833,10 +851,12 @@ public setCreatedAtGte(\DateTime|string|int|null  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, от (включительно) или null чтобы удалить значение |
+| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, от (включительно) или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -850,7 +870,7 @@ public setCreatedAtGte(\DateTime|string|int|null  value) : mixed
 #### public setCreatedAtLt() : mixed
 
 ```php
-public setCreatedAtLt(\DateTime|string|int|null  value) : mixed
+public setCreatedAtLt(\DateTime|string|int|null $value) : mixed
 ```
 
 **Summary**
@@ -859,10 +879,12 @@ public setCreatedAtLt(\DateTime|string|int|null  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, до (не включая) или null чтобы удалить значение |
+| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, до (не включая) или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -876,7 +898,7 @@ public setCreatedAtLt(\DateTime|string|int|null  value) : mixed
 #### public setCreatedAtLte() : mixed
 
 ```php
-public setCreatedAtLte(\DateTime|string|int|null  value) : mixed
+public setCreatedAtLte(\DateTime|string|int|null $value) : mixed
 ```
 
 **Summary**
@@ -885,10 +907,12 @@ public setCreatedAtLte(\DateTime|string|int|null  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, до (включительно) или null чтобы удалить значение |
+| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, до (включительно) или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -902,7 +926,7 @@ public setCreatedAtLte(\DateTime|string|int|null  value) : mixed
 #### public setCursor() : mixed
 
 ```php
-public setCursor(string  value) : mixed
+public setCursor(string $value) : mixed
 ```
 
 **Summary**
@@ -911,10 +935,12 @@ public setCursor(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | value  | Токен следующей страницы выборки или null чтобы удалить значение |
+| <code lang="php">string</code> | value  | Токен следующей страницы выборки или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -927,7 +953,7 @@ public setCursor(string  value) : mixed
 #### public setLimit() : mixed
 
 ```php
-public setLimit(int|null  value) : mixed
+public setLimit(int|null $value) : mixed
 ```
 
 **Summary**
@@ -936,14 +962,16 @@ public setLimit(int|null  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">int OR null</code> | value  | Ограничение количества объектов платежа или null чтобы удалить значение |
+| <code lang="php">int OR null</code> | value  | Ограничение количества объектов платежа или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
-| \YooKassa\Common\Exceptions\InvalidPropertyValueTypeException | Выбрасывается если в метод была передано не целое число |
+| \YooKassa\Common\Exceptions\InvalidPropertyValueTypeException | Выбрасывается, если в метод было передано не целое число |
 
 **Returns:** mixed - 
 
@@ -952,19 +980,21 @@ public setLimit(int|null  value) : mixed
 #### public setPaymentId() : mixed
 
 ```php
-public setPaymentId(string|null  value) : mixed
+public setPaymentId(string|null $value) : mixed
 ```
 
 **Summary**
 
-Устанавливает идентификатор платежа или null если требуется его удалить
+Устанавливает идентификатор платежа или null, если требуется его удалить
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
 | <code lang="php">string OR null</code> | value  | Идентификатор платежа |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -978,7 +1008,7 @@ public setPaymentId(string|null  value) : mixed
 #### public setRefundId() : mixed
 
 ```php
-public setRefundId(string  value) : mixed
+public setRefundId(string $value) : mixed
 ```
 
 **Summary**
@@ -987,6 +1017,7 @@ public setRefundId(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -999,7 +1030,7 @@ public setRefundId(string  value) : mixed
 #### public setStatus() : mixed
 
 ```php
-public setStatus(string  value) : mixed
+public setStatus(string $value) : mixed
 ```
 
 **Summary**
@@ -1008,10 +1039,12 @@ public setStatus(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsRequest](../classes/YooKassa-Request-Receipts-ReceiptsRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | value  | Статус выбираемых платежей или null чтобы удалить значение |
+| <code lang="php">string</code> | value  | Статус выбираемых платежей или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -1077,7 +1110,7 @@ protected getUnknownProperties() : array
 #### protected setValidationError() : mixed
 
 ```php
-protected setValidationError(string  value) : mixed
+protected setValidationError(string $value) : mixed
 ```
 
 **Summary**
@@ -1086,6 +1119,7 @@ protected setValidationError(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractRequest](../classes/YooKassa-Common-AbstractRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -1106,10 +1140,10 @@ protected setValidationError(string  value) : mixed
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

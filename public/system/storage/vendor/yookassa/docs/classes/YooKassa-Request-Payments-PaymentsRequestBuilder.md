@@ -7,14 +7,17 @@
 
 Класс билдера запросов к API для получения списка платежей магазина
 
+
 ---
 ### Constants
 * No constants found
+
 ---
 ### Properties
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
 | protected | [$currentObject](../classes/YooKassa-Request-Payments-PaymentsRequestBuilder.md#property_currentObject) |  | Инстанс собираемого запроса |
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -35,6 +38,7 @@
 | public | [setPaymentMethod()](../classes/YooKassa-Request-Payments-PaymentsRequestBuilder.md#method_setPaymentMethod) |  | Устанавливает платежный метод выбираемых платежей |
 | public | [setStatus()](../classes/YooKassa-Request-Payments-PaymentsRequestBuilder.md#method_setStatus) |  | Устанавливает статус выбираемых платежей |
 | protected | [initCurrentObject()](../classes/YooKassa-Request-Payments-PaymentsRequestBuilder.md#method_initCurrentObject) |  | Возвращает новый объект запроса для получения списка платежей, который в дальнейшем будет собираться в билдере |
+
 ---
 ### Details
 * File: [lib/Request/Payments/PaymentsRequestBuilder.php](../../lib/Request/Payments/PaymentsRequestBuilder.php)
@@ -42,6 +46,7 @@
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractRequestBuilder](../classes/YooKassa-Common-AbstractRequestBuilder.md)
   * \YooKassa\Request\Payments\PaymentsRequestBuilder
+
 ---
 ## Properties
 <a name="property_currentObject"></a>
@@ -80,7 +85,7 @@ public __construct() : mixed
 #### public build() : \YooKassa\Common\AbstractRequest
 
 ```php
-public build(array|null  options = null) : \YooKassa\Common\AbstractRequest
+public build(array|null $options = null) : \YooKassa\Common\AbstractRequest
 ```
 
 **Summary**
@@ -89,6 +94,7 @@ public build(array|null  options = null) : \YooKassa\Common\AbstractRequest
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Payments\PaymentsRequestBuilder](../classes/YooKassa-Request-Payments-PaymentsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -101,7 +107,7 @@ public build(array|null  options = null) : \YooKassa\Common\AbstractRequest
 #### public setCapturedAtGt() : \YooKassa\Request\Payments\PaymentsRequestBuilder
 
 ```php
-public setCapturedAtGt(\DateTime|string|int|null  value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
+public setCapturedAtGt(\DateTime|string|int|null $value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
 ```
 
 **Summary**
@@ -110,10 +116,12 @@ public setCapturedAtGt(\DateTime|string|int|null  value) : \YooKassa\Request\Pay
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Payments\PaymentsRequestBuilder](../classes/YooKassa-Request-Payments-PaymentsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, до (включительно) или null чтобы удалить значение |
+| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, до (включительно) или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -127,7 +135,7 @@ public setCapturedAtGt(\DateTime|string|int|null  value) : \YooKassa\Request\Pay
 #### public setCapturedAtGte() : \YooKassa\Request\Payments\PaymentsRequestBuilder
 
 ```php
-public setCapturedAtGte(\DateTime|string|int|null  value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
+public setCapturedAtGte(\DateTime|string|int|null $value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
 ```
 
 **Summary**
@@ -136,10 +144,12 @@ public setCapturedAtGte(\DateTime|string|int|null  value) : \YooKassa\Request\Pa
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Payments\PaymentsRequestBuilder](../classes/YooKassa-Request-Payments-PaymentsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время подтверждения, от (включительно) или null чтобы удалить значение |
+| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время подтверждения, от (включительно) или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -153,7 +163,7 @@ public setCapturedAtGte(\DateTime|string|int|null  value) : \YooKassa\Request\Pa
 #### public setCapturedAtLt() : \YooKassa\Request\Payments\PaymentsRequestBuilder
 
 ```php
-public setCapturedAtLt(\DateTime|string|int|null  value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
+public setCapturedAtLt(\DateTime|string|int|null $value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
 ```
 
 **Summary**
@@ -162,10 +172,12 @@ public setCapturedAtLt(\DateTime|string|int|null  value) : \YooKassa\Request\Pay
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Payments\PaymentsRequestBuilder](../classes/YooKassa-Request-Payments-PaymentsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время подтверждения, до (включительно) или null чтобы удалить значение |
+| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время подтверждения, до (включительно) или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -179,7 +191,7 @@ public setCapturedAtLt(\DateTime|string|int|null  value) : \YooKassa\Request\Pay
 #### public setCapturedAtLte() : \YooKassa\Request\Payments\PaymentsRequestBuilder
 
 ```php
-public setCapturedAtLte(\DateTime|string|int|null  value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
+public setCapturedAtLte(\DateTime|string|int|null $value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
 ```
 
 **Summary**
@@ -188,10 +200,12 @@ public setCapturedAtLte(\DateTime|string|int|null  value) : \YooKassa\Request\Pa
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Payments\PaymentsRequestBuilder](../classes/YooKassa-Request-Payments-PaymentsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время подтверждения, до (включительно) или null чтобы удалить значение |
+| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время подтверждения, до (включительно) или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -205,7 +219,7 @@ public setCapturedAtLte(\DateTime|string|int|null  value) : \YooKassa\Request\Pa
 #### public setCreatedAtGt() : \YooKassa\Request\Payments\PaymentsRequestBuilder
 
 ```php
-public setCreatedAtGt(\DateTime|string|int|null  value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
+public setCreatedAtGt(\DateTime|string|int|null $value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
 ```
 
 **Summary**
@@ -214,10 +228,12 @@ public setCreatedAtGt(\DateTime|string|int|null  value) : \YooKassa\Request\Paym
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Payments\PaymentsRequestBuilder](../classes/YooKassa-Request-Payments-PaymentsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, от (не включая) или null чтобы удалить значение |
+| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, от (не включая) или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -231,7 +247,7 @@ public setCreatedAtGt(\DateTime|string|int|null  value) : \YooKassa\Request\Paym
 #### public setCreatedAtGte() : \YooKassa\Request\Payments\PaymentsRequestBuilder
 
 ```php
-public setCreatedAtGte(\DateTime|string|int|null  value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
+public setCreatedAtGte(\DateTime|string|int|null $value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
 ```
 
 **Summary**
@@ -240,10 +256,12 @@ public setCreatedAtGte(\DateTime|string|int|null  value) : \YooKassa\Request\Pay
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Payments\PaymentsRequestBuilder](../classes/YooKassa-Request-Payments-PaymentsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, от (включительно) или null чтобы удалить значение |
+| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, от (включительно) или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -257,7 +275,7 @@ public setCreatedAtGte(\DateTime|string|int|null  value) : \YooKassa\Request\Pay
 #### public setCreatedAtLt() : \YooKassa\Request\Payments\PaymentsRequestBuilder
 
 ```php
-public setCreatedAtLt(\DateTime|string|int|null  value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
+public setCreatedAtLt(\DateTime|string|int|null $value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
 ```
 
 **Summary**
@@ -266,10 +284,12 @@ public setCreatedAtLt(\DateTime|string|int|null  value) : \YooKassa\Request\Paym
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Payments\PaymentsRequestBuilder](../classes/YooKassa-Request-Payments-PaymentsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, до (не включая) или null чтобы удалить значение |
+| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, до (не включая) или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -283,7 +303,7 @@ public setCreatedAtLt(\DateTime|string|int|null  value) : \YooKassa\Request\Paym
 #### public setCreatedAtLte() : \YooKassa\Request\Payments\PaymentsRequestBuilder
 
 ```php
-public setCreatedAtLte(\DateTime|string|int|null  value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
+public setCreatedAtLte(\DateTime|string|int|null $value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
 ```
 
 **Summary**
@@ -292,10 +312,12 @@ public setCreatedAtLte(\DateTime|string|int|null  value) : \YooKassa\Request\Pay
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Payments\PaymentsRequestBuilder](../classes/YooKassa-Request-Payments-PaymentsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, до (включительно) или null чтобы удалить значение |
+| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, до (включительно) или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -309,7 +331,7 @@ public setCreatedAtLte(\DateTime|string|int|null  value) : \YooKassa\Request\Pay
 #### public setCursor() : \YooKassa\Request\Payments\PaymentsRequestBuilder
 
 ```php
-public setCursor(string|null  value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
+public setCursor(string|null $value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
 ```
 
 **Summary**
@@ -318,10 +340,12 @@ public setCursor(string|null  value) : \YooKassa\Request\Payments\PaymentsReques
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Payments\PaymentsRequestBuilder](../classes/YooKassa-Request-Payments-PaymentsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string OR null</code> | value  | Страница выдачи результатов или null чтобы удалить значение |
+| <code lang="php">string OR null</code> | value  | Страница выдачи результатов или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -334,7 +358,7 @@ public setCursor(string|null  value) : \YooKassa\Request\Payments\PaymentsReques
 #### public setLimit() : \YooKassa\Request\Payments\PaymentsRequestBuilder
 
 ```php
-public setLimit(string  value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
+public setLimit(string $value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
 ```
 
 **Summary**
@@ -343,10 +367,12 @@ public setLimit(string  value) : \YooKassa\Request\Payments\PaymentsRequestBuild
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Payments\PaymentsRequestBuilder](../classes/YooKassa-Request-Payments-PaymentsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | value  | Ограничение количества объектов платежа или null чтобы удалить значение |
+| <code lang="php">string</code> | value  | Ограничение количества объектов платежа или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -359,7 +385,7 @@ public setLimit(string  value) : \YooKassa\Request\Payments\PaymentsRequestBuild
 #### public setOptions() : \YooKassa\Common\AbstractRequestBuilder
 
 ```php
-public setOptions(array|\Traversable  options) : \YooKassa\Common\AbstractRequestBuilder
+public setOptions(array|\Traversable $options) : \YooKassa\Common\AbstractRequestBuilder
 ```
 
 **Summary**
@@ -368,10 +394,12 @@ public setOptions(array|\Traversable  options) : \YooKassa\Common\AbstractReques
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractRequestBuilder](../classes/YooKassa-Common-AbstractRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
 | <code lang="php">array OR \Traversable</code> | options  | Массив свойств запроса |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -385,7 +413,7 @@ public setOptions(array|\Traversable  options) : \YooKassa\Common\AbstractReques
 #### public setPaymentMethod() : \YooKassa\Request\Payments\PaymentsRequestBuilder
 
 ```php
-public setPaymentMethod(string  value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
+public setPaymentMethod(string $value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
 ```
 
 **Summary**
@@ -394,10 +422,12 @@ public setPaymentMethod(string  value) : \YooKassa\Request\Payments\PaymentsRequ
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Payments\PaymentsRequestBuilder](../classes/YooKassa-Request-Payments-PaymentsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | value  | Платежный метод выбираемых платежей или null чтобы удалить значение |
+| <code lang="php">string</code> | value  | Платежный метод выбираемых платежей или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -411,7 +441,7 @@ public setPaymentMethod(string  value) : \YooKassa\Request\Payments\PaymentsRequ
 #### public setStatus() : \YooKassa\Request\Payments\PaymentsRequestBuilder
 
 ```php
-public setStatus(string  value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
+public setStatus(string $value) : \YooKassa\Request\Payments\PaymentsRequestBuilder
 ```
 
 **Summary**
@@ -420,10 +450,12 @@ public setStatus(string  value) : \YooKassa\Request\Payments\PaymentsRequestBuil
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Payments\PaymentsRequestBuilder](../classes/YooKassa-Request-Payments-PaymentsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | value  | Статус выбираемых платежей или null чтобы удалить значение |
+| <code lang="php">string</code> | value  | Статус выбираемых платежей или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -462,10 +494,10 @@ protected initCurrentObject() : \YooKassa\Request\Payments\PaymentsRequest
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

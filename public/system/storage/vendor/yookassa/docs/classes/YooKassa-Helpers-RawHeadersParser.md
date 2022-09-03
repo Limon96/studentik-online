@@ -3,14 +3,17 @@
 # Class: \YooKassa\Helpers\RawHeadersParser
 ### Namespace: [\YooKassa\Helpers](../namespaces/yookassa-helpers.md)
 ---
+
 ---
 ### Constants
 * No constants found
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
 | public | [parse()](../classes/YooKassa-Helpers-RawHeadersParser.md#method_parse) |  |  |
+
 ---
 ### Details
 * File: [lib/Helpers/RawHeadersParser.php](../../lib/Helpers/RawHeadersParser.php)
@@ -24,11 +27,12 @@
 #### public parse() : mixed
 
 ```php
-Static public parse(mixed  rawHeaders) : mixed
+Static public parse(mixed $rawHeaders) : mixed
 ```
 
 **Details:**
 * Inherited From: [\YooKassa\Helpers\RawHeadersParser](../classes/YooKassa-Helpers-RawHeadersParser.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -49,10 +53,10 @@ Static public parse(mixed  rawHeaders) : mixed
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

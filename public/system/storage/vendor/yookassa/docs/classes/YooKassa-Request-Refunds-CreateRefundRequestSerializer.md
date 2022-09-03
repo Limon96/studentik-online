@@ -7,14 +7,17 @@
 
 Класс сериалайзера запросов к API на создание нового возврата средств
 
+
 ---
 ### Constants
 * No constants found
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
 | public | [serialize()](../classes/YooKassa-Request-Refunds-CreateRefundRequestSerializer.md#method_serialize) |  | Сериализует переданный объект запроса к API в массив |
+
 ---
 ### Details
 * File: [lib/Request/Refunds/CreateRefundRequestSerializer.php](../../lib/Request/Refunds/CreateRefundRequestSerializer.php)
@@ -28,7 +31,7 @@
 #### public serialize() : array
 
 ```php
-public serialize(\YooKassa\Request\Refunds\CreateRefundRequestInterface  request) : array
+public serialize(\YooKassa\Request\Refunds\CreateRefundRequestInterface $request) : array
 ```
 
 **Summary**
@@ -37,6 +40,7 @@ public serialize(\YooKassa\Request\Refunds\CreateRefundRequestInterface  request
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Refunds\CreateRefundRequestSerializer](../classes/YooKassa-Request-Refunds-CreateRefundRequestSerializer.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -57,10 +61,10 @@ public serialize(\YooKassa\Request\Refunds\CreateRefundRequestInterface  request
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

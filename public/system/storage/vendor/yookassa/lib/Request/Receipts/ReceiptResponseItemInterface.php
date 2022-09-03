@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2020 "YooMoney", NBСO LLC
+ * Copyright (c) 2022 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -69,9 +69,21 @@ interface ReceiptResponseItemInterface
 
     /**
      * Возвращает ставку НДС
-     * @return int|null Ставка НДС, число 1-6, или null если ставка не задана
+     * @return int|null Ставка НДС, число 1-6, или null, если ставка не задана
      */
     function getVatCode();
+
+    /**
+     * Возвращает признак предмета расчета
+     * @return string|null Признак предмета расчета
+     */
+    function getPaymentSubject();
+
+    /**
+     * Возвращает признак способа расчета
+     * @return string|null Признак способа расчета
+     */
+    function getPaymentMode();
 
     /**
      * Возвращает информацию о поставщике товара или услуги

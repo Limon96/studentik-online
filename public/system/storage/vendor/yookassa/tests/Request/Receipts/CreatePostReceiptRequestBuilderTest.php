@@ -4,11 +4,13 @@ namespace Tests\YooKassa\Request\Receipts;
 
 use PHPUnit\Framework\TestCase;
 use YooKassa\Helpers\Random;
-use YooKassa\Helpers\StringObject;
 use YooKassa\Model\CurrencyCode;
+use YooKassa\Model\MonetaryAmount;
 use YooKassa\Model\Receipt\PaymentMode;
 use YooKassa\Model\Receipt\PaymentSubject;
 use YooKassa\Model\Receipt\SettlementType;
+use YooKassa\Model\ReceiptCustomer;
+use YooKassa\Model\ReceiptCustomerInterface;
 use YooKassa\Model\ReceiptType;
 use YooKassa\Request\Receipts\CreatePostReceiptRequestBuilder;
 
@@ -65,7 +67,11 @@ class CreatePostReceiptRequestBuilderTest extends TestCase
             self::assertNull($instance->getCustomer());
         } else {
             self::assertNotNull($instance->getCustomer());
-            self::assertEquals($options['customer'], $instance->getCustomer()->jsonSerialize());
+            if (!is_object($instance->getCustomer())) {
+                self::assertEquals($options['customer'], $instance->getCustomer()->jsonSerialize());
+            } else {
+                self::assertTrue($instance->getCustomer() instanceof ReceiptCustomerInterface);
+            }
         }
     }
 
@@ -97,6 +103,32 @@ class CreatePostReceiptRequestBuilderTest extends TestCase
         } else {
             self::assertNotNull($instance->getType());
             self::assertEquals($options['type'], $instance->getType());
+        }
+    }
+
+    /**
+     * @dataProvider validDataProvider
+     *
+     * @param $options
+     */
+    public function testSetObjectId($options)
+    {
+        $builder = new CreatePostReceiptRequestBuilder();
+
+        $instance = $builder->build($options);
+
+        if (empty($options['payment_id']) && empty($options['refund_id'])) {
+            self::assertNull($instance->getObjectId());
+        } else {
+            self::assertNotNull($instance->getObjectId());
+            if (!empty($options['payment_id'])) {
+                self::assertEquals($options['payment_id'], $instance->getObjectId());
+                self::assertEquals(ReceiptType::PAYMENT, $instance->getObjectType());
+            }
+            if (!empty($options['refund_id'])) {
+                self::assertEquals($options['refund_id'], $instance->getObjectId());
+                self::assertEquals(ReceiptType::REFUND, $instance->getObjectType());
+            }
         }
     }
 
@@ -191,18 +223,73 @@ class CreatePostReceiptRequestBuilderTest extends TestCase
         }
     }
 
+    /**
+     * @dataProvider setAmountDataProvider
+     * @param $value
+     */
+    public function testSetAmount($value)
+    {
+        $builder = new CreatePostReceiptRequestBuilder();
+        $result = $builder->setAmount($value);
+        self::assertNotNull($result);
+        self::assertTrue($result instanceof CreatePostReceiptRequestBuilder);
+    }
+
+    /**
+     * @dataProvider validDataProvider
+     * @param $value
+     */
+    public function testSetCurrency($value)
+    {
+        $builder = new CreatePostReceiptRequestBuilder();
+        $builder->setItems($value['items']);
+        $result = $builder->setCurrency(Random::value(CurrencyCode::getValidValues()));
+        self::assertNotNull($result);
+        self::assertTrue($result instanceof CreatePostReceiptRequestBuilder);
+    }
+
+    /**
+     * @dataProvider validDataProvider
+     * @param $value
+     */
+    public function testAddItem($value)
+    {
+        $builder = new CreatePostReceiptRequestBuilder();
+
+        foreach ($value['items'] as $item) {
+            $result = $builder->addItem($item);
+            self::assertNotNull($result);
+            self::assertTrue($result instanceof CreatePostReceiptRequestBuilder);
+        }
+    }
+
+
+    public function setAmountDataProvider()
+    {
+        return array(
+            array(
+                new MonetaryAmount(
+                    round(Random::float(0.1, 99.99), 2),
+                    Random::value(CurrencyCode::getValidValues())
+                )
+            ),
+            array(
+                array(
+                    'value' => round(Random::float(0.1, 99.99), 2),
+                    'currency' => Random::value(CurrencyCode::getValidValues())
+                )
+            ),
+            array('100')
+        );
+    }
+
     public function validDataProvider()
     {
-        $type = Random::value(ReceiptType::getValidValues());
+        $type = Random::value(ReceiptType::getEnabledValues());
         $result = array(
             array(
                 array(
-                    'customer' => array(
-                        'full_name' => Random::str(128),
-                        'email' => Random::str(128),
-                        'phone' => Random::str(4, 12, '1234567890'),
-                        'inn' => '1234567890',
-                    ),
+                    'customer' => new ReceiptCustomer(),
                     'items' => array(
                         array(
                             'description' => Random::str(128),
@@ -221,7 +308,7 @@ class CreatePostReceiptRequestBuilderTest extends TestCase
                         )
                     ),
                     'tax_system_code' => Random::int(1, 6),
-                    'type' => $type,
+                    'type' => 'payment',
                     'send' => true,
                     'settlements' => array(
                         array(
@@ -237,7 +324,7 @@ class CreatePostReceiptRequestBuilderTest extends TestCase
             ),
         );
         for ($i = 0; $i < 10; $i++) {
-            $type = Random::value(ReceiptType::getValidValues());
+            $type = Random::value(ReceiptType::getEnabledValues());
             $request = array(
                 'customer' => array(
                     'full_name' => Random::str(128),
@@ -325,5 +412,4 @@ class CreatePostReceiptRequestBuilderTest extends TestCase
             array('test'),
         );
     }
-
 }

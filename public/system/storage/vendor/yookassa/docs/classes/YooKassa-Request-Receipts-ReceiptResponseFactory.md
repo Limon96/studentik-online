@@ -7,14 +7,17 @@
 
 Фабричный класс для работы с чеками
 
+
 ---
 ### Constants
 * No constants found
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
 | public | [factory()](../classes/YooKassa-Request-Receipts-ReceiptResponseFactory.md#method_factory) |  | Фабричный метод для работы с чеками |
+
 ---
 ### Details
 * File: [lib/Request/Receipts/ReceiptResponseFactory.php](../../lib/Request/Receipts/ReceiptResponseFactory.php)
@@ -28,7 +31,7 @@
 #### public factory() : \YooKassa\Request\Receipts\AbstractReceiptResponse|\YooKassa\Request\Receipts\SimpleReceiptResponse|\YooKassa\Request\Receipts\PaymentReceiptResponse|\YooKassa\Request\Receipts\RefundReceiptResponse
 
 ```php
-public factory(array  data) : \YooKassa\Request\Receipts\AbstractReceiptResponse|\YooKassa\Request\Receipts\SimpleReceiptResponse|\YooKassa\Request\Receipts\PaymentReceiptResponse|\YooKassa\Request\Receipts\RefundReceiptResponse
+public factory(array $data) : \YooKassa\Request\Receipts\AbstractReceiptResponse|\YooKassa\Request\Receipts\SimpleReceiptResponse|\YooKassa\Request\Receipts\PaymentReceiptResponse|\YooKassa\Request\Receipts\RefundReceiptResponse
 ```
 
 **Summary**
@@ -37,6 +40,7 @@ public factory(array  data) : \YooKassa\Request\Receipts\AbstractReceiptResponse
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptResponseFactory](../classes/YooKassa-Request-Receipts-ReceiptResponseFactory.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -57,10 +61,10 @@ public factory(array  data) : \YooKassa\Request\Receipts\AbstractReceiptResponse
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

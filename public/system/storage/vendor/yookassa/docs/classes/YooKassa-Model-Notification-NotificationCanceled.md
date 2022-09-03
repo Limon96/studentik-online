@@ -7,6 +7,7 @@
 
 Класс объекта, присылаемого API при изменении статуса платежа на "canceled"
 
+
 ---
 ### Examples
 Пример скрипта обработки уведомления
@@ -21,6 +22,13 @@ try {
     $factory = new \YooKassa\Model\Notification\NotificationFactory();
     $notificationObject = $factory->factory($data);
     $responseObject = $notificationObject->getObject();
+
+    $client = new \YooKassa\Client();
+
+    if (!$client->isNotificationIPTrusted($_SERVER['REMOTE_ADDR'])) {
+        header('HTTP/1.1 400 Something went wrong');
+        exit();
+    }
 
     if ($notificationObject->getEvent() === \YooKassa\Model\NotificationEventType::PAYMENT_SUCCEEDED) {
         $someData = array(
@@ -59,7 +67,6 @@ try {
     // Специфичная логика
     // ...
 
-    $client = new \YooKassa\Client();
     $client->setAuth('xxxxxx', 'test_XXXXXXX');
 
     // Получим актуальную информацию о платеже
@@ -79,9 +86,11 @@ try {
 
 
 ```
+
 ---
 ### Constants
 * No constants found
+
 ---
 ### Properties
 | Visibility | Name | Flag | Summary |
@@ -89,16 +98,17 @@ try {
 | public | [$event](../classes/YooKassa-Model-Notification-AbstractNotification.md#property_event) |  | Тип события |
 | public | [$object](../classes/YooKassa-Model-Notification-NotificationCanceled.md#property_object) |  | Объект с информацией о платеже |
 | public | [$type](../classes/YooKassa-Model-Notification-AbstractNotification.md#property_type) |  | Тип уведомления в виде строки |
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
-| public | [__construct()](../classes/YooKassa-Model-Notification-NotificationCanceled.md#method___construct) |  | Конструктор объекта нотификации о возможности подтверждения платежа |
+| public | [__construct()](../classes/YooKassa-Common-AbstractObject.md#method___construct) |  | AbstractObject constructor. |
 | public | [__get()](../classes/YooKassa-Common-AbstractObject.md#method___get) |  | Возвращает значение свойства |
 | public | [__isset()](../classes/YooKassa-Common-AbstractObject.md#method___isset) |  | Проверяет наличие свойства |
 | public | [__set()](../classes/YooKassa-Common-AbstractObject.md#method___set) |  | Устанавливает значение свойства |
 | public | [__unset()](../classes/YooKassa-Common-AbstractObject.md#method___unset) |  | Удаляет свойство |
-| public | [fromArray()](../classes/YooKassa-Common-AbstractObject.md#method_fromArray) |  | Устанавливает значения свойств текущего объекта из массива |
+| public | [fromArray()](../classes/YooKassa-Model-Notification-NotificationCanceled.md#method_fromArray) |  | Конструктор объекта нотификации о возможности подтверждения платежа |
 | public | [getEvent()](../classes/YooKassa-Model-Notification-AbstractNotification.md#method_getEvent) |  | Возвращает тип события |
 | public | [getObject()](../classes/YooKassa-Model-Notification-NotificationCanceled.md#method_getObject) |  | Возвращает объект с информацией о платеже, уведомление о котором хранится в текущем объекте |
 | public | [getType()](../classes/YooKassa-Model-Notification-AbstractNotification.md#method_getType) |  | Возвращает тип уведомления |
@@ -111,6 +121,7 @@ try {
 | protected | [_setEvent()](../classes/YooKassa-Model-Notification-AbstractNotification.md#method__setEvent) |  | Устанавливает тип события |
 | protected | [_setType()](../classes/YooKassa-Model-Notification-AbstractNotification.md#method__setType) |  | Устанавливает тип уведомления |
 | protected | [getUnknownProperties()](../classes/YooKassa-Common-AbstractObject.md#method_getUnknownProperties) |  | Возвращает массив свойств которые не существуют, но были заданы у объекта |
+
 ---
 ### Details
 * File: [lib/Model/Notification/NotificationCanceled.php](../../lib/Model/Notification/NotificationCanceled.php)
@@ -119,6 +130,7 @@ try {
   * [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
   * [\YooKassa\Model\Notification\AbstractNotification](../classes/YooKassa-Model-Notification-AbstractNotification.md)
   * \YooKassa\Model\Notification\NotificationCanceled
+
 ---
 ## Properties
 <a name="property_event"></a>
@@ -166,7 +178,118 @@ try {
 #### public __construct() : mixed
 
 ```php
-public __construct(array  source) : mixed
+public __construct(array $data = array()) : mixed
+```
+
+**Summary**
+
+AbstractObject constructor.
+
+**Details:**
+* Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">array</code> | data  |  |
+
+**Returns:** mixed - 
+
+
+<a name="method___get" class="anchor"></a>
+#### public __get() : mixed
+
+```php
+public __get(string $propertyName) : mixed
+```
+
+**Summary**
+
+Возвращает значение свойства
+
+**Details:**
+* Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">string</code> | propertyName  | Имя свойства |
+
+**Returns:** mixed - Значение свойства
+
+
+<a name="method___isset" class="anchor"></a>
+#### public __isset() : bool
+
+```php
+public __isset(string $propertyName) : bool
+```
+
+**Summary**
+
+Проверяет наличие свойства
+
+**Details:**
+* Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">string</code> | propertyName  | Имя проверяемого свойства |
+
+**Returns:** bool - True если свойство имеется, false если нет
+
+
+<a name="method___set" class="anchor"></a>
+#### public __set() : mixed
+
+```php
+public __set(string $propertyName, mixed $value) : mixed
+```
+
+**Summary**
+
+Устанавливает значение свойства
+
+**Details:**
+* Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">string</code> | propertyName  | Имя свойства |
+| <code lang="php">mixed</code> | value  | Значение свойства |
+
+**Returns:** mixed - 
+
+
+<a name="method___unset" class="anchor"></a>
+#### public __unset() : mixed
+
+```php
+public __unset(string $propertyName) : mixed
+```
+
+**Summary**
+
+Удаляет свойство
+
+**Details:**
+* Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">string</code> | propertyName  | Имя удаляемого свойства |
+
+**Returns:** mixed - 
+
+
+<a name="method_fromArray" class="anchor"></a>
+#### public fromArray() : mixed
+
+```php
+public fromArray(array $source) : mixed
 ```
 
 **Summary**
@@ -181,120 +304,16 @@ public __construct(array  source) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Notification\NotificationCanceled](../classes/YooKassa-Model-Notification-NotificationCanceled.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">array</code> | source  | Ассоциативный массив с информацией о уведомлении |
+| <code lang="php">array</code> | source  | Ассоциативный массив с информацией об уведомлении |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
 | \YooKassa\Common\Exceptions\InvalidPropertyValueException | Генерируется если значение типа нотификации или события не равны "notification" и "payment.canceled" соответственно, что может говорить о том, что переданные в конструктор данные не являются уведомлением нужного типа. |
-
-**Returns:** mixed - 
-
-
-<a name="method___get" class="anchor"></a>
-#### public __get() : mixed
-
-```php
-public __get(string  propertyName) : mixed
-```
-
-**Summary**
-
-Возвращает значение свойства
-
-**Details:**
-* Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
-##### Parameters:
-| Type | Name | Description |
-| ---- | ---- | ----------- |
-| <code lang="php">string</code> | propertyName  | Имя свойства |
-
-**Returns:** mixed - Значение свойства
-
-
-<a name="method___isset" class="anchor"></a>
-#### public __isset() : bool
-
-```php
-public __isset(string  propertyName) : bool
-```
-
-**Summary**
-
-Проверяет наличие свойства
-
-**Details:**
-* Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
-##### Parameters:
-| Type | Name | Description |
-| ---- | ---- | ----------- |
-| <code lang="php">string</code> | propertyName  | Имя проверяемого свойства |
-
-**Returns:** bool - True если свойство имеется, false если нет
-
-
-<a name="method___set" class="anchor"></a>
-#### public __set() : mixed
-
-```php
-public __set(string  propertyName, mixed  value) : mixed
-```
-
-**Summary**
-
-Устанавливает значение свойства
-
-**Details:**
-* Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
-##### Parameters:
-| Type | Name | Description |
-| ---- | ---- | ----------- |
-| <code lang="php">string</code> | propertyName  | Имя свойства |
-| <code lang="php">mixed</code> | value  | Значение свойства |
-
-**Returns:** mixed - 
-
-
-<a name="method___unset" class="anchor"></a>
-#### public __unset() : mixed
-
-```php
-public __unset(string  propertyName) : mixed
-```
-
-**Summary**
-
-Удаляет свойство
-
-**Details:**
-* Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
-##### Parameters:
-| Type | Name | Description |
-| ---- | ---- | ----------- |
-| <code lang="php">string</code> | propertyName  | Имя удаляемого свойства |
-
-**Returns:** mixed - 
-
-
-<a name="method_fromArray" class="anchor"></a>
-#### public fromArray() : mixed
-
-```php
-public fromArray(array|\Traversable  sourceArray) : mixed
-```
-
-**Summary**
-
-Устанавливает значения свойств текущего объекта из массива
-
-**Details:**
-* Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
-##### Parameters:
-| Type | Name | Description |
-| ---- | ---- | ----------- |
-| <code lang="php">array OR \Traversable</code> | sourceArray  | Ассоциативный массив с настройками |
 
 **Returns:** mixed - 
 
@@ -385,7 +404,7 @@ public jsonSerialize() : array
 #### public offsetExists() : bool
 
 ```php
-public offsetExists(string  offset) : bool
+public offsetExists(string $offset) : bool
 ```
 
 **Summary**
@@ -394,6 +413,7 @@ public offsetExists(string  offset) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -406,7 +426,7 @@ public offsetExists(string  offset) : bool
 #### public offsetGet() : mixed
 
 ```php
-public offsetGet(string  offset) : mixed
+public offsetGet(string $offset) : mixed
 ```
 
 **Summary**
@@ -415,6 +435,7 @@ public offsetGet(string  offset) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -427,7 +448,7 @@ public offsetGet(string  offset) : mixed
 #### public offsetSet() : mixed
 
 ```php
-public offsetSet(string  offset, mixed  value) : mixed
+public offsetSet(string $offset, mixed $value) : mixed
 ```
 
 **Summary**
@@ -436,6 +457,7 @@ public offsetSet(string  offset, mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -449,7 +471,7 @@ public offsetSet(string  offset, mixed  value) : mixed
 #### public offsetUnset() : mixed
 
 ```php
-public offsetUnset(string  offset) : mixed
+public offsetUnset(string $offset) : mixed
 ```
 
 **Summary**
@@ -458,6 +480,7 @@ public offsetUnset(string  offset) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -488,7 +511,7 @@ public toArray() : array
 #### protected _setEvent() : mixed
 
 ```php
-protected _setEvent(string  value) : mixed
+protected _setEvent(string $value) : mixed
 ```
 
 **Summary**
@@ -497,10 +520,12 @@ protected _setEvent(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Notification\AbstractNotification](../classes/YooKassa-Model-Notification-AbstractNotification.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
 | <code lang="php">string</code> | value  | Тип события |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -515,7 +540,7 @@ protected _setEvent(string  value) : mixed
 #### protected _setType() : mixed
 
 ```php
-protected _setType(string  value) : mixed
+protected _setType(string $value) : mixed
 ```
 
 **Summary**
@@ -524,10 +549,12 @@ protected _setType(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Notification\AbstractNotification](../classes/YooKassa-Model-Notification-AbstractNotification.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
 | <code lang="php">string</code> | value  | Тип уведомления |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -567,10 +594,10 @@ protected getUnknownProperties() : array
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

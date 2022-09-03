@@ -3,18 +3,25 @@
 # Class: \YooKassa\Common\Exceptions\ExtensionNotFoundException
 ### Namespace: [\YooKassa\Common\Exceptions](../namespaces/yookassa-common-exceptions.md)
 ---
+**Summary:**
+
+Требуемое PHP расширение не установлено.
+
+
 ---
 ### Constants
 * No constants found
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
 | public | [__construct()](../classes/YooKassa-Common-Exceptions-ExtensionNotFoundException.md#method___construct) |  | Constructor |
+
 ---
 ### Details
 * File: [lib/Common/Exceptions/ExtensionNotFoundException.php](../../lib/Common/Exceptions/ExtensionNotFoundException.php)
-* Package: Default
+* Package: YooKassa
 * Class Hierarchy: 
   * [\Exception](\Exception)
   * \YooKassa\Common\Exceptions\ExtensionNotFoundException
@@ -25,7 +32,7 @@
 #### public __construct() : mixed
 
 ```php
-public __construct(string  name, int  code) : mixed
+public __construct(string $name, int $code) : mixed
 ```
 
 **Summary**
@@ -34,6 +41,7 @@ Constructor
 
 **Details:**
 * Inherited From: [\YooKassa\Common\Exceptions\ExtensionNotFoundException](../classes/YooKassa-Common-Exceptions-ExtensionNotFoundException.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -55,10 +63,10 @@ Constructor
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

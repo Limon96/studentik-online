@@ -7,6 +7,7 @@
 
 Класс объекта запроса к API на создание чека
 
+
 ---
 ### Examples
 Пример использования билдера
@@ -15,7 +16,7 @@
 try {
     $receiptBuilder = \YooKassa\Request\Receipts\CreatePostReceiptRequest::builder();
     $receiptBuilder->setType(\YooKassa\Model\ReceiptType::PAYMENT)
-        ->setObjectId('24b94598-000f-5000-9000-1b68e7b15f3f')
+        ->setObjectId('24b94598-000f-5000-9000-1b68e7b15f3f', \YooKassa\Model\ReceiptType::PAYMENT) // payment_id
         ->setCustomer(array(
             'email' => 'john.doe@merchant.com',
             'phone' => '71111111111',
@@ -70,9 +71,11 @@ try {
 var_dump($response);
 
 ```
+
 ---
 ### Constants
 * No constants found
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -91,6 +94,7 @@ var_dump($response);
 | public | [getItems()](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md#method_getItems) |  | Возвращает список позиций в текущем чеке |
 | public | [getLastValidationError()](../classes/YooKassa-Common-AbstractRequest.md#method_getLastValidationError) |  | Возвращает последнюю ошибку валидации |
 | public | [getObjectId()](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md#method_getObjectId) |  | Возвращает Id объекта чека |
+| public | [getObjectType()](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md#method_getObjectType) |  | Возвращает тип объекта чека |
 | public | [getOnBehalfOf()](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md#method_getOnBehalfOf) |  | Возвращает идентификатор магазина, от имени которого нужно отправить чек. |
 | public | [getSend()](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md#method_getSend) |  | Возвращает признак отложенной отправки чека. |
 | public | [getSettlements()](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md#method_getSettlements) |  | Возвращает массив оплат, обеспечивающих выдачу товара. |
@@ -106,6 +110,7 @@ var_dump($response);
 | public | [setCustomer()](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md#method_setCustomer) |  | Устанавливает информацию о плательщике |
 | public | [setItems()](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md#method_setItems) |  | Устанавливает список позиций в чеке |
 | public | [setObjectId()](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md#method_setObjectId) |  | Устанавливает Id объекта чека |
+| public | [setObjectType()](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md#method_setObjectType) |  | Устанавливает тип объекта чека |
 | public | [setOnBehalfOf()](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md#method_setOnBehalfOf) |  | Устанавливает идентификатор магазина, от имени которого нужно отправить чек. |
 | public | [setSend()](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md#method_setSend) |  | Устанавливает признак отложенной отправки чека. |
 | public | [setSettlements()](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md#method_setSettlements) |  | Устанавливает массив оплат, обеспечивающих выдачу товара. |
@@ -115,6 +120,7 @@ var_dump($response);
 | public | [validate()](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md#method_validate) |  | Валидирует текущий запрос, проверяет все ли нужные свойства установлены |
 | protected | [getUnknownProperties()](../classes/YooKassa-Common-AbstractObject.md#method_getUnknownProperties) |  | Возвращает массив свойств которые не существуют, но были заданы у объекта |
 | protected | [setValidationError()](../classes/YooKassa-Common-AbstractRequest.md#method_setValidationError) |  | Устанавливает ошибку валидации |
+
 ---
 ### Details
 * File: [lib/Request/Receipts/CreatePostReceiptRequest.php](../../lib/Request/Receipts/CreatePostReceiptRequest.php)
@@ -132,7 +138,7 @@ var_dump($response);
 #### public __construct() : mixed
 
 ```php
-public __construct(array  data = array()) : mixed
+public __construct(array $data = array()) : mixed
 ```
 
 **Summary**
@@ -141,6 +147,7 @@ AbstractObject constructor.
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -153,7 +160,7 @@ AbstractObject constructor.
 #### public __get() : mixed
 
 ```php
-public __get(string  propertyName) : mixed
+public __get(string $propertyName) : mixed
 ```
 
 **Summary**
@@ -162,6 +169,7 @@ public __get(string  propertyName) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -174,7 +182,7 @@ public __get(string  propertyName) : mixed
 #### public __isset() : bool
 
 ```php
-public __isset(string  propertyName) : bool
+public __isset(string $propertyName) : bool
 ```
 
 **Summary**
@@ -183,6 +191,7 @@ public __isset(string  propertyName) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -195,7 +204,7 @@ public __isset(string  propertyName) : bool
 #### public __set() : mixed
 
 ```php
-public __set(string  propertyName, mixed  value) : mixed
+public __set(string $propertyName, mixed $value) : mixed
 ```
 
 **Summary**
@@ -204,6 +213,7 @@ public __set(string  propertyName, mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -217,7 +227,7 @@ public __set(string  propertyName, mixed  value) : mixed
 #### public __unset() : mixed
 
 ```php
-public __unset(string  propertyName) : mixed
+public __unset(string $propertyName) : mixed
 ```
 
 **Summary**
@@ -226,6 +236,7 @@ public __unset(string  propertyName) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -238,7 +249,7 @@ public __unset(string  propertyName) : mixed
 #### public addItem() : \YooKassa\Request\Receipts\CreatePostReceiptRequest
 
 ```php
-public addItem(\YooKassa\Model\ReceiptItemInterface|array  value) : \YooKassa\Request\Receipts\CreatePostReceiptRequest
+public addItem(\YooKassa\Model\ReceiptItemInterface|array $value) : \YooKassa\Request\Receipts\CreatePostReceiptRequest
 ```
 
 **Summary**
@@ -247,6 +258,7 @@ public addItem(\YooKassa\Model\ReceiptItemInterface|array  value) : \YooKassa\Re
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\CreatePostReceiptRequest](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -259,7 +271,7 @@ public addItem(\YooKassa\Model\ReceiptItemInterface|array  value) : \YooKassa\Re
 #### public addSettlement() : mixed
 
 ```php
-public addSettlement(\YooKassa\Model\SettlementInterface  value) : mixed
+public addSettlement(\YooKassa\Model\SettlementInterface $value) : mixed
 ```
 
 **Summary**
@@ -268,6 +280,7 @@ public addSettlement(\YooKassa\Model\SettlementInterface  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\CreatePostReceiptRequest](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -290,7 +303,7 @@ Static public builder() : \YooKassa\Request\Receipts\CreatePostReceiptRequestBui
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\CreatePostReceiptRequest](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md)
 
-**Returns:** \YooKassa\Request\Receipts\CreatePostReceiptRequestBuilder - Инстанс билдера объектов запрсов
+**Returns:** \YooKassa\Request\Receipts\CreatePostReceiptRequestBuilder - Инстанс билдера объектов запросов
 
 
 <a name="method_clearValidationError" class="anchor"></a>
@@ -314,7 +327,7 @@ public clearValidationError() : mixed
 #### public fromArray() : mixed
 
 ```php
-public fromArray(array|\Traversable  sourceArray) : mixed
+public fromArray(array|\Traversable $sourceArray) : mixed
 ```
 
 **Summary**
@@ -323,6 +336,7 @@ public fromArray(array|\Traversable  sourceArray) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\CreatePostReceiptRequest](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -345,7 +359,7 @@ public getCustomer() : \YooKassa\Model\ReceiptCustomerInterface
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\CreatePostReceiptRequest](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md)
 
-**Returns:** \YooKassa\Model\ReceiptCustomerInterface - информация о плательщике
+**Returns:** \YooKassa\Model\ReceiptCustomerInterface - Информация о плательщике
 
 
 <a name="method_getItems" class="anchor"></a>
@@ -397,6 +411,23 @@ public getObjectId() : string
 * Inherited From: [\YooKassa\Request\Receipts\CreatePostReceiptRequest](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md)
 
 **Returns:** string - Id объекта чека
+
+
+<a name="method_getObjectType" class="anchor"></a>
+#### public getObjectType() : string
+
+```php
+public getObjectType() : string
+```
+
+**Summary**
+
+Возвращает тип объекта чека
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Receipts\CreatePostReceiptRequest](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md)
+
+**Returns:** string - Тип объекта чека
 
 
 <a name="method_getOnBehalfOf" class="anchor"></a>
@@ -544,7 +575,7 @@ public notEmpty() : bool
 #### public offsetExists() : bool
 
 ```php
-public offsetExists(string  offset) : bool
+public offsetExists(string $offset) : bool
 ```
 
 **Summary**
@@ -553,6 +584,7 @@ public offsetExists(string  offset) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -565,7 +597,7 @@ public offsetExists(string  offset) : bool
 #### public offsetGet() : mixed
 
 ```php
-public offsetGet(string  offset) : mixed
+public offsetGet(string $offset) : mixed
 ```
 
 **Summary**
@@ -574,6 +606,7 @@ public offsetGet(string  offset) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -586,7 +619,7 @@ public offsetGet(string  offset) : mixed
 #### public offsetSet() : mixed
 
 ```php
-public offsetSet(string  offset, mixed  value) : mixed
+public offsetSet(string $offset, mixed $value) : mixed
 ```
 
 **Summary**
@@ -595,6 +628,7 @@ public offsetSet(string  offset, mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -608,7 +642,7 @@ public offsetSet(string  offset, mixed  value) : mixed
 #### public offsetUnset() : mixed
 
 ```php
-public offsetUnset(string  offset) : mixed
+public offsetUnset(string $offset) : mixed
 ```
 
 **Summary**
@@ -617,6 +651,7 @@ public offsetUnset(string  offset) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -629,7 +664,7 @@ public offsetUnset(string  offset) : mixed
 #### public setCustomer() : \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface
 
 ```php
-public setCustomer(\YooKassa\Model\ReceiptCustomerInterface  value) : \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface
+public setCustomer(\YooKassa\Model\ReceiptCustomerInterface $value) : \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface
 ```
 
 **Summary**
@@ -638,6 +673,7 @@ public setCustomer(\YooKassa\Model\ReceiptCustomerInterface  value) : \YooKassa\
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\CreatePostReceiptRequest](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -650,7 +686,7 @@ public setCustomer(\YooKassa\Model\ReceiptCustomerInterface  value) : \YooKassa\
 #### public setItems() : \YooKassa\Request\Receipts\CreatePostReceiptRequest
 
 ```php
-public setItems(\YooKassa\Model\ReceiptItemInterface[]|array  value) : \YooKassa\Request\Receipts\CreatePostReceiptRequest
+public setItems(\YooKassa\Model\ReceiptItemInterface[]|array $value) : \YooKassa\Request\Receipts\CreatePostReceiptRequest
 ```
 
 **Summary**
@@ -665,10 +701,12 @@ ReceiptItemInterface, в противном случае будет выброш
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\CreatePostReceiptRequest](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
 | <code lang="php">\YooKassa\Model\ReceiptItemInterface[] OR array</code> | value  | Список товаров в заказе |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -682,7 +720,7 @@ ReceiptItemInterface, в противном случае будет выброш
 #### public setObjectId() : \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface
 
 ```php
-public setObjectId(string  value) : \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface
+public setObjectId(string $value) : \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface
 ```
 
 **Summary**
@@ -691,6 +729,7 @@ public setObjectId(string  value) : \YooKassa\Request\Receipts\CreatePostReceipt
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\CreatePostReceiptRequest](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -699,11 +738,33 @@ public setObjectId(string  value) : \YooKassa\Request\Receipts\CreatePostReceipt
 **Returns:** \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface - 
 
 
+<a name="method_setObjectType" class="anchor"></a>
+#### public setObjectType() : mixed
+
+```php
+public setObjectType(string $value) : mixed
+```
+
+**Summary**
+
+Устанавливает тип объекта чека
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Receipts\CreatePostReceiptRequest](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">string</code> | value  | Тип объекта чека |
+
+**Returns:** mixed - 
+
+
 <a name="method_setOnBehalfOf" class="anchor"></a>
 #### public setOnBehalfOf() : mixed
 
 ```php
-public setOnBehalfOf(string  value) : mixed
+public setOnBehalfOf(string $value) : mixed
 ```
 
 **Summary**
@@ -717,6 +778,7 @@ public setOnBehalfOf(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\CreatePostReceiptRequest](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -729,7 +791,7 @@ public setOnBehalfOf(string  value) : mixed
 #### public setSend() : \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface
 
 ```php
-public setSend(bool  value) : \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface
+public setSend(bool $value) : \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface
 ```
 
 **Summary**
@@ -738,6 +800,7 @@ public setSend(bool  value) : \YooKassa\Request\Receipts\CreatePostReceiptReques
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\CreatePostReceiptRequest](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -750,7 +813,7 @@ public setSend(bool  value) : \YooKassa\Request\Receipts\CreatePostReceiptReques
 #### public setSettlements() : \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface
 
 ```php
-public setSettlements(\YooKassa\Model\SettlementInterface[]  value) : \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface
+public setSettlements(\YooKassa\Model\SettlementInterface[]|array $value) : \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface
 ```
 
 **Summary**
@@ -759,10 +822,11 @@ public setSettlements(\YooKassa\Model\SettlementInterface[]  value) : \YooKassa\
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\CreatePostReceiptRequest](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\YooKassa\Model\SettlementInterface[]</code> | value  | Массив оплат, обеспечивающих выдачу товара. |
+| <code lang="php">\YooKassa\Model\SettlementInterface[] OR array</code> | value  | Массив оплат, обеспечивающих выдачу товара. |
 
 **Returns:** \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface - 
 
@@ -771,7 +835,7 @@ public setSettlements(\YooKassa\Model\SettlementInterface[]  value) : \YooKassa\
 #### public setTaxSystemCode() : \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface
 
 ```php
-public setTaxSystemCode(int  value) : \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface
+public setTaxSystemCode(int $value) : \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface
 ```
 
 **Summary**
@@ -780,10 +844,12 @@ public setTaxSystemCode(int  value) : \YooKassa\Request\Receipts\CreatePostRecei
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\CreatePostReceiptRequest](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
 | <code lang="php">int</code> | value  | Код системы налогообложения. Число 1-6 |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -797,7 +863,7 @@ public setTaxSystemCode(int  value) : \YooKassa\Request\Receipts\CreatePostRecei
 #### public setType() : \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface
 
 ```php
-public setType(string  value) : \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface
+public setType(string $value) : \YooKassa\Request\Receipts\CreatePostReceiptRequestInterface
 ```
 
 **Summary**
@@ -806,6 +872,7 @@ public setType(string  value) : \YooKassa\Request\Receipts\CreatePostReceiptRequ
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\CreatePostReceiptRequest](../classes/YooKassa-Request-Receipts-CreatePostReceiptRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -870,7 +937,7 @@ protected getUnknownProperties() : array
 #### protected setValidationError() : mixed
 
 ```php
-protected setValidationError(string  value) : mixed
+protected setValidationError(string $value) : mixed
 ```
 
 **Summary**
@@ -879,6 +946,7 @@ protected setValidationError(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractRequest](../classes/YooKassa-Common-AbstractRequest.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -899,10 +967,10 @@ protected setValidationError(string  value) : mixed
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

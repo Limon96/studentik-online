@@ -23,6 +23,8 @@ PaymentMethodType - Тип источника средств для провед
 |psb|ПромсвязьБанк|
 |installments|Заплатить по частям|
 |wechat|Платеж через WeChat|
+|wechat|Платеж через через сервис быстрых платежей|
+
 
 ---
 ### Constants
@@ -43,11 +45,14 @@ PaymentMethodType - Тип источника средств для провед
 | public | [PSB](../classes/YooKassa-Model-PaymentMethodType.md#constant_PSB) |  | ПромсвязьБанк |
 | public | [INSTALLMENTS](../classes/YooKassa-Model-PaymentMethodType.md#constant_INSTALLMENTS) |  | Заплатить по частям |
 | public | [WECHAT](../classes/YooKassa-Model-PaymentMethodType.md#constant_WECHAT) | *deprecated* | Оплата через WeChat |
+| public | [SBP](../classes/YooKassa-Model-PaymentMethodType.md#constant_SBP) |  | Оплата через сервис быстрых платежей |
+
 ---
 ### Properties
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
 | protected | [$validValues](../classes/YooKassa-Model-PaymentMethodType.md#property_validValues) |  |  |
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -55,6 +60,7 @@ PaymentMethodType - Тип источника средств для провед
 | public | [getEnabledValues()](../classes/YooKassa-Common-AbstractEnum.md#method_getEnabledValues) |  | Возвращает значения в enum'е значения которых разрешены |
 | public | [getValidValues()](../classes/YooKassa-Common-AbstractEnum.md#method_getValidValues) |  | Возвращает все значения в enum'e |
 | public | [valueExists()](../classes/YooKassa-Common-AbstractEnum.md#method_valueExists) |  | Проверяет наличие значения в enum'e |
+
 ---
 ### Details
 * File: [lib/Model/PaymentMethodType.php](../../lib/Model/PaymentMethodType.php)
@@ -62,6 +68,7 @@ PaymentMethodType - Тип источника средств для провед
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
   * \YooKassa\Model\PaymentMethodType
+
 ---
 ## Constants
 <a name="constant_YOO_MONEY" class="anchor"></a>
@@ -201,6 +208,16 @@ WECHAT = 'wechat'
 **deprecated**
 Будет удален в следующих версиях
 
+<a name="constant_SBP" class="anchor"></a>
+###### SBP
+Оплата через сервис быстрых платежей
+
+```php
+SBP = 'sbp'
+```
+
+
+
 ---
 ## Properties
 <a name="property_validValues"></a>
@@ -252,7 +269,7 @@ Static public getValidValues() : array
 #### public valueExists() : bool
 
 ```php
-Static public valueExists(mixed  value) : bool
+Static public valueExists(mixed $value) : bool
 ```
 
 **Summary**
@@ -261,6 +278,7 @@ Static public valueExists(mixed  value) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -281,10 +299,10 @@ Static public valueExists(mixed  value) : bool
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

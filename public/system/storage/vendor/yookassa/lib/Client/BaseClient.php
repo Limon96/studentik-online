@@ -2,7 +2,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2020 "YooMoney", NBСO LLC
+ * Copyright (c) 2022 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -43,6 +43,7 @@ use YooKassa\Common\LoggerWrapper;
 use YooKassa\Common\ResponseObject;
 use YooKassa\Helpers\Config\ConfigurationLoader;
 use YooKassa\Helpers\Config\ConfigurationLoaderInterface;
+use YooKassa\Helpers\SecurityHelper;
 
 class BaseClient
 {
@@ -60,6 +61,12 @@ class BaseClient
 
     /** Точка входа для запросов к API по чекам */
     const RECEIPTS_PATH = '/receipts';
+
+    /** Точка входа для запросов к API по сделкам */
+    const DEALS_PATH = '/deals';
+
+    /** Точка входа для запросов к API по выплатам */
+    const PAYOUTS_PATH = '/payouts';
 
     /** Имя HTTP заголовка, используемого для передачи idempotence key */
     const IDEMPOTENCY_KEY_HEADER = 'Idempotence-Key';
@@ -109,7 +116,7 @@ class BaseClient
      *
      * Значение по умолчанию - 1800 миллисекунд.
      *
-     * @var int значение в миллисекундах
+     * @var int Значение в миллисекундах
      */
     protected $timeout;
 
@@ -283,6 +290,22 @@ class BaseClient
         $this->attempts = $attempts;
 
         return $this;
+    }
+
+
+    /**
+     * Метод проверяет, находится ли IP адрес среди IP адресов Юkassa, с которых отправляются уведомления
+     *
+     * @param string $ip - IPv4 или IPv6 адрес webhook уведомления
+     * @return bool
+     *
+     * @throws Exception - исключение будет выброшено, если будет передан IP адрес неверного формата
+     */
+    public function isNotificationIPTrusted($ip)
+    {
+        $securityHelper = new SecurityHelper();
+
+        return $securityHelper->isIPTrusted($ip);
     }
 
     /**

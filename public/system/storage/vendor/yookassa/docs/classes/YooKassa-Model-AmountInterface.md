@@ -10,6 +10,7 @@ Interface AmountInterface
 ---
 ### Constants
 * No constants found
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -24,12 +25,14 @@ Interface AmountInterface
 ### Details
 * File: [lib/Model/AmountInterface.php](../../lib/Model/AmountInterface.php)
 * Package: \YooKassa
+
 ---
 ### Tags
 | Tag | Version | Description |
 | --- | ------- | ----------- |
 | property-read |  | Сумма |
 | property-read |  | Код валюты |
+
 ---
 ## Methods
 <a name="method_getValue" class="anchor"></a>
@@ -53,7 +56,7 @@ public getValue() : string
 #### public setValue() : mixed
 
 ```php
-public setValue(\YooKassa\Model\numeric  value) : mixed
+public setValue(\YooKassa\Model\numeric $value) : mixed
 ```
 
 **Summary**
@@ -62,6 +65,7 @@ public setValue(\YooKassa\Model\numeric  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\AmountInterface](../classes/YooKassa-Model-AmountInterface.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -108,7 +112,7 @@ public getCurrency() : string
 #### public setCurrency() : mixed
 
 ```php
-public setCurrency(string  value) : mixed
+public setCurrency(string $value) : mixed
 ```
 
 **Summary**
@@ -117,6 +121,7 @@ public setCurrency(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\AmountInterface](../classes/YooKassa-Model-AmountInterface.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -138,10 +143,10 @@ public setCurrency(string  value) : mixed
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

@@ -7,9 +7,11 @@
 
 Класс описывающий авиабилет
 
+
 ---
 ### Constants
 * No constants found
+
 ---
 ### Properties
 | Visibility | Name | Flag | Summary |
@@ -20,6 +22,7 @@
 | public | [$passengers](../classes/YooKassa-Model-Airline.md#property_passengers) |  | Список пассажиров |
 | public | [$ticket_number](../classes/YooKassa-Model-Airline.md#property_ticket_number) |  | Уникальный номер билета. Обязателен на этапе подтверждения платежа |
 | public | [$ticketNumber](../classes/YooKassa-Model-Airline.md#property_ticketNumber) |  | Уникальный номер билета. Обязателен на этапе подтверждения платежа |
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -48,6 +51,7 @@
 | public | [setTicketNumber()](../classes/YooKassa-Model-Airline.md#method_setTicketNumber) |  | Устанавливает уникальный номер билета. Обязателен на этапе подтверждения платежа |
 | public | [toArray()](../classes/YooKassa-Common-AbstractObject.md#method_toArray) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации Является алиасом метода AbstractObject::jsonSerialize() |
 | protected | [getUnknownProperties()](../classes/YooKassa-Common-AbstractObject.md#method_getUnknownProperties) |  | Возвращает массив свойств которые не существуют, но были заданы у объекта |
+
 ---
 ### Details
 * File: [lib/Model/Airline.php](../../lib/Model/Airline.php)
@@ -57,6 +61,7 @@
   * \YooKassa\Model\Airline
 * Implements:
   * [\YooKassa\Model\AirlineInterface](../classes/YooKassa-Model-AirlineInterface.md)
+
 ---
 ## Properties
 <a name="property_booking_reference"></a>
@@ -138,7 +143,7 @@
 #### public __construct() : mixed
 
 ```php
-public __construct(array  data = array()) : mixed
+public __construct(array $data = array()) : mixed
 ```
 
 **Summary**
@@ -147,6 +152,7 @@ AbstractObject constructor.
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -159,7 +165,7 @@ AbstractObject constructor.
 #### public __get() : mixed
 
 ```php
-public __get(string  propertyName) : mixed
+public __get(string $propertyName) : mixed
 ```
 
 **Summary**
@@ -168,6 +174,7 @@ public __get(string  propertyName) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -180,7 +187,7 @@ public __get(string  propertyName) : mixed
 #### public __isset() : bool
 
 ```php
-public __isset(string  propertyName) : bool
+public __isset(string $propertyName) : bool
 ```
 
 **Summary**
@@ -189,6 +196,7 @@ public __isset(string  propertyName) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -201,7 +209,7 @@ public __isset(string  propertyName) : bool
 #### public __set() : mixed
 
 ```php
-public __set(string  propertyName, mixed  value) : mixed
+public __set(string $propertyName, mixed $value) : mixed
 ```
 
 **Summary**
@@ -210,6 +218,7 @@ public __set(string  propertyName, mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -223,7 +232,7 @@ public __set(string  propertyName, mixed  value) : mixed
 #### public __unset() : mixed
 
 ```php
-public __unset(string  propertyName) : mixed
+public __unset(string $propertyName) : mixed
 ```
 
 **Summary**
@@ -232,6 +241,7 @@ public __unset(string  propertyName) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -244,7 +254,7 @@ public __unset(string  propertyName) : mixed
 #### public addLeg() : mixed
 
 ```php
-public addLeg(array|\YooKassa\Model\LegInterface  value) : mixed
+public addLeg(array|\YooKassa\Model\LegInterface $value) : mixed
 ```
 
 **Summary**
@@ -253,6 +263,7 @@ public addLeg(array|\YooKassa\Model\LegInterface  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Airline](../classes/YooKassa-Model-Airline.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -265,7 +276,7 @@ public addLeg(array|\YooKassa\Model\LegInterface  value) : mixed
 #### public addPassenger() : mixed
 
 ```php
-public addPassenger(array|\YooKassa\Model\PassengerInterface  value) : mixed
+public addPassenger(array|\YooKassa\Model\PassengerInterface $value) : mixed
 ```
 
 **Summary**
@@ -274,6 +285,7 @@ public addPassenger(array|\YooKassa\Model\PassengerInterface  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Airline](../classes/YooKassa-Model-Airline.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -286,7 +298,7 @@ public addPassenger(array|\YooKassa\Model\PassengerInterface  value) : mixed
 #### public fromArray() : mixed
 
 ```php
-public fromArray(mixed  sourceArray) : mixed
+public fromArray(mixed $sourceArray) : mixed
 ```
 
 **Summary**
@@ -295,6 +307,7 @@ public fromArray(mixed  sourceArray) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Airline](../classes/YooKassa-Model-Airline.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -429,7 +442,7 @@ public notEmpty() : bool
 #### public offsetExists() : bool
 
 ```php
-public offsetExists(string  offset) : bool
+public offsetExists(string $offset) : bool
 ```
 
 **Summary**
@@ -438,6 +451,7 @@ public offsetExists(string  offset) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -450,7 +464,7 @@ public offsetExists(string  offset) : bool
 #### public offsetGet() : mixed
 
 ```php
-public offsetGet(string  offset) : mixed
+public offsetGet(string $offset) : mixed
 ```
 
 **Summary**
@@ -459,6 +473,7 @@ public offsetGet(string  offset) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -471,7 +486,7 @@ public offsetGet(string  offset) : mixed
 #### public offsetSet() : mixed
 
 ```php
-public offsetSet(string  offset, mixed  value) : mixed
+public offsetSet(string $offset, mixed $value) : mixed
 ```
 
 **Summary**
@@ -480,6 +495,7 @@ public offsetSet(string  offset, mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -493,7 +509,7 @@ public offsetSet(string  offset, mixed  value) : mixed
 #### public offsetUnset() : mixed
 
 ```php
-public offsetUnset(string  offset) : mixed
+public offsetUnset(string $offset) : mixed
 ```
 
 **Summary**
@@ -502,6 +518,7 @@ public offsetUnset(string  offset) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -514,7 +531,7 @@ public offsetUnset(string  offset) : mixed
 #### public setBookingReference() : mixed
 
 ```php
-public setBookingReference(string  value) : mixed
+public setBookingReference(string $value) : mixed
 ```
 
 **Summary**
@@ -523,6 +540,7 @@ public setBookingReference(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Airline](../classes/YooKassa-Model-Airline.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -535,7 +553,7 @@ public setBookingReference(string  value) : mixed
 #### public setLegs() : mixed
 
 ```php
-public setLegs(array|\YooKassa\Model\LegInterface[]  value) : mixed
+public setLegs(array|\YooKassa\Model\LegInterface[] $value) : mixed
 ```
 
 **Summary**
@@ -544,6 +562,7 @@ public setLegs(array|\YooKassa\Model\LegInterface[]  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Airline](../classes/YooKassa-Model-Airline.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -556,7 +575,7 @@ public setLegs(array|\YooKassa\Model\LegInterface[]  value) : mixed
 #### public setPassengers() : mixed
 
 ```php
-public setPassengers(array|\YooKassa\Model\PassengerInterface[]  value) : mixed
+public setPassengers(array|\YooKassa\Model\PassengerInterface[] $value) : mixed
 ```
 
 **Summary**
@@ -565,6 +584,7 @@ public setPassengers(array|\YooKassa\Model\PassengerInterface[]  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Airline](../classes/YooKassa-Model-Airline.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -577,7 +597,7 @@ public setPassengers(array|\YooKassa\Model\PassengerInterface[]  value) : mixed
 #### public setTicketNumber() : mixed
 
 ```php
-public setTicketNumber(string  value) : mixed
+public setTicketNumber(string $value) : mixed
 ```
 
 **Summary**
@@ -586,6 +606,7 @@ public setTicketNumber(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Airline](../classes/YooKassa-Model-Airline.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -641,10 +662,10 @@ protected getUnknownProperties() : array
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

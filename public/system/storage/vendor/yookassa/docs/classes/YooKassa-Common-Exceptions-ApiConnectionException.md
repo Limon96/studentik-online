@@ -3,15 +3,22 @@
 # Class: \YooKassa\Common\Exceptions\ApiConnectionException
 ### Namespace: [\YooKassa\Common\Exceptions](../namespaces/yookassa-common-exceptions.md)
 ---
+**Summary:**
+
+Неожиданный код ошибки.
+
+
 ---
 ### Constants
 * No constants found
+
 ---
 ### Properties
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
 | protected | [$responseBody](../classes/YooKassa-Common-Exceptions-ApiException.md#property_responseBody) |  |  |
 | protected | [$responseHeaders](../classes/YooKassa-Common-Exceptions-ApiException.md#property_responseHeaders) |  |  |
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -19,6 +26,7 @@
 | public | [__construct()](../classes/YooKassa-Common-Exceptions-ApiException.md#method___construct) |  | Constructor |
 | public | [getResponseBody()](../classes/YooKassa-Common-Exceptions-ApiException.md#method_getResponseBody) |  |  |
 | public | [getResponseHeaders()](../classes/YooKassa-Common-Exceptions-ApiException.md#method_getResponseHeaders) |  |  |
+
 ---
 ### Details
 * File: [lib/Common/Exceptions/ApiConnectionException.php](../../lib/Common/Exceptions/ApiConnectionException.php)
@@ -27,6 +35,7 @@
   * [\Exception](\Exception)
   * [\YooKassa\Common\Exceptions\ApiException](../classes/YooKassa-Common-Exceptions-ApiException.md)
   * \YooKassa\Common\Exceptions\ApiConnectionException
+
 ---
 ## Properties
 <a name="property_responseBody"></a>
@@ -54,7 +63,7 @@
 #### public __construct() : mixed
 
 ```php
-public __construct(string  message = &quot;&quot;, int  code, string[]  responseHeaders = array(), mixed  responseBody = null) : mixed
+public __construct(string $message = &quot;&quot;, int $code, string[] $responseHeaders = array(), mixed $responseBody = null) : mixed
 ```
 
 **Summary**
@@ -63,6 +72,7 @@ Constructor
 
 **Details:**
 * Inherited From: [\YooKassa\Common\Exceptions\ApiException](../classes/YooKassa-Common-Exceptions-ApiException.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -112,10 +122,10 @@ public getResponseHeaders() : string[]
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

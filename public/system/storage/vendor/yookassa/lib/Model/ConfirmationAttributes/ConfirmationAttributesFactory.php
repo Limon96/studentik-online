@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2020 "YooMoney", NBСO LLC
+ * Copyright (c) 2022 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,12 +36,12 @@ use YooKassa\Model\ConfirmationType;
 class ConfirmationAttributesFactory
 {
     private $typeClassMap = array(
-        ConfirmationType::CODE_VERIFICATION => 'ConfirmationAttributesCodeVerification',
-        ConfirmationType::DEEPLINK          => 'ConfirmationAttributesDeepLink',
-        ConfirmationType::EXTERNAL          => 'ConfirmationAttributesExternal',
-        ConfirmationType::REDIRECT          => 'ConfirmationAttributesRedirect',
-        ConfirmationType::EMBEDDED          => 'ConfirmationAttributesEmbedded',
-        ConfirmationType::QR                => 'ConfirmationAttributesQr',
+        ConfirmationType::CODE_VERIFICATION  => 'ConfirmationAttributesCodeVerification',
+        ConfirmationType::EXTERNAL           => 'ConfirmationAttributesExternal',
+        ConfirmationType::REDIRECT           => 'ConfirmationAttributesRedirect',
+        ConfirmationType::EMBEDDED           => 'ConfirmationAttributesEmbedded',
+        ConfirmationType::QR                 => 'ConfirmationAttributesQr',
+        ConfirmationType::MOBILE_APPLICATION => 'ConfirmationAttributesMobileApplication',
     );
 
     /**

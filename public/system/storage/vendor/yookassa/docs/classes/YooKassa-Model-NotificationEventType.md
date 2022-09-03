@@ -12,6 +12,10 @@ NotificationEventType - Тип уведомления
 |payment.succeeded|Успешно оплачен и подтвержден магазином|
 |payment.canceled|Неуспех оплаты или отменен магазином|
 |refund.succeeded|Успешный возврат|
+|deal.closed|Сделка перешла в статус closed|
+|payout.canceled|Выплата перешла в статус canceled|
+|payout.succeeded|Выплата перешла в статус succeeded|
+
 
 ---
 ### Constants
@@ -21,11 +25,16 @@ NotificationEventType - Тип уведомления
 | public | [PAYMENT_SUCCEEDED](../classes/YooKassa-Model-NotificationEventType.md#constant_PAYMENT_SUCCEEDED) |  | Успешно оплачен и подтвержден магазином |
 | public | [PAYMENT_CANCELED](../classes/YooKassa-Model-NotificationEventType.md#constant_PAYMENT_CANCELED) |  | Неуспех оплаты или отменен магазином |
 | public | [REFUND_SUCCEEDED](../classes/YooKassa-Model-NotificationEventType.md#constant_REFUND_SUCCEEDED) |  | Успешный возврат |
+| public | [DEAL_CLOSED](../classes/YooKassa-Model-NotificationEventType.md#constant_DEAL_CLOSED) |  | Сделка перешла в статус closed |
+| public | [PAYOUT_CANCELED](../classes/YooKassa-Model-NotificationEventType.md#constant_PAYOUT_CANCELED) |  | Выплата перешла в статус canceled |
+| public | [PAYOUT_SUCCEEDED](../classes/YooKassa-Model-NotificationEventType.md#constant_PAYOUT_SUCCEEDED) |  | Выплата перешла в статус succeeded |
+
 ---
 ### Properties
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
 | protected | [$validValues](../classes/YooKassa-Model-NotificationEventType.md#property_validValues) |  |  |
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -33,6 +42,7 @@ NotificationEventType - Тип уведомления
 | public | [getEnabledValues()](../classes/YooKassa-Common-AbstractEnum.md#method_getEnabledValues) |  | Возвращает значения в enum'е значения которых разрешены |
 | public | [getValidValues()](../classes/YooKassa-Common-AbstractEnum.md#method_getValidValues) |  | Возвращает все значения в enum'e |
 | public | [valueExists()](../classes/YooKassa-Common-AbstractEnum.md#method_valueExists) |  | Проверяет наличие значения в enum'e |
+
 ---
 ### Details
 * File: [lib/Model/NotificationEventType.php](../../lib/Model/NotificationEventType.php)
@@ -40,6 +50,7 @@ NotificationEventType - Тип уведомления
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
   * \YooKassa\Model\NotificationEventType
+
 ---
 ## Constants
 <a name="constant_PAYMENT_WAITING_FOR_CAPTURE" class="anchor"></a>
@@ -76,6 +87,34 @@ PAYMENT_CANCELED = 'payment.canceled'
 ```php
 REFUND_SUCCEEDED = 'refund.succeeded'
 ```
+
+
+<a name="constant_DEAL_CLOSED" class="anchor"></a>
+###### DEAL_CLOSED
+Сделка перешла в статус closed
+
+```php
+DEAL_CLOSED = 'deal.closed'
+```
+
+
+<a name="constant_PAYOUT_CANCELED" class="anchor"></a>
+###### PAYOUT_CANCELED
+Выплата перешла в статус canceled
+
+```php
+PAYOUT_CANCELED = 'payout.canceled'
+```
+
+
+<a name="constant_PAYOUT_SUCCEEDED" class="anchor"></a>
+###### PAYOUT_SUCCEEDED
+Выплата перешла в статус succeeded
+
+```php
+PAYOUT_SUCCEEDED = 'payout.succeeded'
+```
+
 
 
 ---
@@ -129,7 +168,7 @@ Static public getValidValues() : array
 #### public valueExists() : bool
 
 ```php
-Static public valueExists(mixed  value) : bool
+Static public valueExists(mixed $value) : bool
 ```
 
 **Summary**
@@ -138,6 +177,7 @@ Static public valueExists(mixed  value) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -158,10 +198,10 @@ Static public valueExists(mixed  value) : bool
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

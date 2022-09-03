@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2020 "YooMoney", NBСO LLC
+ * Copyright (c) 2022 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -230,8 +230,14 @@ abstract class AbstractObject implements \ArrayAccess, \JsonSerializable
 
     private function serializeValueToJson($value)
     {
-        if ($value === null || is_scalar($value) || is_array($value)) {
+        if ($value === null || is_scalar($value)) {
             return $value;
+        } elseif (is_array($value)) {
+            $array = array();
+            foreach ($value as $key => $item) {
+                $array[$key] = $this->serializeValueToJson($item);
+            }
+            return $array;
         } elseif (is_object($value) && $value instanceof \JsonSerializable) {
             return $value->jsonSerialize();
         } elseif (is_object($value) && $value instanceof \DateTime) {

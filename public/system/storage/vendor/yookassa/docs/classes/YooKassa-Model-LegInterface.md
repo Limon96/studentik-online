@@ -6,6 +6,7 @@
 ---
 ### Constants
 * No constants found
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -21,6 +22,7 @@
 ### Details
 * File: [lib/Model/LegInterface.php](../../lib/Model/LegInterface.php)
 * Package: \Default
+
 ---
 ## Methods
 <a name="method_getDepartureAirport" class="anchor"></a>
@@ -78,7 +80,7 @@ public getDepartureDate() : string
 #### public setDepartureAirport() : mixed
 
 ```php
-public setDepartureAirport(string  value) : mixed
+public setDepartureAirport(string $value) : mixed
 ```
 
 **Summary**
@@ -87,6 +89,7 @@ public setDepartureAirport(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\LegInterface](../classes/YooKassa-Model-LegInterface.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -99,7 +102,7 @@ public setDepartureAirport(string  value) : mixed
 #### public setDestinationAirport() : mixed
 
 ```php
-public setDestinationAirport(string  value) : mixed
+public setDestinationAirport(string $value) : mixed
 ```
 
 **Summary**
@@ -108,6 +111,7 @@ public setDestinationAirport(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\LegInterface](../classes/YooKassa-Model-LegInterface.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -120,7 +124,7 @@ public setDestinationAirport(string  value) : mixed
 #### public setDepartureDate() : mixed
 
 ```php
-public setDepartureDate(\DateTime|string  value) : mixed
+public setDepartureDate(\DateTime|string $value) : mixed
 ```
 
 **Summary**
@@ -129,6 +133,7 @@ public setDepartureDate(\DateTime|string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\LegInterface](../classes/YooKassa-Model-LegInterface.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -150,10 +155,10 @@ public setDepartureDate(\DateTime|string  value) : mixed
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

@@ -7,11 +7,13 @@
 
 Класс, описывающий маршрут
 
+
 ---
 ### Constants
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
 | public | [ISO8601](../classes/YooKassa-Model-Leg.md#constant_ISO8601) |  | Формат даты |
+
 ---
 ### Properties
 | Visibility | Name | Flag | Summary |
@@ -22,6 +24,7 @@
 | public | [$departureDate](../classes/YooKassa-Model-Leg.md#property_departureDate) |  | Дата вылета в формате YYYY-MM-DD ISO 8601:2004 |
 | public | [$destination_airport](../classes/YooKassa-Model-Leg.md#property_destination_airport) |  | Трёхбуквенный IATA-код аэропорта прилёта |
 | public | [$destinationAirport](../classes/YooKassa-Model-Leg.md#property_destinationAirport) |  | Трёхбуквенный IATA-код аэропорта прилёта |
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -45,6 +48,7 @@
 | public | [setDestinationAirport()](../classes/YooKassa-Model-Leg.md#method_setDestinationAirport) |  | Устанавливает трёхбуквенный IATA-код аэропорта прилёта |
 | public | [toArray()](../classes/YooKassa-Common-AbstractObject.md#method_toArray) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации Является алиасом метода AbstractObject::jsonSerialize() |
 | protected | [getUnknownProperties()](../classes/YooKassa-Common-AbstractObject.md#method_getUnknownProperties) |  | Возвращает массив свойств которые не существуют, но были заданы у объекта |
+
 ---
 ### Details
 * File: [lib/Model/Leg.php](../../lib/Model/Leg.php)
@@ -54,6 +58,7 @@
   * \YooKassa\Model\Leg
 * Implements:
   * [\YooKassa\Model\LegInterface](../classes/YooKassa-Model-LegInterface.md)
+
 ---
 ## Constants
 <a name="constant_ISO8601" class="anchor"></a>
@@ -63,6 +68,7 @@
 ```php
 ISO8601 = 'Y-m-d'
 ```
+
 
 
 ---
@@ -146,7 +152,7 @@ ISO8601 = 'Y-m-d'
 #### public __construct() : mixed
 
 ```php
-public __construct(array  data = array()) : mixed
+public __construct(array $data = array()) : mixed
 ```
 
 **Summary**
@@ -155,6 +161,7 @@ AbstractObject constructor.
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -167,7 +174,7 @@ AbstractObject constructor.
 #### public __get() : mixed
 
 ```php
-public __get(string  propertyName) : mixed
+public __get(string $propertyName) : mixed
 ```
 
 **Summary**
@@ -176,6 +183,7 @@ public __get(string  propertyName) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -188,7 +196,7 @@ public __get(string  propertyName) : mixed
 #### public __isset() : bool
 
 ```php
-public __isset(string  propertyName) : bool
+public __isset(string $propertyName) : bool
 ```
 
 **Summary**
@@ -197,6 +205,7 @@ public __isset(string  propertyName) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -209,7 +218,7 @@ public __isset(string  propertyName) : bool
 #### public __set() : mixed
 
 ```php
-public __set(string  propertyName, mixed  value) : mixed
+public __set(string $propertyName, mixed $value) : mixed
 ```
 
 **Summary**
@@ -218,6 +227,7 @@ public __set(string  propertyName, mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -231,7 +241,7 @@ public __set(string  propertyName, mixed  value) : mixed
 #### public __unset() : mixed
 
 ```php
-public __unset(string  propertyName) : mixed
+public __unset(string $propertyName) : mixed
 ```
 
 **Summary**
@@ -240,6 +250,7 @@ public __unset(string  propertyName) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -252,7 +263,7 @@ public __unset(string  propertyName) : mixed
 #### public fromArray() : mixed
 
 ```php
-public fromArray(array|\Traversable  sourceArray) : mixed
+public fromArray(array|\Traversable $sourceArray) : mixed
 ```
 
 **Summary**
@@ -261,6 +272,7 @@ public fromArray(array|\Traversable  sourceArray) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -353,7 +365,7 @@ public jsonSerialize() : array
 #### public offsetExists() : bool
 
 ```php
-public offsetExists(string  offset) : bool
+public offsetExists(string $offset) : bool
 ```
 
 **Summary**
@@ -362,6 +374,7 @@ public offsetExists(string  offset) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -374,7 +387,7 @@ public offsetExists(string  offset) : bool
 #### public offsetGet() : mixed
 
 ```php
-public offsetGet(string  offset) : mixed
+public offsetGet(string $offset) : mixed
 ```
 
 **Summary**
@@ -383,6 +396,7 @@ public offsetGet(string  offset) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -395,7 +409,7 @@ public offsetGet(string  offset) : mixed
 #### public offsetSet() : mixed
 
 ```php
-public offsetSet(string  offset, mixed  value) : mixed
+public offsetSet(string $offset, mixed $value) : mixed
 ```
 
 **Summary**
@@ -404,6 +418,7 @@ public offsetSet(string  offset, mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -417,7 +432,7 @@ public offsetSet(string  offset, mixed  value) : mixed
 #### public offsetUnset() : mixed
 
 ```php
-public offsetUnset(string  offset) : mixed
+public offsetUnset(string $offset) : mixed
 ```
 
 **Summary**
@@ -426,6 +441,7 @@ public offsetUnset(string  offset) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -438,7 +454,7 @@ public offsetUnset(string  offset) : mixed
 #### public setDepartureAirport() : mixed
 
 ```php
-public setDepartureAirport(string  value) : mixed
+public setDepartureAirport(string $value) : mixed
 ```
 
 **Summary**
@@ -447,6 +463,7 @@ public setDepartureAirport(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Leg](../classes/YooKassa-Model-Leg.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -463,7 +480,7 @@ public setDepartureAirport(string  value) : mixed
 #### public setDepartureDate() : mixed
 
 ```php
-public setDepartureDate(\DateTime|string  value) : mixed
+public setDepartureDate(\DateTime|string $value) : mixed
 ```
 
 **Summary**
@@ -472,10 +489,12 @@ public setDepartureDate(\DateTime|string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Leg](../classes/YooKassa-Model-Leg.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
 | <code lang="php">\DateTime OR string</code> | value  |  |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -492,7 +511,7 @@ public setDepartureDate(\DateTime|string  value) : mixed
 #### public setDestinationAirport() : mixed
 
 ```php
-public setDestinationAirport(string  value) : mixed
+public setDestinationAirport(string $value) : mixed
 ```
 
 **Summary**
@@ -501,6 +520,7 @@ public setDestinationAirport(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Leg](../classes/YooKassa-Model-Leg.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -560,10 +580,10 @@ protected getUnknownProperties() : array
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

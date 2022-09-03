@@ -7,9 +7,11 @@
 
 Класс, описывающий метод оплаты, при оплате через Сбербанк Бизнес Онлайн
 
+
 ---
 ### Constants
 * No constants found
+
 ---
 ### Properties
 | Visibility | Name | Flag | Summary |
@@ -22,6 +24,7 @@
 | public | [$saved](../classes/YooKassa-Model-PaymentMethod-AbstractPaymentMethod.md#property_saved) |  | Возможность многократного использования |
 | public | [$title](../classes/YooKassa-Model-PaymentMethod-AbstractPaymentMethod.md#property_title) |  | Название метода оплаты |
 | public | [$vatData](../classes/YooKassa-Model-PaymentMethod-PaymentMethodB2bSberbank.md#property_vatData) |  | Данные об НДС |
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -53,6 +56,7 @@
 | public | [toArray()](../classes/YooKassa-Common-AbstractObject.md#method_toArray) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации Является алиасом метода AbstractObject::jsonSerialize() |
 | protected | [_setType()](../classes/YooKassa-Model-PaymentMethod-AbstractPaymentMethod.md#method__setType) |  | Устанавливает тип объекта |
 | protected | [getUnknownProperties()](../classes/YooKassa-Common-AbstractObject.md#method_getUnknownProperties) |  | Возвращает массив свойств которые не существуют, но были заданы у объекта |
+
 ---
 ### Details
 * File: [lib/Model/PaymentMethod/PaymentMethodB2bSberbank.php](../../lib/Model/PaymentMethod/PaymentMethodB2bSberbank.php)
@@ -61,6 +65,7 @@
   * [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
   * [\YooKassa\Model\PaymentMethod\AbstractPaymentMethod](../classes/YooKassa-Model-PaymentMethod-AbstractPaymentMethod.md)
   * \YooKassa\Model\PaymentMethod\PaymentMethodB2bSberbank
+
 ---
 ## Properties
 <a name="property_id"></a>
@@ -182,7 +187,7 @@ public __construct() : mixed
 #### public __get() : mixed
 
 ```php
-public __get(string  propertyName) : mixed
+public __get(string $propertyName) : mixed
 ```
 
 **Summary**
@@ -191,6 +196,7 @@ public __get(string  propertyName) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -203,7 +209,7 @@ public __get(string  propertyName) : mixed
 #### public __isset() : bool
 
 ```php
-public __isset(string  propertyName) : bool
+public __isset(string $propertyName) : bool
 ```
 
 **Summary**
@@ -212,6 +218,7 @@ public __isset(string  propertyName) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -224,7 +231,7 @@ public __isset(string  propertyName) : bool
 #### public __set() : mixed
 
 ```php
-public __set(string  propertyName, mixed  value) : mixed
+public __set(string $propertyName, mixed $value) : mixed
 ```
 
 **Summary**
@@ -233,6 +240,7 @@ public __set(string  propertyName, mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -246,7 +254,7 @@ public __set(string  propertyName, mixed  value) : mixed
 #### public __unset() : mixed
 
 ```php
-public __unset(string  propertyName) : mixed
+public __unset(string $propertyName) : mixed
 ```
 
 **Summary**
@@ -255,6 +263,7 @@ public __unset(string  propertyName) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -267,7 +276,7 @@ public __unset(string  propertyName) : mixed
 #### public fromArray() : mixed
 
 ```php
-public fromArray(array|\Traversable  sourceArray) : mixed
+public fromArray(array|\Traversable $sourceArray) : mixed
 ```
 
 **Summary**
@@ -276,6 +285,7 @@ public fromArray(array|\Traversable  sourceArray) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -424,7 +434,7 @@ public jsonSerialize() : array
 #### public offsetExists() : bool
 
 ```php
-public offsetExists(string  offset) : bool
+public offsetExists(string $offset) : bool
 ```
 
 **Summary**
@@ -433,6 +443,7 @@ public offsetExists(string  offset) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -445,7 +456,7 @@ public offsetExists(string  offset) : bool
 #### public offsetGet() : mixed
 
 ```php
-public offsetGet(string  offset) : mixed
+public offsetGet(string $offset) : mixed
 ```
 
 **Summary**
@@ -454,6 +465,7 @@ public offsetGet(string  offset) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -466,7 +478,7 @@ public offsetGet(string  offset) : mixed
 #### public offsetSet() : mixed
 
 ```php
-public offsetSet(string  offset, mixed  value) : mixed
+public offsetSet(string $offset, mixed $value) : mixed
 ```
 
 **Summary**
@@ -475,6 +487,7 @@ public offsetSet(string  offset, mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -488,7 +501,7 @@ public offsetSet(string  offset, mixed  value) : mixed
 #### public offsetUnset() : mixed
 
 ```php
-public offsetUnset(string  offset) : mixed
+public offsetUnset(string $offset) : mixed
 ```
 
 **Summary**
@@ -497,6 +510,7 @@ public offsetUnset(string  offset) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -509,7 +523,7 @@ public offsetUnset(string  offset) : mixed
 #### public setId() : mixed
 
 ```php
-public setId(string  value) : mixed
+public setId(string $value) : mixed
 ```
 
 **Summary**
@@ -518,6 +532,7 @@ public setId(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\PaymentMethod\AbstractPaymentMethod](../classes/YooKassa-Model-PaymentMethod-AbstractPaymentMethod.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -530,7 +545,7 @@ public setId(string  value) : mixed
 #### public setPayerBankDetails() : mixed
 
 ```php
-public setPayerBankDetails(\YooKassa\Model\PaymentMethod\B2b\Sberbank\PayerBankDetails|array  payerBankDetails) : mixed
+public setPayerBankDetails(\YooKassa\Model\PaymentMethod\B2b\Sberbank\PayerBankDetails|array $payerBankDetails) : mixed
 ```
 
 **Summary**
@@ -539,6 +554,7 @@ public setPayerBankDetails(\YooKassa\Model\PaymentMethod\B2b\Sberbank\PayerBankD
 
 **Details:**
 * Inherited From: [\YooKassa\Model\PaymentMethod\PaymentMethodB2bSberbank](../classes/YooKassa-Model-PaymentMethod-PaymentMethodB2bSberbank.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -551,7 +567,7 @@ public setPayerBankDetails(\YooKassa\Model\PaymentMethod\B2b\Sberbank\PayerBankD
 #### public setPaymentPurpose() : mixed
 
 ```php
-public setPaymentPurpose(string  paymentPurpose) : mixed
+public setPaymentPurpose(string $paymentPurpose) : mixed
 ```
 
 **Summary**
@@ -560,6 +576,7 @@ public setPaymentPurpose(string  paymentPurpose) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\PaymentMethod\PaymentMethodB2bSberbank](../classes/YooKassa-Model-PaymentMethod-PaymentMethodB2bSberbank.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -572,7 +589,7 @@ public setPaymentPurpose(string  paymentPurpose) : mixed
 #### public setSaved() : mixed
 
 ```php
-public setSaved(bool  value) : mixed
+public setSaved(bool $value) : mixed
 ```
 
 **Summary**
@@ -581,6 +598,7 @@ public setSaved(bool  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\PaymentMethod\AbstractPaymentMethod](../classes/YooKassa-Model-PaymentMethod-AbstractPaymentMethod.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -593,7 +611,7 @@ public setSaved(bool  value) : mixed
 #### public setTitle() : mixed
 
 ```php
-public setTitle(string  value) : mixed
+public setTitle(string $value) : mixed
 ```
 
 **Summary**
@@ -602,6 +620,7 @@ public setTitle(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\PaymentMethod\AbstractPaymentMethod](../classes/YooKassa-Model-PaymentMethod-AbstractPaymentMethod.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -614,7 +633,7 @@ public setTitle(string  value) : mixed
 #### public setVatData() : mixed
 
 ```php
-public setVatData(\YooKassa\Model\PaymentData\B2b\Sberbank\VatData  vatData) : mixed
+public setVatData(\YooKassa\Model\PaymentData\B2b\Sberbank\VatData $vatData) : mixed
 ```
 
 **Summary**
@@ -623,6 +642,7 @@ public setVatData(\YooKassa\Model\PaymentData\B2b\Sberbank\VatData  vatData) : m
 
 **Details:**
 * Inherited From: [\YooKassa\Model\PaymentMethod\PaymentMethodB2bSberbank](../classes/YooKassa-Model-PaymentMethod-PaymentMethodB2bSberbank.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -653,7 +673,7 @@ public toArray() : array
 #### protected _setType() : mixed
 
 ```php
-protected _setType(string  value) : mixed
+protected _setType(string $value) : mixed
 ```
 
 **Summary**
@@ -662,6 +682,7 @@ protected _setType(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\PaymentMethod\AbstractPaymentMethod](../classes/YooKassa-Model-PaymentMethod-AbstractPaymentMethod.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -699,10 +720,10 @@ protected getUnknownProperties() : array
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

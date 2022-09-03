@@ -7,6 +7,7 @@
 
 Базовый класс генерируемых enum'ов
 
+
 ---
 ### Constants
 | Visibility | Name | Flag | Summary |
@@ -18,11 +19,13 @@
 | public | [OPTIONS](../classes/YooKassa-Common-HttpVerb.md#constant_OPTIONS) |  |  |
 | public | [PUT](../classes/YooKassa-Common-HttpVerb.md#constant_PUT) |  |  |
 | public | [DELETE](../classes/YooKassa-Common-HttpVerb.md#constant_DELETE) |  |  |
+
 ---
 ### Properties
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
 | protected | [$validValues](../classes/YooKassa-Common-HttpVerb.md#property_validValues) |  |  |
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -30,6 +33,7 @@
 | public | [getEnabledValues()](../classes/YooKassa-Common-AbstractEnum.md#method_getEnabledValues) |  | Возвращает значения в enum'е значения которых разрешены |
 | public | [getValidValues()](../classes/YooKassa-Common-AbstractEnum.md#method_getValidValues) |  | Возвращает все значения в enum'e |
 | public | [valueExists()](../classes/YooKassa-Common-AbstractEnum.md#method_valueExists) |  | Проверяет наличие значения в enum'e |
+
 ---
 ### Details
 * File: [lib/Common/HttpVerb.php](../../lib/Common/HttpVerb.php)
@@ -37,6 +41,7 @@
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
   * \YooKassa\Common\HttpVerb
+
 ---
 ## Constants
 <a name="constant_GET" class="anchor"></a>
@@ -86,6 +91,7 @@ PUT = 'PUT'
 ```php
 DELETE = 'DELETE'
 ```
+
 
 
 ---
@@ -139,7 +145,7 @@ Static public getValidValues() : array
 #### public valueExists() : bool
 
 ```php
-Static public valueExists(mixed  value) : bool
+Static public valueExists(mixed $value) : bool
 ```
 
 **Summary**
@@ -148,6 +154,7 @@ Static public valueExists(mixed  value) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -168,10 +175,10 @@ Static public valueExists(mixed  value) : bool
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

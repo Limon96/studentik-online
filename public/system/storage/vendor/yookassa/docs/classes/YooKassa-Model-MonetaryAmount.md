@@ -7,15 +7,18 @@
 
 MonetaryAmount - Сумма определенная в валюте
 
+
 ---
 ### Constants
 * No constants found
+
 ---
 ### Properties
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
 | public | [$currency](../classes/YooKassa-Model-MonetaryAmount.md#property_currency) |  | Код валюты |
 | public | [$value](../classes/YooKassa-Model-MonetaryAmount.md#property_value) |  | Сумма |
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -40,15 +43,17 @@ MonetaryAmount - Сумма определенная в валюте
 | public | [setValue()](../classes/YooKassa-Model-MonetaryAmount.md#method_setValue) |  | Устанавливает сумму |
 | public | [toArray()](../classes/YooKassa-Common-AbstractObject.md#method_toArray) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации Является алиасом метода AbstractObject::jsonSerialize() |
 | protected | [getUnknownProperties()](../classes/YooKassa-Common-AbstractObject.md#method_getUnknownProperties) |  | Возвращает массив свойств которые не существуют, но были заданы у объекта |
+
 ---
 ### Details
 * File: [lib/Model/MonetaryAmount.php](../../lib/Model/MonetaryAmount.php)
-* Package: Default
+* Package: YooKassa
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
   * \YooKassa\Model\MonetaryAmount
 * Implements:
   * [\YooKassa\Model\AmountInterface](../classes/YooKassa-Model-AmountInterface.md)
+
 ---
 ## Properties
 <a name="property_currency"></a>
@@ -64,13 +69,13 @@ MonetaryAmount - Сумма определенная в валюте
 
 
 <a name="property_value"></a>
-#### public $value : string
+#### public $value : int
 ---
 ***Description***
 
 Сумма
 
-**Type:** <a href="../string"><abbr title="string">string</abbr></a>
+**Type:** <a href="../int"><abbr title="int">int</abbr></a>
 
 **Details:**
 
@@ -82,7 +87,7 @@ MonetaryAmount - Сумма определенная в валюте
 #### public __construct() : mixed
 
 ```php
-public __construct(\YooKassa\Model\numeric|null  value = null, string|null  currency = null) : mixed
+public __construct(array|\YooKassa\Model\numeric|null $value = null, string|null $currency = null) : mixed
 ```
 
 **Summary**
@@ -91,10 +96,11 @@ MonetaryAmount constructor.
 
 **Details:**
 * Inherited From: [\YooKassa\Model\MonetaryAmount](../classes/YooKassa-Model-MonetaryAmount.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\YooKassa\Model\numeric OR null</code> | value  | Сумма |
+| <code lang="php">array OR \YooKassa\Model\numeric OR null</code> | value  | Сумма |
 | <code lang="php">string OR null</code> | currency  | Код валюты |
 
 **Returns:** mixed - 
@@ -104,7 +110,7 @@ MonetaryAmount constructor.
 #### public __get() : mixed
 
 ```php
-public __get(string  propertyName) : mixed
+public __get(string $propertyName) : mixed
 ```
 
 **Summary**
@@ -113,6 +119,7 @@ public __get(string  propertyName) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -125,7 +132,7 @@ public __get(string  propertyName) : mixed
 #### public __isset() : bool
 
 ```php
-public __isset(string  propertyName) : bool
+public __isset(string $propertyName) : bool
 ```
 
 **Summary**
@@ -134,6 +141,7 @@ public __isset(string  propertyName) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -146,7 +154,7 @@ public __isset(string  propertyName) : bool
 #### public __set() : mixed
 
 ```php
-public __set(string  propertyName, mixed  value) : mixed
+public __set(string $propertyName, mixed $value) : mixed
 ```
 
 **Summary**
@@ -155,6 +163,7 @@ public __set(string  propertyName, mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -168,7 +177,7 @@ public __set(string  propertyName, mixed  value) : mixed
 #### public __unset() : mixed
 
 ```php
-public __unset(string  propertyName) : mixed
+public __unset(string $propertyName) : mixed
 ```
 
 **Summary**
@@ -177,6 +186,7 @@ public __unset(string  propertyName) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -189,7 +199,7 @@ public __unset(string  propertyName) : mixed
 #### public fromArray() : mixed
 
 ```php
-public fromArray(array|\Traversable  sourceArray) : mixed
+public fromArray(array|\Traversable $sourceArray) : mixed
 ```
 
 **Summary**
@@ -198,6 +208,7 @@ public fromArray(array|\Traversable  sourceArray) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -261,7 +272,7 @@ public getValue() : string
 #### public increase() : mixed
 
 ```php
-public increase(int  value) : mixed
+public increase(int $value) : mixed
 ```
 
 **Summary**
@@ -270,10 +281,12 @@ public increase(int  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\MonetaryAmount](../classes/YooKassa-Model-MonetaryAmount.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">int</code> | value  | Значение которое будет прибавлено к текущему |
+| <code lang="php">int</code> | value  | Значение, которое будет прибавлено к текущему |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -305,7 +318,7 @@ public jsonSerialize() : array
 #### public multiply() : mixed
 
 ```php
-public multiply(float  coefficient) : mixed
+public multiply(float $coefficient) : mixed
 ```
 
 **Summary**
@@ -314,10 +327,12 @@ public multiply(float  coefficient) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\MonetaryAmount](../classes/YooKassa-Model-MonetaryAmount.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
 | <code lang="php">float</code> | coefficient  | Множитель |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -332,7 +347,7 @@ public multiply(float  coefficient) : mixed
 #### public offsetExists() : bool
 
 ```php
-public offsetExists(string  offset) : bool
+public offsetExists(string $offset) : bool
 ```
 
 **Summary**
@@ -341,6 +356,7 @@ public offsetExists(string  offset) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -353,7 +369,7 @@ public offsetExists(string  offset) : bool
 #### public offsetGet() : mixed
 
 ```php
-public offsetGet(string  offset) : mixed
+public offsetGet(string $offset) : mixed
 ```
 
 **Summary**
@@ -362,6 +378,7 @@ public offsetGet(string  offset) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -374,7 +391,7 @@ public offsetGet(string  offset) : mixed
 #### public offsetSet() : mixed
 
 ```php
-public offsetSet(string  offset, mixed  value) : mixed
+public offsetSet(string $offset, mixed $value) : mixed
 ```
 
 **Summary**
@@ -383,6 +400,7 @@ public offsetSet(string  offset, mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -396,7 +414,7 @@ public offsetSet(string  offset, mixed  value) : mixed
 #### public offsetUnset() : mixed
 
 ```php
-public offsetUnset(string  offset) : mixed
+public offsetUnset(string $offset) : mixed
 ```
 
 **Summary**
@@ -405,6 +423,7 @@ public offsetUnset(string  offset) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -417,7 +436,7 @@ public offsetUnset(string  offset) : mixed
 #### public setCurrency() : mixed
 
 ```php
-public setCurrency(string  value) : mixed
+public setCurrency(string $value) : mixed
 ```
 
 **Summary**
@@ -426,10 +445,12 @@ public setCurrency(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\MonetaryAmount](../classes/YooKassa-Model-MonetaryAmount.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
 | <code lang="php">string</code> | value  | Код валюты |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -444,7 +465,7 @@ public setCurrency(string  value) : mixed
 #### public setValue() : mixed
 
 ```php
-public setValue(string  value) : mixed
+public setValue(string $value) : mixed
 ```
 
 **Summary**
@@ -453,10 +474,12 @@ public setValue(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\MonetaryAmount](../classes/YooKassa-Model-MonetaryAmount.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
 | <code lang="php">string</code> | value  | Сумма |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -514,10 +537,10 @@ protected getUnknownProperties() : array
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

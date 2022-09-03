@@ -15,6 +15,7 @@
 ---
 ### Constants
 * No constants found
+
 ---
 ### Properties
 | Visibility | Name | Flag | Summary |
@@ -26,11 +27,12 @@
 | public | [$clientId](../classes/YooKassa-Model-Requestor.md#property_clientId) |  | Идентификатор приложения |
 | public | [$clientName](../classes/YooKassa-Model-Requestor.md#property_clientName) |  | Название приложения (только для type = RequestorThirdPartyService) |
 | public | [$type](../classes/YooKassa-Model-Requestor.md#property_type) |  | Тип инициатора |
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
-| public | [__construct()](../classes/YooKassa-Model-Requestor.md#method___construct) |  | Requestor constructor. |
+| public | [__construct()](../classes/YooKassa-Common-AbstractObject.md#method___construct) |  | AbstractObject constructor. |
 | public | [__get()](../classes/YooKassa-Common-AbstractObject.md#method___get) |  | Возвращает значение свойства |
 | public | [__isset()](../classes/YooKassa-Common-AbstractObject.md#method___isset) |  | Проверяет наличие свойства |
 | public | [__set()](../classes/YooKassa-Common-AbstractObject.md#method___set) |  | Устанавливает значение свойства |
@@ -51,6 +53,7 @@
 | public | [setType()](../classes/YooKassa-Model-Requestor.md#method_setType) |  | Устанавливает тип инициатора |
 | public | [toArray()](../classes/YooKassa-Common-AbstractObject.md#method_toArray) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации Является алиасом метода AbstractObject::jsonSerialize() |
 | protected | [getUnknownProperties()](../classes/YooKassa-Common-AbstractObject.md#method_getUnknownProperties) |  | Возвращает массив свойств которые не существуют, но были заданы у объекта |
+
 ---
 ### Details
 * File: [lib/Model/Requestor.php](../../lib/Model/Requestor.php)
@@ -60,6 +63,13 @@
   * \YooKassa\Model\Requestor
 * Implements:
   * [\YooKassa\Model\RequestorInterface](../classes/YooKassa-Model-RequestorInterface.md)
+
+---
+### Tags
+| Tag | Version | Description |
+| --- | ------- | ----------- |
+| deprecated |  | Не используется. Будет удален в следующих версиях |
+
 ---
 ## Properties
 <a name="property_account_id"></a>
@@ -153,19 +163,20 @@
 #### public __construct() : mixed
 
 ```php
-public __construct(null|array  data = null) : mixed
+public __construct(array $data = array()) : mixed
 ```
 
 **Summary**
 
-Requestor constructor.
+AbstractObject constructor.
 
 **Details:**
-* Inherited From: [\YooKassa\Model\Requestor](../classes/YooKassa-Model-Requestor.md)
+* Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">null OR array</code> | data  |  |
+| <code lang="php">array</code> | data  |  |
 
 **Returns:** mixed - 
 
@@ -174,7 +185,7 @@ Requestor constructor.
 #### public __get() : mixed
 
 ```php
-public __get(string  propertyName) : mixed
+public __get(string $propertyName) : mixed
 ```
 
 **Summary**
@@ -183,6 +194,7 @@ public __get(string  propertyName) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -195,7 +207,7 @@ public __get(string  propertyName) : mixed
 #### public __isset() : bool
 
 ```php
-public __isset(string  propertyName) : bool
+public __isset(string $propertyName) : bool
 ```
 
 **Summary**
@@ -204,6 +216,7 @@ public __isset(string  propertyName) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -216,7 +229,7 @@ public __isset(string  propertyName) : bool
 #### public __set() : mixed
 
 ```php
-public __set(string  propertyName, mixed  value) : mixed
+public __set(string $propertyName, mixed $value) : mixed
 ```
 
 **Summary**
@@ -225,6 +238,7 @@ public __set(string  propertyName, mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -238,7 +252,7 @@ public __set(string  propertyName, mixed  value) : mixed
 #### public __unset() : mixed
 
 ```php
-public __unset(string  propertyName) : mixed
+public __unset(string $propertyName) : mixed
 ```
 
 **Summary**
@@ -247,6 +261,7 @@ public __unset(string  propertyName) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -259,7 +274,7 @@ public __unset(string  propertyName) : mixed
 #### public fromArray() : mixed
 
 ```php
-public fromArray(array|\Traversable  sourceArray) : mixed
+public fromArray(array|\Traversable $sourceArray) : mixed
 ```
 
 **Summary**
@@ -268,6 +283,7 @@ public fromArray(array|\Traversable  sourceArray) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -381,7 +397,7 @@ public jsonSerialize() : array
 #### public offsetExists() : bool
 
 ```php
-public offsetExists(string  offset) : bool
+public offsetExists(string $offset) : bool
 ```
 
 **Summary**
@@ -390,6 +406,7 @@ public offsetExists(string  offset) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -402,7 +419,7 @@ public offsetExists(string  offset) : bool
 #### public offsetGet() : mixed
 
 ```php
-public offsetGet(string  offset) : mixed
+public offsetGet(string $offset) : mixed
 ```
 
 **Summary**
@@ -411,6 +428,7 @@ public offsetGet(string  offset) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -423,7 +441,7 @@ public offsetGet(string  offset) : mixed
 #### public offsetSet() : mixed
 
 ```php
-public offsetSet(string  offset, mixed  value) : mixed
+public offsetSet(string $offset, mixed $value) : mixed
 ```
 
 **Summary**
@@ -432,6 +450,7 @@ public offsetSet(string  offset, mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -445,7 +464,7 @@ public offsetSet(string  offset, mixed  value) : mixed
 #### public offsetUnset() : mixed
 
 ```php
-public offsetUnset(string  offset) : mixed
+public offsetUnset(string $offset) : mixed
 ```
 
 **Summary**
@@ -454,6 +473,7 @@ public offsetUnset(string  offset) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -466,7 +486,7 @@ public offsetUnset(string  offset) : mixed
 #### public setAccountId() : mixed
 
 ```php
-public setAccountId(string  value) : mixed
+public setAccountId(string $value) : mixed
 ```
 
 **Summary**
@@ -475,6 +495,7 @@ public setAccountId(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Requestor](../classes/YooKassa-Model-Requestor.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -491,7 +512,7 @@ public setAccountId(string  value) : mixed
 #### public setClientId() : mixed
 
 ```php
-public setClientId(string  value) : mixed
+public setClientId(string $value) : mixed
 ```
 
 **Summary**
@@ -500,6 +521,7 @@ public setClientId(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Requestor](../classes/YooKassa-Model-Requestor.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -516,7 +538,7 @@ public setClientId(string  value) : mixed
 #### public setClientName() : mixed
 
 ```php
-public setClientName(string  value) : mixed
+public setClientName(string $value) : mixed
 ```
 
 **Summary**
@@ -525,6 +547,7 @@ public setClientName(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Requestor](../classes/YooKassa-Model-Requestor.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -541,7 +564,7 @@ public setClientName(string  value) : mixed
 #### public setType() : mixed
 
 ```php
-public setType(string  value) : mixed
+public setType(string $value) : mixed
 ```
 
 **Summary**
@@ -550,6 +573,7 @@ public setType(string  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Requestor](../classes/YooKassa-Model-Requestor.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -609,10 +633,10 @@ protected getUnknownProperties() : array
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

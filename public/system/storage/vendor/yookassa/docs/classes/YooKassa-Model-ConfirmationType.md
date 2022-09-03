@@ -10,10 +10,11 @@ ConfirmationType - Тип пользовательского процесса п
 --- | ---
 |redirect|Необходимо направить плательщика на страницу партнера|
 |external|Необходимо ождать пока плательщик самостоятельно подтвердит платеж|
-|deeplink|Необходимо направить плательщика в приложение партнера|
 |code_verification|Необходимо получить одноразовый код от плательщика для подтверждения платежа|
 |embedded|Необходимо получить токен для checkout.js|
 |qr|Необходимо получить QR-код|
+|mobile_application|необходимо совершить действия в мобильном приложении|
+
 
 ---
 ### Constants
@@ -21,15 +22,17 @@ ConfirmationType - Тип пользовательского процесса п
 | ----------:| ---- | ---- | ------- |
 | public | [REDIRECT](../classes/YooKassa-Model-ConfirmationType.md#constant_REDIRECT) |  |  |
 | public | [EXTERNAL](../classes/YooKassa-Model-ConfirmationType.md#constant_EXTERNAL) |  |  |
-| public | [DEEPLINK](../classes/YooKassa-Model-ConfirmationType.md#constant_DEEPLINK) |  |  |
 | public | [CODE_VERIFICATION](../classes/YooKassa-Model-ConfirmationType.md#constant_CODE_VERIFICATION) |  |  |
 | public | [EMBEDDED](../classes/YooKassa-Model-ConfirmationType.md#constant_EMBEDDED) |  |  |
 | public | [QR](../classes/YooKassa-Model-ConfirmationType.md#constant_QR) |  |  |
+| public | [MOBILE_APPLICATION](../classes/YooKassa-Model-ConfirmationType.md#constant_MOBILE_APPLICATION) |  |  |
+
 ---
 ### Properties
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
 | protected | [$validValues](../classes/YooKassa-Model-ConfirmationType.md#property_validValues) |  |  |
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -37,6 +40,7 @@ ConfirmationType - Тип пользовательского процесса п
 | public | [getEnabledValues()](../classes/YooKassa-Common-AbstractEnum.md#method_getEnabledValues) |  | Возвращает значения в enum'е значения которых разрешены |
 | public | [getValidValues()](../classes/YooKassa-Common-AbstractEnum.md#method_getValidValues) |  | Возвращает все значения в enum'e |
 | public | [valueExists()](../classes/YooKassa-Common-AbstractEnum.md#method_valueExists) |  | Проверяет наличие значения в enum'e |
+
 ---
 ### Details
 * File: [lib/Model/ConfirmationType.php](../../lib/Model/ConfirmationType.php)
@@ -44,6 +48,7 @@ ConfirmationType - Тип пользовательского процесса п
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
   * \YooKassa\Model\ConfirmationType
+
 ---
 ## Constants
 <a name="constant_REDIRECT" class="anchor"></a>
@@ -57,13 +62,6 @@ REDIRECT = 'redirect'
 ###### EXTERNAL
 ```php
 EXTERNAL = 'external'
-```
-
-
-<a name="constant_DEEPLINK" class="anchor"></a>
-###### DEEPLINK
-```php
-DEEPLINK = 'deeplink'
 ```
 
 
@@ -86,6 +84,14 @@ EMBEDDED = 'embedded'
 ```php
 QR = 'qr'
 ```
+
+
+<a name="constant_MOBILE_APPLICATION" class="anchor"></a>
+###### MOBILE_APPLICATION
+```php
+MOBILE_APPLICATION = 'mobile_application'
+```
+
 
 
 ---
@@ -139,7 +145,7 @@ Static public getValidValues() : array
 #### public valueExists() : bool
 
 ```php
-Static public valueExists(mixed  value) : bool
+Static public valueExists(mixed $value) : bool
 ```
 
 **Summary**
@@ -148,6 +154,7 @@ Static public valueExists(mixed  value) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractEnum](../classes/YooKassa-Common-AbstractEnum.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -168,10 +175,10 @@ Static public valueExists(mixed  value) : bool
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

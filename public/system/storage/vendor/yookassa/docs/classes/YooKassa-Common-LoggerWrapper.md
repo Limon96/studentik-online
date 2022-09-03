@@ -3,9 +3,11 @@
 # Class: \YooKassa\Common\LoggerWrapper
 ### Namespace: [\YooKassa\Common](../namespaces/yookassa-common.md)
 ---
+
 ---
 ### Constants
 * No constants found
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -20,6 +22,7 @@
 | public | [log()](../classes/YooKassa-Common-LoggerWrapper.md#method_log) |  | Logs with an arbitrary level. |
 | public | [notice()](../classes/YooKassa-Common-LoggerWrapper.md#method_notice) |  | Normal but significant events. |
 | public | [warning()](../classes/YooKassa-Common-LoggerWrapper.md#method_warning) |  | Exceptional occurrences that are not errors. |
+
 ---
 ### Details
 * File: [lib/Common/LoggerWrapper.php](../../lib/Common/LoggerWrapper.php)
@@ -35,7 +38,7 @@
 #### public __construct() : mixed
 
 ```php
-public __construct(object|callable  wrapped) : mixed
+public __construct(object|callable $wrapped) : mixed
 ```
 
 **Summary**
@@ -44,6 +47,7 @@ LoggerWrapper constructor.
 
 **Details:**
 * Inherited From: [\YooKassa\Common\LoggerWrapper](../classes/YooKassa-Common-LoggerWrapper.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -56,7 +60,7 @@ LoggerWrapper constructor.
 #### public alert() : void
 
 ```php
-public alert(string  message, array  context = array()) : void
+public alert(string $message, array $context = array()) : void
 ```
 
 **Summary**
@@ -70,6 +74,7 @@ trigger the SMS alerts and wake you up.
 
 **Details:**
 * Inherited From: [\YooKassa\Common\LoggerWrapper](../classes/YooKassa-Common-LoggerWrapper.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -83,7 +88,7 @@ trigger the SMS alerts and wake you up.
 #### public critical() : void
 
 ```php
-public critical(string  message, array  context = array()) : void
+public critical(string $message, array $context = array()) : void
 ```
 
 **Summary**
@@ -96,6 +101,7 @@ Example: Application component unavailable, unexpected exception.
 
 **Details:**
 * Inherited From: [\YooKassa\Common\LoggerWrapper](../classes/YooKassa-Common-LoggerWrapper.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -109,7 +115,7 @@ Example: Application component unavailable, unexpected exception.
 #### public debug() : void
 
 ```php
-public debug(string  message, array  context = array()) : void
+public debug(string $message, array $context = array()) : void
 ```
 
 **Summary**
@@ -118,6 +124,7 @@ Detailed debug information.
 
 **Details:**
 * Inherited From: [\YooKassa\Common\LoggerWrapper](../classes/YooKassa-Common-LoggerWrapper.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -131,7 +138,7 @@ Detailed debug information.
 #### public emergency() : void
 
 ```php
-public emergency(string  message, array  context = array()) : void
+public emergency(string $message, array $context = array()) : void
 ```
 
 **Summary**
@@ -140,6 +147,7 @@ System is unusable.
 
 **Details:**
 * Inherited From: [\YooKassa\Common\LoggerWrapper](../classes/YooKassa-Common-LoggerWrapper.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -153,7 +161,7 @@ System is unusable.
 #### public error() : void
 
 ```php
-public error(string  message, array  context = array()) : void
+public error(string $message, array $context = array()) : void
 ```
 
 **Summary**
@@ -163,6 +171,7 @@ be logged and monitored.
 
 **Details:**
 * Inherited From: [\YooKassa\Common\LoggerWrapper](../classes/YooKassa-Common-LoggerWrapper.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -176,7 +185,7 @@ be logged and monitored.
 #### public info() : void
 
 ```php
-public info(string  message, array  context = array()) : void
+public info(string $message, array $context = array()) : void
 ```
 
 **Summary**
@@ -189,6 +198,7 @@ Example: User logs in, SQL logs.
 
 **Details:**
 * Inherited From: [\YooKassa\Common\LoggerWrapper](../classes/YooKassa-Common-LoggerWrapper.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -202,7 +212,7 @@ Example: User logs in, SQL logs.
 #### public log() : void
 
 ```php
-public log(mixed  level, string  message, array  context = array()) : void
+public log(mixed $level, string $message, array $context = array()) : void
 ```
 
 **Summary**
@@ -211,6 +221,7 @@ Logs with an arbitrary level.
 
 **Details:**
 * Inherited From: [\YooKassa\Common\LoggerWrapper](../classes/YooKassa-Common-LoggerWrapper.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -225,7 +236,7 @@ Logs with an arbitrary level.
 #### public notice() : void
 
 ```php
-public notice(string  message, array  context = array()) : void
+public notice(string $message, array $context = array()) : void
 ```
 
 **Summary**
@@ -234,6 +245,7 @@ Normal but significant events.
 
 **Details:**
 * Inherited From: [\YooKassa\Common\LoggerWrapper](../classes/YooKassa-Common-LoggerWrapper.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -247,7 +259,7 @@ Normal but significant events.
 #### public warning() : void
 
 ```php
-public warning(string  message, array  context = array()) : void
+public warning(string $message, array $context = array()) : void
 ```
 
 **Summary**
@@ -261,6 +273,7 @@ that are not necessarily wrong.
 
 **Details:**
 * Inherited From: [\YooKassa\Common\LoggerWrapper](../classes/YooKassa-Common-LoggerWrapper.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -282,10 +295,10 @@ that are not necessarily wrong.
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

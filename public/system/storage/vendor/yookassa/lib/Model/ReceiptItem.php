@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2020 "YooMoney", NBСO LLC
+ * Copyright (c) 2022 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -126,17 +126,6 @@ class ReceiptItem extends AbstractObject implements ReceiptItemInterface
     private $_shipping = false;
 
     /**
-     * ReceiptItem constructor.
-     * @param array|null $data Массив для инициализации нового объекта
-     */
-    public function __construct($data = null)
-    {
-        if (!empty($data) && is_array($data)) {
-            $this->fromArray($data);
-        }
-    }
-
-    /**
      * Возвращает наименование товара
      * @return string Наименование товара
      */
@@ -231,16 +220,24 @@ class ReceiptItem extends AbstractObject implements ReceiptItemInterface
     /**
      * Устанавливает цену товара
      *
-     * @param AmountInterface $value Цена товара
+     * @param AmountInterface|array $value Цена товара
      */
-    public function setPrice(AmountInterface $value)
+    public function setPrice($value)
     {
-        $this->_amount = $value;
+        if (is_array($value)) {
+            $this->_amount = new ReceiptItemAmount($value);
+        } elseif ($value instanceof AmountInterface) {
+            $this->_amount = $value;
+        } else {
+            throw new InvalidPropertyValueTypeException(
+                'Invalid amount value type in ReceiptItem', 0, 'ReceiptItem.amount', $value
+            );
+        }
     }
 
     /**
      * Возвращает ставку НДС
-     * @return int|null Ставка НДС, число 1-6, или null если ставка не задана
+     * @return int|null Ставка НДС, число 1-6, или null, если ставка не задана
      */
     public function getVatCode()
     {
@@ -642,10 +639,14 @@ class ReceiptItem extends AbstractObject implements ReceiptItemInterface
      */
     public function fromArray($sourceArray)
     {
-        $amount = new ReceiptItemAmount();
-        $amount->fromArray($sourceArray['amount']);
-        $sourceArray['price'] = $amount;
-        unset($sourceArray['amount']);
+        if (isset($sourceArray['amount'])) {
+            if (is_array($sourceArray['amount'])) {
+                $sourceArray['price'] = new ReceiptItemAmount($sourceArray['amount']);
+            } elseif ($sourceArray['amount'] instanceof AmountInterface) {
+                $sourceArray['price'] = $sourceArray['amount'];
+            }
+            unset($sourceArray['amount']);
+        }
 
         parent::fromArray($sourceArray);
     }
@@ -657,47 +658,10 @@ class ReceiptItem extends AbstractObject implements ReceiptItemInterface
      */
     public function jsonSerialize()
     {
-        $result = array(
-            'description'     => $this->getDescription(),
-            'amount'          => array(
-                'value'    => $this->getPrice()->getValue(),
-                'currency' => $this->getPrice()->getCurrency(),
-            ),
-            'quantity'        => $this->getQuantity(),
-            'vat_code'        => $this->getVatCode(),
-        );
+        $result = parent::jsonSerialize();
 
-        if ($this->getPaymentSubject()) {
-            $result['payment_subject'] = $this->getPaymentSubject();
-        }
-
-        if ($this->getPaymentMode()) {
-            $result['payment_mode'] = $this->getPaymentMode();
-        }
-
-        if ($this->getProductCode()) {
-            $result['product_code'] = $this->getProductCode();
-        }
-
-        if ($this->getCountryOfOriginCode()) {
-            $result['country_of_origin_code'] = $this->getCountryOfOriginCode();
-        }
-
-        if ($this->getCustomsDeclarationNumber()) {
-            $result['customs_declaration_number'] = $this->getCustomsDeclarationNumber();
-        }
-
-        if ($this->getExcise()) {
-            $result['excise'] = $this->getExcise();
-        }
-
-        if ($this->getSupplier()) {
-            $result['supplier'] = $this->getSupplier()->jsonSerialize();
-        }
-
-        if ($this->getAgentType()) {
-            $result['agent_type'] = $this->getAgentType();
-        }
+        $result['amount'] = $result['price'];
+        unset($result['price']);
 
         return $result;
     }

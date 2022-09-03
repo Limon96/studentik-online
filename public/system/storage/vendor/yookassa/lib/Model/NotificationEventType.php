@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2020 "YooMoney", NBСO LLC
+ * Copyright (c) 2022 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,6 +36,9 @@ use YooKassa\Common\AbstractEnum;
  * |payment.succeeded|Успешно оплачен и подтвержден магазином|
  * |payment.canceled|Неуспех оплаты или отменен магазином|
  * |refund.succeeded|Успешный возврат|
+ * |deal.closed|Сделка перешла в статус closed|
+ * |payout.canceled|Выплата перешла в статус canceled|
+ * |payout.succeeded|Выплата перешла в статус succeeded|
  *
  * @package YooKassa
  */
@@ -49,11 +52,20 @@ class NotificationEventType extends AbstractEnum
     const PAYMENT_CANCELED = 'payment.canceled';
     /** Успешный возврат */
     const REFUND_SUCCEEDED = 'refund.succeeded';
+    /** Сделка перешла в статус closed */
+    const DEAL_CLOSED = 'deal.closed';
+    /** Выплата перешла в статус canceled */
+    const PAYOUT_CANCELED = 'payout.canceled';
+    /** Выплата перешла в статус succeeded */
+    const PAYOUT_SUCCEEDED = 'payout.succeeded';
 
     protected static $validValues = array(
         self::PAYMENT_WAITING_FOR_CAPTURE => true,
         self::PAYMENT_SUCCEEDED           => true,
         self::PAYMENT_CANCELED            => true,
         self::REFUND_SUCCEEDED            => true,
+        self::DEAL_CLOSED                 => true,
+        self::PAYOUT_CANCELED             => true,
+        self::PAYOUT_SUCCEEDED            => true,
     );
 }

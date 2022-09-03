@@ -7,15 +7,18 @@
 
 Class ConfirmationAttributesFactory
 
+
 ---
 ### Constants
 * No constants found
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
 | public | [factory()](../classes/YooKassa-Model-ConfirmationAttributes-ConfirmationAttributesFactory.md#method_factory) |  |  |
 | public | [factoryFromArray()](../classes/YooKassa-Model-ConfirmationAttributes-ConfirmationAttributesFactory.md#method_factoryFromArray) |  |  |
+
 ---
 ### Details
 * File: [lib/Model/ConfirmationAttributes/ConfirmationAttributesFactory.php](../../lib/Model/ConfirmationAttributes/ConfirmationAttributesFactory.php)
@@ -29,11 +32,12 @@ Class ConfirmationAttributesFactory
 #### public factory() : \YooKassa\Model\ConfirmationAttributes\AbstractConfirmationAttributes
 
 ```php
-public factory(string  type) : \YooKassa\Model\ConfirmationAttributes\AbstractConfirmationAttributes
+public factory(string $type) : \YooKassa\Model\ConfirmationAttributes\AbstractConfirmationAttributes
 ```
 
 **Details:**
 * Inherited From: [\YooKassa\Model\ConfirmationAttributes\ConfirmationAttributesFactory](../classes/YooKassa-Model-ConfirmationAttributes-ConfirmationAttributesFactory.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -46,11 +50,12 @@ public factory(string  type) : \YooKassa\Model\ConfirmationAttributes\AbstractCo
 #### public factoryFromArray() : \YooKassa\Model\ConfirmationAttributes\AbstractConfirmationAttributes
 
 ```php
-public factoryFromArray(array  data, string|null  type = null) : \YooKassa\Model\ConfirmationAttributes\AbstractConfirmationAttributes
+public factoryFromArray(array $data, string|null $type = null) : \YooKassa\Model\ConfirmationAttributes\AbstractConfirmationAttributes
 ```
 
 **Details:**
 * Inherited From: [\YooKassa\Model\ConfirmationAttributes\ConfirmationAttributesFactory](../classes/YooKassa-Model-ConfirmationAttributes-ConfirmationAttributesFactory.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -72,10 +77,10 @@ public factoryFromArray(array  data, string|null  type = null) : \YooKassa\Model
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

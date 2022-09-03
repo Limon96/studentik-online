@@ -10,6 +10,7 @@ Interface ApiClientInterface
 ---
 ### Constants
 * No constants found
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -26,13 +27,14 @@ Interface ApiClientInterface
 ### Details
 * File: [lib/Client/ApiClientInterface.php](../../lib/Client/ApiClientInterface.php)
 * Package: \YooKassa
+
 ---
 ## Methods
 <a name="method_call" class="anchor"></a>
 #### public call() : \YooKassa\Common\ResponseObject
 
 ```php
-public call(string  path, string  method, array  queryParams, string|null  httpBody = null, array  headers = array()) : \YooKassa\Common\ResponseObject
+public call(string $path, string $method, array $queryParams, string|null $httpBody = null, array $headers = array()) : \YooKassa\Common\ResponseObject
 ```
 
 **Summary**
@@ -41,6 +43,7 @@ public call(string  path, string  method, array  queryParams, string|null  httpB
 
 **Details:**
 * Inherited From: [\YooKassa\Client\ApiClientInterface](../classes/YooKassa-Client-ApiClientInterface.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -57,7 +60,7 @@ public call(string  path, string  method, array  queryParams, string|null  httpB
 #### public setLogger() : mixed
 
 ```php
-public setLogger(\Psr\Log\LoggerInterface|null  logger) : mixed
+public setLogger(\Psr\Log\LoggerInterface|null $logger) : mixed
 ```
 
 **Summary**
@@ -66,6 +69,7 @@ public setLogger(\Psr\Log\LoggerInterface|null  logger) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Client\ApiClientInterface](../classes/YooKassa-Client-ApiClientInterface.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -95,7 +99,7 @@ public getUserAgent() : \YooKassa\Client\UserAgent
 #### public setShopId() : mixed
 
 ```php
-public setShopId(string|int  shopId) : mixed
+public setShopId(string|int $shopId) : mixed
 ```
 
 **Summary**
@@ -104,6 +108,7 @@ public setShopId(string|int  shopId) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Client\ApiClientInterface](../classes/YooKassa-Client-ApiClientInterface.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -116,7 +121,7 @@ public setShopId(string|int  shopId) : mixed
 #### public setShopPassword() : mixed
 
 ```php
-public setShopPassword(string  shopPassword) : mixed
+public setShopPassword(string $shopPassword) : mixed
 ```
 
 **Summary**
@@ -125,6 +130,7 @@ public setShopPassword(string  shopPassword) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Client\ApiClientInterface](../classes/YooKassa-Client-ApiClientInterface.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -137,7 +143,7 @@ public setShopPassword(string  shopPassword) : mixed
 #### public setBearerToken() : mixed
 
 ```php
-public setBearerToken(string  bearerToken) : mixed
+public setBearerToken(string $bearerToken) : mixed
 ```
 
 **Summary**
@@ -146,6 +152,7 @@ public setBearerToken(string  bearerToken) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Client\ApiClientInterface](../classes/YooKassa-Client-ApiClientInterface.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -158,7 +165,7 @@ public setBearerToken(string  bearerToken) : mixed
 #### public setConfig() : mixed
 
 ```php
-public setConfig(array  config) : mixed
+public setConfig(array $config) : mixed
 ```
 
 **Summary**
@@ -167,6 +174,7 @@ public setConfig(array  config) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Client\ApiClientInterface](../classes/YooKassa-Client-ApiClientInterface.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -188,10 +196,10 @@ public setConfig(array  config) : mixed
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

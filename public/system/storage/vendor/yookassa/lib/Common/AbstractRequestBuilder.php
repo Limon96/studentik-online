@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2020 "YooMoney", NBСO LLC
+ * Copyright (c) 2022 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -52,7 +52,7 @@ abstract class AbstractRequestBuilder
 
     /**
      * Инициализирует пустой запрос
-     * @return AbstractRequest Инстанс запроса который будем собирать
+     * @return AbstractRequest Инстанс запроса, который будем собирать
      */
     abstract protected function initCurrentObject();
 
@@ -62,8 +62,7 @@ abstract class AbstractRequestBuilder
      * @return AbstractRequest Инстанс собранного запроса
      *
      * @throws InvalidRequestException Выбрасывается если при валидации запроса произошла ошибка
-     * @throws InvalidPropertyException Выбрасывается если не удалось установить один из параметров, переданныч в
-     * массиве настроек
+     * @throws InvalidPropertyException Выбрасывается если не удалось установить один из параметров, переданных в массиве настроек
      */
     public function build(array $options = null)
     {

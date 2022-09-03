@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2020 "YooMoney", NBСO LLC
+ * Copyright (c) 2022 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -175,7 +175,9 @@ class Receipt extends AbstractObject implements ReceiptInterface
         }
         $this->_settlements = array();
         foreach ($value as $key => $val) {
-            if (is_object($val) && $val instanceof SettlementInterface) {
+            if (is_array($val)) {
+                $this->addSettlement(new Settlement($val));
+            } elseif ($val instanceof SettlementInterface) {
                 $this->addSettlement($val);
             } else {
                 throw new InvalidPropertyValueTypeException(

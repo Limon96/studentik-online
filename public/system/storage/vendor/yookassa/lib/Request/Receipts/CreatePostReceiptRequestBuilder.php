@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2020 "YooMoney", NBСO LLC
+ * Copyright (c) 2022 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,10 +35,11 @@ use YooKassa\Model\MonetaryAmount;
 use YooKassa\Model\ReceiptCustomer;
 use YooKassa\Model\ReceiptCustomerInterface;
 use YooKassa\Model\ReceiptItemInterface;
+use YooKassa\Model\ReceiptType;
 use YooKassa\Model\SettlementInterface;
 
 /**
- * Класс билдера объектов запрсов к API на создание чека
+ * Класс билдера объектов запросов к API на создание чека
  *
  * @example 02-builder.php 91 56 Пример использования билдера
  *
@@ -117,7 +118,7 @@ class CreatePostReceiptRequestBuilder extends AbstractRequestBuilder
     /**
      * Устанавливает информацию о пользователе
      *
-     * @param ReceiptCustomerInterface|array $value информация о плательщике
+     * @param ReceiptCustomerInterface|array $value Информация о плательщике
      * @return self Инстанс билдера запросов
      */
     public function setCustomer($value)
@@ -136,7 +137,7 @@ class CreatePostReceiptRequestBuilder extends AbstractRequestBuilder
     /**
      * Устанавливает список товаров чека
      *
-     * @param ReceiptItemInterface[]|array $value список товаров чека
+     * @param ReceiptItemInterface[]|array $value Список товаров чека
      * @return CreatePostReceiptRequestBuilder
      */
     public function setItems($value)
@@ -223,11 +224,27 @@ class CreatePostReceiptRequestBuilder extends AbstractRequestBuilder
      * Устанавливает Id объекта чека
      *
      * @param string $value Id объекта чека
+     * @param string|null $type Тип объекта чека
      * @return CreatePostReceiptRequestBuilder
      */
-    public function setObjectId($value)
+    public function setObjectId($value, $type=null)
     {
         $this->currentObject->setObjectId($value);
+        if (!empty($type)) {
+            $this->currentObject->setObjectType($type);
+        }
+        return $this;
+    }
+
+    /**
+     * Устанавливает тип объекта чека
+     *
+     * @param string $value Тип объекта чека
+     * @return CreatePostReceiptRequestBuilder
+     */
+    public function setObjectType($value)
+    {
+        $this->currentObject->setObjectType($value);
         return $this;
     }
 
@@ -246,8 +263,10 @@ class CreatePostReceiptRequestBuilder extends AbstractRequestBuilder
 
             if (!empty($options['payment_id'])) {
                 $this->setObjectId($options['payment_id']);
+                $this->setObjectType(ReceiptType::PAYMENT);
             } elseif (!empty($options['refund_id'])) {
                 $this->setObjectId($options['refund_id']);
+                $this->setObjectType(ReceiptType::REFUND);
             }
         }
 

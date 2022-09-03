@@ -7,15 +7,18 @@
 
 Фабрика создания объекта платежных данных из массива
 
+
 ---
 ### Constants
 * No constants found
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
 | public | [factory()](../classes/YooKassa-Model-PaymentData-PaymentDataFactory.md#method_factory) |  | Фабричный метод создания объекта платежных данных по типу |
 | public | [factoryFromArray()](../classes/YooKassa-Model-PaymentData-PaymentDataFactory.md#method_factoryFromArray) |  | Фабричный метод создания объекта платежных данных из массива |
+
 ---
 ### Details
 * File: [lib/Model/PaymentData/PaymentDataFactory.php](../../lib/Model/PaymentData/PaymentDataFactory.php)
@@ -29,7 +32,7 @@
 #### public factory() : \YooKassa\Model\PaymentData\AbstractPaymentData
 
 ```php
-public factory(string  type) : \YooKassa\Model\PaymentData\AbstractPaymentData
+public factory(string $type) : \YooKassa\Model\PaymentData\AbstractPaymentData
 ```
 
 **Summary**
@@ -38,6 +41,7 @@ public factory(string  type) : \YooKassa\Model\PaymentData\AbstractPaymentData
 
 **Details:**
 * Inherited From: [\YooKassa\Model\PaymentData\PaymentDataFactory](../classes/YooKassa-Model-PaymentData-PaymentDataFactory.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -50,7 +54,7 @@ public factory(string  type) : \YooKassa\Model\PaymentData\AbstractPaymentData
 #### public factoryFromArray() : \YooKassa\Model\PaymentData\AbstractPaymentData
 
 ```php
-public factoryFromArray(array  data, string|null  type = null) : \YooKassa\Model\PaymentData\AbstractPaymentData
+public factoryFromArray(array $data, string|null $type = null) : \YooKassa\Model\PaymentData\AbstractPaymentData
 ```
 
 **Summary**
@@ -59,6 +63,7 @@ public factoryFromArray(array  data, string|null  type = null) : \YooKassa\Model
 
 **Details:**
 * Inherited From: [\YooKassa\Model\PaymentData\PaymentDataFactory](../classes/YooKassa-Model-PaymentData-PaymentDataFactory.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -80,10 +85,10 @@ public factoryFromArray(array  data, string|null  type = null) : \YooKassa\Model
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

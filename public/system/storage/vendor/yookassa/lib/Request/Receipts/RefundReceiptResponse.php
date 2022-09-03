@@ -3,7 +3,7 @@
 /**
  * The MIT License
  *
- * Copyright (c) 2020 "YooMoney", NBСO LLC
+ * Copyright (c) 2022 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -70,7 +70,7 @@ class RefundReceiptResponse extends AbstractReceiptResponse
     /**
      * Устанавливает идентификатор возврата в ЮKassa
      *
-     * @param string $value идентификатор возврата в ЮKassa
+     * @param string $value Идентификатор возврата в ЮKassa
      *
      * @throws InvalidPropertyValueTypeException Выбрасывается если в качестве значения была передана не строка
      * @throws InvalidPropertyValueException Выбрасывается если длина переданной строки не равна 36

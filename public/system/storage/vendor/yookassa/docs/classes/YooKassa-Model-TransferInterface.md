@@ -15,6 +15,7 @@ Interface TransferInterface
 ---
 ### Constants
 * No constants found
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -24,9 +25,9 @@ Interface TransferInterface
 | public | [getMetadata()](../classes/YooKassa-Model-TransferInterface.md#method_getMetadata) |  | Возвращает метаданные |
 | public | [getPlatformFeeAmount()](../classes/YooKassa-Model-TransferInterface.md#method_getPlatformFeeAmount) |  | Возвращает комиссию за проданные товары и услуги, которая удерживается с магазина в вашу пользу |
 | public | [getStatus()](../classes/YooKassa-Model-TransferInterface.md#method_getStatus) |  | Возвращает статус операции распределения средств конечному получателю |
-| public | [hasAmount()](../classes/YooKassa-Model-TransferInterface.md#method_hasAmount) |  | Проверяет была ли установлена сумма оплаты |
-| public | [hasMetadata()](../classes/YooKassa-Model-TransferInterface.md#method_hasMetadata) |  | Проверяет были ли установлены метаданные |
-| public | [hasPlatformFeeAmount()](../classes/YooKassa-Model-TransferInterface.md#method_hasPlatformFeeAmount) |  | Проверяет была ли установлена комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу |
+| public | [hasAmount()](../classes/YooKassa-Model-TransferInterface.md#method_hasAmount) |  | Проверяет, была ли установлена сумма оплаты |
+| public | [hasMetadata()](../classes/YooKassa-Model-TransferInterface.md#method_hasMetadata) |  | Проверяет, были ли установлены метаданные |
+| public | [hasPlatformFeeAmount()](../classes/YooKassa-Model-TransferInterface.md#method_hasPlatformFeeAmount) |  | Проверяет, была ли установлена комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу |
 | public | [setAccountId()](../classes/YooKassa-Model-TransferInterface.md#method_setAccountId) |  | Устанавливает идентификатор магазина-получателя средств |
 | public | [setAmount()](../classes/YooKassa-Model-TransferInterface.md#method_setAmount) |  | Устанавливает сумму оплаты |
 | public | [setMetadata()](../classes/YooKassa-Model-TransferInterface.md#method_setMetadata) |  | Устанавливает метаданные |
@@ -37,6 +38,7 @@ Interface TransferInterface
 ### Details
 * File: [lib/Model/TransferInterface.php](../../lib/Model/TransferInterface.php)
 * Package: \YooKassa
+
 ---
 ### Tags
 | Tag | Version | Description |
@@ -46,13 +48,14 @@ Interface TransferInterface
 | property |  | Идентификатор магазина, в пользу которого вы принимаете оплату |
 | property |  | Статус распределения денег между магазинами. Возможные значения: `pending`, `waiting_for_capture`, `succeeded`, `canceled` |
 | property |  | Любые дополнительные данные, которые нужны вам для работы с платежами (например, номер заказа) |
+
 ---
 ## Methods
 <a name="method_setAccountId" class="anchor"></a>
 #### public setAccountId() : void
 
 ```php
-public setAccountId(string  value) : void
+public setAccountId(string $value) : void
 ```
 
 **Summary**
@@ -61,6 +64,7 @@ public setAccountId(string  value) : void
 
 **Details:**
 * Inherited From: [\YooKassa\Model\TransferInterface](../classes/YooKassa-Model-TransferInterface.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -112,7 +116,7 @@ public hasAmount() : bool
 
 **Summary**
 
-Проверяет была ли установлена сумма оплаты
+Проверяет, была ли установлена сумма оплаты
 
 **Details:**
 * Inherited From: [\YooKassa\Model\TransferInterface](../classes/YooKassa-Model-TransferInterface.md)
@@ -124,7 +128,7 @@ public hasAmount() : bool
 #### public setAmount() : mixed
 
 ```php
-public setAmount(\YooKassa\Model\AmountInterface|array  value) : mixed
+public setAmount(\YooKassa\Model\AmountInterface|array $value) : mixed
 ```
 
 **Summary**
@@ -133,6 +137,7 @@ public setAmount(\YooKassa\Model\AmountInterface|array  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\TransferInterface](../classes/YooKassa-Model-TransferInterface.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -167,7 +172,7 @@ public hasPlatformFeeAmount() : bool
 
 **Summary**
 
-Проверяет была ли установлена комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу
+Проверяет, была ли установлена комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу
 
 **Details:**
 * Inherited From: [\YooKassa\Model\TransferInterface](../classes/YooKassa-Model-TransferInterface.md)
@@ -179,7 +184,7 @@ public hasPlatformFeeAmount() : bool
 #### public setPlatformFeeAmount() : mixed
 
 ```php
-public setPlatformFeeAmount(\YooKassa\Model\AmountInterface|array  value) : mixed
+public setPlatformFeeAmount(\YooKassa\Model\AmountInterface|array $value) : mixed
 ```
 
 **Summary**
@@ -188,6 +193,7 @@ public setPlatformFeeAmount(\YooKassa\Model\AmountInterface|array  value) : mixe
 
 **Details:**
 * Inherited From: [\YooKassa\Model\TransferInterface](../classes/YooKassa-Model-TransferInterface.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -217,7 +223,7 @@ public getStatus() : string|null
 #### public setStatus() : mixed
 
 ```php
-public setStatus(string|null  value) : mixed
+public setStatus(string|null $value) : mixed
 ```
 
 **Summary**
@@ -226,6 +232,7 @@ public setStatus(string|null  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\TransferInterface](../classes/YooKassa-Model-TransferInterface.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -238,7 +245,7 @@ public setStatus(string|null  value) : mixed
 #### public setMetadata() : mixed
 
 ```php
-public setMetadata(\YooKassa\Model\Metadata|array  value) : mixed
+public setMetadata(\YooKassa\Model\Metadata|array $value) : mixed
 ```
 
 **Summary**
@@ -247,6 +254,7 @@ public setMetadata(\YooKassa\Model\Metadata|array  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\TransferInterface](../classes/YooKassa-Model-TransferInterface.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -281,7 +289,7 @@ public hasMetadata() : bool
 
 **Summary**
 
-Проверяет были ли установлены метаданные
+Проверяет, были ли установлены метаданные
 
 **Details:**
 * Inherited From: [\YooKassa\Model\TransferInterface](../classes/YooKassa-Model-TransferInterface.md)
@@ -302,10 +310,10 @@ public hasMetadata() : bool
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

@@ -7,9 +7,11 @@
 
 Класс хэлпер для преобразования типов значений
 
+
 ---
 ### Constants
 * No constants found
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -17,8 +19,9 @@
 | public | [canCastToBoolean()](../classes/YooKassa-Helpers-TypeCast.md#method_canCastToBoolean) |  | Проверяет можно ли преобразовать переданное значение в буллево значение |
 | public | [canCastToDateTime()](../classes/YooKassa-Helpers-TypeCast.md#method_canCastToDateTime) |  | Проверяет, можно ли преобразовать переданное значение в объект даты-времени |
 | public | [canCastToEnumString()](../classes/YooKassa-Helpers-TypeCast.md#method_canCastToEnumString) |  | Проверяет можно ли преобразовать переданное значение в строку из перечисления |
-| public | [canCastToString()](../classes/YooKassa-Helpers-TypeCast.md#method_canCastToString) |  | Проверяет может ли переданное значение быть преобразовано в строку |
+| public | [canCastToString()](../classes/YooKassa-Helpers-TypeCast.md#method_canCastToString) |  | Проверяет, может ли переданное значение быть преобразовано в строку |
 | public | [castToDateTime()](../classes/YooKassa-Helpers-TypeCast.md#method_castToDateTime) |  | Преобразует переданне значение в объект типа \DateTime |
+
 ---
 ### Details
 * File: [lib/Helpers/TypeCast.php](../../lib/Helpers/TypeCast.php)
@@ -32,7 +35,7 @@
 #### public canCastToBoolean() : bool
 
 ```php
-Static public canCastToBoolean(mixed  value) : bool
+Static public canCastToBoolean(mixed $value) : bool
 ```
 
 **Summary**
@@ -41,6 +44,7 @@ Static public canCastToBoolean(mixed  value) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Helpers\TypeCast](../classes/YooKassa-Helpers-TypeCast.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -53,7 +57,7 @@ Static public canCastToBoolean(mixed  value) : bool
 #### public canCastToDateTime() : bool
 
 ```php
-Static public canCastToDateTime(mixed  value) : bool
+Static public canCastToDateTime(mixed $value) : bool
 ```
 
 **Summary**
@@ -62,6 +66,7 @@ Static public canCastToDateTime(mixed  value) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Helpers\TypeCast](../classes/YooKassa-Helpers-TypeCast.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -74,7 +79,7 @@ Static public canCastToDateTime(mixed  value) : bool
 #### public canCastToEnumString() : bool
 
 ```php
-Static public canCastToEnumString(mixed  value) : bool
+Static public canCastToEnumString(mixed $value) : bool
 ```
 
 **Summary**
@@ -83,6 +88,7 @@ Static public canCastToEnumString(mixed  value) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Helpers\TypeCast](../classes/YooKassa-Helpers-TypeCast.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -95,15 +101,16 @@ Static public canCastToEnumString(mixed  value) : bool
 #### public canCastToString() : bool
 
 ```php
-Static public canCastToString(mixed  value) : bool
+Static public canCastToString(mixed $value) : bool
 ```
 
 **Summary**
 
-Проверяет может ли переданное значение быть преобразовано в строку
+Проверяет, может ли переданное значение быть преобразовано в строку
 
 **Details:**
 * Inherited From: [\YooKassa\Helpers\TypeCast](../classes/YooKassa-Helpers-TypeCast.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -116,7 +123,7 @@ Static public canCastToString(mixed  value) : bool
 #### public castToDateTime() : \DateTime|null
 
 ```php
-Static public castToDateTime(string|int|\DateTime  value) : \DateTime|null
+Static public castToDateTime(string|int|\DateTime $value) : \DateTime|null
 ```
 
 **Summary**
@@ -125,16 +132,18 @@ Static public castToDateTime(string|int|\DateTime  value) : \DateTime|null
 
 **Details:**
 * Inherited From: [\YooKassa\Helpers\TypeCast](../classes/YooKassa-Helpers-TypeCast.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
 | <code lang="php">string OR int OR \DateTime</code> | value  | Преобразуемое значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
 | \Exception |  |
 
-**Returns:** \DateTime|null - Объект типа \DateTime или null если при парсинг даты не удался
+**Returns:** \DateTime|null - Объект типа \DateTime или null, если при парсинг даты не удался
 
 
 
@@ -149,10 +158,10 @@ Static public castToDateTime(string|int|\DateTime  value) : \DateTime|null
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

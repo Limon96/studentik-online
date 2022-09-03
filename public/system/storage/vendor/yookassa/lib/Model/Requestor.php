@@ -16,6 +16,7 @@ use YooKassa\Helpers\TypeCast;
  * [разрешил](https://yookassa.ru/developers/partners-api/basics) совершать операции от своего имени `third_party_client`.
  *
  * @package YooKassa
+ * @deprecated Не используется. Будет удален в следующих версиях
  *
  * @property string $type Тип инициатора
  * @property string $accountId Идентификатор магазина
@@ -46,15 +47,6 @@ class Requestor extends AbstractObject implements RequestorInterface
      * @var string Название приложения (только для type = RequestorThirdPartyService)
      */
     private $_clientName;
-
-    /**
-     * Requestor constructor.
-     * @param null|array $data
-     */
-    public function __construct($data = null)
-    {
-        $this->fromArray($data);
-    }
 
     /**
      * @inheritdoc

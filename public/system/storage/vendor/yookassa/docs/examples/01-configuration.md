@@ -33,9 +33,9 @@ $client->setAuthToken('token_XXXXXXX');
 
 ### Статистические данные об используемом окружении
 
-Для поддержки качества, а также быстром реагировании на ошибки, SDK передает статистику в запросах к API ЮKassa.
+Для поддержки качества, а также быстрого реагирования на ошибки, SDK передает статистику в запросах к API ЮKassa.
 
-По молчанию, SDK передает в запросах версию операционной системы, версию Python, а также версию SDK. 
+По молчанию, SDK передает в запросах версию операционной системы, версию PHP, а также версию SDK. 
 Но вы можете передать дополнительные данные об используемом фреймворке, CMS, а также модуле в CMS.
 
 Например, это может выглядеть так:
@@ -180,6 +180,13 @@ try {
     $factory = new \YooKassa\Model\Notification\NotificationFactory();
     $notificationObject = $factory->factory($data);
     $responseObject = $notificationObject->getObject();
+    
+    $client = new \YooKassa\Client();
+
+    if (!$client->isNotificationIPTrusted($_SERVER['REMOTE_ADDR'])) {
+        header('HTTP/1.1 400 Something went wrong');
+        exit();
+    }
 
     if ($notificationObject->getEvent() === \YooKassa\Model\NotificationEventType::PAYMENT_SUCCEEDED) {
         $someData = array(
@@ -218,7 +225,6 @@ try {
     // Специфичная логика
     // ...
 
-    $client = new \YooKassa\Client();
     $client->setAuth('xxxxxx', 'test_XXXXXXX');
 
     // Получим актуальную информацию о платеже

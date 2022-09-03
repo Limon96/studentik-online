@@ -7,9 +7,11 @@
 
 Класс для работы со списком чеков
 
+
 ---
 ### Constants
 * No constants found
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -19,6 +21,7 @@
 | public | [getNextCursor()](../classes/YooKassa-Request-Receipts-ReceiptsResponse.md#method_getNextCursor) |  | Возвращает токен следующей страницы, если он задан, или null |
 | public | [getType()](../classes/YooKassa-Request-Receipts-ReceiptsResponse.md#method_getType) |  | Возвращает формат выдачи результатов запроса. Возможное значение: `list` (список). |
 | public | [hasNextCursor()](../classes/YooKassa-Request-Receipts-ReceiptsResponse.md#method_hasNextCursor) |  | Проверяет имееотся ли в ответе токен следующей страницы |
+
 ---
 ### Details
 * File: [lib/Request/Receipts/ReceiptsResponse.php](../../lib/Request/Receipts/ReceiptsResponse.php)
@@ -32,7 +35,7 @@
 #### public __construct() : mixed
 
 ```php
-public __construct(array  response) : mixed
+public __construct(array $response) : mixed
 ```
 
 **Summary**
@@ -41,10 +44,12 @@ public __construct(array  response) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Receipts\ReceiptsResponse](../classes/YooKassa-Request-Receipts-ReceiptsResponse.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
 | <code lang="php">array</code> | response  | Разобранный ответ от API в виде чеков |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -133,10 +138,10 @@ public hasNextCursor() : bool
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

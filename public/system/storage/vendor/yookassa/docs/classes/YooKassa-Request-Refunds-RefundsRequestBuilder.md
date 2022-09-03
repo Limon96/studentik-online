@@ -7,14 +7,17 @@
 
 Класс билдера объектов запросов к API списка возвратов
 
+
 ---
 ### Constants
 * No constants found
+
 ---
 ### Properties
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
 | protected | [$currentObject](../classes/YooKassa-Request-Refunds-RefundsRequestBuilder.md#property_currentObject) |  | Инстанс собираемого запроса |
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
@@ -28,9 +31,10 @@
 | public | [setCursor()](../classes/YooKassa-Request-Refunds-RefundsRequestBuilder.md#method_setCursor) |  | Устанавливает токен следующей страницы выборки |
 | public | [setLimit()](../classes/YooKassa-Request-Refunds-RefundsRequestBuilder.md#method_setLimit) |  | Устанавливает ограничение количества объектов возвратов |
 | public | [setOptions()](../classes/YooKassa-Common-AbstractRequestBuilder.md#method_setOptions) |  | Устанавливает свойства запроса из массива |
-| public | [setPaymentId()](../classes/YooKassa-Request-Refunds-RefundsRequestBuilder.md#method_setPaymentId) |  | Устанавливает идентификатор платежа или null если требуется его удалить |
+| public | [setPaymentId()](../classes/YooKassa-Request-Refunds-RefundsRequestBuilder.md#method_setPaymentId) |  | Устанавливает идентификатор платежа или null, если требуется его удалить |
 | public | [setStatus()](../classes/YooKassa-Request-Refunds-RefundsRequestBuilder.md#method_setStatus) |  | Устанавливает статус выбираемых возвратов |
 | protected | [initCurrentObject()](../classes/YooKassa-Request-Refunds-RefundsRequestBuilder.md#method_initCurrentObject) |  | Инициализирует новый инстанс собираемого объекта |
+
 ---
 ### Details
 * File: [lib/Request/Refunds/RefundsRequestBuilder.php](../../lib/Request/Refunds/RefundsRequestBuilder.php)
@@ -38,6 +42,7 @@
 * Class Hierarchy: 
   * [\YooKassa\Common\AbstractRequestBuilder](../classes/YooKassa-Common-AbstractRequestBuilder.md)
   * \YooKassa\Request\Refunds\RefundsRequestBuilder
+
 ---
 ## Properties
 <a name="property_currentObject"></a>
@@ -76,7 +81,7 @@ public __construct() : mixed
 #### public build() : \YooKassa\Request\Refunds\RefundsRequestInterface|\YooKassa\Common\AbstractRequest
 
 ```php
-public build(array|null  options = null) : \YooKassa\Request\Refunds\RefundsRequestInterface|\YooKassa\Common\AbstractRequest
+public build(array|null $options = null) : \YooKassa\Request\Refunds\RefundsRequestInterface|\YooKassa\Common\AbstractRequest
 ```
 
 **Summary**
@@ -85,6 +90,7 @@ public build(array|null  options = null) : \YooKassa\Request\Refunds\RefundsRequ
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Refunds\RefundsRequestBuilder](../classes/YooKassa-Request-Refunds-RefundsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -97,7 +103,7 @@ public build(array|null  options = null) : \YooKassa\Request\Refunds\RefundsRequ
 #### public setCreatedAtGt() : \YooKassa\Request\Refunds\RefundsRequestBuilder
 
 ```php
-public setCreatedAtGt(\DateTime|string|int|null  value) : \YooKassa\Request\Refunds\RefundsRequestBuilder
+public setCreatedAtGt(\DateTime|string|int|null $value) : \YooKassa\Request\Refunds\RefundsRequestBuilder
 ```
 
 **Summary**
@@ -106,10 +112,12 @@ public setCreatedAtGt(\DateTime|string|int|null  value) : \YooKassa\Request\Refu
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Refunds\RefundsRequestBuilder](../classes/YooKassa-Request-Refunds-RefundsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, от (не включая) или null чтобы удалить значение |
+| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, от (не включая) или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -123,7 +131,7 @@ public setCreatedAtGt(\DateTime|string|int|null  value) : \YooKassa\Request\Refu
 #### public setCreatedAtGte() : \YooKassa\Request\Refunds\RefundsRequestBuilder
 
 ```php
-public setCreatedAtGte(\DateTime|string|int|null  value) : \YooKassa\Request\Refunds\RefundsRequestBuilder
+public setCreatedAtGte(\DateTime|string|int|null $value) : \YooKassa\Request\Refunds\RefundsRequestBuilder
 ```
 
 **Summary**
@@ -132,10 +140,12 @@ public setCreatedAtGte(\DateTime|string|int|null  value) : \YooKassa\Request\Ref
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Refunds\RefundsRequestBuilder](../classes/YooKassa-Request-Refunds-RefundsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, от (включительно) или null чтобы удалить значение |
+| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, от (включительно) или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -149,7 +159,7 @@ public setCreatedAtGte(\DateTime|string|int|null  value) : \YooKassa\Request\Ref
 #### public setCreatedAtLt() : \YooKassa\Request\Refunds\RefundsRequestBuilder
 
 ```php
-public setCreatedAtLt(\DateTime|string|int|null  value) : \YooKassa\Request\Refunds\RefundsRequestBuilder
+public setCreatedAtLt(\DateTime|string|int|null $value) : \YooKassa\Request\Refunds\RefundsRequestBuilder
 ```
 
 **Summary**
@@ -158,10 +168,12 @@ public setCreatedAtLt(\DateTime|string|int|null  value) : \YooKassa\Request\Refu
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Refunds\RefundsRequestBuilder](../classes/YooKassa-Request-Refunds-RefundsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, до (не включая) или null чтобы удалить значение |
+| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, до (не включая) или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -175,7 +187,7 @@ public setCreatedAtLt(\DateTime|string|int|null  value) : \YooKassa\Request\Refu
 #### public setCreatedAtLte() : \YooKassa\Request\Refunds\RefundsRequestBuilder
 
 ```php
-public setCreatedAtLte(\DateTime|string|int|null  value) : \YooKassa\Request\Refunds\RefundsRequestBuilder
+public setCreatedAtLte(\DateTime|string|int|null $value) : \YooKassa\Request\Refunds\RefundsRequestBuilder
 ```
 
 **Summary**
@@ -184,10 +196,12 @@ public setCreatedAtLte(\DateTime|string|int|null  value) : \YooKassa\Request\Ref
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Refunds\RefundsRequestBuilder](../classes/YooKassa-Request-Refunds-RefundsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, до (включительно) или null чтобы удалить значение |
+| <code lang="php">\DateTime OR string OR int OR null</code> | value  | Время создания, до (включительно) или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -201,7 +215,7 @@ public setCreatedAtLte(\DateTime|string|int|null  value) : \YooKassa\Request\Ref
 #### public setCursor() : \YooKassa\Request\Refunds\RefundsRequestBuilder
 
 ```php
-public setCursor(string  value) : \YooKassa\Request\Refunds\RefundsRequestBuilder
+public setCursor(string $value) : \YooKassa\Request\Refunds\RefundsRequestBuilder
 ```
 
 **Summary**
@@ -210,10 +224,12 @@ public setCursor(string  value) : \YooKassa\Request\Refunds\RefundsRequestBuilde
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Refunds\RefundsRequestBuilder](../classes/YooKassa-Request-Refunds-RefundsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | value  | Токен следующей страницы выборки или null чтобы удалить значение |
+| <code lang="php">string</code> | value  | Токен следующей страницы выборки или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -226,7 +242,7 @@ public setCursor(string  value) : \YooKassa\Request\Refunds\RefundsRequestBuilde
 #### public setLimit() : \YooKassa\Request\Refunds\RefundsRequestBuilder
 
 ```php
-public setLimit(string  value) : \YooKassa\Request\Refunds\RefundsRequestBuilder
+public setLimit(string $value) : \YooKassa\Request\Refunds\RefundsRequestBuilder
 ```
 
 **Summary**
@@ -235,10 +251,12 @@ public setLimit(string  value) : \YooKassa\Request\Refunds\RefundsRequestBuilder
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Refunds\RefundsRequestBuilder](../classes/YooKassa-Request-Refunds-RefundsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | value  | Ограничение количества объектов возвратов или null чтобы удалить значение |
+| <code lang="php">string</code> | value  | Ограничение количества объектов возвратов или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -251,7 +269,7 @@ public setLimit(string  value) : \YooKassa\Request\Refunds\RefundsRequestBuilder
 #### public setOptions() : \YooKassa\Common\AbstractRequestBuilder
 
 ```php
-public setOptions(array|\Traversable  options) : \YooKassa\Common\AbstractRequestBuilder
+public setOptions(array|\Traversable $options) : \YooKassa\Common\AbstractRequestBuilder
 ```
 
 **Summary**
@@ -260,10 +278,12 @@ public setOptions(array|\Traversable  options) : \YooKassa\Common\AbstractReques
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractRequestBuilder](../classes/YooKassa-Common-AbstractRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
 | <code lang="php">array OR \Traversable</code> | options  | Массив свойств запроса |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -277,19 +297,21 @@ public setOptions(array|\Traversable  options) : \YooKassa\Common\AbstractReques
 #### public setPaymentId() : \YooKassa\Request\Refunds\RefundsRequestBuilder
 
 ```php
-public setPaymentId(string|null  value) : \YooKassa\Request\Refunds\RefundsRequestBuilder
+public setPaymentId(string|null $value) : \YooKassa\Request\Refunds\RefundsRequestBuilder
 ```
 
 **Summary**
 
-Устанавливает идентификатор платежа или null если требуется его удалить
+Устанавливает идентификатор платежа или null, если требуется его удалить
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Refunds\RefundsRequestBuilder](../classes/YooKassa-Request-Refunds-RefundsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
 | <code lang="php">string OR null</code> | value  | Идентификатор платежа |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -303,7 +325,7 @@ public setPaymentId(string|null  value) : \YooKassa\Request\Refunds\RefundsReque
 #### public setStatus() : \YooKassa\Request\Refunds\RefundsRequestBuilder
 
 ```php
-public setStatus(string  value) : \YooKassa\Request\Refunds\RefundsRequestBuilder
+public setStatus(string $value) : \YooKassa\Request\Refunds\RefundsRequestBuilder
 ```
 
 **Summary**
@@ -312,10 +334,12 @@ public setStatus(string  value) : \YooKassa\Request\Refunds\RefundsRequestBuilde
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Refunds\RefundsRequestBuilder](../classes/YooKassa-Request-Refunds-RefundsRequestBuilder.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
-| <code lang="php">string</code> | value  | Статус выбираемых платежей или null чтобы удалить значение |
+| <code lang="php">string</code> | value  | Статус выбираемых платежей или null, чтобы удалить значение |
+
 ##### Throws:
 | Type | Description |
 | ---- | ----------- |
@@ -354,10 +378,10 @@ protected initCurrentObject() : \YooKassa\Request\Refunds\RefundsRequest
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney

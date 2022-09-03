@@ -15,6 +15,7 @@
 ---
 ### Constants
 * No constants found
+
 ---
 ### Properties
 | Visibility | Name | Flag | Summary |
@@ -24,11 +25,12 @@
 | public | [$metadata](../classes/YooKassa-Model-Transfer.md#property_metadata) |  | Любые дополнительные данные, которые нужны вам для работы с платежами (например, номер заказа) |
 | public | [$platform_fee_amount](../classes/YooKassa-Model-Transfer.md#property_platform_fee_amount) |  | Комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу |
 | public | [$status](../classes/YooKassa-Model-Transfer.md#property_status) |  | Статус распределения денег между магазинами. Возможные значения: `pending`, `waiting_for_capture`, `succeeded`, `canceled` |
+
 ---
 ### Methods
 | Visibility | Name | Flag | Summary |
 | ----------:| ---- | ---- | ------- |
-| public | [__construct()](../classes/YooKassa-Model-Transfer.md#method___construct) |  | Transfer constructor. |
+| public | [__construct()](../classes/YooKassa-Common-AbstractObject.md#method___construct) |  | AbstractObject constructor. |
 | public | [__get()](../classes/YooKassa-Common-AbstractObject.md#method___get) |  | Возвращает значение свойства |
 | public | [__isset()](../classes/YooKassa-Common-AbstractObject.md#method___isset) |  | Проверяет наличие свойства |
 | public | [__set()](../classes/YooKassa-Common-AbstractObject.md#method___set) |  | Устанавливает значение свойства |
@@ -39,9 +41,9 @@
 | public | [getMetadata()](../classes/YooKassa-Model-Transfer.md#method_getMetadata) |  | Возвращает метаданные |
 | public | [getPlatformFeeAmount()](../classes/YooKassa-Model-Transfer.md#method_getPlatformFeeAmount) |  | Возвращает комиссию за проданные товары и услуги, которая удерживается с магазина в вашу пользу |
 | public | [getStatus()](../classes/YooKassa-Model-Transfer.md#method_getStatus) |  | Возвращает статус операции распределения средств конечному получателю |
-| public | [hasAmount()](../classes/YooKassa-Model-Transfer.md#method_hasAmount) |  | Проверяет была ли установлена сумма оплаты |
-| public | [hasMetadata()](../classes/YooKassa-Model-Transfer.md#method_hasMetadata) |  | Проверяет были ли установлены метаданные |
-| public | [hasPlatformFeeAmount()](../classes/YooKassa-Model-Transfer.md#method_hasPlatformFeeAmount) |  | Проверяет была ли установлена комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу |
+| public | [hasAmount()](../classes/YooKassa-Model-Transfer.md#method_hasAmount) |  | Проверяет, была ли установлена сумма оплаты |
+| public | [hasMetadata()](../classes/YooKassa-Model-Transfer.md#method_hasMetadata) |  | Проверяет, были ли установлены метаданные |
+| public | [hasPlatformFeeAmount()](../classes/YooKassa-Model-Transfer.md#method_hasPlatformFeeAmount) |  | Проверяет, была ли установлена комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу |
 | public | [jsonSerialize()](../classes/YooKassa-Common-AbstractObject.md#method_jsonSerialize) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации |
 | public | [offsetExists()](../classes/YooKassa-Common-AbstractObject.md#method_offsetExists) |  | Проверяет наличие свойства |
 | public | [offsetGet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetGet) |  | Возвращает значение свойства |
@@ -54,6 +56,7 @@
 | public | [setStatus()](../classes/YooKassa-Model-Transfer.md#method_setStatus) |  | Устанавливает статус операции распределения средств конечному получателю |
 | public | [toArray()](../classes/YooKassa-Common-AbstractObject.md#method_toArray) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации Является алиасом метода AbstractObject::jsonSerialize() |
 | protected | [getUnknownProperties()](../classes/YooKassa-Common-AbstractObject.md#method_getUnknownProperties) |  | Возвращает массив свойств которые не существуют, но были заданы у объекта |
+
 ---
 ### Details
 * File: [lib/Model/Transfer.php](../../lib/Model/Transfer.php)
@@ -63,6 +66,7 @@
   * \YooKassa\Model\Transfer
 * Implements:
   * [\YooKassa\Model\TransferInterface](../classes/YooKassa-Model-TransferInterface.md)
+
 ---
 ## Properties
 <a name="property_accountId"></a>
@@ -132,15 +136,16 @@
 #### public __construct() : mixed
 
 ```php
-public __construct(array  data = null) : mixed
+public __construct(array $data = array()) : mixed
 ```
 
 **Summary**
 
-Transfer constructor.
+AbstractObject constructor.
 
 **Details:**
-* Inherited From: [\YooKassa\Model\Transfer](../classes/YooKassa-Model-Transfer.md)
+* Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -153,7 +158,7 @@ Transfer constructor.
 #### public __get() : mixed
 
 ```php
-public __get(string  propertyName) : mixed
+public __get(string $propertyName) : mixed
 ```
 
 **Summary**
@@ -162,6 +167,7 @@ public __get(string  propertyName) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -174,7 +180,7 @@ public __get(string  propertyName) : mixed
 #### public __isset() : bool
 
 ```php
-public __isset(string  propertyName) : bool
+public __isset(string $propertyName) : bool
 ```
 
 **Summary**
@@ -183,6 +189,7 @@ public __isset(string  propertyName) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -195,7 +202,7 @@ public __isset(string  propertyName) : bool
 #### public __set() : mixed
 
 ```php
-public __set(string  propertyName, mixed  value) : mixed
+public __set(string $propertyName, mixed $value) : mixed
 ```
 
 **Summary**
@@ -204,6 +211,7 @@ public __set(string  propertyName, mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -217,7 +225,7 @@ public __set(string  propertyName, mixed  value) : mixed
 #### public __unset() : mixed
 
 ```php
-public __unset(string  propertyName) : mixed
+public __unset(string $propertyName) : mixed
 ```
 
 **Summary**
@@ -226,6 +234,7 @@ public __unset(string  propertyName) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -238,7 +247,7 @@ public __unset(string  propertyName) : mixed
 #### public fromArray() : mixed
 
 ```php
-public fromArray(array|\Traversable  sourceArray) : mixed
+public fromArray(array|\Traversable $sourceArray) : mixed
 ```
 
 **Summary**
@@ -247,6 +256,7 @@ public fromArray(array|\Traversable  sourceArray) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -369,7 +379,7 @@ public hasAmount() : bool
 
 **Summary**
 
-Проверяет была ли установлена сумма оплаты
+Проверяет, была ли установлена сумма оплаты
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Transfer](../classes/YooKassa-Model-Transfer.md)
@@ -390,7 +400,7 @@ public hasMetadata() : bool
 
 **Summary**
 
-Проверяет были ли установлены метаданные
+Проверяет, были ли установлены метаданные
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Transfer](../classes/YooKassa-Model-Transfer.md)
@@ -411,7 +421,7 @@ public hasPlatformFeeAmount() : bool
 
 **Summary**
 
-Проверяет была ли установлена комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу
+Проверяет, была ли установлена комиссия за проданные товары и услуги, которая удерживается с магазина в вашу пользу
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Transfer](../classes/YooKassa-Model-Transfer.md)
@@ -444,7 +454,7 @@ public jsonSerialize() : array
 #### public offsetExists() : bool
 
 ```php
-public offsetExists(string  offset) : bool
+public offsetExists(string $offset) : bool
 ```
 
 **Summary**
@@ -453,6 +463,7 @@ public offsetExists(string  offset) : bool
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -465,7 +476,7 @@ public offsetExists(string  offset) : bool
 #### public offsetGet() : mixed
 
 ```php
-public offsetGet(string  offset) : mixed
+public offsetGet(string $offset) : mixed
 ```
 
 **Summary**
@@ -474,6 +485,7 @@ public offsetGet(string  offset) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -486,7 +498,7 @@ public offsetGet(string  offset) : mixed
 #### public offsetSet() : mixed
 
 ```php
-public offsetSet(string  offset, mixed  value) : mixed
+public offsetSet(string $offset, mixed $value) : mixed
 ```
 
 **Summary**
@@ -495,6 +507,7 @@ public offsetSet(string  offset, mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -508,7 +521,7 @@ public offsetSet(string  offset, mixed  value) : mixed
 #### public offsetUnset() : mixed
 
 ```php
-public offsetUnset(string  offset) : mixed
+public offsetUnset(string $offset) : mixed
 ```
 
 **Summary**
@@ -517,6 +530,7 @@ public offsetUnset(string  offset) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Common\AbstractObject](../classes/YooKassa-Common-AbstractObject.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -529,7 +543,7 @@ public offsetUnset(string  offset) : mixed
 #### public setAccountId() : void
 
 ```php
-public setAccountId(mixed  value) : void
+public setAccountId(mixed $value) : void
 ```
 
 **Summary**
@@ -538,6 +552,7 @@ public setAccountId(mixed  value) : void
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Transfer](../classes/YooKassa-Model-Transfer.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -554,7 +569,7 @@ public setAccountId(mixed  value) : void
 #### public setAmount() : mixed
 
 ```php
-public setAmount(mixed  value) : mixed
+public setAmount(mixed $value) : mixed
 ```
 
 **Summary**
@@ -563,6 +578,7 @@ public setAmount(mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Transfer](../classes/YooKassa-Model-Transfer.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -579,7 +595,7 @@ public setAmount(mixed  value) : mixed
 #### public setMetadata() : mixed
 
 ```php
-public setMetadata(mixed  value) : mixed
+public setMetadata(mixed $value) : mixed
 ```
 
 **Summary**
@@ -588,6 +604,7 @@ public setMetadata(mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Transfer](../classes/YooKassa-Model-Transfer.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -604,7 +621,7 @@ public setMetadata(mixed  value) : mixed
 #### public setPlatformFeeAmount() : mixed
 
 ```php
-public setPlatformFeeAmount(mixed  value) : mixed
+public setPlatformFeeAmount(mixed $value) : mixed
 ```
 
 **Summary**
@@ -613,6 +630,7 @@ public setPlatformFeeAmount(mixed  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Transfer](../classes/YooKassa-Model-Transfer.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -629,7 +647,7 @@ public setPlatformFeeAmount(mixed  value) : mixed
 #### public setStatus() : mixed
 
 ```php
-public setStatus(string|null  value) : mixed
+public setStatus(string|null $value) : mixed
 ```
 
 **Summary**
@@ -638,6 +656,7 @@ public setStatus(string|null  value) : mixed
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Transfer](../classes/YooKassa-Model-Transfer.md)
+
 ##### Parameters:
 | Type | Name | Description |
 | ---- | ---- | ----------- |
@@ -693,10 +712,10 @@ protected getUnknownProperties() : array
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 7](../reports/deprecated.md)
+* [Deprecated - 13](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2021-04-21 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2022-04-14 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2021 YooMoney
+&copy; 2022 YooMoney
