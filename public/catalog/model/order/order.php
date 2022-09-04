@@ -325,7 +325,7 @@ class ModelOrderOrder extends Model {
 
     public function getOrderPaymentBlockingValue($order_id)
     {
-        $result = $this->db->query("SELECT pb.value FROM ". DB_PREFIX . "payment_blocking pb LEFT JOIN ". DB_PREFIX . "order o ON pb.payment_blocking_id = o.payment_blocking_id WHERE o.order_id = '" . $order_id . "'");
+        $result = $this->db->query("SELECT pb.value FROM ". DB_PREFIX . "payment_blocking pb LEFT JOIN `". DB_PREFIX . "order` o ON pb.payment_blocking_id = o.payment_blocking_id WHERE o.order_id = '" . $order_id . "'");
         if (isset($result->row['value'])) {
             return (int)$result->row['value'];
         }

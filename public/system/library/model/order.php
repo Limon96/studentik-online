@@ -6,12 +6,12 @@ class Order extends Model {
 
     public function get()
     {
-        
+
     }
 
     public function getOrderStatus($order_id)
     {
-        $result = $this->db->query("SELECT order_id, order_status_id FROM " . DB_PREFIX ."order WHERE order_id = '" . $order_id . "'");
+        $result = $this->db->query("SELECT order_id, order_status_id FROM `" . DB_PREFIX ."order` WHERE order_id = '" . $order_id . "'");
 
         if (isset($result->row['order_status_id']) && $result->row['order_status_id']) {
             return $result->row['order_status_id'];
@@ -22,7 +22,7 @@ class Order extends Model {
 
     public function geTotalOrderClaims($order_id)
     {
-        $result = $this->db->query("SELECT COUNT(1) AS total FROM " . DB_PREFIX ."claim WHERE `type` = 'order' AND object_id = '" . $order_id . "'");
+        $result = $this->db->query("SELECT COUNT(1) AS total FROM `" . DB_PREFIX ."claim` WHERE `type` = 'order' AND object_id = '" . $order_id . "'");
 
         if (isset($result->row['total']) && $result->row['total']) {
             return (int)$result->row['total'];
@@ -33,12 +33,12 @@ class Order extends Model {
 
     public function setOrderStatus($order_id, $order_status_id)
     {
-        $this->db->query("UPDATE " . DB_PREFIX ."order SET order_status_id = '" . (int)$order_status_id . "' WHERE order_id = '" . (int)$order_id . "'");
+        $this->db->query("UPDATE `" . DB_PREFIX ."order` SET order_status_id = '" . (int)$order_status_id . "' WHERE order_id = '" . (int)$order_id . "'");
     }
 
     public function disablePremium($order_id)
     {
-        $this->db->query("UPDATE " . DB_PREFIX ."order SET premium = '0' WHERE order_id = '" . $order_id . "'");
+        $this->db->query("UPDATE `" . DB_PREFIX ."order` SET premium = '0' WHERE order_id = '" . $order_id . "'");
     }
 
     public function setOrderHistory($order_id, $customer_id, $text)
