@@ -33,9 +33,11 @@ class BlogCategoryController extends Controller {
             $blogCategoriesIds = $blogCategoryRepository->getChildrenIds($item);
 
             $categoryPath = $this->getFullPathCategories($item);
+            $blogPosts = $blogPostRepository->fromCategory($blogCategoriesIds, 10);
+        } else {
+            $blogPosts = $blogPostRepository->paginate(10);
         }
 
-        $blogPosts = $blogPostRepository->fromCategory($blogCategoriesIds, 10);
 
         return view('blog_category.index', compact(
             'item',
