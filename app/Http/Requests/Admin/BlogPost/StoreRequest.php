@@ -26,8 +26,8 @@ class StoreRequest extends FormRequest
         return [
             'title' => 'required|min:3|max:255',
             'slug' => 'required|min:3|max:255',
-            'intro' => 'required|min:3|max:255',
-            'text' => 'required|min:3|max:70000',
+            'intro' => 'required|min:3|max:1000',
+            'text' => 'required|min:3',
             'blog_category_id' => 'required|exists:blog_categories,id',
             'image' => '',
             'meta_title' => 'max:255',

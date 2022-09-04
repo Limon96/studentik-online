@@ -20,7 +20,7 @@
                         </svg>
                     </div>
                     <div class="text">{{ $blogCategory->title }}</div>
-                    <div class="count">{{ $blogCategory->posts->count() }}</div>
+                    <div class="count">{{ $blogCategory->getCountPosts($blogCategory) }}</div>
                 </a>
             </div>
         @endforeach

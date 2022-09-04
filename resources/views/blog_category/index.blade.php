@@ -28,9 +28,10 @@
                                     <li><a href="https://studentik.online/index.php?route=account/account">Профиль</a>
                                     </li>
                                     <li><a href="{{ route('blog_category.index') }}">Блог</a></li>
-                                    @if($item)
-                                        <li><a href="{{ route('blog_category.index', $item->slug) }}">{{ $item->title }}</a></li>
-                                    @endif
+
+                                    @foreach($categoryPath as $category)
+                                        <li><a href="{{ route('blog_category.index', $category->slug) }}">{{ $category->title }}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
 
@@ -49,7 +50,7 @@
                                     если ничего не учил и многое другое.
                                 </div>
 
-                                @if($blogCategories)
+                                @if($blogCategories->count())
                                     @include('blog_category.components.category_block')
                                 @endif
 
@@ -61,7 +62,8 @@
 
 
                         <div class="stipe_work_list clearfix">
-                            <h2 class="h2_article">Статьи</h2>
+
+                            <h2 class="h2_article">Статьи @if($item) категории {{ mb_strtolower($item->title) }} @endif</h2>
 
                             <div class="list_article">
 
@@ -92,7 +94,7 @@
                                                 </svg>
                                                 <span>{{ $blogPost->views }}</span>
                                             </div>
-                                            <div class="date">{{ date('d.m.Y', strtotime($blogPost->publish_at)) }}</div>
+                                            <div class="date">{{ format_date($blogPost->publish_at, 'full_datetime') }}</div>
                                         </div>
                                     </div>
                                 </div>

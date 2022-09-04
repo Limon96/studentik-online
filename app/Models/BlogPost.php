@@ -30,4 +30,11 @@ class BlogPost extends Model
         return $this->belongsTo(BlogCategory::class, 'blog_category_id', 'id');
     }
 
+    public function addView()
+    {
+        $this->views++;
+        $this->save();
+
+        return $this;
+    }
 }

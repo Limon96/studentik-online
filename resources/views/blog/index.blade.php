@@ -43,9 +43,26 @@
                 <div class="center_content_resp">
                     <div class="clearfix console_wrap">
 
-
-
                         <div class="content_single">
+
+                            <div class="heads">
+                                <h2>Полезные материалы</h2>
+                                <ul class="breadcrumb clearfix">
+                                    <li><a href="https://studentik.online/"><i
+                                                class="fa fa-home"></i></a></li>
+                                    <li><a href="https://studentik.online/index.php?route=account/account">Профиль</a>
+                                    </li>
+                                    <li><a href="{{ route('blog_category.index') }}">Блог</a></li>
+
+                                    @foreach($categoryPath as $category)
+                                        <li><a href="{{ route('blog_category.index', $category->slug) }}">{{ $category->title }}</a></li>
+                                    @endforeach
+                                    @if($item)
+                                        <li><a href="{{ route('blog_category.index', $item->slug) }}">{{ $item->title }}</a></li>
+                                    @endif
+                                </ul>
+                            </div>
+
                             <div id="content-list" class="list_words">
                                 <h2>Содержание</h2>
                                 <ul>
@@ -70,9 +87,26 @@
 
                             </div>
 
+                            <div>
+                                <span>{{ format_date($item->publish_at, 'full_datetime') }}</span>
+                                <span>{{ $item->views }}</span>
+                            </div>
+
+                            @if($popularPosts->count())
+                            <div>
+                                <h2>Интересные статьи</h2>
+
+                                <div>
+                                    @foreach($popularPosts as $post)
+                                        @include('blog.post_item')
+                                    @endforeach
+                                </div>
+                                <a href="{{ route('blog_category.index') }}">Смотреть все</a>
+                            </div>
+                            @endif
+
 
                         </div>
-
 
                     </div>
                 </div>

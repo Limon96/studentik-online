@@ -73,4 +73,18 @@ class BlogPostRepository extends CoreRepository
             ->get();
     }
 
+    public function popular($limit = 20, $ignoreId = 0)
+    {
+        return $this
+            ->startConditions()
+            ->select([
+                'id', 'title', 'slug', 'image', 'views', 'publish_at'
+            ])
+            ->where('publish_at', '<', date('Y.m.d H:i:s'))
+            ->where('status', 1)
+            ->where('id', '<>', $ignoreId)
+            ->orderByDesc('views')
+            ->limit($limit)
+            ->get();
+    }
 }

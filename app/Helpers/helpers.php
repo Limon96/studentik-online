@@ -46,3 +46,34 @@ if (!function_exists('get_widget')) {
     }
 
 }
+
+if (!function_exists('format_date')) {
+
+    function format_date($str, $format = "d.m.Y") {
+
+        if (is_numeric($str)) {
+            $str = date("Y-m-d H:i:s", $str);
+        }
+
+        if ($format == "full_datetime") {
+            $month = ['', 'Янв', 'Фев', 'Мар', 'Апр', 'Мая', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
+
+            $ts = strtotime($str);
+
+            $m = $month[date('n', $ts)];
+
+            return str_replace('%', $m, date('j % Y в H:i', $ts));
+        } elseif ($format == "full_date") {
+            $month = ['', 'Янв', 'Фев', 'Мар', 'Апр', 'Мая', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
+
+            $ts = strtotime($str);
+
+            $m = $month[date('n', $ts)];
+
+            return str_replace('%', $m, date('j % Y', $ts));
+        } else {
+            return date($format, strtotime($str));
+        }
+    }
+
+}

@@ -46,7 +46,7 @@ class BlogCategoryRepository extends CoreRepository
             ->paginate($limit);
     }
 
-    public function all()
+    public function all(int $blog_category_id = 0)
     {
         return $this
             ->startConditions()
@@ -59,7 +59,7 @@ class BlogCategoryRepository extends CoreRepository
                 'slug',
             ])
             ->with(['categories'])
-            ->where('blog_category_id', 0)
+            ->where('blog_category_id', $blog_category_id)
             ->orderBy('title', 'asc')
             ->get();
     }

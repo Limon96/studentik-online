@@ -35,4 +35,19 @@ class BlogCategory extends Model
         return $this->hasMany(BlogPost::class, 'blog_category_id', 'id');
     }
 
+    public function getCountPosts($item)
+    {
+        $count = $item->posts()->count();
+
+        foreach ($this->categories as $category) {
+            $count += $category->posts()->count();
+
+            if ($category->categories()->count()) {
+                $count += $this->getCountPosts($category);
+            }
+        }
+
+        return $count;
+    }
+
 }
