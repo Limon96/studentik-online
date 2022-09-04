@@ -56,3 +56,7 @@
 </header>
 
 @endif
+
+<script>
+    $('header').load('/orders header > *');
+</script>

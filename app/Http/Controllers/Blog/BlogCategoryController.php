@@ -19,22 +19,23 @@ class BlogCategoryController extends Controller {
      */
     public function index(string $slug = '')
     {
-        $item = app(BlogCategoryRepository::class)->findSlug($slug);
+        $blogCategoryRepository = app(BlogCategoryRepository::class);
+        $blogPostRepository = app(BlogPostRepository::class);
 
-        $blogCategories = app(BlogCategoryRepository::class)->all($item->id ?? 0);
+        $item = $blogCategoryRepository->findSlug($slug);
 
+        $blogCategories = $blogCategoryRepository->all($item->id ?? 0);
+
+        $blogCategoriesIds = [];
         $categoryPath = [];
 
         if ($item) {
-            $blogPosts = $item
-                ->posts()
-                ->orderByDesc('created_at')
-                ->paginate(10);
+            $blogCategoriesIds = $blogCategoryRepository->getChildrenIds($item);
 
             $categoryPath = $this->getFullPathCategories($item);
-        } else {
-            $blogPosts = app(BlogPostRepository::class)->paginate(10);
         }
+
+        $blogPosts = $blogPostRepository->fromCategory($blogCategoriesIds, 10);
 
         return view('blog_category.index', compact(
             'item',

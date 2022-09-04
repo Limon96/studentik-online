@@ -78,4 +78,21 @@ class BlogCategoryRepository extends CoreRepository
             ->get();
     }
 
+    public function getChildrenIds(Model $blogCategory)
+    {
+        $categories = [ $blogCategory->id ];
+
+        foreach ($blogCategory->categories()->with(['categories'])->select(['id'])->get() as $item) {
+            if ($item->categories()->count()) {
+                array_merge($categories, $this->getChildrenIds($item));
+            } else {
+                array_push($categories, $item->id);
+            }
+        }
+
+        return $categories;
+    }
+
+
+
 }

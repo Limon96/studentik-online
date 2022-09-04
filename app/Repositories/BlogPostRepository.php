@@ -51,6 +51,20 @@ class BlogPostRepository extends CoreRepository
             ->paginate($limit);
     }
 
+    public function fromCategory($blog_category_ids = [], $limit = 20)
+    {
+        return $this
+            ->startConditions()
+            ->select([
+                'id', 'title', 'intro', 'slug', 'image', 'views', 'publish_at'
+            ])
+            ->where('publish_at', '<', date('Y.m.d H:i:s'))
+            ->where('status', 1)
+            ->whereIn('blog_category_id', $blog_category_ids)
+            ->orderBy('publish_at', 'desc')
+            ->paginate($limit);
+    }
+
     public function latest($limit = 20)
     {
         return $this
@@ -87,4 +101,6 @@ class BlogPostRepository extends CoreRepository
             ->limit($limit)
             ->get();
     }
+
+
 }
