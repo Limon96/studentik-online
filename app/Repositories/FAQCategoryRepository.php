@@ -26,7 +26,9 @@ class FAQCategoryRepository extends CoreRepository
                 'id',
                 'title',
             ])
-            ->with(['questions'])
+            ->with(['questions' => function ($query) {
+                return $query->orderBy('sort_order');
+            }])
             ->orderBy('title', 'asc')
             ->get();
     }
