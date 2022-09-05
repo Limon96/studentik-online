@@ -129,7 +129,7 @@ class ControllerCommonColumnLeft extends Controller {
 			}
 
             // Support
-            $support = array();
+           /* $support = array();
 
             if ($this->user->hasPermission('access', 'support/faq')) {
                 $support[] = array(
@@ -155,7 +155,7 @@ class ControllerCommonColumnLeft extends Controller {
                     'href'     => '',
                     'children' => $support
                 );
-            }
+            }*/
 
             if ($this->user->hasPermission('access', 'claim/claim')) {
                 $data['menus'][] = array(
