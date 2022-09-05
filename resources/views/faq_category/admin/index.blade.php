@@ -25,6 +25,18 @@
     </div><!-- sh-pagetitle -->
 
     <div class="sh-pagebody">
+        @if(session('success'))
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="alert alert-success" role="alert">
+                        <button class="close" type="button" data-dismiss="alert"
+                                aria-label="Close">x
+                        </button>
+                        {{ session()->get('success') }}
+                    </div>
+                </div>
+            </div>
+        @endif
         <div class="row row-sm">
             <div class="col-md-12">
                 <div class="table-wrapper">
