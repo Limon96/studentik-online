@@ -188,7 +188,7 @@
                                         <div id="editor-text">{!! htmlspecialchars_decode(old('answer', $item->answer ?? '')) !!}</div>
                                         <textarea class="form-control"
                                                   style="display: none"
-                                                  id="textarea-answer"
+                                                  id="textarea-text"
                                                   name="answer"
                                                   cols="30"
                                                   rows="7">{!! htmlspecialchars_decode(old('answer', $item->answer ?? '')) !!}</textarea>
