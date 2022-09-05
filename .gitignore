@@ -29,6 +29,8 @@ yarn-error.log
 /public/catalog/sitemap.txt
 
 # Laravel
+/public/uploads/
+!/storage/app/public/image/
 /storage/framework/cache/
 /storage/framework/sessions/
 /storage/framework/views/

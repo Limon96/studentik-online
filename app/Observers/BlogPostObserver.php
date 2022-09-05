@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Components\Image\Image;
 use App\Models\BlogPost;
 use Illuminate\Support\Str;
 
@@ -16,6 +17,7 @@ class BlogPostObserver
     {
         $this->setImage($blogPost);
         $this->setSlug($blogPost);
+        $this->processingText($blogPost);
     }
 
     /**
@@ -34,6 +36,7 @@ class BlogPostObserver
     {
         $this->setImage($blogPost);
         $this->setSlug($blogPost);
+        $this->processingText($blogPost);
     }
 
     /**
@@ -88,6 +91,17 @@ class BlogPostObserver
         if (empty($blogPost->image)) {
             $blogPost->image = '';
         }
+    }
+
+
+
+    protected function processingText(BlogPost $blogPost)
+    {
+        if (!isset($blogPost->text)) {
+            $blogPost->text = '';
+        }
+
+        $blogPost->text = Image::replaceBase64FromHTML($blogPost->text);
     }
 
 }
