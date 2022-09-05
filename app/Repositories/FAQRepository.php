@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\FAQCategory as Model;
+use App\Models\FAQ as Model;
 
 /**
  * Class CatalogAttributeRepository.
