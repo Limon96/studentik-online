@@ -14,19 +14,21 @@
             <div class="row">
 
 
-                @include("components.left_sidebar")
+
+
+                    @include("components.left_sidebar")
+
 
 
                 <div class="center_content_resp">
                     <div class="clearfix console_wrap">
                         <div class="clearfix search_panel">
                             <div class="heads">
-                                <h2>Полезные материалы</h2>
+                                <h2>Студенческий блог</h2>
                                 <ul class="breadcrumb clearfix">
                                     <li><a href="https://studentik.online/"><i
                                                 class="fa fa-home"></i></a></li>
-                                    <li><a href="https://studentik.online/index.php?route=account/account">Профиль</a>
-                                    </li>
+
                                     <li><a href="{{ route('blog_category.index') }}">Блог</a></li>
 
                                     @foreach($categoryPath as $category)
@@ -38,9 +40,8 @@
                             <div class="blog_wrap clearfix">
 
 
-                                <div class="baner_blog"
-                                     style="background-image: url(../../../../catalog/assets/img/polez.svg)">
-
+                                <div class="baner_blog">
+                                    <img src="../../../../catalog/assets/img/polez.webp" alt="">
                                 </div>
                                 <div class="blog_description">
                                     Студенчество — это не только лекции, сессии и курсовые, но и

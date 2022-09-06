@@ -28,7 +28,7 @@
 
                             @if($items->count())
                             @foreach($items as $category)
-                                <h2>{{ $category->title }}</h2>
+                                <h2 class="faq_h2">{{ $category->title }}</h2>
                                 @foreach($category->questions as $item)
                                     <div class="faq_acc">
                                         <button class="accordion_faq clearfix">

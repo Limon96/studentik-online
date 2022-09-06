@@ -7,7 +7,7 @@
 
 
 
-    @media (min-width: 1660px) and (max-width: 1820px) {
+@media (min-width: 1660px) and (max-width: 1820px) {
     header .search_head {
         width: 270px;
     }
@@ -158,6 +158,13 @@
 
 
 @media (min-width: 1366px) and (max-width: 5000px) {
+
+
+   .kiport{
+       min-width: 320px;
+   }
+
+
     .container{
         max-width: 100%;
     }
@@ -3813,12 +3820,15 @@
     .list_article .article .left_fon {
         margin-right: 0;
         margin-bottom: 10px;
+        width: 100%;
     }
     .list_article .article .left_fon .img_r {
         width: 100%;
         height: 150px;
     }
-
+    .list_article .article .rigt_content {
+        width: 100%;
+    }
     .list_article .article .rigt_content .extention {
         margin-bottom: 10px;
     }
