@@ -29,19 +29,12 @@
 @endsection
 
 @section("content")
-
-
     <div class="wrap_content">
 
         <div class="container">
             <div class="row">
 
-
-
-
-
                 @include("components.left_sidebar")
-
 
                 <div class="center_content_resp">
                     <div class="clearfix console_wrap">
@@ -49,7 +42,7 @@
                         <div class="content_single">
 
                             <div class="heads">
-                                <h1 class="blog_title">Заголовок статьи</h1>
+                                <h1 class="blog_title">{{ $item->title }}</h1>
                                 <ul class="breadcrumb clearfix">
                                     <li><a href="https://studentik.online/"><i
                                                 class="fa fa-home"></i></a></li>
@@ -72,10 +65,7 @@
                             </div>
                          {{--   <div class="baner_single" style="background-image: url(../../../../catalog/assets/img/polez.svg)"></div>--}}
                             <div class="mini_single_extention">
-                                Окружающий нас мир не перестает меняться и адаптироваться под современность. Новые
-                                научные открытия и изобретения делают жизнь человека проще, но за счет этого многие
-                                специальности устаревают и теряют свою востребованность. Мы собрали 5 профессий, которые
-                                будут актуальны еще целое десятилетие. О каждой из них подробнее читайте в нашей статье!
+                                {!! nl2br($item->intro) !!}
                             </div>
 
                             <div class="table_of_contents">
@@ -101,12 +91,6 @@
                                 </div>
                             </div>
 
-
-
-
-
-
-
                             @if($popularPosts->count())
                                 <div class="stipe_work_list clearfix">
 
@@ -126,12 +110,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
 
 @endsection
 

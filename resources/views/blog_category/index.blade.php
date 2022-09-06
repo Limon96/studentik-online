@@ -13,18 +13,17 @@
         <div class="container">
             <div class="row">
 
-
-
-
-                    @include("components.left_sidebar")
-
-
+                @include("components.left_sidebar")
 
                 <div class="center_content_resp">
                     <div class="clearfix console_wrap">
                         <div class="clearfix search_panel">
                             <div class="heads">
-                                <h2>Студенческий блог</h2>
+                                @if($item)
+                                    <h2>{{ $item->meta_h1 }}</h2>
+                                @else
+                                    <h2>Студенческий блог</h2>
+                                @endif
                                 <ul class="breadcrumb clearfix">
                                     <li><a href="https://studentik.online/"><i
                                                 class="fa fa-home"></i></a></li>
@@ -41,15 +40,27 @@
 
 
                                 <div class="baner_blog">
-                                    <img src="../../../../catalog/assets/img/polez.webp" alt="">
+                                    @if($item && $item->image)
+                                        <img src="{{ thumbnail($item->image, 1100) }}" alt="">
+                                    @else
+                                        <img src="{{ asset('catalog/assets/img/polez.webp') }}" alt="">
+                                    @endif
                                 </div>
-                                <div class="blog_description">
-                                    Студенчество — это не только лекции, сессии и курсовые, но и
-                                    жизнь в общежитии, стипендия, конкурсы, стремление найти себя.
-                                    Здесь вы найдете ответы на самые популярные вопросы о бытовой
-                                    стороне обучения: какие скидки положены студенту, как сдать сессию,
-                                    если ничего не учил и многое другое.
-                                </div>
+                                @if($item)
+                                    @if($item->text)
+                                        <div class="blog_description">
+                                            {{ $item->text }}
+                                        </div>
+                                    @endif
+                                @else
+                                    <div class="blog_description">
+                                        Студенчество — это не только лекции, сессии и курсовые, но и
+                                        жизнь в общежитии, стипендия, конкурсы, стремление найти себя.
+                                        Здесь вы найдете ответы на самые популярные вопросы о бытовой
+                                        стороне обучения: какие скидки положены студенту, как сдать сессию,
+                                        если ничего не учил и многое другое.
+                                    </div>
+                                @endif
 
                                 @if($blogCategories->count())
                                     @include('blog_category.components.category_block')

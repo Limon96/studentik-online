@@ -104,6 +104,23 @@
                                            name="title"
                                            value="{{ old('title', $item->title ?? '') }}">
                                 </div>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-meta_h1">Заголовок H1</label>
+                                    <input class="form-control"
+                                           id="input-meta_h1" type="text"
+                                           name="meta_h1"
+                                           value="{{ old('meta_h1', $item->meta_h1 ?? '') }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label"
+                                           for="textarea-text">Текст</label>
+                                    <textarea class="form-control"
+                                              id="textarea-text"
+                                              name="text"
+                                              cols="30"
+                                              rows="3">{{ old('text', $item->text ?? '') }}</textarea>
+                                </div>
 
                                 <div class="form-group">
                                     <label class="form-control-label"

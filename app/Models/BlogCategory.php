@@ -13,6 +13,8 @@ class BlogCategory extends Model
         'title',
         'slug',
         'image',
+        'text',
+        'meta_h1',
         'meta_title',
         'meta_description',
         'meta_keywords',

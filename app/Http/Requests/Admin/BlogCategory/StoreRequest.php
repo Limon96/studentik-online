@@ -27,6 +27,8 @@ class StoreRequest extends FormRequest
             'title' => 'required|min:3|max:255',
             'slug' => 'required|min:3|max:255',
             'image' => '',
+            'text' => '',
+            'meta_h1' => 'required|min:3|max:255',
             'meta_title' => 'max:255',
             'meta_description' => 'max:255',
             'meta_keywords' => 'max:255',
