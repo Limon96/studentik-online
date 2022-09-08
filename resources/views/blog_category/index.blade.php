@@ -49,7 +49,7 @@
                                 @if($item)
                                     @if($item->text)
                                         <div class="blog_description">
-                                            {{ $item->text }}
+                                            {!! nl2br( $item->text) !!}
                                         </div>
                                     @endif
                                 @else
