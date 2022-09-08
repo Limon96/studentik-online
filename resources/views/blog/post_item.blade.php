@@ -10,7 +10,7 @@
         <div class="article">
             <div class="left_fon">
                 <a href="{{ route('blog.index', $post->slug) }}">
-                    <div class="img_r" style="background-image: url('{{ thumbnail($post->image, 80) }}')"></div>
+                    <div class="img_r" style="background-image: url('{{ thumbnail($post->image, 400) }}')"></div>
                 </a>
             </div>
             <div class="rigt_content">

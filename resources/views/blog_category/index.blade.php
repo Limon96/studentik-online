@@ -80,7 +80,7 @@
                                     <div class="left_fon">
                                         <a href="{{ route('blog.index', $blogPost->slug) }}">
                                             <div class="img_r"
-                                                 style="background-image: url('{{ thumbnail($blogPost->image, 180) }}')"></div>
+                                                 style="background-image: url('{{ thumbnail($blogPost->image, 400) }}')"></div>
                                         </a>
                                     </div>
                                     <div class="rigt_content">
