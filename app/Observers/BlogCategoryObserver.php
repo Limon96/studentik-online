@@ -16,6 +16,7 @@ class BlogCategoryObserver
     {
         $this->setImage($blogCategory);
         $this->setSlug($blogCategory);
+        $this->setText($blogCategory);
     }
 
     /**
@@ -34,6 +35,7 @@ class BlogCategoryObserver
     {
         $this->setImage($blogCategory);
         $this->setSlug($blogCategory);
+        $this->setText($blogCategory);
     }
 
     /**
@@ -73,6 +75,13 @@ class BlogCategoryObserver
     {
         if (empty($blogCategory->slug)) {
             $blogCategory->slug = Str::slug($blogCategory->title);
+        }
+    }
+
+    private function setText(BlogCategory $blogCategory)
+    {
+        if (empty($blogCategory->text)) {
+            $blogCategory->text = '';
         }
     }
 
