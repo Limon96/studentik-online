@@ -9445,7 +9445,8 @@ header .menu_nav ul li a:hover{
 
 
 .blog_wrap .blog_description {
-
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 
@@ -9559,10 +9560,11 @@ h2.h2_article{
     text-decoration: underline;
 }
 
-
-
-.list_article .article .rigt_content .extention{
+.list_article .article .rigt_content .extention {
     font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 53px;
 }
 
 .list_article .article .rigt_content .look_date {
@@ -9650,8 +9652,73 @@ h2.h2_article{
 }
 
 
+
+
+
+.content_single .table_of_contents ul {
+    padding-left: 30px;
+}
+.content_single .table_of_contents li {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 0 6px 0;
+    padding-left: 0px;
+    list-style: disc;
+}
+
+.content_single .table_of_contents strong {
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+.content_single .table_of_contents blockquote {
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 600;
+    margin: 15px 0 15px 0;
+    border-left: 5px solid #b2e228;
+    padding-left: 10px;
+    margin-left: 12px;
+}
+
+.content_single .table_of_contents u {
+    font-size: 16px;
+    line-height: 1.5;
+}
+.content_single .table_of_contents em {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.content_single .table_of_contents s {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.content_single .table_of_contents p span {
+    font-size: 16px;
+    line-height: 1.5;
+
+}
+
+.content_single .table_of_contents pre {
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 10px 10px;
+    border-radius: 10px;
+    background: #94e9e3;
+}
+
+
+
+
+
+
 .content_single .table_of_contents p a{
     color: #1CB7AD;
+    font-size: 16px;
+    line-height: 1.5;
 }
 .content_single .table_of_contents p a:hover{
     color: #1d8780;
