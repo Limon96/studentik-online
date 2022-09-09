@@ -1,4 +1,4 @@
-@php $v = 0.1; @endphp
+@php $v = 0.2; @endphp
 <!doctype html>
 <html lang="ru">
 <head>
@@ -9,6 +9,7 @@
 
     @yield('styles')
 
+    <link href="https://studentik.online/image/catalog/favicon-32x32.png" rel="icon" />
     <title>@yield('title')</title>
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">

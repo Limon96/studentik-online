@@ -9708,6 +9708,7 @@ h2.h2_article{
     padding: 10px 10px;
     border-radius: 10px;
     background: #94e9e3;
+    white-space: pre-wrap;
 }
 
 
