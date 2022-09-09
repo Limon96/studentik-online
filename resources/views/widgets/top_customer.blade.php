@@ -13,7 +13,7 @@
             <div class="lit_foot clearfix">
                 <div class="enter clearfix">
                     <span class="name">Рейтинг:</span>
-                    <span class="rating">{{ $customer->rating()->sum('rating') }} @if($customer->getNewRating()){{ $customer->getNewRating() }}@endif</span>
+                    <span class="rating">{{ $customer->rating()->sum('rating') }} @if($customer->new_rating)<span class="bonus">+{{ $customer->new_rating }}</span>@endif</span>
                 </div>
                 <div class="enter_like clearfix">
                     <img src="{{ asset('catalog/assets/img/icons/like.svg') }}">
