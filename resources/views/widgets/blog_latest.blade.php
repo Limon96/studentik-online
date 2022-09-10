@@ -1,5 +1,5 @@
 @if($items)
-<div class="clearfix worker_right">
+<div id="right-blog" class="clearfix worker_right">
     <h3>Новое в блоге</h3>
     @foreach($items as $item)
     <div class="item_blog_side clearfix">
