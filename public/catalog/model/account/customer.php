@@ -468,6 +468,25 @@ class ModelAccountCustomer extends Model {
         return $query->rows;
     }
 
+	public function searchCustomersTotal($data = array()) {
+        $sql = "SELECT COUNT(1) AS total FROM " . DB_PREFIX ."customer WHERE status = 1";
+
+        if (isset($data['filter_customer_group_id'])) {
+            $sql .= " AND customer_group_id = '" . (int)$data['filter_customer_group_id'] . "'";
+        }
+
+        if (isset($data['search']) && $data['search'] != '') {
+            $sql .= " AND login LIKE '%" . $this->db->escape($data['search']) . "%'";
+        }
+
+        $query = $this->db->query($sql);
+
+        if (isset($query->row['total']) && $query->row['total']) {
+            return (int)$query->row['total'];
+        }
+        return 0;
+    }
+
 	public function getTotalCustomers ($data = array()) {
         $sql = "SELECT COUNT(1) AS total FROM " . DB_PREFIX ."customer WHERE status = 1";
 
