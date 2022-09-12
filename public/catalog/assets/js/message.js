@@ -86,6 +86,10 @@ $(document).on('keyup', '#chat-search input[name=search]', function (e) {
             for (var chat of json['chats']) {
                 setChat(chat);
             }
+
+            if (json['chats'].length === json['limit']) {
+                $('.list_speeker').append('<button class="load-chat" onclick="loadChats(2, this);">Показать еще</button>');
+            }
         }
     })
 });
