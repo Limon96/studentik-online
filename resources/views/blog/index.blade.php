@@ -58,8 +58,8 @@
                             </div>
 
                             <div id="content-list" class="list_words">
-                                <h2>Содержание</h2>
-                                <ul>
+                                <h2 style="margin-top: 10px">Содержание</h2>
+                                <ul id="links_yakor">
 
                                 </ul>
                             </div>
@@ -110,6 +110,28 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+
+
+        $(document).ready(function(){
+            $("#links_yakor").on("click","a", function (event) {
+                //отменяем стандартную обработку нажатия по ссылке
+                event.preventDefault();
+
+                //забираем идентификатор бока с атрибута href
+                var id  = $(this).attr('href'),
+
+                    //узнаем высоту от начала страницы до блока на который ссылается якорь
+                    top = $(id).offset().top - 75;
+
+                //анимируем переход на расстояние - top за 1500 мс
+                $('body,html').animate({scrollTop: top}, 500);
+            });
+        });
+
+    </script>
 
 @endsection
 
