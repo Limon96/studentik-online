@@ -9694,6 +9694,12 @@ h2.h2_article{
     list-style: disc;
 }
 
+
+.content_single .table_of_contents ol li {
+    list-style: decimal;
+}
+
+
 .content_single .table_of_contents strong {
     font-size: 16px;
     line-height: 1.5;
