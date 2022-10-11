@@ -4390,8 +4390,7 @@ input::placeholder{
 }
 
 .content_chat {
-    height: calc(100% - 50px);
-    padding-bottom: 210px;
+    height: calc(100% - 128px);
     overflow-y: scroll;
 }
 
@@ -4402,10 +4401,12 @@ input::placeholder{
 
 
 .footer_chat {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
     background: #f4eff5;
+    display: block;
+    left: 0;
 }
 
 
@@ -4421,7 +4422,7 @@ input::placeholder{
 
 
 .list_speeker {
-    height: calc(100% - 105px);
+    height: calc(100% - 150px);
     overflow-y: scroll;
 }
 

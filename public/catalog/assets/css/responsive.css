@@ -645,6 +645,10 @@
     .strips_work .item_work .item_worker .info_worvert {
         width: 30%;
     }
+
+
+
+
 }
 
 
@@ -657,6 +661,7 @@
 
 
 @media (min-width: 768px) and (max-width: 991px) {
+
 
 
     .warnning{
@@ -1114,9 +1119,6 @@
 
 
 
-
-
-
 }
 
 
@@ -1236,6 +1238,7 @@
         -moz-transition: all 0.3s ease;
         -o-transition: all 0.3s ease;
         transition: all 0.3s ease;
+        height: calc(100vh - 58px);
     }
 
     .col_inner_flex3.open_l{
@@ -2245,6 +2248,7 @@
         -moz-transition: all 0.3s ease;
         -o-transition: all 0.3s ease;
         transition: all 0.3s ease;
+        height: calc(100vh - 58px);
     }
 
     .col_inner_flex3.open_l{
