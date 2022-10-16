@@ -1,5 +1,5 @@
 @php $v = 0.2; @endphp
-<!doctype html>
+    <!doctype html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -103,17 +103,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
