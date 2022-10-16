@@ -41,7 +41,7 @@
 
     <link rel="stylesheet" href="{{ asset('catalog/assets/css/responsive.css?v=' . $v) }}">
     @if(!auth()->check())
-    <link rel="stylesheet" href="{{ asset('catalog/assets/css/header_noreg.css?v=' . $v) }}">
+        <link rel="stylesheet" href="{{ asset('catalog/assets/css/header_noreg.css?v=' . $v) }}">
     @endif
 
     <script src="{{ asset('catalog/assets/js/jquery.min.js?v=' . $v) }}"></script>
@@ -50,10 +50,10 @@
     <script src="{{ asset('catalog/assets/js/common.js?v=' . $v) }}" type="text/javascript"></script>
 
     @if(!auth()->check())
-    <script src="//code-ya.jivosite.com/widget/3x3Y24atbz" async></script>
-    @endif
+        <script src="//code-ya.jivosite.com/widget/3x3Y24atbz" async></script>
+@endif
 
-    <!-- Yandex.Metrika counter -->
+<!-- Yandex.Metrika counter -->
     <script>
         (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
             m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
@@ -103,3 +103,17 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
