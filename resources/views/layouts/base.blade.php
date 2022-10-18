@@ -39,9 +39,11 @@
 
 
     <link rel="stylesheet" href="{{ asset('catalog/assets/css/responsive.css?v=' . $v) }}">
-   {{-- @if(!auth()->check())
+
+
+    @if(!auth()->check())
     <link rel="stylesheet" href="{{ asset('catalog/assets/css/header_noreg.css?v=' . $v) }}">
-    @endif--}}
+    @endif
 
     <script src="{{ asset('catalog/assets/js/jquery.min.js?v=' . $v) }}"></script>
     <script src="{{ asset('catalog/assets/js/custom.js?v=' . $v) }}"></script>
