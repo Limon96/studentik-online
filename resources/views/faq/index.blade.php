@@ -10,6 +10,21 @@
 
 @section("content")
 
+    <script>
+
+
+
+        $(window).resize(function() {
+            if ( $(window).width() > 768 ) {
+                $("#deletedCss").remove();
+            }
+        });
+        if ( $(window).width() > 768 ) {
+            $("#deletedCss").remove();
+        }
+
+
+    </script>
 
     <div class="wrap_content">
 
