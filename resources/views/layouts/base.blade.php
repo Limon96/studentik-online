@@ -41,7 +41,7 @@
     <link rel="stylesheet" href="{{ asset('catalog/assets/css/responsive.css?v=' . $v) }}">
 
     @if(!auth()->check())
-    <link id="deletedCss" rel="stylesheet" href="{{ asset('catalog/assets/css/header_noreg.css?v=' . $v) }}">
+    <link  rel="stylesheet" href="{{ asset('catalog/assets/css/header_noreg.css?v=' . $v) }}">
     @endif
 
     <script src="{{ asset('catalog/assets/js/jquery.min.js?v=' . $v) }}"></script>
