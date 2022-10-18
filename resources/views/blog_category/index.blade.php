@@ -122,6 +122,17 @@
             @include("components.right_sidebar")
 
 
+            <script>
+                $(document).ready(function(){
+                    setTimeout(() => {
+                        var n = $('.avatarka').length;
+
+                        if (n > 0) {
+                            $("#hedNerg").remove();
+                        }
+                    }, "1000")
+                });
+            </script>
         </div>
     </div>
     </div>

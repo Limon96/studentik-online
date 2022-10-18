@@ -116,6 +116,17 @@
 
 
         $(document).ready(function(){
+
+            setTimeout(() => {
+                var n = $('.avatarka').length;
+
+                if (n > 0) {
+                    $("#hedNerg").remove();
+                }
+            }, "1000")
+
+
+
             $("#links_yakor").on("click","a", function (event) {
                 //отменяем стандартную обработку нажатия по ссылке
                 event.preventDefault();
