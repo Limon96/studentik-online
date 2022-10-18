@@ -29,7 +29,7 @@
 </header>
 
 @else
-    <link rel="stylesheet" href="../../../../catalog/assets/css/style_landing.css">
+
 <header class="clearfix ">
     <div class="container">
         <div class="row rowall ">
