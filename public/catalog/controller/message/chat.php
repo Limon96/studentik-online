@@ -1,9 +1,5 @@
 <?php
 class ControllerMessageChat extends Controller {
-
-    protected $limitMessage = 20;
-    protected $limitChats = 20;
-
     public function index() {
         if (!$this->customer->isLogged()) {
             $this->session->data['redirect'] = $this->url->link('message/chat', '', true);
@@ -93,7 +89,7 @@ class ControllerMessageChat extends Controller {
             $chat_id = 0;
         }
 
-        $limit = $this->limitMessage;
+        $limit = 5;
 
         if (isset($this->request->post['page'])) {
             $start = ((int)$this->request->post['page'] - 1) * $limit;
@@ -364,29 +360,19 @@ class ControllerMessageChat extends Controller {
             $unviewed = 0;
         }
 
-        $limit = $this->limitChats;
+        $limit = 20;
 
-        if (isset($this->request->get['page']) && $this->request->get['page'] > 0) {
+        if (isset($this->request->get['page'])) {
             $start = ((int)$this->request->get['page'] - 1) * $limit;
-            $page = (int)$this->request->get['page'];
-        } elseif (isset($this->request->post['page']) && $this->request->post['page'] > 0) {
-            $start = ((int)$this->request->post['page'] - 1) * $limit;
-            $page = (int)$this->request->post['page'];
         } else {
             $start = 0;
-            $page = 1;
         }
+
+        $json = [];
 
         $this->load->model('message/models/chat');
         if ($search || $unviewed == 1) {
             $results = $this->model_message_models_chat->searchChats(
-                $this->customer->getId(),
-                $search,
-                $unviewed,
-                $start,
-                $limit
-            );
-            $resultsTotal = $this->model_message_models_chat->searchChatsTotal(
                 $this->customer->getId(),
                 $search,
                 $unviewed,
@@ -399,20 +385,12 @@ class ControllerMessageChat extends Controller {
                 $start,
                 $limit
             );
-            $resultsTotal = $this->model_message_models_chat->getChatsTotal(
-                $this->customer->getId(),
-                $start,
-                $limit
-            );
         }
 
+        $json['chats'] = $results;
+
         $this->response->addHeader('Content-Type: application/json');
-        $this->response->setOutput(json_encode([
-            'chats' => $results,
-            'total' => $resultsTotal,
-            'page' => $page,
-            'limit' => $limit,
-        ]));
+        $this->response->setOutput(json_encode($json));
     }
 
     private function getChats()
@@ -423,7 +401,7 @@ class ControllerMessageChat extends Controller {
             $chat_id = 0;
         }
 
-        $limit = $this->limitChats;
+        $limit = 100;
 
         if (isset($this->request->get['page'])) {
             $start = ((int)$this->request->get['page'] - 1) * $limit;
@@ -473,7 +451,7 @@ class ControllerMessageChat extends Controller {
             $chat_id = 0;
         }
 
-        $limit = $this->limitMessage;
+        $limit = 5;
 
         if (isset($this->request->post['page'])) {
             $page = (int)$this->request->post['page'];
@@ -545,7 +523,6 @@ class ControllerMessageChat extends Controller {
         } else {
             $chat_id = 0;
         }
-
         $data['chat_info'] = array();
         $data['message_list'] = array();
 

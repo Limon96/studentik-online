@@ -1,8 +1,8 @@
 @extends('layouts.base')
 
-@section('title'){{ $item->meta_title ?? 'Студенческий блог' }}@endsection
-@section('description'){{ $item->meta_description ?? 'Интересные и полезные статьи для студентов от сервиса Studentik' }}@endsection
-@section('keywords'){{ $item->meta_keywords ?? 'блог, полезные статьи, для студентов, Studentik' }}@endsection
+@section('title'){{ $item->meta_title ?? 'Полезные материалы' }}@endsection
+@section('description'){{ $item->meta_description ?? 'Полезные материалы от Studentik' }}@endsection
+@section('keywords'){{ $item->meta_keywords ?? 'блог, полезные материалы, studentik' }}@endsection
 
 
 @section("content")
@@ -49,7 +49,7 @@
                                 @if($item)
                                     @if($item->text)
                                         <div class="blog_description">
-                                            {!! nl2br( $item->text) !!}
+                                            {{ $item->text }}
                                         </div>
                                     @endif
                                 @else
@@ -122,6 +122,17 @@
             @include("components.right_sidebar")
 
 
+            <script>
+                $(document).ready(function(){
+                    setTimeout(() => {
+                        var n = $('.avatarka').length;
+
+                        if (n > 0) {
+                            $("#hedNerg").remove();
+                        }
+                    }, "1000")
+                });
+            </script>
         </div>
     </div>
     </div>

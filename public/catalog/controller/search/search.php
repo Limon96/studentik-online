@@ -1,12 +1,6 @@
 <?php
-
-class ControllerSearchSearch extends Controller
-{
-
-    protected $limit = 20;
-
-    public function index()
-    {
+class ControllerSearchSearch extends Controller {
+    public function index() {
 
         $this->load->language('search/search');
 
@@ -27,24 +21,13 @@ class ControllerSearchSearch extends Controller
         if (isset($this->request->get['search_customer'])) {
             $search_customer = $this->request->get['search_customer'];
         } else {
-            $search_customer = 0;
+            $search_customer = 1;
         }
 
         if (isset($this->request->get['search_order'])) {
             $search_order = $this->request->get['search_order'];
         } else {
-            $search_order = 0;
-        }
-
-        if ($search_order == 0 && $search_customer == 0) {
-            $search_customer = 1;
             $search_order = 1;
-        }
-
-        if (isset($this->request->get['page'])) {
-            $page = $this->request->get['page'];
-        } else {
-            $page = 1;
         }
 
         if (isset($this->request->get['search'])) {
@@ -58,10 +41,6 @@ class ControllerSearchSearch extends Controller
 
             if ($search_order) {
                 $url .= '&search_order=' . $search_order;
-            }
-
-            if ($page > 1) {
-                $url .= '&page=' . $page;
             }
 
             $data['breadcrumbs'][] = array(
@@ -82,8 +61,6 @@ class ControllerSearchSearch extends Controller
                 'search_customer' => $search_customer,
                 'search_order' => $search_order,
                 'search' => $search,
-                'start' => ($page - 1) * $this->limit,
-                'limit' => $this->limit
             ];
 
             $data['results'] = array();
@@ -92,7 +69,6 @@ class ControllerSearchSearch extends Controller
 
             if ($results) {
                 foreach ($results as $result) {
-                    $item = [];
                     if ($result['type'] == 'customer') {
                         if ($result['image']) {
                             $image = $this->model_tool_image->resize($result['image'], 80, 80);
@@ -100,18 +76,24 @@ class ControllerSearchSearch extends Controller
                             $image = $this->model_tool_image->resize('profile.png', 80, 80);
                         }
 
-                        $item = [
+                        $data['results'][] = [
+                            'title' => $result['title'],
+                            'type' => $result['type'],
+                            'online' => $result['online'],
                             'image' => $image,
                             'href' => $this->url->link('account/customer', 'customer_id=' . $result['id']),
                         ];
-
                     } elseif ($result['type'] == 'order') {
-                        $item = [
+                        $data['results'][] = [
+                            'title' => $result['title'],
+                            'type' => $result['type'],
+                            'description' => $result['description'],
+                            'section' => $result['section'],
+                            'subject' => $result['subject'],
+                            'work_type' => $result['work_type'],
                             'href' => $this->url->link('order/order/info', 'order_id=' . $result['id']),
                         ];
                     }
-
-                    $data['results'][] = array_merge($result, $item);
                 }
             }
         }
@@ -119,9 +101,6 @@ class ControllerSearchSearch extends Controller
         $data['search'] = $search;
         $data['search_customer'] = $search_customer;
         $data['search_order'] = $search_order;
-        $data['page'] = $page;
-        $data['limit'] = $this->limit;
-        $data['total'] = count($results);
         $data['action'] = $this->url->link('search/search');
 
         $data['column_left'] = $this->load->controller('common/column_left');

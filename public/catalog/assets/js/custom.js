@@ -29,13 +29,11 @@ $( document ).ready(function() {
 
 
 
-/*
 function givePadding(){
     console.log('givePadding()');
     var getvalue = $('#message-form.footer_chat').css("height");
     $('#downChat.content_chat').css("padding-bottom", getvalue );
 }
-*/
 
 
 
@@ -448,22 +446,8 @@ function setMessage(message){
     }
 }
 
-function appendChat(chat) {
-    var temp = renderChat(chat);
-
-    $('#chat-' + chat.chat_id).remove();
-    $('.list_speeker').append(temp);
-}
-
 function setChat(chat) {
-    var temp = renderChat(chat);
-
-    $('#chat-' + chat.chat_id).remove();
-    $('.list_speeker').prepend(temp);
-}
-
-function renderChat(chat) {
-    return '<div id="chat-' + chat.chat_id + '" class="speeker_numb clearfix '  + (getURLVar('chat_id') == chat['chat_id'] ? ' active': '')  + (parseInt(chat.unviewed) > 0 ? ' new_massage': '') + '" data-chat_id="' + chat.chat_id + '">\n' +
+    var temp = '<div id="chat-' + chat.chat_id + '" class="speeker_numb clearfix '  + (getURLVar('chat_id') == chat['chat_id'] ? ' active': '')  + (parseInt(chat.unviewed) > 0 ? ' new_massage': '') + '" data-chat_id="' + chat.chat_id + '">\n' +
         '    <div class="logo">\n' +
         '        <img src="' + chat.image + '">\n' +
         (chat.online == 1 ? '<span></span>\n' : '') +
@@ -480,6 +464,9 @@ function renderChat(chat) {
         '        </button>\n' +
         '    </div>\n' +
         '</div>';
+
+    $('#chat-' + chat.chat_id).remove();
+    $('.list_speeker').prepend(temp);
 }
 
 function beep()

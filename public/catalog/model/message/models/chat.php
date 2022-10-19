@@ -64,31 +64,6 @@ class ModelMessageModelsChat extends Model {
         return $chat_data;
     }
 
-    public function getChatsTotal($customer_id, $start = 0, $limit = 20, $last_message_id = 0)
-    {
-        $this->load->model('account/customer');
-        $this->load->model('tool/image');
-
-        $select = "SELECT MAX(m1.message_id) AS message_id, MAX(m1.date_added) AS date_added, IF(m1.sender_id = '" . (int)$customer_id . "', m1.recipient_id, m1.sender_id) as chat_id FROM `" . DB_PREFIX . "message` m1 WHERE ((m1.sender_id='" . (int)$customer_id . "' AND m1.recipient_id <> " . (int)$customer_id . ") OR (m1.sender_id <> " . (int)$customer_id . " AND m1.recipient_id = " . (int)$customer_id . "))";
-
-        $select .= "GROUP BY chat_id ORDER BY m1.message_id DESC";
-
-        $sql = "SELECT COUNT(*) AS total FROM (" . $select . ") m INNER JOIN `" . DB_PREFIX . "message` m2 ON m.message_id = m2.message_id";
-
-        if ($last_message_id) {
-            $sql .= " AND m.message_id > '" . (int)$last_message_id ."'";
-        }
-        $sql .= " ORDER BY m.message_id DESC";
-
-        $query = $this->db->query($sql);
-
-        if (isset($query->row['total']) && $query->row['total'] > 0) {
-            return (int)$query->row['total'];
-        }
-
-        return 0;
-    }
-
     public function searchChats($customer_id, $search, $unviewed = 0, $start = 0, $limit = 20)
     {
         $this->load->model('account/customer');
@@ -165,44 +140,6 @@ class ModelMessageModelsChat extends Model {
         }
 
         return $chat_data;
-    }
-
-    public function searchChatsTotal($customer_id, $search, $unviewed = 0, $start = 0, $limit = 20)
-    {
-        $this->load->model('account/customer');
-        $this->load->model('tool/image');
-
-        $select = "SELECT MAX(m1.message_id) AS message_id, MAX(m1.date_added) AS date_added, IF(m1.sender_id = '" . (int)$customer_id . "', m1.recipient_id, m1.sender_id) as chat_id FROM `" . DB_PREFIX . "message` m1 WHERE ((m1.sender_id='" . (int)$customer_id . "' AND m1.recipient_id <> " . (int)$customer_id . ") OR (m1.sender_id <> " . (int)$customer_id . " AND m1.recipient_id = " . (int)$customer_id . "))";
-
-        $select .= "GROUP BY chat_id ORDER BY m1.message_id DESC";
-
-        $sql = "SELECT COUNT(1) AS total
-        FROM (" . $select . ") m INNER JOIN `" . DB_PREFIX . "message` m2 ON m.message_id = m2.message_id WHERE m.chat_id > 0";
-
-        if ($search != '') {
-            $sql .= "  AND (SELECT login FROM " . DB_PREFIX . "customer c2 WHERE c2.customer_id = m.chat_id AND c2.status = 1 LIMIT 1) LIKE '%" . $this->db->escape($search) . "%'";
-        }
-        if ($unviewed == 1) {
-            $sql .= " AND (SELECT COUNT(1) FROM " . DB_PREFIX . "message m8 WHERE m8.sender_id = m.chat_id AND m8.recipient_id = '" . (int)$customer_id . "' AND m8.viewed = 0) > 0";
-        }
-
-        $sql .= " ORDER BY m.message_id DESC LIMIT " . $start . "," . $limit;
-
-        $query = $this->db->query($sql);
-
-        if ($query->rows || $unviewed == 1) {
-            if (isset($query->row['total'])) {
-                $total = (int)$query->row['total'];
-            }
-        } else {
-            $total = $this->model_account_customer->searchCustomersTotal([
-                'search' => $search,
-                'start' => 0,
-                'limit' => 20,
-            ]);
-        }
-
-        return $total;
     }
 
     public function getChatsInfo($customer_id, $list_ids = [])

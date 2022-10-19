@@ -11,6 +11,12 @@
 @section("content")
 
 
+
+
+
+
+
+
     <div class="wrap_content">
 
         <div class="container">
@@ -54,7 +60,47 @@
             </div>
         </div>
     </div>
+    <script>
 
+
+        $(document).ready(function(){
+            setTimeout(() => {
+                var n = $('.avatarka').length;
+
+                if (n > 0) {
+                    $("#hedNerg").remove();
+                }
+            }, "1000")
+        });
+
+
+
+       /* setTimeout(() => {
+            var lertP = $('.avatarka').length;
+
+            if (lertP > 0) {
+                $("#hedNerg").remove();
+            }
+        }, "1000")*/
+
+        /*
+
+                $(window).resize(function() {
+                    if ( $(window).width() > 768 ) {
+                        $("#hedNerg").remove();
+                    }
+                });
+                if ( $(window).width() > 768 ) {
+                    $("#hedNerg").remove();
+                }
+        */
+
+    </script>
 @endsection
+
+
+
+
+
 
 

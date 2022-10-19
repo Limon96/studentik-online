@@ -845,7 +845,7 @@ header .akk .dropdown-content a {
     font-size: 30px;
     line-height: 37px;
     color: #00324F;
-    margin: 0 0 11px 0;
+    margin: 0 0 10px 0;
 }
 
 
@@ -4390,7 +4390,8 @@ input::placeholder{
 }
 
 .content_chat {
-    height: calc(100% - 128px);
+    height: calc(100% - 50px);
+    padding-bottom: 210px;
     overflow-y: scroll;
 }
 
@@ -4401,12 +4402,10 @@ input::placeholder{
 
 
 .footer_chat {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     background: #f4eff5;
-    display: block;
-    left: 0;
 }
 
 
@@ -4422,7 +4421,7 @@ input::placeholder{
 
 
 .list_speeker {
-    height: calc(100% - 150px);
+    height: calc(100% - 105px);
     overflow-y: scroll;
 }
 
@@ -6318,14 +6317,6 @@ input::placeholder{
     height: 100%;
     float: left;
     background: #d62929;
-}
-
-.strips_work .item_work .item_worker .work_zrobl span.neutral{
-    width: 100%;
-    display: block;
-    height: 100%;
-    float: left;
-    background: #dddddd;
 }
 
 
@@ -9694,12 +9685,6 @@ h2.h2_article{
     padding-left: 0px;
     list-style: disc;
 }
-
-
-.content_single .table_of_contents ol li {
-    list-style: decimal;
-}
-
 
 .content_single .table_of_contents strong {
     font-size: 16px;

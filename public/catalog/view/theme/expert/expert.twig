@@ -69,13 +69,10 @@
                                             <div class="rabotyu clearfix">
                                                 <p>{{ customer.total_orders }}</p>
                                                 <div class="work_zrobl clearfix" >
-                                                    {% if customer.total_reviews %}
-                                                        <span class="good" style="width: {{ customer.percent_reviews_positive }}%"></span>
-                                                        <span class="no_good" style="width: {{ customer.percent_reviews_negative }}%"></span>
-                                                        <div class="all_tooltyp" data-tooltip="<p>Позитивные отзывы {{ customer.total_reviews_positive }} ({{ customer.percent_reviews_positive }}%)</p><p>Отрицательные отзывы {{ customer.total_reviews_negative }} ({% if customer.total_reviews %}{{ customer.percent_reviews_negative }}{% else %}0{% endif %}%)</p>"></div>
-                                                    {% else %}
-                                                        <span class="neutral"></span>
-                                                    {% endif %}
+                                                    <span class="good" style="width: {{ customer.percent_reviews_positive }}%"></span>
+                                                   {# <span class="super_good"></span>#}
+                                                    <span class="no_good" style="width: {{ customer.percent_reviews_negative }}%"></span>
+                                                    <div class="all_tooltyp" data-tooltip="<p>Позитивные отзывы {{ customer.total_reviews_positive }} ({{ customer.percent_reviews_positive }}%)</p><p>Отрицательные отзывы {{ customer.total_reviews_negative }} ({% if customer.total_reviews %}{{ customer.percent_reviews_negative }}{% else %}0{% endif %}%)</p>"></div>
                                                 </div>
                                             </div>
                                         </div>

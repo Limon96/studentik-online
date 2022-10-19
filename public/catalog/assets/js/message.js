@@ -79,52 +79,23 @@ $(document).on('click', 'button.no_read', function (e) {
 $(document).on('keyup', '#chat-search input[name=search]', function (e) {
     var search = $(this).val();
 
-    getChats(1, search, function (json) {
-        if (json['chats']) {
-            $('.list_speeker').html('');
-
-            for (var chat of json['chats']) {
-                setChat(chat);
-            }
-
-            if (json['chats'].length === json['limit']) {
-                $('.list_speeker').append('<button class="load-chat" onclick="loadChats(2, this);">Показать еще</button>');
-            }
-        }
-    })
-});
-
-function loadChats(page, button) {
-    var search = $('#chat-search input[name=search]').val();
-    $(button).remove();
-
-    getChats(page, search, function (json) {
-        if (json['chats']) {
-
-            for (var chat of json['chats']) {
-                appendChat(chat);
-            }
-
-            if (json['chats'].length === json['limit']) {
-                $('.list_speeker').append('<button class="load-chat" onclick="loadChats(' + (parseInt(page) + 1) +  ', this);">Показать еще</button>');
-            }
-        }
-    })
-}
-
-function getChats(page, search, callback){
     $.ajax({
         url : '../index.php?route=message/chat/searchChats',
         method : 'POST',
         data : {
-            search : search,
-            page : page
+            search : search
         },
         success : function (json) {
-            callback(json);
+            if (json['chats']) {
+                $('.list_speeker').html('');
+
+                for (var chat of json['chats']) {
+                    setChat(chat);
+                }
+            }
         }
     });
-}
+});
 
 $('#downChat').scroll(function (e) {
     e.preventDefault();
