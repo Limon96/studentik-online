@@ -40,7 +40,7 @@
 
     <link rel="stylesheet" href="{{ asset('catalog/assets/css/responsive.css?v=' . $v) }}">
 
-    
+
 
     <script src="{{ asset('catalog/assets/js/jquery.min.js?v=' . $v) }}"></script>
     <script src="{{ asset('catalog/assets/js/custom.js?v=' . $v) }}"></script>

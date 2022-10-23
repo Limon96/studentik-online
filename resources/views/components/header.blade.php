@@ -16,7 +16,7 @@
                 </button>
                 <ul class="clearfix menu_drest">
                     <li><a href="/orders">Лента заказов</a></li>
-                    @if(!auth()->check())<li><a href="/services">Услуги</a></li>@endif
+                    {{--@if(!auth()->check())<li><a href="/services">Услуги</a></li>@endif--}}
                     <li><a href="/blog">Блог</a></li>
                     <li><a href="/experts">Рейтинг авторов</a></li>
                     <li><a href="/faq">FAQ</a></li>
@@ -47,10 +47,11 @@
                 </button>
                 <ul class="clearfix menu_drest">
                     <li><a href="/orders">Лента заказов</a></li>
-                    @if(!auth()->check())<li><a href="/services">Услуги</a></li>@endif
+                   {{-- @if(!auth()->check())<li><a href="/services">Услуги</a></li>@endif--}}
                     <li><a href="/blog">Блог</a></li>
                     <li><a href="/experts">Рейтинг авторов</a></li>
                     <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/contacts">Поддержка</a></li>
                 </ul>
             </div>
             {{-- account --}}
