@@ -46,13 +46,13 @@
                                 <ul class="breadcrumb clearfix">
                                     <li><a href="https://studentik.online/"><i
                                                 class="fa fa-home"></i></a></li>
-                                    <li><a href="{{ route('blog_category.index') }}">Блог</a></li>
+                                    <li><a href="{{ route('blog.index') }}">Блог</a></li>
 
                                     @foreach($categoryPath as $category)
-                                        <li><a href="{{ route('blog_category.index', $category->slug) }}">{{ $category->title }}</a></li>
+                                        <li><a href="{{ route('blog.index', $category->slug) }}">{{ $category->title }}</a></li>
                                     @endforeach
                                     @if($item)
-                                        <li><a href="{{ route('blog_category.index', $item->slug) }}">{{ $item->title }}</a></li>
+                                        <li><a href="{{ route('blog.index', $item->slug) }}">{{ $item->title }}</a></li>
                                     @endif
                                 </ul>
                             </div>
@@ -100,7 +100,7 @@
                                             @include('blog.post_item')
                                         @endforeach
                                     </div>
-                                    <a href="{{ route('blog_category.index') }}" class="all_loock">Смотреть все</a>
+                                    <a href="{{ route('blog.index') }}" class="all_loock">Смотреть все</a>
                                 </div>
                             @endif
                         </div>

@@ -22,8 +22,8 @@ Route::prefix('new-order')->group(function () {
 
 
 Route::prefix('blog')->group(function () {
-    Route::get('/{slug?}', [\App\Http\Controllers\Blog\BlogCategoryController::class, 'index'])->name('blog_category.index');
-    Route::get('/post/{slug}', [\App\Http\Controllers\Blog\BlogController::class, 'index'])->name('blog.index');
+    Route::get('/{slug?}', [\App\Http\Controllers\Blog\BlogController::class, 'index'])->name('blog.index');
+    Route::get('/post/{slug}', [\App\Http\Controllers\Blog\BlogController::class, 'show'])->name('blog.show');
 });
 
 Route::get('/faq', [\App\Http\Controllers\FAQ\FAQController::class, 'index'])->name('faq.index');

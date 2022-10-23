@@ -28,10 +28,10 @@
                                     <li><a href="https://studentik.online/"><i
                                                 class="fa fa-home"></i></a></li>
 
-                                    <li><a href="{{ route('blog_category.index') }}">Блог</a></li>
+                                    <li><a href="{{ route('blog.index') }}">Блог</a></li>
 
                                     @foreach($categoryPath as $category)
-                                        <li><a href="{{ route('blog_category.index', $category->slug) }}">{{ $category->title }}</a></li>
+                                        <li><a href="{{ route('blog.index', $category->slug) }}">{{ $category->title }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -78,14 +78,14 @@
                                 @foreach($blogPosts as $blogPost)
                                 <div class="article">
                                     <div class="left_fon">
-                                        <a href="{{ route('blog.index', $blogPost->slug) }}">
+                                        <a href="{{ route('blog.show', $blogPost->slug) }}">
                                             <div class="img_r"
                                                  style="background-image: url('{{ thumbnail($blogPost->image, 400) }}')"></div>
                                         </a>
                                     </div>
                                     <div class="rigt_content">
                                         <div class="hesde">
-                                            <a href="{{ route('blog.index', $blogPost->slug) }}">
+                                            <a href="{{ route('blog.show', $blogPost->slug) }}">
                                                 <div class="title">{{ $blogPost->title }}</div>
                                             </a>
                                             <div class="extention">

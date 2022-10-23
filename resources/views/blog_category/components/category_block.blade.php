@@ -3,7 +3,7 @@
     <div class="list_category_blog">
         @foreach($blogCategories as $blogCategory)
             <div class="item">
-                <a href="{{ route('blog_category.index', $blogCategory->slug) }}">
+                <a href="{{ route('blog.index', $blogCategory->slug) }}">
                     <div class="img_svg">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"
                              width="40px" height="40px">
