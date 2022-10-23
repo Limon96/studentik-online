@@ -12,25 +12,25 @@
     <title>@yield('title')</title>
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">
-
+    <link rel="shortcut icon" href="{{ asset('image/catalog/favicon-32x32.png') }}" type="image/x-icon">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <meta property="vk:image" content="https://studentik.online/new-order/img/logo_razmetki.png" />
+    <meta property="vk:image" content="{{ asset('catalog/assets/img/polez.webp') }}" />
 
     <!-- Facebook Meta Tags -->
     <meta property="og:type" content="article">
     <meta property="og:title" content="@yield('title')">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:image" content="https://studentik.online/new-order/img/logo_razmetki.png" />
+    <meta property="og:image" content="{{ asset('catalog/assets/img/polez.webp') }}" />
     <meta property="og:description" content="@yield('description')" />
-    <meta property="og:image:secure_url" content="https://studentik.online/new-order/img/logo_razmetki.png">
+    <meta property="og:image:secure_url" content="{{ asset('catalog/assets/img/polez.webp') }}">
 
     <!-- Twitter Meta Tags -->
     <meta property="twitter:domain" content="{{ request()->getHost() }}">
     <meta property="twitter:url" content="{{ url()->current() }}">
     <meta name="twitter:title" content="@yield('title')">
     <meta name="twitter:description" content="@yield('description')">
-    <meta name="twitter:image" content="https://studentik.online/new-order/img/logo_razmetki.png">
+    <meta name="twitter:image" content="{{ asset('catalog/assets/img/polez.webp') }}">
 
     <link rel="stylesheet" href="{{ asset('catalog/assets/css/font_awesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('catalog/assets/css/select2.css?v=' . $v) }}">
