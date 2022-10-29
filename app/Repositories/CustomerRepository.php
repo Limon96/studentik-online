@@ -26,8 +26,8 @@ class CustomerRepository extends CoreRepository
             ->orderBy('date_added');
 
         $emails = [];
-        if (isset($filter_data['emails']) && $filter_data['emails']) {
-            $emails = explode(',', $filter_data['emails']);
+        if (isset($filter_data['email']) && $filter_data['email']) {
+            $emails = explode(',', $filter_data['email']);
 
             $emails = array_map(function ($email) {
                 return trim($email);
