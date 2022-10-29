@@ -35,7 +35,7 @@ class CustomerRepository extends CoreRepository
         }
 
         if ($emails) {
-            $query->whereIn('emails', $emails);
+            $query->whereIn('email', $emails);
 
         } else {
 
