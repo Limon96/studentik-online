@@ -58,7 +58,10 @@
 <div class="menu">
     <div class="container">
         <div class="logo">
-            <img src="{{ asset('img/logo.webp') }}" alt="logo">
+            <a href="https://studentik.online/">
+                <img src="{{ asset('img/logo.webp') }}" alt="logo">
+            </a>
+
         </div>
     </div>
 
