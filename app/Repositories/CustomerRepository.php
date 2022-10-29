@@ -25,20 +25,36 @@ class CustomerRepository extends CoreRepository
             ->where('setting_email_notify', 1)
             ->orderBy('date_added');
 
-        if (isset($filter_data['filter_only_admin']) && $filter_data['filter_only_admin'] == 1) {
-            $query->where('is_admin', 1);
+        $emails = [];
+        if (isset($filter_data['emails']) && $filter_data['emails']) {
+            $emails = explode(',', $filter_data['emails']);
+
+            $emails = array_map(function ($email) {
+                return trim($email);
+            }, $emails);
         }
 
-        if (isset($filter_data['lack_activity']) && $filter_data['lack_activity'] > -1) {
-            $days = (int)$filter_data['lack_activity'];
+        if ($emails) {
+            $query->whereIn('emails', $emails);
 
-            $query
-                ->where('last_seen_at', '>', now()->subDays($days)->setTime(0, 0, 0)->toDateTimeString())
-                ->where('last_seen_at', '<', now()->subDays($days - 1)->setTime(0, 0, 0)->toDateTimeString());
-        }
+        } else {
 
-        if (isset($filter_data['filter_customer_group']) && in_array([1,2], $filter_data['filter_customer_group'])) {
-            $query->where('customer_group_id', '=', (int)$filter_data['filter_customer_group']);
+            if (isset($filter_data['filter_only_admin']) && $filter_data['filter_only_admin'] == 1) {
+                $query->where('is_admin', 1);
+            }
+
+            if (isset($filter_data['lack_activity']) && $filter_data['lack_activity'] > -1) {
+                $days = (int)$filter_data['lack_activity'];
+
+                $query
+                    ->where('last_seen_at', '>', now()->subDays($days)->setTime(0, 0, 0)->toDateTimeString())
+                    ->where('last_seen_at', '<', now()->subDays($days - 1)->setTime(0, 0, 0)->toDateTimeString());
+            }
+
+            if (isset($filter_data['filter_customer_group']) && in_array([1,2], $filter_data['filter_customer_group'])) {
+                $query->where('customer_group_id', '=', (int)$filter_data['filter_customer_group']);
+            }
+
         }
 
         return $query->get();

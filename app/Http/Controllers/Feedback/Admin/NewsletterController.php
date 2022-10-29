@@ -35,27 +35,14 @@ class NewsletterController extends Controller
             $template = view($data['template'])->render();
         }
 
-        if ($data['email']) {
-            $emails = explode(',', $data['email']);
+        $mailDto = new MailDto();
+        $mailDto->subject = $data['subject'];
+        $mailDto->body = $template;
+        $mailDto->className = Newsletter::class;
 
-            foreach ($emails as $email) {
-                $email = trim($email);
-
-                Mail::to($email)->send(
-                    new Newsletter($data['subject'], $template)
-                );
-            }
-
-        } else {
-            $mailDto = new MailDto();
-            $mailDto->subject = $data['subject'];
-            $mailDto->body = $template;
-            $mailDto->className = Newsletter::class;
-
-            $job = new MailingJob($mailDto, $data);
-            $job->delay(60);
-            $this->dispatch($job);
-        }
+        $job = new MailingJob($mailDto, $data);
+        $job->delay(60);
+        $this->dispatch($job);
 
         return redirect()
             ->route('admin.newsletter.index')
