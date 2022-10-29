@@ -37,12 +37,15 @@ class MailingJob implements ShouldQueue
     {
         $users = app(CustomerRepository::class)->forMailing($this->filterUsers);
 
-        foreach ($users as $user) {
-            dispatch(
-                new SendMailJob($user, $this->mailDto)
-            );
-            sleep(25);
-        }
+        $i = 0;
+        $time = 24;
 
+        foreach ($users as $user) {
+            $job = new SendMailJob($user, $this->mailDto);
+            $job->delay($time * $i);
+            dispatch($job);
+
+            $i++;
+        }
     }
 }
