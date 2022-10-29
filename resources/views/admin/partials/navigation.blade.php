@@ -43,5 +43,23 @@
                 @endif
             </ul>
         </li>
+
+        <li class="nav-item">
+            <a href="#" class="nav-link with-sub">
+                <i class="icon ion-ios-email-outline"></i>
+                <span>Обратная связь</span>
+            </a>
+            <ul class="nav-sub">
+                @if(\Illuminate\Support\Facades\Route::has('admin.feedback.index'))
+                    <li class="nav-item"><a href="{{ route('admin.feedback.index') }}" class="nav-link">Заявки</a></li>
+                @endif
+                @if(\Illuminate\Support\Facades\Route::has('admin.newsletter.index'))
+                    <li class="nav-item"><a href="{{ route('admin.newsletter.index') }}" class="nav-link">Рассылка</a></li>
+                @endif
+                @if(\Illuminate\Support\Facades\Route::has('admin.sent_emails.index'))
+                    <li class="nav-item"><a href="{{ route('admin.sent_emails.index') }}" class="nav-link">Отправленные письма</a></li>
+                @endif
+            </ul>
+        </li>
     </ul>
 </div>

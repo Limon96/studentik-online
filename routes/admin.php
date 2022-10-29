@@ -28,6 +28,9 @@ Route::prefix('_manager')->group(function() {
                 'faq' => \App\Http\Controllers\FAQ\Admin\FAQController::class,
                 'faq_category' => \App\Http\Controllers\FAQ\Admin\FAQCategoryController::class,
             ]);
+
+            Route::get('newsletter', [\App\Http\Controllers\Feedback\Admin\NewsletterController::class, 'index'])->name('newsletter.index');
+            Route::post('newsletter', [\App\Http\Controllers\Feedback\Admin\NewsletterController::class, 'send'])->name('newsletter.send');
         });
     });
 });

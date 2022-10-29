@@ -35,6 +35,7 @@ class BlogController extends Controller {
             $blogCategoriesIds = $blogCategoryRepository->getChildrenIds($item);
 
             $categoryPath = $this->getFullPathCategories($item);
+
             $blogPosts = $blogPostRepository->fromCategory($blogCategoriesIds, 10);
         } else {
             $blogPosts = $blogPostRepository->paginate(10);

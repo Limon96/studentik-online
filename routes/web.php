@@ -27,3 +27,7 @@ Route::prefix('blog')->group(function () {
 });
 
 Route::get('/faq', [\App\Http\Controllers\FAQ\FAQController::class, 'index'])->name('faq.index');
+
+Route::get('/unsubscribe', function () {
+    return '';
+})->name('unsubscribe');
