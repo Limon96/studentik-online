@@ -1112,7 +1112,9 @@
 
 
 
-
+    .list_speeker {
+        height: calc(100% - 150px);
+    }
 
 
 
@@ -1272,46 +1274,6 @@
         width: 100%;
         margin-bottom: 10px;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2091,7 +2053,9 @@
 
 
 
-
+    .list_speeker {
+        height: calc(100% - 230px);
+    }
 
 
 
@@ -3791,6 +3755,13 @@
         justify-content: flex-start;
     }
 
+    .chat_content .header_chat .time_life span{
+        font-size: 12px;
+    }
+
+
+
+
 }
 
 
@@ -3848,6 +3819,8 @@
         display: block;
     }
 
-
+    .list_speeker {
+        height: calc(100% - 230px);
+    }
 
 }

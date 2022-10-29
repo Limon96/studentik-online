@@ -32,7 +32,7 @@ $( document ).ready(function() {
 function givePadding(){
     console.log('givePadding()');
     var getvalue = $('#message-form.footer_chat').css("height");
-    $('#downChat.content_chat').css("padding-bottom", getvalue );
+  //  $('#downChat.content_chat').css("padding-bottom", getvalue );
 }
 
 
