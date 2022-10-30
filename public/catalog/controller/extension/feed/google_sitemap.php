@@ -32,6 +32,20 @@ class ControllerExtensionFeedGoogleSitemap extends Controller {
             $output .= $this->getUrl(HTTPS_SERVER . 'new-order/' . $row['slug'], strtotime($row['updated_at']));
         }
 
+        // BlogCategories
+        $blog_categories = $this->getBlogCategories();
+
+        foreach ($blog_categories as $row) {
+            $output .= $this->getUrl(HTTPS_SERVER . 'blog/' . $row['slug'], strtotime($row['updated_at']));
+        }
+
+        // BlogPosts
+        $blog_posts = $this->getBlogPosts();
+
+        foreach ($blog_posts as $row) {
+            $output .= $this->getUrl(HTTPS_SERVER . 'blog/post/' . $row['slug'], strtotime($row['updated_at']));
+        }
+
         // Services
         $output .= $this->getUrl($this->url->link('services/services'), time());
 
@@ -103,6 +117,38 @@ class ControllerExtensionFeedGoogleSitemap extends Controller {
         );
 
         $result = $db->query("SELECT id, slug, updated_at FROM landings WHERE status = 1 ORDER BY created_at DESC");
+
+        return $result->rows;
+    }
+
+    protected function getBlogPosts()
+    {
+        $db = new DB(
+            L_DB_CONNECTION,
+            L_DB_HOST,
+            L_DB_USERNAME,
+            L_DB_PASSWORD,
+            L_DB_DATABASE,
+            L_DB_PORT
+        );
+
+        $result = $db->query("SELECT id, slug, updated_at FROM blog_posts WHERE status = 1 ORDER BY created_at DESC");
+
+        return $result->rows;
+    }
+
+    protected function getBlogCategories()
+    {
+        $db = new DB(
+            L_DB_CONNECTION,
+            L_DB_HOST,
+            L_DB_USERNAME,
+            L_DB_PASSWORD,
+            L_DB_DATABASE,
+            L_DB_PORT
+        );
+
+        $result = $db->query("SELECT id, slug, updated_at FROM blog_categories WHERE status = 1 ORDER BY created_at DESC");
 
         return $result->rows;
     }
