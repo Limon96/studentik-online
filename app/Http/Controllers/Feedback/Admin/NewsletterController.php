@@ -41,7 +41,7 @@ class NewsletterController extends Controller
         $mailDto->className = Newsletter::class;
 
         $job = new MailingJob($mailDto, $data);
-        $job->delay(60);
+        $job->delay(10);
         $this->dispatch($job);
 
         return redirect()

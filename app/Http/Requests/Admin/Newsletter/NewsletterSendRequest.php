@@ -26,7 +26,7 @@ class NewsletterSendRequest extends FormRequest
         return [
             'email' => '',
             'lack_activity' => '',
-            'customer_group_id' => '',
+            'filter_customer_group' => '',
             'template' => '',
             'subject' => 'required|min:3|max:256',
             'body' => '',

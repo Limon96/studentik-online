@@ -36,7 +36,6 @@ class CustomerRepository extends CoreRepository
 
         if ($emails) {
             $query->whereIn('email', $emails);
-
         } else {
 
             if (isset($filter_data['filter_only_admin']) && $filter_data['filter_only_admin'] == 1) {
@@ -51,10 +50,9 @@ class CustomerRepository extends CoreRepository
                     ->where('last_seen_at', '<', now()->subDays($days - 1)->setTime(0, 0, 0)->toDateTimeString());
             }
 
-            if (isset($filter_data['filter_customer_group']) && in_array([1,2], $filter_data['filter_customer_group'])) {
+            if (isset($filter_data['filter_customer_group']) && in_array($filter_data['filter_customer_group'], [1,2])) {
                 $query->where('customer_group_id', '=', (int)$filter_data['filter_customer_group']);
             }
-
         }
 
         return $query->get();
