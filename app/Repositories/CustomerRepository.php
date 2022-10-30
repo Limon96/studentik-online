@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Customer as Model;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class CatalogAttributeRepository.
@@ -78,8 +79,17 @@ class CustomerRepository extends CoreRepository
                 'telephone',
                 'rating',
                 'timezone',
-            ])
+                'new_rating' => function ($query){
+                    return $query
+                        ->from('customer_rating', 'cr')
+                        ->selectRaw('SUM(cr.rating) as new_rating')
+                        ->where('cr.customer_id', '=', DB::raw('customer.customer_id'))
+                        ->where('date_added', '>', (time() - 604800));
+                }
+             ])
             ->with(['rating', 'reviews'])
+            ->where('customer_group_id', 2)
+            ->orderByDesc('new_rating')
             ->orderByDesc('rating')
             ->limit($limit)
             ->get();
