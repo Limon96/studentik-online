@@ -1,12 +1,4 @@
 
-    <div style="background:#ffffff;background-color:#ffffff;Margin:0px auto;max-width:600px">
-        <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
-               style="background:#ffffff;background-color:#ffffff;width:100%">
-            <tbody>
-            <tr>
-                <td style="direction:ltr;font-size:0px;padding:0;text-align:center;vertical-align:top">
-                    <div class="m_2493251215983378131mj-column-per-100"
-                         style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%">
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation"
                                style="vertical-align:top" width="100%">
                             <tbody>
