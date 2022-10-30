@@ -38,25 +38,30 @@
     <div class="sh-headpanel-left">
 
         <!-- START: HIDDEN IN MOBILE -->
-        <a href="" class="sh-icon-link">
+        <a href="{{ route('home') }}" class="sh-icon-link" target="_blank">
+            <div>
+                <i class="icon ion-ios-home-outline"></i>
+                <span>Сайт</span>
+            </div>
+        </a>
+       {{-- <a href="{{ route('admin.file_manager') }}" class="sh-icon-link">
             <div>
                 <i class="icon ion-ios-folder-outline"></i>
-                <span>Directory</span>
+                <span>Файлы</span>
             </div>
-        </a>
-        <a href="" class="sh-icon-link">
-            <div>
-                <i class="icon ion-ios-calendar-outline"></i>
-                <span>Events</span>
-            </div>
-        </a>
-        <a href="" class="sh-icon-link">
+        </a>--}}
+        {{-- <a href="" class="sh-icon-link">
+             <div>
+                 <i class="icon ion-ios-calendar-outline"></i>
+                 <span>Events</span>
+             </div>
+         </a>--}}
+        {{--<a href="{{ route('admin.setting.index') }}" class="sh-icon-link">
             <div>
                 <i class="icon ion-ios-gear-outline"></i>
-                <span>Settings</span>
+                <span>Настройки</span>
             </div>
-        </a>
-        <!-- END: HIDDEN IN MOBILE -->
+        </a>--}}
 
         <!-- START: DISPLAYED IN MOBILE ONLY -->
         <div class="dropdown dropdown-app-list">
@@ -66,29 +71,38 @@
             <div class="dropdown-menu">
                 <div class="row no-gutters">
                     <div class="col-4">
-                        <a href="" class="dropdown-menu-link">
+
+                        <a href="{{ route('home') }}" class="dropdown-menu-link" target="_blank">
                             <div>
-                                <i class="icon ion-ios-folder-outline"></i>
-                                <span>Directory</span>
+                                <i class="icon ion-ios-home-outline"></i>
+                                <span>Сайт</span>
                             </div>
                         </a>
-                    </div><!-- col-4 -->
-                    <div class="col-4">
+                    </div>
+                    {{--<div class="col-4">
+                        <a href="{{ route('admin.file_manager') }}" class="dropdown-menu-link">
+                            <div>
+                                <i class="icon ion-ios-folder-outline"></i>
+                                <span>Файлы</span>
+                            </div>
+                        </a>
+                    </div>--}}<!-- col-4 -->
+                    {{--<div class="col-4">
                         <a href="" class="dropdown-menu-link">
                             <div>
                                 <i class="icon ion-ios-calendar-outline"></i>
                                 <span>Events</span>
                             </div>
                         </a>
-                    </div><!-- col-4 -->
-                    <div class="col-4">
-                        <a href="" class="dropdown-menu-link">
+                    </div>--}}<!-- col-4 -->
+                    {{--<div class="col-4">
+                        <a href="{{ route('admin.setting.index') }}" class="dropdown-menu-link">
                             <div>
                                 <i class="icon ion-ios-gear-outline"></i>
-                                <span>Settings</span>
+                                <span>Настройки</span>
                             </div>
                         </a>
-                    </div><!-- col-4 -->
+                    </div>--}}<!-- col-4 -->
                 </div><!-- row -->
             </div><!-- dropdown-menu -->
         </div><!-- dropdown -->

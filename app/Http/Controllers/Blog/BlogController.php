@@ -76,5 +76,28 @@ class BlogController extends Controller {
         ));
     }
 
+    public function preview(string $slug)
+    {
+        $blogPostRepository = app(BlogPostRepository::class);
+
+        $item = $blogPostRepository->findSlugByPreview($slug);
+
+        if (!$item) {
+            return abort(404);
+        }
+
+        $categoryPath = $this->getFullPathCategories($item->category);
+
+        $item->addView();
+
+        $popularPosts = $blogPostRepository->popular(5, $item->id);
+
+        return view('blog.index', compact(
+            'item',
+            'categoryPath',
+            'popularPosts'
+        ));
+    }
+
 
 }

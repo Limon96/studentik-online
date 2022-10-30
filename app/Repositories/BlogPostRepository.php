@@ -33,6 +33,19 @@ class BlogPostRepository extends CoreRepository
         return $item;
     }
 
+    public function findSlugByPreview($slug)
+    {
+        $item = $this->startConditions()
+            ->whereSlug($slug)
+            ->first();
+
+        if (is_null($item)) {
+            return null;
+        }
+
+        return $item;
+    }
+
     public function getEdit($id)
     {
         return $this->startConditions()->find($id);

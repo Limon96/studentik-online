@@ -63,14 +63,17 @@
                                     <td>{{ $item->created_at }}</td>
                                     <td>{{ $item->updated_at }}</td>
                                     <td>
-                                        <a href="{{ route('blog.index', $item->slug) }}" class="btn btn-sm btn-info" target="_blank"><i class="fa fa-eye"></i></a>
-                                        <a href="{{ route('admin.blog.edit', $item->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                        <a href="{{ route('blog.show', $item->slug) }}" title="Перейти к статье" class="btn btn-sm btn-info" target="_blank"><i class="fa fa-eye"></i></a>
+                                        <a href="{{ route('blog.preview', $item->slug) }}" title="Предпросмотр статьи" class="btn btn-sm btn-indigo" target="_blank"><i class="fa fa-search"></i></a>
+                                        <a href="{{ route('admin.blog.edit', $item->id) }}" title="Редактировать" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
                                         <form method="post" class="form-delete"
                                               action="{{ route('admin.blog.destroy', $item->id) }}">
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit"
-                                                    class="btn btn-sm btn-danger btn-delete point_c" onclick="return confirm('Действительно хотите удалить запись?');"><i class="fa fa-trash"></i></button>
+                                                    class="btn btn-sm btn-danger btn-delete point_c"
+                                                    title="Удалить статью"
+                                                    onclick="return confirm('Действительно хотите удалить запись?');"><i class="fa fa-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>
