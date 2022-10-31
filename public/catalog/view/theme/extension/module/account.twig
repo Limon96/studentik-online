@@ -14,9 +14,9 @@
 
 {% if customer_group_id == 1 %}
     <div class="wrap_left ">
-
+        {% if show_create_order == 0 %}
         <a href="{{ order_add }}" class="zakaz_go">Разместить заказ</a>
-
+        {% endif %}
         <ul>
             <li>
 
@@ -97,7 +97,10 @@
 {% else %}
     <div class="wrap_left ">
 
+
+        {% if show_create_order == 0 %}
         <a href="/" class="zakaz_go">Разместить заказ</a>
+        {% endif %}
 
     </div>
     <div class="preim_siding clearfix">

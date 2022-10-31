@@ -18,6 +18,10 @@ class ControllerExtensionModuleAccount extends Controller
         $data['order_add'] = $this->url->link('order/order/add');
         $data['promo_code']        = $this->url->link('account/promo_code');
 
+
+        $data['show_create_order'] = (bool)preg_match('/(\/create-order).*/i', $this->request->server['REQUEST_URI']);
+
+
         if ($this->customer->isLogged()) {
 
             if ($this->customer->getGroupId() == 1) {
