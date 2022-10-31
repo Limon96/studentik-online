@@ -40,9 +40,5 @@
 <script>
     $('#column-right').find('.worker_right').append('<div class="clearfix worker_right blog-block" />');
 
-    $('.blog-block').load('/blog', function (response) {
-        $(this).html(
-            $(response).find('#column-right .worker_right').eq(1).html()
-        );
-    });
+    $('.blog-block').load('/blog #column-right .worker_right:nth-child(3) > *');
 </script>
