@@ -14,7 +14,7 @@ $( document ).ready(function() {
         }
     }
 
-    setTimeout(flex3, 2000);
+    /*setTimeout(flex3, 2000);*/
 
 });
 
