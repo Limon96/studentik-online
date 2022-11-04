@@ -162,6 +162,10 @@ class ControllerAccountLogin extends Controller
             $data['redirect'] = $this->session->data['redirect'];
 
             unset($this->session->data['redirect']);
+        } elseif (isset($this->request->server['HTTP_REFERER'])) {
+
+            $data['redirect'] = $this->request->server['HTTP_REFERER'];
+
         } else {
             $data['redirect'] = '';
         }
@@ -242,6 +246,10 @@ class ControllerAccountLogin extends Controller
 
                 if (isset($this->session->data['order'])) {
                     $json['redirect'] = $this->url->link('order/order/add');
+                }
+
+                if (isset($this->request->post['redirect'])) {
+                    $json['redirect'] = $this->request->post['redirect'];
                 }
 
             } else {
