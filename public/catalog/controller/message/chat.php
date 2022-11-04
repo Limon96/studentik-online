@@ -453,7 +453,7 @@ class ControllerMessageChat extends Controller {
             $chat_id = 0;
         }
 
-        $limit = 5;
+        $limit = 20;
 
         if (isset($this->request->post['page'])) {
             $page = (int)$this->request->post['page'];
