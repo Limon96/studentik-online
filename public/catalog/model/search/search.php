@@ -23,7 +23,7 @@ class ModelSearchSearch extends Model
         }
 
         if (isset($data['search_order']) && $data['search_order']) {
-            $tables[] = "SELECT order_id AS id, 'order' AS type, title, description FROM `" . DB_PREFIX . "order` o WHERE o.order_status_id = 1";
+            $tables[] = "SELECT order_id AS id, 'order' AS type, title, description FROM `" . DB_PREFIX . "order` o WHERE o.order_status_id NOT IN (8)";
         }
 
         if (count($tables) > 0) {

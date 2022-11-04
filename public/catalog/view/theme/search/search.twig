@@ -86,8 +86,9 @@
                                                     <p>{{ result.description }}</p>
                                                     <ul class="pagination_s clearfix">
                                                         <li>{{ result.section }}</li>
+                                                        <li>{{ result.section }}</li>
                                                         <li>{{ result.subject }}</li>
-                                                        <li>{{ result.work_type }}</li>
+                                                        <li>{{ result.order_status }}</li>
                                                     </ul>
                                                 </div>
                                             {% endif %}
@@ -133,5 +134,30 @@
         }
         return $('#page-search').attr('action') + url;
     }
+
+    function scrollTracking(){
+        if (!$('.show_more').offset()) {
+            return;
+        }
+
+        var wt = $(window).scrollTop();
+        var wh = $(window).height();
+        var et = $('.show_more').offset().top;
+        var eh = $('.show_more').outerHeight();
+        var dh = $(document).height();
+
+        if (wt + wh >= et || wh + wt == dh || eh + et < wh){
+
+            $('.show_more').trigger('click');
+        }
+    }
+
+    $(window).scroll(function(){
+        scrollTracking();
+    });
+
+    $(document).ready(function(){
+        scrollTracking();
+    });
 </script>
 {{ footer }}
