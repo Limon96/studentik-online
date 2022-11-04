@@ -229,6 +229,11 @@ class ControllerAccountRegister extends Controller {
 			$this->error['email'] = $this->language->get('error_email');
 		}
 
+        $this->load->model('tool/check_email');
+        if(!$this->model_tool_check_email->execute($this->request->post['email'])) {
+            $this->error['email'] = "Email не существует";
+        }
+
         if ($this->checkDomainEmailInBlackList($this->request->post['email'])) {
             $this->error['warning'] = $this->language->get('error_email_black_list');
         }
@@ -284,6 +289,11 @@ class ControllerAccountRegister extends Controller {
             $this->error['email'] = $this->language->get('error_email');
         }
 
+        $this->load->model('tool/check_email');
+        if(!$this->model_tool_check_email->execute($this->request->post['email'])) {
+            $this->error['email'] = "Email не существует";
+        }
+
         if ($this->checkDomainEmailInBlackList($this->request->post['email'])) {
             $this->error['warning'] = $this->language->get('error_email_black_list');
         }
@@ -307,6 +317,11 @@ class ControllerAccountRegister extends Controller {
 
         if ((utf8_strlen($this->request->post['email']) > 96) || !filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
             $this->error['email'] = $this->language->get('error_email');
+        }
+
+        $this->load->model('tool/check_email');
+        if(!$this->model_tool_check_email->execute($this->request->post['email'])) {
+            $this->error['email'] = "Email не существует";
         }
 
         if ($this->checkDomainEmailInBlackList($this->request->post['email'])) {

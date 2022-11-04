@@ -111,6 +111,9 @@
                     method : 'post',
                     data : $('#guest-order-form input, #guest-order-form select'),
                     dataType : 'json',
+                    beforeSend : function () {
+                        $('#guest-order').btnLoader('on');
+                    },
                     success : function (json) {
                         if (json['error_email']) {
                             $('#guest-order-form input[name=email]').before('<div class="has-error">' + json['error_email'] + '</div>');
@@ -131,7 +134,7 @@
                         if (json['error_warning']) {
                             $('#guest-order-form').before('<div class="has-error">' + json['error_warning'] + '</div>');
                         }
-
+                        $('#guest-order').btnLoader('off');
                         if (json['redirect']) {
                             location.href = json['redirect'];
                         }

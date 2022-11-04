@@ -59,7 +59,7 @@
                                         <i class="fas fa-lock"></i>
                                         <input type="password" name="password" placeholder="{{ entry_password }}">
                                     </div>
-                                    <div class="includ clearfix">
+                                    <div class="includ clearfix btn-loader-wrapper">
                                         <input type="hidden" name="redirect" value="{{ redirect }}">
                                         <button type="submit">{{ button_login }}</button>
                                     </div>
@@ -97,7 +97,7 @@
 
                                         </div>
                                     {% endif %}
-                                    <div class="includ clearfix">
+                                    <div class="includ clearfix btn-loader-wrapper">
                                         <input type="hidden" name="agree" value="1">
                                         <button type="submit">{{ button_register }}</button>
                                     </div>
@@ -113,7 +113,7 @@
                                     <i class="fas fa-envelope"></i>
                                     <input type="text" name="email" placeholder="{{ entry_email }}">
                                 </div>
-                                <div class="includ clearfix">
+                                <div class="includ clearfix btn-loader-wrapper">
                                     <button type="submit">Восстановить</button>
                                 </div>
                             </form>
@@ -145,7 +145,11 @@
             method : $(this).attr('method'),
             data : $(this).serialize(),
             dataType : 'json',
+            beforeSend : function () {
+                $('#form-login button[type=submit]').btnLoader('on');
+            },
             success : function (json) {
+                $('#form-login button[type=submit]').btnLoader('off');
                 if (json['error_warning']) {
                     $('#form-login').prepend('<span class="error">' + json['error_warning'] + '</span>');
                 }
@@ -183,19 +187,22 @@
                 method: $(this).attr('method'),
                 data: $(this).serialize(),
                 dataType: 'json',
+                beforeSend : function () {
+                    $('#form-register button[type=submit]').btnLoader('on');
+                },
                 success: function (json) {
-                    console.log(json);
+                    $('#form-register button[type=submit]').btnLoader('off');
                     if (json['error_warning']) {
-                        $('#form-register').prepend('<div class="alert alert-danger">' + json['error_warning'] + '</div>');
+                        $('#form-register').prepend('<div class="error">' + json['error_warning'] + '</div>');
                     }
                     if (json['error_email']) {
-                        $('#form-register').find('input[name=email]').after('<div class="alert alert-danger">' + json['error_email'] + '</div>');
+                        $('#form-register').find('input[name=email]').after('<div class="error">' + json['error_email'] + '</div>');
                     }
                     if (json['error_password']) {
-                        $('#form-register').find('input[name=password]').after('<div class="alert alert-danger">' + json['error_password'] + '</div>');
+                        $('#form-register').find('input[name=password]').after('<div class="error">' + json['error_password'] + '</div>');
                     }
                     if (json['error_customer_group_id']) {
-                        $('#form-register').find('input[name=customer_group_id]').parent().append('<div class="alert alert-danger">' + json['error_customer_group_id'] + '</div>');
+                        $('#form-register').find('input[name=customer_group_id]').parent().append('<div class="error">' + json['error_customer_group_id'] + '</div>');
                     }
                     if (json['success']) {
                         /*$('#form-register').prepend('<div class="alert alert-success">' + json['success'] + '</div>');*/
@@ -218,9 +225,13 @@
             method : $(this).attr('method'),
             data : $(this).serialize(),
             dataType : 'json',
+            beforeSend : function () {
+                $('#form-forgotten button[type=submit]').btnLoader('on');
+            },
             success : function (json) {
+                $('#form-forgotten button[type=submit]').btnLoader('off');
                 if (json['error_warning']) {
-                    $('#form-forgotten').prepend('<div class="alert alert-danger">' + json['error_warning'] + '</div>');
+                    $('#form-forgotten').prepend('<div class="error">' + json['error_warning'] + '</div>');
                 }
                 if (json['success']) {
                     $('#form-forgotten').prepend('<div class="alert alert-success">' + json['success'] + '</div>');
