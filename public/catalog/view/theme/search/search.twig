@@ -30,15 +30,15 @@
                                     </div>
                                     <div class="variant_search clearfix">
                                         <label class="container_ch"> Аккаунты
-                                            {% if search_customer %}
-                                            <input type="checkbox" name="search_customer" value="1" checked>
+                                            {% if search_customer == 1 %}
+                                                <input type="checkbox" name="search_customer" value="1" checked>
                                             {% else %}
-                                            <input type="checkbox" name="search_customer" value="1">
+                                                <input type="checkbox" name="search_customer" value="1">
                                             {% endif %}
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="container_ch"> Заказы
-                                            {% if search_order %}
+                                            {% if search_order == 1 %}
                                                 <input type="checkbox" name="search_order" value="1" checked>
                                             {% else %}
                                                 <input type="checkbox" name="search_order" value="1">
@@ -51,25 +51,51 @@
 
                             <div class="results clearfix">
                                 {% if results %}
-                                {% for result in results %}
-                                {% if result.type == 'customer' %}
-                                    <div class="item_s">
-                                        <h4>{{ result.title }}</h4>
-                                        <a href="{{ result.href }}"><img src="{{ result.image }}" alt="{{ result.title }}"></a>
-                                        <p>{% if result.online %}online{% endif %}</p>
+                                    <div class="page-{{ page }}">
+                                        {% for result in results %}
+                                            {% if result.type == 'customer' %}
+                                                {% set customer = result %}
+                                                <div class="item_s">
+                                                    <div class="img_face clearfix">
+                                                        <a href="{{ result.href }}"><img src="{{ result.image }}" alt="{{ result.login }}"></a>
+                                                        {% if result.online %}<span></span>{% endif %}
+                                                    </div>
+                                                    <div class="info_worker clearfix">
+                                                        <div class="lit_hed clearfix">
+                                                            <a href="{{ customer.href }}">{{ result.login }}</a>
+                                                            {% if result.pro %}<span class="premium">PREMIUM</span>{% endif %}
+                                                        </div>
+                                                        <div class="lit_foot clearfix">
+                                                            <div class="enter clearfix">
+                                                                <span class="name">{{ text_rating }}</span>
+                                                                <span class="rating">{{ customer.rating }}</span>
+                                                                {% if result.new_rating %}<span class="bonus">+{{ result.new_rating }}</span>{% endif %}
+                                                            </div>
+                                                            <div class="enter_like clearfix">
+                                                                <img src="../catalog/assets/img/icons/like.svg">
+                                                                <span class="like">{{ result.total_reviews_positive }}</span>
+                                                                <img src="../catalog/assets/img/icons/dislike.svg">
+                                                                <span class="dislike">{{ result.total_reviews_negative }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% elseif result.type == 'order' %}
+                                                <div class="item_s">
+                                                    <a href="{{ result.href }}"><h4>{{ result.title }}</h4></a>
+                                                    <p>{{ result.description }}</p>
+                                                    <ul class="pagination_s clearfix">
+                                                        <li>{{ result.section }}</li>
+                                                        <li>{{ result.subject }}</li>
+                                                        <li>{{ result.work_type }}</li>
+                                                    </ul>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% if total == limit %}
+                                            <button class="show_more" onclick="loadMore({{ page + 1 }}, this);">Показать ещё</button>
+                                        {% endif %}
                                     </div>
-                                {% elseif result.type == 'order' %}
-                                    <div class="item_s">
-                                        <a href="{{ result.href }}"><h4>{{ result.title }}</h4></a>
-                                        <p>{{ result.description }}</p>
-                                        <ul class="pagination_s clearfix">
-                                            <li>{{ result.section }}</li>
-                                            <li>{{ result.subject }}</li>
-                                            <li>{{ result.work_type }}</li>
-                                        </ul>
-                                    </div>
-                                {% endif %}
-                                {% endfor %}
                                 {% else %}
                                     Поиск не дал результатов
                                 {% endif %}
@@ -86,30 +112,26 @@
 <script type="text/javascript">
     $(document).on('submit', '#page-search', function(e) {
         e.preventDefault();
-
+        location.href = searchUrl();
+    });
+    function loadMore(page, button) {
+        $(button).remove();
+        $('.results').append('<div class="page-' + page + '"><div class="btn-loader"></div></div>');
+        $('.results .page-' + page).load(searchUrl() + '&page=' + page + ' .results > .page-' + page + ' > *');
+    }
+    function searchUrl() {
         var url = '';
-
-        var search = $(this).find('input[name=search]').val();
+        var search = $('#page-search').find('input[name=search]').val();
         if (search) {
             url += "&search=" + encodeURIComponent(search);
         }
-
-        var search_customer = $(this).find('input[name=search_customer]:checked').val();
-        if (search_customer) {
-            url += "&search_customer=" + encodeURIComponent(search_customer);
+        if ($('#page-search').find('input[name=search_customer]').prop('checked')) {
+            url += "&search_customer=1";
         }
-
-        var search_order = $(this).find('input[name=search_order]:checked').val();
-        if (search_order) {
-            url += "&search_order=" + encodeURIComponent(search_order);
+        if ($('#page-search').find('input[name=search_order]').prop('checked')) {
+            url += "&search_order=1";
         }
-
-        location.href = $(this).attr('action') + url;
-    });
+        return $('#page-search').attr('action') + url;
+    }
 </script>
 {{ footer }}
-
-
-
-
-
