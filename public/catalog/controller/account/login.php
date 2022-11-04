@@ -156,7 +156,11 @@ class ControllerAccountLogin extends Controller
         $data['text_agree'] = sprintf($this->language->get('text_agree'), $this->url->link('information/information', 'information_id=' . $this->config->get('config_user_id'), true), $this->url->link('information/information', 'information_id=' . $this->config->get('config_account_id'), true));
 
         // Added strpos check to pass McAfee PCI compliance test (http://forum.opencart.com/viewtopic.php?f=10&t=12043&p=151494#p151295)
-        if (isset($this->request->post['redirect']) && (strpos($this->request->post['redirect'], $this->config->get('config_url')) !== false || strpos($this->request->post['redirect'], $this->config->get('config_ssl')) !== false)) {
+        if (isset($this->request->server['HTTP_REFERER'])) {
+
+            $data['redirect'] = $this->request->server['HTTP_REFERER'];
+
+        } elseif (isset($this->request->post['redirect']) && (strpos($this->request->post['redirect'], $this->config->get('config_url')) !== false || strpos($this->request->post['redirect'], $this->config->get('config_ssl')) !== false)) {
             $data['redirect'] = $this->request->post['redirect'];
         } elseif (isset($this->session->data['redirect'])) {
             $data['redirect'] = $this->session->data['redirect'];
