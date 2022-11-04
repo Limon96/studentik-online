@@ -36,8 +36,9 @@ class ModelMessageModelsChat extends Model {
                 if (!$row['chat_id']) continue;
 
                 $customer_info = $this->model_account_customer->getCustomerInfo($row['chat_id']);
+                if (!$customer_info) continue;
 
-                if ($customer_info['image']) {
+                if (isset($customer_info['image']) && $customer_info['image']) {
                     $image = $this->model_tool_image->resize($customer_info['image'], 80, 80);
                 } else {
                     $image = $this->model_tool_image->resize('profile.png', 80, 80);
