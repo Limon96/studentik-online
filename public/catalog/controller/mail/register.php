@@ -53,6 +53,8 @@ class ControllerMailRegister extends Controller {
             $mail->send();
 
         } else {
+            $data['approval_link'] = $this->url->link('account/login');
+
             $mail = new Mail($this->config->get('config_mail_engine'));
             $mail->parameter = $this->config->get('config_mail_parameter');
             $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
@@ -65,7 +67,7 @@ class ControllerMailRegister extends Controller {
             $mail->setFrom($this->config->get('config_mail_smtp_sender_mail'));
             $mail->setSender(html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
             $mail->setSubject($this->language->get('text_subject'));
-            $mail->setHTML($this->load->view('mail/register_approval', $data));
+            $mail->setHTML($this->load->view('mail/register_not_approval', $data));
             $mail->send();
         }
 	}
