@@ -29,7 +29,7 @@
                         </svg>
                         <span>{{ $post->views }}</span>
                     </div>
-                    <div class="date"> {{ format_date($item->publish_at, 'full_datetime') }}</div>
+                    <div class="date"> {{ format_date($post->publish_at, 'full_datetime') }}</div>
                 </div>
             </div>
         </div>
