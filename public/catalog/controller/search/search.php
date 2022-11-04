@@ -72,7 +72,8 @@ class ControllerSearchSearch extends Controller
             $search = '';
         }
 
-        $data['results'] = array();
+        $data['results'] = [];
+        $results = [];
 
         if ($search) {
             $this->load->model('search/search');
@@ -87,7 +88,7 @@ class ControllerSearchSearch extends Controller
             ];
 
             $data['results'] = array();
-
+            dd($data);
             $results = $this->model_search_search->search($filter_data);
 
             if ($results) {
@@ -121,7 +122,7 @@ class ControllerSearchSearch extends Controller
         $data['search_order'] = $search_order;
         $data['page'] = $page;
         $data['limit'] = $this->limit;
-        $data['total'] = count($results);
+        $data['total'] = count($results ?? []);
         $data['action'] = $this->url->link('search/search');
 
         $data['column_left'] = $this->load->controller('common/column_left');
