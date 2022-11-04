@@ -88,7 +88,7 @@ class ControllerSearchSearch extends Controller
             ];
 
             $data['results'] = array();
-            dd($data);
+
             $results = $this->model_search_search->search($filter_data);
 
             if ($results) {
