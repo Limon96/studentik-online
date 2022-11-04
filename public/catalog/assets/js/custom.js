@@ -319,7 +319,7 @@ function connectHistory(server, ts) {
         success : function(json){
             if (json['history']) {
                 for (var h of json['history']) {
-                    /*console.log(h);*/
+                    console.log(h);
                     /*if (h['code'] == 'notification_new') {
 
                     }
