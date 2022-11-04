@@ -319,7 +319,7 @@ function connectHistory(server, ts) {
         success : function(json){
             if (json['history']) {
                 for (var h of json['history']) {
-                    console.log(h);
+                    /*console.log(h);*/
                     /*if (h['code'] == 'notification_new') {
 
                     }
@@ -335,7 +335,7 @@ function connectHistory(server, ts) {
                     }
 
                     if (h['code'] == 'message_new') {
-                        if (getURLVar('chat_id') != h['object']['chat_id']) {
+                        if (h['object'] && h['object']['chat_id'] && getURLVar('chat_id') != h['object']['chat_id']) {
                             beep();
                         } else {
                             setMessage(h['object']);
@@ -447,7 +447,9 @@ function setMessage(message){
 }
 
 function setChat(chat) {
-    var temp = '<div id="chat-' + chat.chat_id + '" class="speeker_numb clearfix '  + (getURLVar('chat_id') == chat['chat_id'] ? ' active': '')  + (parseInt(chat.unviewed) > 0 ? ' new_massage': '') + '" data-chat_id="' + chat.chat_id + '">\n' +
+    if(!chat['chat_id']) return;
+
+    var temp = '<div id="chat-' + chat['chat_id'] + '" class="speeker_numb clearfix '  + (getURLVar('chat_id') == chat['chat_id'] ? ' active': '')  + (parseInt(chat.unviewed) > 0 ? ' new_massage': '') + '" data-chat_id="' + chat.chat_id + '">\n' +
         '    <div class="logo">\n' +
         '        <img src="' + chat.image + '">\n' +
         (chat.online == 1 ? '<span></span>\n' : '') +

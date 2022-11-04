@@ -135,6 +135,8 @@ class ControllerMessageChat extends Controller {
                 }
             }
 
+            $text = nl2br($this->observeText(htmlspecialchars_decode($message['text'])));
+
             $json['messages'][] = [
                 "message_id" => $message['message_id'],
                 "chat_id" => $message['chat_id'],
