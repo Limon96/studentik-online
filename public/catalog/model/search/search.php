@@ -19,18 +19,18 @@ class ModelSearchSearch extends Model
         $tables = array();
 
         if (isset($data['search_customer']) && $data['search_customer']) {
-            $tables[] = "SELECT customer_id AS id, 'customer' AS type,  login AS title, '' AS description FROM " . DB_PREFIX . "customer c";
+            $tables[] = "SELECT customer_id AS id, 'customer' AS type,  login AS title, '' AS description, date_added FROM " . DB_PREFIX . "customer c";
         }
 
         if (isset($data['search_order']) && $data['search_order']) {
-            $tables[] = "SELECT order_id AS id, 'order' AS type, title, description FROM `" . DB_PREFIX . "order` o WHERE o.order_status_id NOT IN (8)";
+            $tables[] = "SELECT order_id AS id, 'order' AS type, title, description, date_added FROM `" . DB_PREFIX . "order` o WHERE o.order_status_id NOT IN (8)";
         }
 
         if (count($tables) > 0) {
             $sql = "SELECT * FROM (" . implode(" UNION ", $tables) . ") temp";
 
             if (isset($data['search'])) {
-                $sql .= " WHERE (title LIKE '%" . $this->db->escape($data['search']) . "%' OR description LIKE '%" . $this->db->escape($data['search']) . "%')";
+                $sql .= " WHERE (title LIKE '%" . $this->db->escape($data['search']) . "%' OR description LIKE '%" . $this->db->escape($data['search']) . "%')  ORDER BY date_added DESC ";
             }
 
             if (isset($data['start']) || isset($data['limit'])) {
@@ -44,7 +44,7 @@ class ModelSearchSearch extends Model
 
                 $sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
             }
-
+            
             $result = $this->db->query($sql);
 
             if ($result->rows) {
