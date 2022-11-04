@@ -41,7 +41,15 @@ class ModelToolCheckEmail extends Model
         $result = false;
         $id = 0;
 
-        while (!$result && $id < count($mxhosts)) {
+        if (!isset($mxhosts[0])) {
+            return $result;
+        }
+
+        if (!is_array($mxhosts[0])) {
+            return $result;
+        }
+
+        while (!$result && $id < count($mxhosts[0])) {
             if (function_exists("fsockopen")) {
                 if (DEBUG_OK) print_r($id . " " . $mxhosts[0][$id]);
                 if ($connection = fsockopen($mxhosts[0][$id], $port, $errno, $error, $this->timeout)) {
