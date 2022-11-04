@@ -48,7 +48,7 @@ class ControllerAccountLogin extends Controller
 
 
             if (isset($this->session->data['order'])) {
-                $this->response->redirect('order/order/add');
+                $this->response->redirect($this->url->link('order/order/add', '', true));
             }
 
             $this->response->redirect($this->url->link('account/account', '', true));
