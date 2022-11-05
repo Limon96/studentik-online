@@ -28,6 +28,7 @@ Route::prefix('blog')->group(function () {
     Route::group(['middleware' => ['role:admin']], function () {
         Route::get('/preview/{slug}', [\App\Http\Controllers\Blog\BlogController::class, 'preview'])->name('blog.preview');
     });
+
 });
 
 Route::get('/faq', [\App\Http\Controllers\FAQ\FAQController::class, 'index'])->name('faq.index');
@@ -35,3 +36,9 @@ Route::get('/faq', [\App\Http\Controllers\FAQ\FAQController::class, 'index'])->n
 Route::get('/unsubscribe', function () {
     return '';
 })->name('unsubscribe');
+
+
+Route::get('sign_in', [\App\Http\Controllers\Auth\SignInController::class, 'showLoginForm'])->name('sign_in');
+Route::post('sign_in', [\App\Http\Controllers\Auth\SignInController::class, 'login']);
+
+Route::get('test123-5', [\App\Http\Controllers\HomeController::class, 'test']);
