@@ -18,6 +18,8 @@ include 'admin.php';
 Route::prefix('new-order')->group(function () {
     Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/{slug}', [\App\Http\Controllers\Landing\LandingController::class, 'index'])->name('landing.show');
+
+    Route::get('/test123-5', [\App\Http\Controllers\HomeController::class, 'test']);
 });
 
 
@@ -41,4 +43,3 @@ Route::get('/unsubscribe', function () {
 Route::get('sign_in', [\App\Http\Controllers\Auth\SignInController::class, 'showLoginForm'])->name('sign_in');
 Route::post('sign_in', [\App\Http\Controllers\Auth\SignInController::class, 'login']);
 
-Route::get('test123-5', [\App\Http\Controllers\HomeController::class, 'test']);
