@@ -19,7 +19,7 @@ Route::prefix('new-order')->group(function () {
     Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/{slug}', [\App\Http\Controllers\Landing\LandingController::class, 'index'])->name('landing.show');
 
-    Route::get('/test123-5', [\App\Http\Controllers\HomeController::class, 'test']);
+    Route::get('/test123-5/qwe', [\App\Http\Controllers\HomeController::class, 'test']);
 });
 
 
