@@ -636,4 +636,18 @@ $.fn.btnLoader = function(stage) {
     }
 };
 
+$.fn.btnLoading = function(stage) {
+    var btn_loader = $('<div class="btn-loading"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>');
+
+    if (stage == 'on') {
+        $(this).prop('disabled', true);
+        $(this).hide();
+        $(this).after(btn_loader);
+    } else {
+        $(this).prop('disabled', false);
+        $(this).show();
+        $(this).next('.btn-loading').remove();
+    }
+};
+
 

@@ -53,7 +53,7 @@
 
                     <div class="date_file clearfix">
                         <div class="errors"></div>
-                        <div class="add_file btn-loader-wrapper">
+                        <div class="add_file">
                             <form id="form-upload">
                                 <label class="add_works">
                                         <span>
@@ -97,11 +97,11 @@
                                             processData: false,
                                             beforeSend: function() {
 
-                                                $('#form-upload').btnLoader('on');
+                                                $('#form-upload').btnLoading('on');
                                             },
                                             complete: function() {
 
-                                                $('#form-upload').btnLoader('off');
+                                                $('#form-upload').btnLoading('off');
                                             },
                                             success: function(json) {
                                                 $('.date_file .errors').html('');
@@ -323,7 +323,7 @@
             dataType : 'json',
             beforeSend : function() {
                 $('#form-submit').prop('disabled', true);
-                $('#form-submit').btnLoader('on');
+                $('#form-submit').btnLoading('on');
             },
             success : function (json) {
                 $('#form-submit').prop('disabled', false);
@@ -377,7 +377,7 @@
                 }
 
                 if (!json['success']) {
-                    $('#form-submit').btnLoader('off');
+                    $('#form-submit').btnLoading('off');
                 }
 
                 if (json['success']) {

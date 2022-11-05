@@ -112,7 +112,7 @@
                     data : $('#guest-order-form input, #guest-order-form select'),
                     dataType : 'json',
                     beforeSend : function () {
-                        $('#guest-order').btnLoader('on');
+                        $('#guest-order').btnLoading('on');
                     },
                     success : function (json) {
                         if (json['error_email']) {
@@ -134,7 +134,7 @@
                         if (json['error_warning']) {
                             $('#guest-order-form').before('<div class="has-error">' + json['error_warning'] + '</div>');
                         }
-                        $('#guest-order').btnLoader('off');
+                        $('#guest-order').btnLoading('off');
                         if (json['redirect']) {
                             location.href = json['redirect'];
                         }

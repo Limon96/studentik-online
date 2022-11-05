@@ -146,12 +146,16 @@
             data : $(this).serialize(),
             dataType : 'json',
             beforeSend : function () {
-                $('#form-login button[type=submit]').btnLoader('on');
+                $('#form-login button[type=submit]').btnLoading('on');
             },
             success : function (json) {
-                $('#form-login button[type=submit]').btnLoader('off');
+
+                if (!json['success']) {
+                    $('#form-login button[type=submit]').btnLoading('off');
+                }
+
                 if (json['error_warning']) {
-                    $('#form-login').prepend('<span class="error">' + json['error_warning'] + '</span>');
+                    $('#form-login button[type=submit]').btnLoading('off');
                 }
                 if (json['success']) {
                     /*$('#form-login').prepend('<span class="error">' + json['success'] + '</span>');*/
@@ -188,10 +192,12 @@
                 data: $(this).serialize(),
                 dataType: 'json',
                 beforeSend : function () {
-                    $('#form-register button[type=submit]').btnLoader('on');
+                    $('#form-register button[type=submit]').btnLoading('on');
                 },
                 success: function (json) {
-                    $('#form-register button[type=submit]').btnLoader('off');
+                    if (!json['success']) {
+                        $('#form-register button[type=submit]').btnLoading('off');
+                    }
                     if (json['error_warning']) {
                         $('#form-register').prepend('<div class="error">' + json['error_warning'] + '</div>');
                     }
@@ -226,10 +232,13 @@
             data : $(this).serialize(),
             dataType : 'json',
             beforeSend : function () {
-                $('#form-forgotten button[type=submit]').btnLoader('on');
+                $('#form-forgotten button[type=submit]').btnLoading('on');
             },
             success : function (json) {
-                $('#form-forgotten button[type=submit]').btnLoader('off');
+
+                if (!json['success']) {
+                    $('#form-forgotten button[type=submit]').btnLoading('off');
+                }
                 if (json['error_warning']) {
                     $('#form-forgotten').prepend('<div class="error">' + json['error_warning'] + '</div>');
                 }
