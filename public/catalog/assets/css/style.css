@@ -330,7 +330,10 @@ li{
     height: 30px;
 }
 
-
+.btn-loader-wrapper {
+    display: flex;
+    justify-content: center;
+}
 
 .btn-loader {
     width: 35px;
@@ -5265,7 +5268,9 @@ input::placeholder{
     float: left;
 }
 
-
+#form-upload {
+    width: 100%;
+}
 .date_file .add_file .add_works {
     border-radius: 21px;
     padding: 11px 7px;

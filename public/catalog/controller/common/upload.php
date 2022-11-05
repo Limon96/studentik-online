@@ -91,7 +91,7 @@ class ControllerCommonUpload extends Controller
                     );
 
                     if (!in_array(utf8_strtolower(utf8_substr(strrchr($filename, '.'), 1)), $allowed)) {
-                        $json['error'][$i] = $this->language->get('error_filetype1');
+                        $json['error'][$i] = $this->language->get('error_filetype');
                     }
 
                     // Allowed file mime types
@@ -141,11 +141,11 @@ class ControllerCommonUpload extends Controller
                     );
 
                     if (!in_array($file['type'], $allowed)) {
-                        $json['error'][$i] = $this->language->get('error_filetype2') . $file['type'];
+                        $json['error'][$i] = $this->language->get('error_filetype_mime');
                     }
 
                     if ($file['size'] > $this->config->get('config_file_max_size')) {
-                        $json['error'][$i] = $this->language->get('error_filesize3');
+                        $json['error'][$i] = $this->language->get('error_filesize');
                     }
 
                     // Return any upload error

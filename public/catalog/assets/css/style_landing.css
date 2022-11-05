@@ -3522,7 +3522,7 @@ footer .colling ul.massengers li a img{
     100% {
         transform: rotate(360deg); } }
 
-.right_rek, .btn-loader-wrapper {
+.btn-loader-wrapper {
     display: flex;
     justify-content: center;
 }

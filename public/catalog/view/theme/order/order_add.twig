@@ -52,7 +52,8 @@
                     </div>
 
                     <div class="date_file clearfix">
-                        <div class="add_file">
+                        <div class="errors"></div>
+                        <div class="add_file btn-loader-wrapper">
                             <form id="form-upload">
                                 <label class="add_works">
                                         <span>
@@ -95,37 +96,26 @@
                                             contentType: false,
                                             processData: false,
                                             beforeSend: function() {
-                                                $('#button-upload i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
-                                                $('#button-upload').prop('disabled', true);
+
+                                                $('#form-upload').btnLoader('on');
                                             },
                                             complete: function() {
-                                                $('#button-upload i').replaceWith('<i class="fa fa-upload"></i>');
-                                                $('#button-upload').prop('disabled', false);
+
+                                                $('#form-upload').btnLoader('off');
                                             },
                                             success: function(json) {
+                                                $('.date_file .errors').html('');
                                                 if (json['error']) {
-                                                    console.log(json['error']);
+                                                    for (var error of json['error']) {
+                                                        $('.date_file .errors').append('<div class="error">' + error + '</div>');
+                                                    }
                                                 }
 
                                                 if (json['success']) {
+
                                                     if (json['files']) {
                                                         for (var i in json['files']) {
-                                                            var tmpl = '<div class="clearfix file_item">\n' +
-                                                                '<div class="logo_file"><img src="catalog/assets/img/file/' + json['files'][i]['type'] + '.png"></div>\n' +
-                                                                '    <div class="left_cop">\n' +
-                                                                '        <span>' + json['files'][i]['name'] + '</span>\n' +
-                                                                '        <span class="weigt">' + json['files'][i]['size'] + '</span>\n' +
-                                                                '        <input type="hidden" name="attachment[]" value="' + json['files'][i]['attachment_id'] + '">\n' +
-                                                                '    </div>\n' +
-                                                                '    <div class="right_cop">\n' +
-                                                                '        <span>' + json['files'][i]['date_added'] + '</span>\n' +
-                                                                '        <p class="delete_file_cust clearfix">\n' +
-                                                                '            <button class="delete_file">\n' +
-                                                                '               <svg xmlns="http://www.w3.org/2000/svg" height="329pt" viewBox="0 0 329.26933 329" width="329pt"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"/></svg>\n' +
-                                                                '            </button>\n' +
-                                                                '        </p>\n' +
-                                                                '    </div>\n' +
-                                                                '</div>';
+                                                            var tmpl = renderUploadedFile(json['files'][i]);
                                                             $('#files').append(tmpl);
                                                         }
                                                     }
@@ -249,7 +239,7 @@
                             <input type="text" name="price" placeholder="стоимость">
                             <p>Сумма, которую вы готовы заплатить эксперту</p>
                         </div>
-                        <div class="rigt_go">
+                        <div class="rigt_go btn-loader-wrapper">
                             <button id="form-submit">Разместить заказ</button>
                         </div>
                     </div>
@@ -333,6 +323,7 @@
             dataType : 'json',
             beforeSend : function() {
                 $('#form-submit').prop('disabled', true);
+                $('#form-submit').btnLoader('on');
             },
             success : function (json) {
                 $('#form-submit').prop('disabled', false);
@@ -383,6 +374,10 @@
 
                 if (json['error_balance']) {
                     window.open(json['balance_redirect'].replace('&amp;','&'));
+                }
+
+                if (!json['success']) {
+                    $('#form-submit').btnLoader('off');
                 }
 
                 if (json['success']) {
