@@ -10,7 +10,7 @@ class ControllerHistoryLongpoll extends Controller
             $json['redirect'] = str_replace('&amp;', '&', $this->url->link('account/login'));
         } else {
             $key = $this->customer->getLongPollKey();
-            $ts = time();
+            $ts = floor(microtime(true) * 100);
             $json = [
                 'key' => $key,
                 'ts' => $ts,

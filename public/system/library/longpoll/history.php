@@ -2,7 +2,8 @@
 
 namespace LongPoll;
 
-class History {
+class History
+{
 
     private $db;
 
@@ -48,7 +49,7 @@ class History {
             `code` = '" . $this->db->escape($code) . "',
             `customer_id` = '" . (int)$customer_id . "',
             `object` = '" . json_encode($object, JSON_UNESCAPED_UNICODE) . "',
-            `ts` = '" . time() . "'
+            `ts` = '" . $this->getTS() . "'
         ");
     }
 
@@ -72,6 +73,11 @@ class History {
         }
 
         return 0;
+    }
+
+    private function getTS()
+    {
+        return floor(microtime(true) * 100);
     }
 
 }
