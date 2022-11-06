@@ -263,7 +263,7 @@
                                                 clearInterval(timer);
 
                                                 $.ajax({
-                                                    url: 'index.php?route=common/upload/upload',
+                                                    url: '../index.php?route=common/upload/upload',
                                                     type: 'post',
                                                     dataType: 'json',
                                                     data: new FormData($('#form-upload')[0]),
@@ -308,7 +308,7 @@
                                                                     $('#files').append(tmpl);
 
                                                                     $.ajax({
-                                                                        url: 'index.php?route=account/customer/addAttachment',
+                                                                        url: '../index.php?route=account/customer/addAttachment',
                                                                         type: 'post',
                                                                         dataType: 'json',
                                                                         data: {
@@ -336,7 +336,7 @@
                                         if (attachment_id > 0) {
                                             $(this).parents('.file_item').remove();
                                             $.ajax({
-                                                url: 'index.php?route=account/customer/deleteAttachment',
+                                                url: '../index.php?route=account/customer/deleteAttachment',
                                                 type: 'post',
                                                 dataType: 'json',
                                                 data: {
