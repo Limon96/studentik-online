@@ -155,6 +155,7 @@
                 }
 
                 if (json['error_warning']) {
+                    $('#form-login').prepend('<span class="error">' + json['error_warning'] + '</span>');
                     $('#form-login button[type=submit]').btnLoading('off');
                 }
                 if (json['success']) {
