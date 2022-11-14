@@ -423,6 +423,7 @@ li{
 .add_file .btn-loading { width: 95%; height: 39px; }
 .rigt_go .btn-loading { height: 48px; background: #b2e228; }
 .look_files .btn-loading { width: 151px; height: 31px; min-height: 31px; margin-top: 10px; }
+#review_add .btn-loading { height: 48px; max-width: 180px; margin: 20px 0 40px 0; }
 
 /********************************************header******************************************************/
 

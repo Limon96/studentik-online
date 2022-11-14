@@ -36,6 +36,9 @@ $(document).on('click', '#review_add .sub_rev', function() {
                 order_id : order_id
             },
             dataType : 'json',
+            beforeSend : function (){
+                $('#review_add .sub_rev').btnLoading('on');
+            },
             success : function(json) {
                 if (json['error_warning']) {
                     $('#review_add').prepend('<p class="warning">' + json['error_warning'] + '</p>');
@@ -51,6 +54,10 @@ $(document).on('click', '#review_add .sub_rev', function() {
 
                 if (json['error_time']) {
                     $('#review_add input[name=time]').parents('.wrap_user_change').append('<p class="warning">Выберите один из вариантов</p>');
+                }
+
+                if (!json['success']) {
+                    $('#review_add .sub_rev').btnLoading('off');
                 }
 
                 if (json['success']) {
