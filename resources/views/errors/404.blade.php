@@ -138,7 +138,7 @@
                             <span>Служба поддержки:</span>
                             <a href="mailto:studentik.online@mail.ru" class="mail">studentik.online@mail.ru</a>
                             <ul class="massengers clearfix">
-                                <li><a href="tg://resolve?domain=studentik_online"><img src="{{ asset("image/landing/tg.svg") }}"></a></li>
+                                <li><a href="tg://resolve?domain=studentikonline"><img src="{{ asset("image/landing/tg.svg") }}"></a></li>
                                 <li><a target="_blank" href="https://vk.com/studentik.online"><img src="{{ asset("image/landing/vk.svg") }}"></a></li>
                                 <li><a target="_blank" href="https://www.instagram.com/studentik.online/"><img src="{{ asset("image/landing/insta.svg") }}"></a></li>
                             </ul>

@@ -333,7 +333,7 @@
                         <span>Служба поддержки:</span>
                         <a href="mailto:studentik.online@mail.ru" class="mail">studentik.online@mail.ru</a>
                         <ul class="massengers clearfix">
-                            <li><a href="tg://resolve?domain=studentik_online"><img src="{{ asset('img/tg.svg') }}" alt="studentik-fon"></a></li>
+                            <li><a href="tg://resolve?domain=studentikonline"><img src="{{ asset('img/tg.svg') }}" alt="studentik-fon"></a></li>
                             <li><a target="_blank" href="https://vk.com/studentik.online"><img src="{{ asset('img/vk.svg') }}" alt="studentik-fon"></a></li>
                             <li><a target="_blank" href="https://www.instagram.com/studentik.online/"><img src="{{ asset('img/insta.svg') }}" alt="studentik-fon"></a></li>
                         </ul>

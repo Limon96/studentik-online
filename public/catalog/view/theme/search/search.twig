@@ -49,13 +49,32 @@
                                 </form>
                             </div>
 
+
+                            <div class="sadsa">
+                                <div class="itemsssss"></div>
+                                <div class="itemsssss"></div>
+                                <div class="itemsssss"></div>
+                                <div class="itemsssss"></div>
+                                <div class="itemsssss"></div>
+                                <div class="itemsssss"></div>
+                                <div class="itemsssss"></div>
+                                <div class="itemsssss"></div>
+                                <div class="itemsssss"></div>
+                                <div class="itemsssss"></div>
+                                <div class="itemsssss"></div>
+                                <div class="itemsssss"></div>
+                                <div class="itemsssss"></div>
+                            </div>
+
+
+
                             <div class="results clearfix">
                                 {% if results %}
                                     <div class="page-{{ page }}">
                                         {% for result in results %}
                                             {% if result.type == 'customer' %}
                                                 {% set customer = result %}
-                                                <div class="item_s">
+                                                <div class="item_s user_p">
                                                     <div class="img_face clearfix">
                                                         <a href="{{ result.href }}"><img src="{{ result.image }}" alt="{{ result.login }}"></a>
                                                         {% if result.online %}<span></span>{% endif %}
@@ -65,13 +84,13 @@
                                                             <a href="{{ customer.href }}">{{ result.login }}</a>
                                                             {% if result.pro %}<span class="premium">PREMIUM</span>{% endif %}
                                                         </div>
-                                                        <div class="lit_foot clearfix">
-                                                            <div class="enter clearfix">
+                                                        <div class="lit_foot ">
+                                                            <div class="enter ">
                                                                 <span class="name">{{ text_rating }}</span>
                                                                 <span class="rating">{{ customer.rating }}</span>
                                                                 {% if result.new_rating %}<span class="bonus">+{{ result.new_rating }}</span>{% endif %}
                                                             </div>
-                                                            <div class="enter_like clearfix">
+                                                            <div class="enter_like ">
                                                                 <img src="../catalog/assets/img/icons/like.svg">
                                                                 <span class="like">{{ result.total_reviews_positive }}</span>
                                                                 <img src="../catalog/assets/img/icons/dislike.svg">
@@ -81,14 +100,17 @@
                                                     </div>
                                                 </div>
                                             {% elseif result.type == 'order' %}
-                                                <div class="item_s">
+                                                <div class="item_s task_p">
+
+                                                    <span class="status"><i class="fa fa-flag"></i>{{ result.order_status }}</span>
                                                     <a href="{{ result.href }}"><h4>{{ result.title }}</h4></a>
                                                     <p>{{ result.description }}</p>
                                                     <ul class="pagination_s clearfix">
-                                                        <li>{{ result.section }}</li>
+                                                        <li>{{ result.work_type }}</li>
                                                         <li>{{ result.section }}</li>
                                                         <li>{{ result.subject }}</li>
-                                                        <li>{{ result.order_status }}</li>
+
+
                                                     </ul>
                                                 </div>
                                             {% endif %}
