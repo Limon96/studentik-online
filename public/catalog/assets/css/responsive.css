@@ -3885,12 +3885,22 @@
         line-height: 1.2;
     }
 
+    .chat_content .header_chat .poret {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
 
 
+    .chat_content .header_chat .poret .time_life span{
+        margin: 0;
+    }
 
 
-
-
+    .content_chat {
+        height: calc(100vh - 188px);
+        overflow-y: scroll;
+    }
 
 
 }

@@ -4460,6 +4460,17 @@ input::placeholder{
     background: #F0ECF2;
 }
 
+
+.chat_content .header_chat .poret{
+    display: flex;
+}
+
+
+
+
+
+
+
 .footer_chat .fili_wrap {
     max-height: 120px;
     overflow-y: scroll;
