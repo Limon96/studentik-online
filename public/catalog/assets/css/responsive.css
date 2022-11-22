@@ -1087,9 +1087,7 @@
 
 
 
-    .container_chat {
-        padding-top: 58px;
-    }
+
 
 
     .chat_content .header_chat {
@@ -1258,9 +1256,6 @@
 
 
 
-    .container_chat {
-        padding-top: 58px;
-    }
 
 
     .chat_content .header_chat {
@@ -2229,9 +2224,6 @@
 
 
 
-    .container_chat {
-        padding-top: 58px;
-    }
 
 
     .chat_content .header_chat {
@@ -3896,11 +3888,9 @@
         margin: 0;
     }
 
-
-    .content_chat {
-        height: calc(100vh - 188px);
-        overflow-y: scroll;
+    .container_chat {
+        width: 100%;
+        height: calc(100vh - 54px);
+        padding-top: 0;
     }
-
-
 }
