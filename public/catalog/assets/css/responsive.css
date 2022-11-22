@@ -3816,6 +3816,7 @@
     }
 
 
+
     .search_wrap .results .item_s.task_p{
         padding-top: 40px;
     }
@@ -3884,9 +3885,22 @@
     }
 
 
-    .chat_content .header_chat .poret .time_life span{
+
+
+    .chat_content .header_chat .time_life span {
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    .chat_content .header_chat .cuban_log {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chat_content .header_chat .time_life span{
+
         margin: 0;
+    }
     }
 
 
-}

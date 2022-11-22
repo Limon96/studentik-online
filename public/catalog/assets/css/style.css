@@ -4461,10 +4461,10 @@ input::placeholder{
 }
 
 
-.chat_content .header_chat .poret{
-    display: flex;
+.chat_content .header_chat {
+    height: 50px;
+    background: #F0ECF2;
 }
-
 
 
 
