@@ -4037,6 +4037,7 @@ input::placeholder{
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    padding: 0;
 }
 
 .footer_chat .btn_send button svg{
