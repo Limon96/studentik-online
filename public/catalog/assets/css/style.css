@@ -4040,7 +4040,9 @@ input::placeholder{
 }
 
 .footer_chat .btn_send button svg{
-
+    width: 24px;
+    height: 21px;
+    display: block;
 }
 
 .footer_chat .btn_send button svg path{
