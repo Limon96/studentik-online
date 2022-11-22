@@ -4044,6 +4044,8 @@ input::placeholder{
     width: 24px;
     height: 21px;
     display: block;
+    min-width: 24px;
+    min-height: 21px;
 }
 
 .footer_chat .btn_send button svg path{
