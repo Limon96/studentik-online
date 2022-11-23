@@ -3901,6 +3901,72 @@
 
         margin: 0;
     }
+
+
+
+    .baner_micro {
+        flex-direction: column;
+        padding: 20px 10px;
+    }
+
+    .baner_micro .int_j {
+        width: 100%;
+        padding-left: 0;
+    }
+    .baner_micro .left_svg_r {
+        width: 100%;
+    }
+    .baner_micro .left_svg_r svg {
+        width: 50px;
+        display: block;
+        margin: 0 auto 15px;
+    }
+
+    .baner_micro .int_j h2 {
+        font-size: 14px;
+        line-height: 1.2;
+        text-align: center;
+        margin: 0 0 12px 0;
+    }
+
+    .baner_micro .int_j h2 span {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .baner_micro .int_j p {
+        font-size: 12px;
+        text-align: center;
+    }
+    .baner_micro .int_j h3 {
+        font-size: 12px;
+        display: block;
+        line-height: 1.2;
+        text-align: center;
+    }
+    .baner_micro .int_j h3 span {
+        font-size: 12px;
+        line-height: 1.2;
+        display: inline-block;
+        text-align: center;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 

@@ -10102,5 +10102,85 @@ h2.h2_article{
 
 
 
+.baner_micro {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 11px #bebebe;
+    margin: 28px 0 30px 0;
+}
+.baner_micro .left_svg_r {
+    width: 15%;
+}
+
+
+.baner_micro .left_svg_r svg{
+    margin: 0 auto;
+    display: block;
+    max-width: 100px;
+    max-height: 100px;
+}
+
+
+.baner_micro .int_j {
+    width: 85%;
+    padding-left: 20px;
+}
+
+
+.baner_micro .int_j h2 {
+    font-size: 16px;
+    line-height: 1.2;
+    margin: 0;
+}
+
+
+.baner_micro .int_j h2 span {
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+
+.baner_micro .int_j h3 {
+    color: #222;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 0 0;
+}
+
+
+.baner_micro .int_j h3 span {
+    font-size: 14px;
+    color: #f00;
+    font-weight: 700;
+}
+
+
+.baner_micro .int_j p {
+    color: #7e7e7e;
+    font-size: 13px;
+    margin: 6px 0 6px 0;
+}
+.baner_micro .int_j p span  {
+    color: #7e7e7e;
+    font-size: 13px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
