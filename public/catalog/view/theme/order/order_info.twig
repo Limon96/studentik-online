@@ -153,6 +153,7 @@
 
                     {% if is_logged %}
 
+                    {% if work_type_id == 20 %}
                     {% if is_owner or customer_group_id == 2 or is_admin %}
 
                         <div class="baner_micro"  style="display: none">
@@ -193,6 +194,7 @@
 
 
 
+                    {% endif %}
                     {% endif %}
 
 

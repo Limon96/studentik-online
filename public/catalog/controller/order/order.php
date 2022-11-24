@@ -369,6 +369,7 @@ class ControllerOrderOrder extends Controller
             $data['section'] = $order_info['section'];
             $data['subject'] = $order_info['subject'];
             $data['work_type'] = $order_info['work_type'];
+            $data['work_type_id'] = $order_info['work_type_id'];
             $data['date_added'] = format_date($order_info['date_added'], 'full_datetime');
 
             $data['date_end'] = ($order_info['date_end'] != '0000-00-00'? format_date($order_info['date_end'], 'full_date') : 'Не указан');
