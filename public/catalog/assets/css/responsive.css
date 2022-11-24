@@ -3882,6 +3882,8 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
 
@@ -3952,12 +3954,24 @@
     }
 
 
+    .container_chat {
+        width: 100%;
+        height: 100vh;
+        padding-top: 55px;
+        padding-bottom: 78px;
+    }
 
+    .footer_chat{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
 
-
-
-
-
+    .content_chat {
+        height: 100%;
+        overflow-y: scroll;
+    }
 
 
 
