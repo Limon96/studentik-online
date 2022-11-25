@@ -104,7 +104,7 @@
 
                                                     <span class="status"><i class="fa fa-flag"></i>{{ result.order_status }}</span>
                                                     <a href="{{ result.href }}"><h4>{{ result.title }}</h4></a>
-                                                    <p>{{ result.description }}</p>
+                                                    <p class="minidescription">{{ result.description }}</p>
                                                     <ul class="pagination_s clearfix">
                                                         <li>{{ result.work_type }}</li>
                                                         <li>{{ result.section }}</li>
@@ -133,6 +133,21 @@
     {{ content_bottom }}
 </div>
 <script type="text/javascript">
+
+
+    function loadP() {
+        $("p.minidescription").each(function(){
+            if ($(this).prop("innerHTML").length > 220){
+                let val = $(this).prop("innerHTML");
+                $(this).attr("title", val);
+                $(this).prop("innerHTML", val.substr(0,220) + "...")
+            }
+        });
+    }
+
+
+
+
     $(document).on('submit', '#page-search', function(e) {
         e.preventDefault();
         location.href = searchUrl();
@@ -176,6 +191,7 @@
 
     $(window).scroll(function(){
         scrollTracking();
+        loadP();
     });
 
     $(document).ready(function(){

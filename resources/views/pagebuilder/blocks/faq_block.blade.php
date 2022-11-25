@@ -30,7 +30,7 @@
                         <span>ИЛИ</span>
                     </div>
                     <div class="tre_rep">
-                        <a href="https://studentik.online/index.php?route=support/faq" class="btn_gr">У меня другой вопрос</a>
+                        <a href="/faq" class="btn_gr">У меня другой вопрос</a>
                     </div>
                 </div>
 
