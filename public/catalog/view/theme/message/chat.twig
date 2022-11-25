@@ -41,20 +41,7 @@
 </div>
 
 
-<style>
-    @media (min-width: 320px) and (max-width: 680px){
-       /* header {
-            position: relative;
-        }*/
 
-       /* .container_chat {
-            width: 100%;
-            height: calc(100vh - 54px);
-            padding-top: 54px;
-        }*/
-
-    }
-</style>
 
 
 <script>
@@ -83,7 +70,36 @@
     }
 
 
+    @media (min-width: 320px) and (max-width: 680px){
+
+        header {
+            position: relative;
+        }
+
+        .container_chat {
+            width: 100%;
+            height: auto;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .content_chat {
+            height: calc(100vh - 184px);
+        }
+        .chat_content {
+            height: auto;
+        }
+
+        .col-9_flex {
+            height: auto;
+        }
+
+
+
+
+
+    }
 </style>
+
 {{ footer }}
 
 
