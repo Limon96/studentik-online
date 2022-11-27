@@ -27,6 +27,7 @@ Route::prefix('_manager')->group(function() {
                 'blog_category' => \App\Http\Controllers\Blog\Admin\BlogCategoryController::class,
                 'faq' => \App\Http\Controllers\FAQ\Admin\FAQController::class,
                 'faq_category' => \App\Http\Controllers\FAQ\Admin\FAQCategoryController::class,
+                'work_type' => \App\Http\Controllers\Order\Admin\WorkTypeController::class,
             ]);
 
             Route::get('newsletter', [\App\Http\Controllers\Feedback\Admin\NewsletterController::class, 'index'])->name('newsletter.index');
