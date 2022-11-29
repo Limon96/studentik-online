@@ -154,7 +154,7 @@
                     {% if is_logged %}
 
                         {% if work_type_id == 20 %}
-                            {% if is_owner or customer_group_id == 2 or is_admin %}
+                            {% if is_owner and customer_group_id == 2 %}
 
                                 <div class="baner_micro">
                                     <div class="left_svg_r">
@@ -171,9 +171,8 @@
 
                                     </div>
                                 </div>
-                            {% endif %}
 
-                            {% if is_owner or customer_group_id == 1 or is_admin %}
+                            {% elseif customer_group_id == 1 %}
 
                                 <div class="baner_micro">
                                     <div class="left_svg_r">
