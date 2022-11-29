@@ -121,7 +121,7 @@
 
                     </div>
                     <div class="footert clearfix">
-                        <div class="right_rek">
+                        <div class="right_rek btn-loader-wrapper">
                             <button id="guest-order">Узнать стоимость</button>
                         </div>
                     </div>

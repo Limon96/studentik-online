@@ -6,7 +6,7 @@ class ControllerCommonAccount extends Controller {
         $data['is_logged']  = $this->customer->isLogged();
         $data['login']      = $this->url->link('account/login');
         $data['register']      = $this->url->link('account/login','act=register');
-        $data['logout']     = $this->url->link('account/logout');
+        $data['logout']     = HTTPS_SERVER . 'logout';
         $data['finance']    = $this->url->link('account/finance');
         $data['edit']    = $this->url->link('account/edit');
         $data['event']    = $this->url->link('account/event');

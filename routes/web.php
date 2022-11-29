@@ -40,4 +40,8 @@ Route::get('/unsubscribe', function () {
 
 Route::get('sign_in', [\App\Http\Controllers\Auth\SignInController::class, 'showLoginForm'])->name('sign_in');
 Route::post('sign_in', [\App\Http\Controllers\Auth\SignInController::class, 'login']);
+Route::get('logout', [\App\Http\Controllers\Auth\SignInController::class, 'logout'])->name('sign_in.logout');
 
+/*Route::get('/socket', function () {
+    return view('socket');
+});*/
