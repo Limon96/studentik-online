@@ -24,6 +24,7 @@ class ModelAccountCustomer extends Model {
             ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "',
             timezone = '" . $this->db->escape($this->config->get('config_timezone')) . "',
             status = '" . (int)!$customer_group_info['approval'] . "',
+            referral_code = '" . ($this->session->data['referral_code'] ?? '') . "',
             date_added = '" . time() . "'"
         );
 
