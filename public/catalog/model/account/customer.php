@@ -124,7 +124,7 @@ class ModelAccountCustomer extends Model {
             $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
 
             $mail->setTo($data['email']);
-            $mail->setFrom($this->config->get('config_mail_smtp_username'));
+            $mail->setFrom($this->config->get('config_mail_smtp_sender_mail'));
             $mail->setSender(html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
             $mail->setSubject(sprintf($this->language->get('text_subject'), html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8')));
             $mail->setHTML($this->load->view('mail/register_approval', $data));
@@ -141,7 +141,7 @@ class ModelAccountCustomer extends Model {
             $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
 
             $mail->setTo($data['email']);
-            $mail->setFrom($this->config->get('config_mail_smtp_username'));
+            $mail->setFrom($this->config->get('config_mail_smtp_sender_mail'));
             $mail->setSender(html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
             $mail->setSubject(html_entity_decode(sprintf(
                 $this->language->get('text_subject'),
