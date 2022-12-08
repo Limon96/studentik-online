@@ -6412,6 +6412,14 @@ input::placeholder{
     background: #d62929;
 }
 
+.strips_work .item_work .item_worker .work_zrobl span.neutral{
+    width: 40%;
+    display: block;
+    height: 100%;
+    float: left;
+    background: #adadad;
+}
+
 
 /***********************************account/edit********************************************/
 
