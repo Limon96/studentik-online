@@ -22,7 +22,7 @@ class ControllerAccountOrder extends Controller {
 			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', true)
 		);
-		
+
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('account/order', '', true)
@@ -116,7 +116,8 @@ class ControllerAccountOrder extends Controller {
             ];
         } elseif ($this->customer->getGroupId() == 2) {
             $filter_data = [
-                'filter_assigned' => $filter_assigned,
+                'filter_offer_id' => $this->customer->getId(),
+                //'filter_assigned' => $filter_assigned,
                 'filter_order_status_id' => $filter_order_status_id,
                 'filter_section_id' => $filter_section_id,
                 'filter_subject_id' => $filter_subject_id,
