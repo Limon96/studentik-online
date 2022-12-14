@@ -46,7 +46,7 @@ class ModelAccountOrder extends Model
         }
 
         if (isset($data['filter_offer_id']) && $data['filter_offer_id']) {
-            $sql .= " AND o.order_id IN (SELECT order_id FROM " . DB_PREFIX . "offer WHERE customer_id = '" . (int)$data['filter_offer_id'] . "')";
+            $sql .= " AND o.order_id IN (SELECT order_id FROM " . DB_PREFIX . "offer WHERE customer_id = '" . (int)$data['filter_offer_id'] . "' AND assigned = 1)";
         }
 
         if (isset($data['filter_customer']) && $data['filter_customer']) {
@@ -145,7 +145,7 @@ class ModelAccountOrder extends Model
         }
 
         if (isset($data['filter_offer_id']) && $data['filter_offer_id']) {
-            $sql .= " AND o.order_id IN (SELECT order_id FROM " . DB_PREFIX . "offer WHERE customer_id = '" . (int)$data['filter_offer_id'] . "')";
+            $sql .= " AND o.order_id IN (SELECT order_id FROM " . DB_PREFIX . "offer WHERE customer_id = '" . (int)$data['filter_offer_id'] . "' AND assigned = 1)";
         }
 
         if (isset($data['filter_customer']) && $data['filter_customer']) {
