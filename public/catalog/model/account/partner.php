@@ -6,7 +6,7 @@ class ModelAccountPartner extends Model
     {
         $query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer WHERE LOWER(referral_code) = '" . $this->db->escape(mb_strtolower($referral_code)) . "'");
 
-        return $query->row['total'];
+        return floor($query->row['total']);
     }
 
     public function getTotalOrders($referral_code)
@@ -16,7 +16,7 @@ class ModelAccountPartner extends Model
             SELECT customer_id FROM " . DB_PREFIX . "customer WHERE LOWER(referral_code) = '" . $this->db->escape(mb_strtolower($referral_code)) . "'
         )");
 
-        return $query->row['total'];
+        return floor($query->row['total']);
     }
 
     public function getTotalOrdersInWork($referral_code)
@@ -35,7 +35,7 @@ class ModelAccountPartner extends Model
             SELECT customer_id FROM " . DB_PREFIX . "customer WHERE LOWER(referral_code) = '" . $this->db->escape(mb_strtolower($referral_code)) . "'
         )");
 
-        return $query->row['total'];
+        return floor($query->row['total']);
     }
 
     public function getTotalCustomerBlockedCash($referral_code)
@@ -45,7 +45,7 @@ class ModelAccountPartner extends Model
             SELECT customer_id FROM " . DB_PREFIX . "customer WHERE LOWER(referral_code) = '" . $this->db->escape(mb_strtolower($referral_code)) . "'
         )");
 
-        return $query->row['total'] ?? 0;
+        return floor($query->row['total'] ?? 0);
     }
 
     public function getTotalOrdersCompleted($referral_code)
@@ -61,7 +61,7 @@ class ModelAccountPartner extends Model
             SELECT customer_id FROM " . DB_PREFIX . "customer WHERE LOWER(referral_code) = '" . $this->db->escape(mb_strtolower($referral_code)) . "'
         )");
 
-        return $query->row['total'] ?? 0;
+        return floor($query->row['total'] ?? 0);
     }
 
     public function getTotalSumCompletedOrders($referral_code)
@@ -77,7 +77,7 @@ class ModelAccountPartner extends Model
             SELECT customer_id FROM " . DB_PREFIX . "customer WHERE LOWER(referral_code) = '" . $this->db->escape(mb_strtolower($referral_code)) . "'
         )");
 
-        return $query->row['total'] ?? 0;
+        return floor($query->row['total'] ?? 0);
     }
 
     public function getTotalAvgCompletedOrders($referral_code)
@@ -93,7 +93,7 @@ class ModelAccountPartner extends Model
             SELECT customer_id FROM " . DB_PREFIX . "customer WHERE LOWER(referral_code) = '" . $this->db->escape(mb_strtolower($referral_code)) . "'
         )");
 
-        return $query->row['total'] ?? 0;
+        return floor($query->row['total'] ?? 0);
     }
 
     public function getTotalCustomerAmount($referral_code)
@@ -105,7 +105,7 @@ class ModelAccountPartner extends Model
             SELECT customer_id FROM " . DB_PREFIX . "customer WHERE LOWER(referral_code) = '" . $this->db->escape(mb_strtolower($referral_code)) . "'
         )");
 
-        return $query->row['total'] ?? 0;
+        return floor($query->row['total'] ?? 0);
     }
 
 }
