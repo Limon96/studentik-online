@@ -4,6 +4,16 @@ class ControllerAccountPartner extends Controller
 {
     public function index()
     {
+        if (!$this->customer->isLogged()) {
+            $this->session->data['redirect'] = $this->url->link('account/account', '', true);
+
+            $this->response->redirect($this->url->link('account/login', '', true));
+        } 
+
+        $this->load->language('account/partner');
+
+        $this->document->setTitle($this->language->get('heading_title'));
+
         $this->load->language('account/partner');
         $this->load->model('account/partner');
 
