@@ -17,6 +17,7 @@ class Customer {
     private $pro;
     private $timezone;
     private $gender;
+    private $partner_code;
 
     public function __construct($registry) {
         $this->config = $registry->get('config');
@@ -40,6 +41,7 @@ class Customer {
                 $this->balance = $customer_query->row['balance'];
                 $this->timezone = $customer_query->row['timezone'];
                 $this->gender = $customer_query->row['gender'];
+                $this->partner_code = $customer_query->row['partner_code'];
 
                 // Get info PRO
                 $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_pro WHERE customer_id = '" . (int)$this->customer_id . "' AND date_end > NOW()");
@@ -108,6 +110,7 @@ class Customer {
             $this->balance = $customer_query->row['balance'];
             $this->timezone = $customer_query->row['timezone'];
             $this->gender = $customer_query->row['gender'];
+            $this->partner_code = $customer_query->row['partner_code'];
 
             // Get info PRO
             $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_pro WHERE customer_id = '" . (int)$this->customer_id . "' AND date_end > NOW()");
@@ -147,6 +150,7 @@ class Customer {
         $this->customer_status_id = '';
         $this->balance = '';
         $this->gender = '';
+        $this->partner_code = '';
     }
 
     public function isLogged() {
@@ -211,6 +215,10 @@ class Customer {
 
     public function getGender() {
         return $this->gender;
+    }
+
+    public function getPartnerCode() {
+        return $this->partner_code;
     }
 
     public function getLongPollKey() {

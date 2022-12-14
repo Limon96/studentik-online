@@ -1,0 +1,59 @@
+{{ header }}
+
+
+<div class="wrap_content">
+
+    {% if alert_success %}
+        <script>
+            alertSuccess('{{ alert_success }}');
+        </script>
+    {% endif %}
+    {{ content_top }}
+    <div class="container">
+        <div class="row">
+            {{ column_left }}
+            <div class="center_content_resp">
+                <div class="wrap_zakaz">
+                    <div class="info_work">
+                        <div class="about_zak">
+
+                            <div class="heads">
+                                <h2 style="font-size: 26px;
+    line-height: 37px;
+    font-weight: 700;
+    color: #00324F;
+    margin: 10px 0 15px 0;">Партнерская программа</h2>
+                                <ul class="breadcrumb clearfix" style="margin-bottom: 15px">
+                                    <li><a href="http://studentik.local/index.php?route=common/home"><i class="fa fa-home"></i></a></li>
+                                    <li><a href="http://studentik.local/index.php?route=account/account">Личный Кабинет</a></li>
+                                    <li><a href="http://studentik.local/index.php?route=account/partner">Партнерская программа</a></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix zak_fom">
+
+                                <div class="col-12">
+                                    <div class="toopfert">Всего зарегистрировано: <span> {{ total_registrations }}</span></div>
+                                    <div class="toopfert">Всего заказов: <span> {{ total_orders }}</span></div>
+                                    <div class="toopfert">Заказы в работе: <span> {{ total_orders_in_work }}</span></div>
+                                    <div class="toopfert">Заблокировано средств: <span>{{ total_customer_blocked_cash }}р.</span></div>
+                                    <div class="toopfert">Выполнено заказов: <span> {{ total_orders_completed }}</span></div>
+                                    <div class="toopfert">Общая сумма выполненных: <span> {{ total_sum_completed_orders }}р.</span></div>
+                                    <div class="toopfert">Средний чек: <span> {{ total_avg_completed_orders }}р.</span></div>
+                                    <div class="toopfert"> Заработано: <span> {{ customer_amount }}р.</span></div>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{ column_right }}
+    </div>
+</div>
+
+
+</div>
+{{ footer }}

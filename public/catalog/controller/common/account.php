@@ -9,6 +9,7 @@ class ControllerCommonAccount extends Controller {
         $data['logout']     = $this->url->link('account/logout');
         $data['finance']    = $this->url->link('account/finance');
         $data['edit']    = $this->url->link('account/edit');
+        $data['partner']    = $this->url->link('account/partner');
         $data['event']    = $this->url->link('account/event');
         $data['promo_code']    = $this->url->link('account/promo_code');
         $data['password']    = $this->url->link('account/password');
