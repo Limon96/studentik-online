@@ -203,7 +203,7 @@ class ControllerExtensionModuleAccount extends Controller
                 $data['orders'] = [];
                 // open order status
 
-                $order_status = $this->model_localisation_order_status->getOrderStatus($this->config->get('config_open_order_status_id'));
+                /*$order_status = $this->model_localisation_order_status->getOrderStatus($this->config->get('config_open_order_status_id'));
 
                 $filter_data = [
                     'filter_order_status_id' => $order_status['order_status_id'],
@@ -217,7 +217,7 @@ class ControllerExtensionModuleAccount extends Controller
                     'name' => $order_status['name'],
                     'total_orders' => $total_orders,
                     'href' => $this->url->link('account/order', 'filter_order_status_id=' . $order_status['order_status_id'])
-                ];
+                ];*/
 
                 // progress order status
                 $order_status = $this->model_localisation_order_status->getOrderStatus($this->config->get('config_progress_order_status_id'));
@@ -322,7 +322,7 @@ class ControllerExtensionModuleAccount extends Controller
                 ];
 
                 // canceled order status
-                $order_status = $this->model_localisation_order_status->getOrderStatus($this->config->get('config_canceled_order_status_id'));
+                /*$order_status = $this->model_localisation_order_status->getOrderStatus($this->config->get('config_canceled_order_status_id'));
 
                 $filter_data = [
                     'filter_order_status_id' => $order_status['order_status_id'],
@@ -336,7 +336,7 @@ class ControllerExtensionModuleAccount extends Controller
                     'name' => $order_status['name'],
                     'total_orders' => $total_orders,
                     'href' => $this->url->link('account/order', 'filter_order_status_id=' . $order_status['order_status_id'])
-                ];
+                ];*/
 
                 /* Мои Отклики Автор */
 

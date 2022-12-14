@@ -188,7 +188,7 @@
         <div class="dropdown-content">
             <a href="{{ customer.href }}">Профиль</a>
             <a href="{{ edit }}">Настройка</a>
-            <a href="{{ partner }}">Партнерская программа</a>
+            {% if shop_partner_link %}<a href="{{ partner }}">Партнерская программа</a>{% endif %}
             <a href="{{ password }}">Сменить пароль</a>{#
             <a href="{{ promo_code }}">{{ text_promo_code }}</a>#}
             <a href="{{ logout }}">Выход</a>

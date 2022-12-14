@@ -16,6 +16,8 @@ class ControllerCommonAccount extends Controller {
         $data['pro']    = $this->url->link('sale/pro');
         $data['chat']    = $this->url->link('message/chat');
 
+        $data['shop_partner_link'] = $this->customer->getPartnerCode() ? true: false;
+
         if ($this->customer->isLogged()) {
             $this->load->model('tool/image');
             if ($this->customer->getImage()) {
