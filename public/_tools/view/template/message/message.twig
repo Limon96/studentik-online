@@ -95,6 +95,7 @@
                                                     <td class="text-left">Файлы</td>
                                                     <td class="text-left">Статус</td>
                                                     <td class="text-left">{% if sort == 'o.date_added' %} <a href="{{ sort_date_added }}" class="{{ order|lower }}">Дата отправки</a> {% else %} <a href="{{ sort_date_added }}">Дата отправки</a> {% endif %}</td>
+                                                    <td>Просмотр</td>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -135,11 +136,12 @@
                                                                 {% endif %}
                                                             </td>
                                                             <td class="text-left">{{ message.date_added }}</td>
+                                                            <td class="text-left"><a class="btn btn-info" href="{{ message.view_chat }}"><i class="fa fa-eye"></i></a></td>
                                                         </tr>
                                                     {% endfor %}
                                                 {% else %}
                                                     <tr>
-                                                        <td class="text-center" colspan="8">{{ text_no_results }}</td>
+                                                        <td class="text-center" colspan="9">{{ text_no_results }}</td>
                                                     </tr>
                                                 {% endif %}
                                                 </tbody>
