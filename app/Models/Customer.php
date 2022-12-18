@@ -50,4 +50,9 @@ class Customer extends Model
     {
         return $this->rating()->where('date_added', '>', (time() - 604800))->sum('rating');
     }
+
+    public function getSlug()
+    {
+        return SeoUrl::where('query', 'customer_id=' . $this->attributes['customer_id'])->first()->keyword ?? null;
+    }
 }

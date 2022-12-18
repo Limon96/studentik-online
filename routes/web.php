@@ -37,7 +37,14 @@ Route::get('/unsubscribe', function () {
     return '';
 })->name('unsubscribe');
 
+Route::get('/order/{slug}', function ($slug) {
+    return $slug;
+})->name('order.show');
 
-Route::get('sign_in', [\App\Http\Controllers\Auth\SignInController::class, 'showLoginForm'])->name('sign_in');
-Route::post('sign_in', [\App\Http\Controllers\Auth\SignInController::class, 'login']);
+Route::get('/user/{slug}', function ($slug) {
+    return $slug;
+})->name('user.show');
+
+#Route::get('sign_in', [\App\Http\Controllers\Auth\SignInController::class, 'showLoginForm'])->name('sign_in');
+#Route::post('sign_in', [\App\Http\Controllers\Auth\SignInController::class, 'login']);
 
