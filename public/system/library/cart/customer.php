@@ -86,6 +86,17 @@ class Customer {
         }
     }
 
+    public function loginById($customer_id)
+    {
+        $customer_query = $this->db->query("SELECT login FROM " . DB_PREFIX . "customer WHERE customer_id = '" . (int)$customer_id . "' AND status = '1'");
+
+        if ($customer_query->num_rows && $customer_query->row['login']) {
+            return $this->login($customer_query->row['login'], '', true);
+        }
+
+        return false;
+    }
+
     public function login($login, $password, $override = false) {
         if ($override) {
             $customer_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE (LOWER(email) = '" . $this->db->escape(utf8_strtolower($login)) . "' OR login = '" . $this->db->escape($login) . "') AND status = '1'");

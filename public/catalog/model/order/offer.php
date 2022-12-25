@@ -4,12 +4,12 @@ class ModelOrderOffer extends Model {
 
     public function addOffer($data)
     {
-        $this->db->query("INSERT INTO " . DB_PREFIX . "offer SET 
-            order_id = '" . $data['order_id'] . "', 
-            customer_id = '" . $this->customer->getId() . "', 
-            bet = '" . $this->db->escape($data['bet']) . "', 
-            earned = '" . $this->db->escape($data['earned']) . "', 
-            text = '" . $this->db->escape($data['text']) . "', 
+        $this->db->query("INSERT INTO " . DB_PREFIX . "offer SET
+            order_id = '" . $data['order_id'] . "',
+            customer_id = '" . $this->customer->getId() . "',
+            bet = '" . $this->db->escape($data['bet']) . "',
+            earned = '" . $this->db->escape($data['earned']) . "',
+            text = '" . $this->db->escape($data['text']) . "',
             date_added = '" . time() . "'
         ");
 
@@ -21,9 +21,9 @@ class ModelOrderOffer extends Model {
     public function editOffer($offer_id, $data)
     {
         $this->db->query("UPDATE " . DB_PREFIX . "offer SET
-             bet = '" . $this->db->escape($data['bet']) . "', 
-            earned = '" . $this->db->escape($data['earned']) . "', 
-            text = '" . $this->db->escape($data['text']) . "', 
+             bet = '" . $this->db->escape($data['bet']) . "',
+            earned = '" . $this->db->escape($data['earned']) . "',
+            text = '" . $this->db->escape($data['text']) . "',
             date_updated = NOW()
             WHERE offer_id = '" . (int)$offer_id . "'
         ");
@@ -141,7 +141,7 @@ class ModelOrderOffer extends Model {
         $this->load->model('order/offer');
         $order_info = $this->model_order_order->getOrder($order_id);
 
-        $error = false;
+        $error = [];
 
         if (!$order_info) {
             $error['access_denied'] = $this->language->get('error_access_denied');

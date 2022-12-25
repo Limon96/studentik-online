@@ -1,37 +1,37 @@
 @if(auth()->check())
-
+@php $user = auth()->user()->customer @endphp
 <div class="search_head">
     <div class="search_in big_search">
         <input type="text" placeholder="Поиск">
-        <button class="go_search"><img src="../catalog/assets/img/icons/search.svg" alt="studentik.online"></button>
+        <button class="go_search"><img src="{{ asset('catalog/assets/img/icons/search.svg') }}" alt="studentik.online"></button>
     </div>
 </div>
 <div class="btn_catcher clearfix">
 
     <button class="btn_hide_submenu">
-        {% if total_notification_unread or total_message_unread %}
-        <span class="red_art">{{ total_notification_unread + total_message_unread }}</span>
-        {% endif %}
+        @if($user->totalUnreadMessages() or $user->totalUnreadNotifications())
+        <span class="red_art">{{ $user->totalUnreadMessages() + $user->totalUnreadNotifications() }}</span>
+        @endif
         <svg xmlns="http://www.w3.org/2000/svg" height="512pt" viewBox="0 0 512 512" width="512pt"><path d="m256 512c-68.378906 0-132.667969-26.628906-181.019531-74.980469-48.351563-48.351562-74.980469-112.640625-74.980469-181.019531s26.628906-132.667969 74.980469-181.019531c48.351562-48.351563 112.640625-74.980469 181.019531-74.980469s132.667969 26.628906 181.019531 74.980469c48.351563 48.351562 74.980469 112.640625 74.980469 181.019531s-26.628906 132.667969-74.980469 181.019531c-48.351562 48.351563-112.640625 74.980469-181.019531 74.980469zm0-472c-119.101562 0-216 96.898438-216 216s96.898438 216 216 216 216-96.898438 216-216-96.898438-216-216-216zm138.285156 182-28.285156-28.285156-110 110-110-110-28.285156 28.285156 138.285156 138.285156zm0 0"/></svg>
     </button>
-    {% if customer_group_id == 1 %}
-    <a href="/index.php?route=order/order/add" class="go_zakaz">
+    @if($user->isCustomer())
+    <a href="{{ route('order.create') }}" class="go_zakaz">
         <span>Разместить заказ</span>
     </a>
-    {% endif %}
+    @endif
 
 
     <div class="clearfix fortest">
         <div class="srcc small_search">
-            <a href="index.php?route=search/search">
+            <a href="{{ route('search') }}">
                 <svg  width="21" height="21" viewBox="0 0 21 21" fill="none">
                     <path d="M16.031 14.617L20.314 18.899L18.899 20.314L14.617 16.031C13.0237 17.3082 11.042 18.0029 9 18C4.032 18 0 13.968 0 9C0 4.032 4.032 0 9 0C13.968 0 18 4.032 18 9C18.0029 11.042 17.3082 13.0237 16.031 14.617ZM14.025 13.875C15.2941 12.5699 16.0029 10.8204 16 9C16 5.132 12.867 2 9 2C5.132 2 2 5.132 2 9C2 12.867 5.132 16 9 16C10.8204 16.0029 12.5699 15.2941 13.875 14.025L14.025 13.875Z" fill="#999999"/>
                 </svg>
             </a>
         </div>
         <div class="prm">
-            <a href="{{ pro }}">
-                <span class="big_premi">{{ text_pro }}</span>
+            <a href="#">
+                <span class="big_premi">Премиум</span>
                 <svg class="small_premi" height="512" viewBox="0 0 192 192" width="512"><circle cx="96" cy=
                         "32" r="8"/><circle cx="184" cy="72" r="8"/><circle cx="8" cy="72" r="8"/><path
                         d="m23.805 160h144.395l15.61-70.265a8 8 0 0 0
@@ -41,7 +41,7 @@
             </a>
         </div>
         <div class="msg">
-            <a href="{{ chat }}">
+            <a href="{{ route('messages') }}">
                 <svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 48 48" version="1.1" id="svg13994" sodipodi:docname="SMS22323.svg" inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)">
                     <sodipodi:namedview id="namedview14602" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" showgrid="false" inkscape:zoom="17.333333" inkscape:cx="23.971154" inkscape:cy="24.028846" inkscape:window-width="1920" inkscape:window-height="1017" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1" inkscape:current-layer="g13988"/>
                     <defs id="defs13954">
@@ -96,13 +96,13 @@
                         <path style="fill:#23869a;fill-opacity:1;stroke-width:0.0576923" d="m 13.775639,32.564488 c -0.298686,-0.148842 -0.54425,-0.409663 -0.651644,-0.692131 -0.05011,-0.131812 -0.04515,-0.149505 0.03349,-0.119327 0.05078,0.01949 1.154632,0.03543 2.452999,0.03543 H 17.97115 V 32.25 32.711538 h -1.950211 -1.950211 z" id="path18068"/>
                     </g>
                 </svg>
-                {% if total_message_unread %}
-                <span>{{ total_message_unread }}</span>
-                {% endif %}
+                @if($user->totalUnreadMessages())
+                <span>{{ $user->totalUnreadMessages() }}</span>
+                @endif
             </a>
         </div>
         <div class="cos">
-            <a href="{{ event }}">
+            <a href="{{ route('account.event') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 48 48" version="1.1" id="svg1167">
                     <defs id="defs1127">
                         <linearGradient id="linearGradient3764" x1="1" x2="47" gradientUnits="userSpaceOnUse" gradientTransform="rotate(-90,23.999998,24)">
@@ -160,9 +160,10 @@
                     <path style="fill:#ffffff;fill-opacity:1;stroke-width:0.03125" d="m 23.889892,10.504639 c -0.949464,-0.04515 -1.847363,0.497124 -2.369208,1.270452 -0.256776,0.333742 -0.381932,0.740521 -0.573602,1.107783 -0.29128,0.307982 -0.749961,0.348185 -1.09585,0.577742 -2.15569,1.148185 -3.865435,3.151138 -4.541285,5.510319 -0.411448,1.223954 -0.31057,2.531276 -0.351512,3.801099 -0.02112,1.33309 -0.02202,2.666833 -0.07391,3.999206 -1.840786,1.356555 -3.016348,3.630858 -2.906433,5.931519 0.09308,0.50296 0.566669,0.923415 1.091253,0.887314 2.307081,0.108504 4.618461,0.05395 6.926012,0.137202 0.20766,-0.03113 0.172044,0.259384 0.26705,0.387531 0.651123,1.505043 2.25867,2.606506 3.922167,2.477967 1.155641,0.0077 2.26214,-0.586511 2.980314,-1.477055 0.3442,-0.38238 0.574882,-0.852483 0.774996,-1.317806 0.31314,-0.200891 0.710429,-0.09803 1.061461,-0.13194 2.01115,-0.02141 4.024397,0.02847 6.033904,-0.06964 0.547393,0.0218 1.002609,-0.441067 1.077426,-0.964495 0.05647,-0.566639 -0.06818,-1.136361 -0.177983,-1.690668 -0.298254,-1.323895 -0.974402,-2.568527 -1.972103,-3.495184 -0.261098,-0.280885 -0.57521,-0.527928 -0.774963,-0.857483 -0.08236,-0.602869 -0.03532,-1.218343 -0.0567,-1.826168 -0.02567,-1.58373 0.01276,-3.170983 -0.10568,-4.751549 -0.131431,-1.209347 -0.648092,-2.348751 -1.301244,-3.36314 -0.978295,-1.487372 -2.372905,-2.697112 -3.991699,-3.440918 -0.291219,-0.138505 -0.648689,-0.248864 -0.758041,-0.592112 -0.172998,-0.515883 -0.447789,-1.001687 -0.866655,-1.358219 -0.516858,-0.467182 -1.198073,-0.795919 -1.907953,-0.750784 -0.103237,-0.0023 -0.206508,-0.0022 -0.309759,-9.72e-4 z M 24.2854,33.694092 c 0.404963,0.0067 0.812119,-0.0098 1.2146,0.04443 -0.564769,0.638704 -1.558486,0.859308 -2.323364,0.461243 -0.251134,-0.112767 -0.456398,-0.299676 -0.644349,-0.496643 0.58437,-0.003 1.168732,-0.0093 1.753113,-0.009 z" id="path5697"/>
                 </svg>
 
-                {% if total_notification_unread %}
-                <span>{{ total_notification_unread }}</span>
-                {% endif %}
+                @if($user->totalUnreadNotifications())
+                <span>{{ $user->totalUnreadNotifications() }}</span>
+                @endif
+
             </a>
         </div>
     </div>
@@ -175,22 +176,21 @@
 
 
 <div class="coast">
-    <a href="{{ finance }}">{{ customer.balance }}</a>
+    <a href="{{ route('finance') }}">{{ $user->balance }}р.</a>
 </div>
 <div class="akk">
 
     <div class="dropdown_gor">
         <a  class="dropbtn">
-            <img src="{{ customer.image }}" class="avatarka" alt="studentik.online">
-            <span class="log_name">{{ customer.login }}</span>
-            <img src="../catalog/assets/img/icons/arrow.svg" class="arrow" alt="studentik.online">
+            <img src="{{ thumbnail($user->getImage(), 100) }}" class="avatarka" alt="studentik.online">
+            <span class="log_name">{{ $user->login }}</span>
+            <img src="{{ asset('catalog/assets/img/icons/arrow.svg') }}" class="arrow" alt="studentik.online">
         </a>
         <div class="dropdown-content">
-            <a href="{{ customer.href }}">Профиль</a>
-            <a href="{{ edit }}">Настройка</a>
-            <a href="{{ password }}">Сменить пароль</a>{#
-            <a href="{{ promo_code }}">{{ text_promo_code }}</a>#}
-            <a href="{{ logout }}">Выход</a>
+            <a href="{{ route('account.profile', $user->login) }}">Профиль</a>
+            <a href="{{ route('account.setting') }}">Настройка</a>
+            <a href="{{ route('account.password') }}">Сменить пароль</a>
+            <a href="{{ route('logout') }}">Выход</a>
         </div>
     </div>
 </div>
@@ -201,8 +201,8 @@
 <div class="akk_enter">
     <div class="login">
         <div class="btn_split clearfix">
-            <a href="{{ register }}" class="regs">{{ text_register }}</a>
-            <a href="{{ login }}" class="in">{{ text_login }}</a>
+            <a href="#" class="regs">Регистрация</a>
+            <a href="#" class="in">Вход</a>
         </div>
     </div>
 </div>

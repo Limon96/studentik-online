@@ -13,6 +13,8 @@ $_['db_database']       = DB_DATABASE;
 $_['db_port']           = DB_PORT;
 
 // Session
+$_['session_engine']     = 'file';
+$_['session_name']       = 'OCSESSID';
 $_['session_autostart'] = true;
 
 // Template
@@ -20,6 +22,7 @@ $_['template_cache']    = true;
 
 // Actions
 $_['action_pre_action'] = array(
+    'startup/session',
 	'startup/startup',
 	'startup/error',
 	'startup/event',

@@ -79,9 +79,10 @@ class SignInController extends Controller
     {
         Auth::logout();
 
-        return response()->redirectTo(
-            config('APP_URL') . 'index.php?route=account/auth/log_out'
-        );
+        session()->remove('customer_id');
+
+        return response()
+            ->redirectTo(config('APP_URL'));
     }
 
     protected function sendLoginResponse(Request $request)
@@ -97,7 +98,7 @@ class SignInController extends Controller
         return response()
             ->json([
                 'success' => 1,
-                'redirect' => config('APP_URL') . 'index.php?route=account/auth&access_token=' . $access_token
+                'redirect' => config('APP_URL') . '/orders'
             ]);
     }
 

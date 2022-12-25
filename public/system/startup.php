@@ -1,6 +1,6 @@
 <?php
 // Error Reporting
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 
 // Check Version
 /*if (version_compare(phpversion(), '7.3.0', '<') == true) {
@@ -66,10 +66,13 @@ function modification($filename) {
 	return $filename;
 }
 
+
 // Autoloader
 if (defined('DIR_STORAGE') && is_file(DIR_STORAGE . 'vendor/autoload.php')) {
 	require_once(DIR_STORAGE . 'vendor/autoload.php');
 }
+
+require_once(DIR_STORAGE . '../../../vendor/autoload.php');
 
 function library($class) {
 	$file = DIR_SYSTEM . 'library/' . str_replace('\\', '/', strtolower($class)) . '.php';
@@ -101,5 +104,5 @@ require_once(DIR_SYSTEM . 'helper/general.php');
 require_once(DIR_SYSTEM . 'helper/utf8.php');
 
 function start($application_config) {
-	require_once(DIR_SYSTEM . 'framework.php');	
+	require_once(DIR_SYSTEM . 'framework.php');
 }

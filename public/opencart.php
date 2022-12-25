@@ -4,6 +4,10 @@
 const VERSION = '3.0.3.7';
 const VERSION_SCRIPTS = '0.0.14.4';
 
+
+require __DIR__ . '/../vendor/autoload.php';
+
+
 // Configuration
 if (is_file('config.php')) {
     require_once('config.php');

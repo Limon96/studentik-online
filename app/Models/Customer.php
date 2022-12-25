@@ -27,6 +27,21 @@ class Customer extends Model
         return $this->hasManyThrough(Review::class, CustomerReview::class, 'customer_id', 'review_id', 'customer_id', 'review_id');
     }
 
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class, $this->primaryKey, $this->primaryKey);
+    }
+
+    public function totalUnreadNotifications()
+    {
+        return $this->notifications()->where('viewed', 0)->count();
+    }
+
+    public function totalUnreadMessages()
+    {
+        return $this->hasMany(Message::class, 'recipient_id', $this->primaryKey)->where('viewed', 0)->count();
+    }
+
     public function getImage()
     {
         if (empty($this->attributes['image'])) {
@@ -50,4 +65,15 @@ class Customer extends Model
     {
         return $this->rating()->where('date_added', '>', (time() - 604800))->sum('rating');
     }
+
+    public function isCustomer()
+    {
+        return $this->customer_group_id === 1;
+    }
+
+    public function isAuthor()
+    {
+        return $this->customer_group_id === 2;
+    }
+
 }

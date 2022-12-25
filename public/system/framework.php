@@ -101,15 +101,14 @@ if ($config->get('session_autostart')) {
 	for all sessions!
 	*/
 
-	if (isset($_COOKIE[$config->get('session_name')])) {
-		$session_id = $_COOKIE[$config->get('session_name')];
-	} else {
-		$session_id = '';
-	}
+    $session_id = ParserSession::getSessionId();
+
+    if (!$session_id) {
+        header('Location: ' . HTTPS_SERVER . '_create_session');
+        exit();
+    }
 
 	$session->start($session_id);
-
-	setcookie($config->get('session_name'), $session->getId(), ini_get('session.cookie_lifetime'), ini_get('session.cookie_path'), ini_get('session.cookie_domain'));
 }
 
 // Cache

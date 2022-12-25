@@ -15,6 +15,20 @@ use Illuminate\Support\Facades\Route;
 
 include 'admin.php';
 
+include 'account.php';
+
+include 'finance.php';
+
+include 'message.php';
+
+include 'order.php';
+
+include 'search.php';
+
+
+Route::get('/_create_session', \App\Http\Controllers\CreateSessionController::class);
+
+
 Route::prefix('new-order')->group(function () {
     Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/{slug}', [\App\Http\Controllers\Landing\LandingController::class, 'index'])->name('landing.show');
