@@ -22,5 +22,6 @@ function isLaravelUrl()
         || preg_match(getPrep('new-order'), $_SERVER['REQUEST_URI'])
         || preg_match(getPrep('socket'), $_SERVER['REQUEST_URI'])
         || preg_match(getPrep('logout'), $_SERVER['REQUEST_URI'])
+        || preg_match(getPrep('orders'), $_SERVER['REQUEST_URI'])
     ;
 }
