@@ -233,11 +233,11 @@ $(document).on('change', '#order-search select[name=filter_section_id]', functio
 
 function getSubjects(section_id){
     $.ajax({
-        url : 'index.php?route=order/subject/autocomplete&filter_section_id=' + section_id,
+        url : '/_autocomplete/subjects?filter_section_id=' + section_id,
         dataType : 'json',
         success : function (json) {
             $('#order-search select[name=filter_subject_id]').prop('disabled', true);
-            $('#order-search select[name=filter_subject_id]').html('<option value="0">' + json['text_all_subject'] + '</option>');
+            $('#order-search select[name=filter_subject_id]').html('<option value="0">Все предметы</option>');
             if(json['subject'].length > 0) {
                 for(var i in json['subject']) {
                     $('#order-search select[name=filter_subject_id]').append('<option value="' + json['subject'][i]['subject_id'] + '">' + json['subject'][i]['name'] + '</option>');
@@ -249,7 +249,7 @@ function getSubjects(section_id){
                 templateSelection: setCurrency
             });
             $('#account-order select[name=filter_subject_id]').prop('disabled', true);
-            $('#account-order select[name=filter_subject_id]').html('<option value="0">' + json['text_all_subject'] + '</option>');
+            $('#account-order select[name=filter_subject_id]').html('<option value="0">Все предметы</option>');
             if(json['subject'].length > 0) {
                 for(var i in json['subject']) {
                     $('#account-order select[name=filter_subject_id]').append('<option value="' + json['subject'][i]['subject_id'] + '">' + json['subject'][i]['name'] + '</option>');

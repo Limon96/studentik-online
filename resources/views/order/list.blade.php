@@ -9,6 +9,8 @@
 @section('keywords')@endsection
 
 @section('scripts')
+    <script src="{{ asset('catalog/assets/js/custom.js') }}"></script>
+    <script src="{{ asset('catalog/assets/js/offer.js') }}"></script>
     <script>
         $(document).ready(function () {
 
@@ -47,7 +49,7 @@
                                 <h1>@yield('title')</h1>
                                 <ul class="breadcrumb clearfix">
                                     <li><a href="https://studentik.online/"><i class="fa fa-home"></i></a></li>
-                                    <li><a href="{{ route('blog.index') }}">Блог</a></li>
+                                    <li><a href="{{ route('order.index') }}">@yield('title')</a></li>
                                 </ul>
                             </div>
                             <div id="order-search" class="parametrs clearfix">
@@ -63,12 +65,10 @@
                                             <select name="filter_section_id" class="templatingSelect2">
                                                 <option value="0">Все разделы</option>
                                                 @foreach($sections as $option)
-                                                    @if($option->section_id == request()->filter_section_id)
-                                                        <option value="{{ $option->section_id }}"
-                                                                selected>{{ $option->name }}</option>
+                                                    @if($option->id == request()->filter_section_id)
+                                                        <option value="{{ $option->id }}" selected>{{ $option->name }}</option>
                                                     @else
-                                                        <option
-                                                            value="{{ $option->section_id }}">{{ $option->name }}</option>
+                                                        <option value="{{ $option->id }}">{{ $option->name }}</option>
                                                     @endif
                                                 @endforeach
                                             </select>
@@ -79,12 +79,10 @@
                                                 <select name="filter_subject_id" class="templatingSelect2">
                                                     <option value="0">Все предметы</option>
                                                     @foreach($subjects as $option)
-                                                        @if($option->subject_id == request()->filter_subject_id)
-                                                            <option value="{{ $option->subject_id }}"
-                                                                    selected>{{ $option->name }}</option>
+                                                        @if($option->id == request()->filter_subject_id)
+                                                            <option value="{{ $option->id }}" selected>{{ $option->name }}</option>
                                                         @else
-                                                            <option
-                                                                value="{{ $option->subject_id }}">{{ $option->name }}</option>
+                                                            <option value="{{ $option->id }}">{{ $option->name }}</option>
                                                         @endif
                                                     @endforeach
                                                 </select>
@@ -139,7 +137,7 @@
                                     </div>
 
                                     <div class="rezult_search">
-                                        <p>Найдено: 7 заказов</p>
+                                        <p>Найдено: <span>{{ $orders->total() }}</span> заказов</p>
                                     </div>
                                     <div class="btn_search">
                                         <button>Поиск</button>

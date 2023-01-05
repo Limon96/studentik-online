@@ -10,18 +10,23 @@ function getPrep($str)
 {
     return '/\/' . addslashes($str) . '(.*)/m';
 }
+function isPregMatch($str)
+{
+    return preg_match(getPrep($str), $_SERVER['REQUEST_URI']);
+}
 
 function isLaravelUrl()
 {
-    return preg_match(getPrep('_manager'), $_SERVER['REQUEST_URI'])
-        || preg_match(getPrep('_debugbar'), $_SERVER['REQUEST_URI'])
-        || preg_match(getPrep('_create_session'), $_SERVER['REQUEST_URI'])
-        || preg_match(getPrep('blog'), $_SERVER['REQUEST_URI'])
-        || preg_match(getPrep('sign_in'), $_SERVER['REQUEST_URI'])
-        || preg_match(getPrep('faq'), $_SERVER['REQUEST_URI'])
-        || preg_match(getPrep('new-order'), $_SERVER['REQUEST_URI'])
-        || preg_match(getPrep('socket'), $_SERVER['REQUEST_URI'])
-        || preg_match(getPrep('logout'), $_SERVER['REQUEST_URI'])
-        || preg_match(getPrep('orders'), $_SERVER['REQUEST_URI'])
+    return isPregMatch('_manager')
+        || isPregMatch('_debugbar')
+        || isPregMatch('_create_session')
+        || isPregMatch('blog')
+        || isPregMatch('sign_in')
+        || isPregMatch('faq')
+        || isPregMatch('new-order')
+        || isPregMatch('socket')
+        || isPregMatch('logout')
+        || isPregMatch('orders')
+        || isPregMatch('_autocomplete')
     ;
 }

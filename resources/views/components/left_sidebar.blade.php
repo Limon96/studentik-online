@@ -64,7 +64,7 @@
 </div>
 
 <script>
-    $('.left_content_resp').load('/orders .left_content_resp > *', function () {
+    $('.left_content_resp').load('/experts .left_content_resp > *', function () {
         var acc = document.getElementsByClassName("accordion_one");
         var i;
 

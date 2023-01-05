@@ -7,6 +7,9 @@ Route::get('/create-order', function () {
 })->name('order.create');
 
 Route::get('/orders', \App\Http\Controllers\Order\ListController::class)->name('order.index');
+
 Route::get('/order/{slug}', function ($slug){
     return 'Order show: ' . $slug;
 })->name('order.show');
+
+Route::get('_autocomplete/subjects', \App\Http\Controllers\Autocomplete\SubjectController::class)->name('autocomplete.subjects');

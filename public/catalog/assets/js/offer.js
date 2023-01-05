@@ -338,9 +338,9 @@ $(document).on('click', '#order-search button', function (e) {
     }
 
     if (url.length > 0) {
-        location.href = '../index.php?route=order/order&' + url.join('&');
+        location.href = '../orders?' + url.join('&');
     } else {
-        location.href = '../index.php?route=order/order'
+        location.href = '../orders'
     }
 });
 

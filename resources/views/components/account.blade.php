@@ -20,7 +20,6 @@
     </a>
     @endif
 
-
     <div class="clearfix fortest">
         <div class="srcc small_search">
             <a href="{{ route('search') }}">
@@ -167,13 +166,7 @@
             </a>
         </div>
     </div>
-
-
-
 </div>
-
-
-
 
 <div class="coast">
     <a href="{{ route('finance') }}">{{ $user->balance }}р.</a>
@@ -190,19 +183,17 @@
             <a href="{{ route('account.profile', $user->login) }}">Профиль</a>
             <a href="{{ route('account.setting') }}">Настройка</a>
             <a href="{{ route('account.password') }}">Сменить пароль</a>
-            <a href="{{ route('logout') }}">Выход</a>
+            <a href="{{ route('sign_in.logout') }}">Выход</a>
         </div>
     </div>
 </div>
-
-
 
 @else
 <div class="akk_enter">
     <div class="login">
         <div class="btn_split clearfix">
-            <a href="#" class="regs">Регистрация</a>
-            <a href="#" class="in">Вход</a>
+            <a href="{{ route('sign_in', ['act' => 'register']) }}" class="regs">Регистрация</a>
+            <a href="{{ route('sign_in') }}" class="in">Вход</a>
         </div>
     </div>
 </div>
