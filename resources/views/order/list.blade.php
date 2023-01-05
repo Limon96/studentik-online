@@ -183,7 +183,7 @@
                                             <div class="logof clearfix">
                                                 <div class="img_face">
                                                     <img src="{{ thumbnail($order->customer->getImage(), 80) }}" alt="{{ $order->customer->login }}">
-                                                    @if($order->customer->online)<span></span>@endif
+                                                    @if($order->customer->isOnline())<span></span>@endif
                                                 </div>
                                                 <div class="login">
                                                     <a href="{{ route('account.profile', $order->customer->login) }}">{{ $order->customer->login }}</a>
@@ -209,7 +209,7 @@
                                                 </div>
                                                 <div class="answer">
                                                     <img src="catalog/assets/img/icons/massage_min.svg">
-                                                    <span>{{ $order->count_offer }}</span>
+                                                    <span>{{ $order->offers->count() }}</span>
                                                 </div>
                                             </div>
                                         </div>

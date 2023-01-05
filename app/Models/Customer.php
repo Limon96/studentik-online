@@ -34,12 +34,20 @@ class Customer extends Model
 
     public function totalUnreadNotifications()
     {
-        return $this->notifications()->where('viewed', 0)->count();
+        if (!isset($this->attributes['totalUnreadNotifications'])) {
+            $this->attributes['totalUnreadNotifications'] = $this->notifications()->where('viewed', 0)->count();
+        }
+
+        return $this->attributes['totalUnreadNotifications'];
     }
 
     public function totalUnreadMessages()
     {
-        return $this->hasMany(Message::class, 'recipient_id', $this->primaryKey)->where('viewed', 0)->count();
+        if (!isset($this->attributes['totalUnreadMessages'])) {
+            $this->attributes['totalUnreadMessages'] = $this->hasMany(Message::class, 'recipient_id', $this->primaryKey)->where('viewed', 0)->count();
+        }
+
+        return $this->attributes['totalUnreadMessages'];
     }
 
     public function getImage()
@@ -64,6 +72,11 @@ class Customer extends Model
     public function getNewRating()
     {
         return $this->rating()->where('date_added', '>', (time() - 604800))->sum('rating');
+    }
+
+    public function isOnline()
+    {
+        return time() - $this->last_seen > 900;
     }
 
     public function isCustomer()

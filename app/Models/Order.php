@@ -6,7 +6,6 @@ use App\Filters\QueryFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
 class Order extends Model
 {
@@ -36,9 +35,14 @@ class Order extends Model
         return $this->belongsTo(WorkType::class, 'work_type_id', 'work_type_id');
     }
 
+    public function offers()
+    {
+        return $this->hasMany(Offer::class, 'order_id', 'order_id');
+    }
+
     public function getSeoUrl()
     {
-        return DB::table('seo_url', 'su')->select('query', 'keyword')->where('query', 'order_id=' . $this->attributes[$this->primaryKey])->first()->keyword ?? '';
+        return SeoUrl::select('query', 'keyword')->where('query', 'order_id=' . $this->attributes[$this->primaryKey])->first()->keyword ?? '';
     }
 
     public function getDateEnd()

@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\Section;
 use App\Models\Subject;
 use App\Models\WorkType;
+use App\Repositories\OrderRepository;
 use Illuminate\Support\Facades\DB;
 
 class ListController extends Controller
@@ -25,10 +26,12 @@ class ListController extends Controller
         }
         $work_types = WorkType::orderBy('name')->select(['work_type_id', 'name'])->orderBy('sort_order')->get();
 
-        $orders = Order::filter($request)
-            ->where('order_status_id', static::ORDER_STATUS_ID)
-            ->orderByDesc('date_added')
-            ->paginate(static::COUNT_ORDERS_PER_PAGE);
+        $orders = app(OrderRepository::class)
+            ->filterListOrder(
+                $request,
+                static::ORDER_STATUS_ID,
+                static::COUNT_ORDERS_PER_PAGE
+            );
 
         return view('order.list', compact(
             'sections',
