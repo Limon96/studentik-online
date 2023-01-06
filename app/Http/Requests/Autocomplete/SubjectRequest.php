@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Order;
+namespace App\Http\Requests\Autocomplete;
 
 use Illuminate\Foundation\Http\FormRequest;
 

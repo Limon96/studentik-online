@@ -4,13 +4,10 @@ namespace App\Http\Controllers\Order;
 
 use App\Filters\Order\ListFilter;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Order\SubjectRequest;
-use App\Models\Order;
-use App\Models\Section;
 use App\Models\Subject;
-use App\Models\WorkType;
 use App\Repositories\OrderRepository;
-use Illuminate\Support\Facades\DB;
+use App\Repositories\SectionRepository;
+use App\Repositories\WorkTypeRepository;
 
 class ListController extends Controller
 {
@@ -19,12 +16,12 @@ class ListController extends Controller
 
     public function __invoke(ListFilter $request)
     {
-        $sections = Section::orderBy('name')->select(['id', 'name'])->get();
+        $sections = app(SectionRepository::class)->getForSelectWithoutSubjects();
         $subjects = [];
         if ($request->request->filter_section_id ?? 0) {
             $subjects = Subject::orderBy('name')->select(['id', 'name'])->where('section_id', $request->request->filter_section_id)->get();
         }
-        $work_types = WorkType::orderBy('name')->select(['work_type_id', 'name'])->orderBy('sort_order')->get();
+        $work_types = app(WorkTypeRepository::class)->getForSelect();
 
         $orders = app(OrderRepository::class)
             ->filterListOrder(

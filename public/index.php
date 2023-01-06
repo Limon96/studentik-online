@@ -27,6 +27,7 @@ function isLaravelUrl()
         || isPregMatch('socket')
         || isPregMatch('logout')
         || isPregMatch('orders')
+        || isPregMatch('create-order')
         || isPregMatch('_autocomplete')
     ;
 }

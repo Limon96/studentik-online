@@ -2,12 +2,12 @@
 
 namespace App\Repositories;
 
-use App\Models\Section as Model;
+use App\Models\PlagiarismCheck as Model;
 
 /**
  * Class CatalogAttributeRepository.
  */
-class SectionRepository extends CoreRepository
+class PlagiarismCheckRepository extends CoreRepository
 {
     /**
      * @return string
@@ -19,14 +19,6 @@ class SectionRepository extends CoreRepository
     }
 
     public function getForSelect()
-    {
-        return $this->startConditions()
-            ->with('subjects')
-            ->orderBy('name')
-            ->get();
-    }
-
-    public function getForSelectWithoutSubjects()
     {
         return $this->startConditions()
             ->orderBy('name')

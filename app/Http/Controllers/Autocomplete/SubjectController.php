@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Autocomplete;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Order\SubjectRequest;
+use App\Http\Requests\Autocomplete\SubjectRequest;
 use App\Models\Subject;
 use Illuminate\Support\Facades\DB;
 
