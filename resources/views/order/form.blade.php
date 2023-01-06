@@ -60,64 +60,69 @@
                 success : function (json) {
                     $('#form-submit').prop('disabled', false);
 
-                    if (json['error_subject']) {
-                        $('#order-create select[name=subject]').after('<div class="has-error">' + json['error_subject'] + '</div>');
-                    }
-                    if (json['error_work_type']) {
-                        $('#order-create select[name=work_type]').after('<div class="has-error">' + json['error_work_type'] + '</div>');
-                    }
-                    if (json['error_date_end']) {
-                        $('#order-create input[name=date_end]').after('<div class="has-error">' + json['error_date_end'] + '</div>');
-                    }
-                    if (json['error_description']) {
-                        $('#order-create textarea[name=description]').after('<div class="has-error">' + json['error_description'] + '</div>');
-                    }
-                    if (json['error_title']) {
-                        $('#order-create input[name=title]').after('<div class="has-error">' + json['error_title'] + '</div>');
-                    }
-
-                    if (json['error_title']) {
-                        $('#order-create input[name=title]').focus();
-                        $('html, body').animate({
-                            scrollTop: $('#order-create input[name=title]').offset().top - 250  // класс объекта к которому приезжаем
-                        }, 1000);
-                    } else if (json['error_subject']) {
-                        $('#order-create select[name=subject]').focus();
-                        $('html, body').animate({
-                            scrollTop: $('#order-create select[name=subject]').offset().top - 250  // класс объекта к которому приезжаем
-                        }, 1000);
-                    } else if (json['error_work_type']) {
-                        $('#order-create select[name=work_type]').focus();
-                        $('html, body').animate({
-                            scrollTop: $('#order-create select[name=work_type]').offset().top - 250  // класс объекта к которому приезжаем
-                        }, 1000);
-                    } else if (json['error_date_end']) {
-                        $('#order-create input[name=date_end]').focus();
-                        $('html, body').animate({
-                            scrollTop: $('#order-create input[name=date_end]').offset().top - 250  // класс объекта к которому приезжаем
-                        }, 1000);
-                    } else if (json['error_description']) {
-                        $('#order-create textarea[name=description]').focus();
-                        $('html, body').animate({
-                            scrollTop: $('#order-create textarea[name=description]').offset().top - 250  // класс объекта к которому приезжаем
-                        }, 1000);
-                    }
-
-
-                    if (json['error_balance']) {
-                        window.open(json['balance_redirect'].replace('&amp;','&'));
-                    }
-
                     if (!json['success']) {
                         $('#form-submit').btnLoading('off');
                     }
 
-                    if (json['success']) {
-                        $('#order-create').prepend('<div class="alert alert-success">' + json['error_date_end'] + '</div>');
-                    }
-
                     if (json['redirect']) {
                         location.href = json['redirect'].replace('&amp;','&');
+                    }
+                },
+                error: function (response) {
+                    $('#form-submit').btnLoading('off');
+
+                    if (response.status === 422) {
+
+                        var json = response.responseJSON;
+
+                        if (json['errors']['subject']) {
+                            $('#order-create select[name=subject]').after('<div class="has-error">' + json['errors']['subject'] + '</div>');
+                        }
+                        if (json['errors']['work_type']) {
+                            $('#order-create select[name=work_type]').after('<div class="has-error">' + json['errors']['work_type'] + '</div>');
+                        }
+                        if (json['errors']['date_end']) {
+                            $('#order-create input[name=date_end]').after('<div class="has-error">' + json['errors']['date_end'] + '</div>');
+                        }
+                        if (json['errors']['description']) {
+                            $('#order-create textarea[name=description]').after('<div class="has-error">' + json['errors']['description'] + '</div>');
+                        }
+                        if (json['errors']['title']) {
+                            $('#order-create input[name=title]').after('<div class="has-error">' + json['errors']['title'] + '</div>');
+                        }
+
+                        if (json['errors']['title']) {
+                            $('#order-create input[name=title]').focus();
+                            $('html, body').animate({
+                                scrollTop: $('#order-create input[name=title]').offset().top - 250  // класс объекта к которому приезжаем
+                            }, 1000);
+                        } else if (json['errors']['subject']) {
+                            $('#order-create select[name=subject]').focus();
+                            $('html, body').animate({
+                                scrollTop: $('#order-create select[name=subject]').offset().top - 250  // класс объекта к которому приезжаем
+                            }, 1000);
+                        } else if (json['errors']['work_type']) {
+                            $('#order-create select[name=work_type]').focus();
+                            $('html, body').animate({
+                                scrollTop: $('#order-create select[name=work_type]').offset().top - 250  // класс объекта к которому приезжаем
+                            }, 1000);
+                        } else if (json['errors']['date_end']) {
+                            $('#order-create input[name=date_end]').focus();
+                            $('html, body').animate({
+                                scrollTop: $('#order-create input[name=date_end]').offset().top - 250  // класс объекта к которому приезжаем
+                            }, 1000);
+                        } else if (json['errors']['description']) {
+                            $('#order-create textarea[name=description]').focus();
+                            $('html, body').animate({
+                                scrollTop: $('#order-create textarea[name=description]').offset().top - 250  // класс объекта к которому приезжаем
+                            }, 1000);
+                        }
+
+
+                        if (json['errors']['balance']) {
+                            window.open(json['balance_redirect'].replace('&amp;','&'));
+                        }
+
                     }
                 }
             });

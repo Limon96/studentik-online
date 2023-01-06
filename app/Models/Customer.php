@@ -89,4 +89,19 @@ class Customer extends Model
         return $this->customer_group_id === 2;
     }
 
+    public function deductBalanceTransfer(int $amount)
+    {
+        if ($amount > 0) {
+            $amount = $amount * (-1);
+        }
+
+        $this->balanceTransfer($amount);
+    }
+
+    public function balanceTransfer(int $amount)
+    {
+        $this->balance += $amount;
+        $this->save();
+    }
+
 }

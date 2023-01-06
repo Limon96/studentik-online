@@ -11,4 +11,11 @@ class SeoUrl extends Model
 
     protected $table = 'seo_url';
     protected $primaryKey = 'seo_url_id';
+
+    protected $fillable = [
+        'language_id',
+        'store_id',
+        'query',
+        'keyword',
+    ];
 }

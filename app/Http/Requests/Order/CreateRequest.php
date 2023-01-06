@@ -29,6 +29,7 @@ class CreateRequest extends FormRequest
             "work_type" => "required|exists:work_type,work_type_id",
             "subject" => "required|exists:subjects,id",
             "date_end" => "",
+            "date_unknown" => "",
             "description" => "",
             "premium" => "",
             "hot" => "",
@@ -36,6 +37,15 @@ class CreateRequest extends FormRequest
             "plagiarism_check_id" => "",
             "plagiarism" => "",
             "price" => "",
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'title' => 'название работы',
+            'work_type' => 'типа работы',
+            'subject' => 'предмета работы',
         ];
     }
 }
