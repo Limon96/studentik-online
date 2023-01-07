@@ -4,6 +4,8 @@ use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
+
+unset($_GET['_route_']);
 /*
    |--------------------------------------------------------------------------
    | Check If The Application Is Under Maintenance

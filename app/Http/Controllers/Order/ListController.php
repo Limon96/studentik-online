@@ -16,11 +16,8 @@ class ListController extends Controller
 
     public function __invoke(ListFilter $request)
     {
+        $subjects = $this->subjects($request->request);
         $sections = app(SectionRepository::class)->getForSelectWithoutSubjects();
-        $subjects = [];
-        if ($request->request->filter_section_id ?? 0) {
-            $subjects = Subject::orderBy('name')->select(['id', 'name'])->where('section_id', $request->request->filter_section_id)->get();
-        }
         $work_types = app(WorkTypeRepository::class)->getForSelect();
 
         $orders = app(OrderRepository::class)
@@ -36,6 +33,18 @@ class ListController extends Controller
             'work_types',
             'orders'
         ));
+    }
+
+    private function subjects($request)
+    {
+        if ($request->filter_section_id ?? 0) {
+            return Subject::orderBy('name')
+                ->select(['id', 'name'])
+                ->where('section_id', $request->filter_section_id)
+                ->get();
+        }
+
+        return [];
     }
 
 }

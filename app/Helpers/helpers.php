@@ -49,7 +49,8 @@ if (!function_exists('get_widget')) {
 
 if (!function_exists('format_date')) {
 
-    function format_date($str, $format = "d.m.Y") {
+    function format_date($str, $format = "d.m.Y")
+    {
 
         if (is_numeric($str)) {
             $str = date("Y-m-d H:i:s", $str);
@@ -74,6 +75,15 @@ if (!function_exists('format_date')) {
         } else {
             return date($format, strtotime($str));
         }
+    }
+
+}
+
+if (!function_exists('format_currency')) {
+
+    function format_currency(float $number = 0, string $currency = 'RUB', $thousands_separator = ' ', string $decimal_separator = '.')
+    {
+        return \App\Currencies\Currency::format($number, $currency, $thousands_separator, $decimal_separator);
     }
 
 }

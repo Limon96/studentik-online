@@ -65,7 +65,7 @@ class Order extends Model
 
     public function getPrice()
     {
-        return $this->attributes['price'] > 0 ? $this->attributes['price']. 'р.' : 'договорная';
+        return $this->attributes['price'] > 0 ? format_currency($this->attributes['price']) : 'договорная';
     }
 
     public function scopeFilter(Builder $builder, QueryFilter $filter)

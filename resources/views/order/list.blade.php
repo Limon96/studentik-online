@@ -193,22 +193,22 @@
                                         <div class="descript clearfix">
                                             <ul>
                                                 <li>
-                                                    <img src="catalog/assets/img/icons/papka.svg">
+                                                    <img src="{{ asset('catalog/assets/img/icons/papka.svg') }}">
                                                     <p>Цена: <span>{{ $order->getPrice() }}</span></p>
                                                 </li>
                                                 <li>
-                                                    <img src="catalog/assets/img/icons/book_green.svg">
+                                                    <img src="{{ asset('catalog/assets/img/icons/book_green.svg') }}">
                                                     <p>Срок сдачи: <span
                                                             class="tonk">{{ $order->getDateEnd() }}</span></p>
                                                 </li>
                                             </ul>
                                             <div class="div_coner clearfix">
                                                 <div class="look">
-                                                    <img src="catalog/assets/img/icons/eye_ser.svg">
+                                                    <img src="{{ asset('catalog/assets/img/icons/eye_ser.svg') }}">
                                                     <span>{{ $order->viewed }}</span>
                                                 </div>
                                                 <div class="answer">
-                                                    <img src="catalog/assets/img/icons/massage_min.svg">
+                                                    <img src="{{ asset('catalog/assets/img/icons/massage_min.svg') }}">
                                                     <span>{{ $order->offers->count() }}</span>
                                                 </div>
                                             </div>
