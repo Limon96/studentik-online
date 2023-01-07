@@ -9,8 +9,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/create-order', [\App\Http\Controllers\Order\CreateController::class, 'create']);
 });
 
-Route::get('/order/{slug}', function ($slug){
-    return 'Order show: ' . $slug;
-})->name('order.show');
+Route::get('/order/{slug}', \App\Http\Controllers\Order\ShowController::class)->name('order.show');
+Route::get('/edit/{slug}', fn (string $slug) => 'Edit order: ' . $slug)->name('order.edit');
 
 Route::get('_autocomplete/subjects', \App\Http\Controllers\Autocomplete\SubjectController::class)->name('autocomplete.subjects');

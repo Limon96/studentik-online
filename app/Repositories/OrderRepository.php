@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Models\Order;
-use App\Models\Section as Model;
+use App\Models\Order as Model;
+use App\Models\SeoUrl;
 
 /**
  * Class CatalogAttributeRepository.
@@ -22,13 +22,34 @@ class OrderRepository extends CoreRepository
 
     public function filterListOrder($filter, $order_status_id, $perPage = 10)
     {
-        return Order::filter($filter)
+        return $this->startConditions()->filter($filter)
             ->where('order_status_id', $order_status_id)
             ->with([
                 'section', 'subject', 'work_type', 'customer', 'offers'
             ])
             ->orderByDesc('date_added')
             ->paginate($perPage);
+    }
+
+    public function findSlug(string $slug)
+    {
+        $seoUrl = SeoUrl::where('keyword', $slug)->first();
+
+        if (is_null($seoUrl)) {
+            return null;
+        }
+
+        $query = explode('=', $seoUrl->query);
+
+        $orderId = (int)$query[1];
+
+        return $this
+            ->startConditions()
+            ->with([
+                'section', 'subject', 'work_type', 'customer', 'offers', 'plagiarism_check'
+            ])
+            ->where('order_id', $orderId)
+            ->first();
     }
 
 }

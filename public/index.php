@@ -29,5 +29,7 @@ function isLaravelUrl()
         || isPregMatch('orders')
         || isPregMatch('create-order')
         || isPregMatch('_autocomplete')
+        || isPregMatch('order')
+        || isPregMatch('edit')
     ;
 }
