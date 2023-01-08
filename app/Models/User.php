@@ -48,4 +48,19 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Customer::class, 'email', 'email');
     }
+
+    public function isAdmin()
+    {
+        return $this->hasRole('admin');
+    }
+
+    public function isCustomer()
+    {
+        return $this->customer->isCustomer();
+    }
+
+    public function isAuthor()
+    {
+        return $this->customer->isAuthor();
+    }
 }

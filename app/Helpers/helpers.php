@@ -87,3 +87,13 @@ if (!function_exists('format_currency')) {
     }
 
 }
+
+if (!function_exists('format_size')) {
+    function format_size($bytes, $decimals = 0)
+    {
+        $base = log($bytes, 1024);
+        $suffixes = array('', 'Kбайт', 'Mбайт', 'Гбайт', 'Tбайт');
+
+        return round(pow(1024, $base - floor($base)), $decimals) . ' ' . $suffixes[floor($base)];
+    }
+}

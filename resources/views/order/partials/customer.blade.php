@@ -1,5 +1,5 @@
 <div class="img_face clearfix">
-    <img src="offer.image">
+    <img src="{{ thumbnail($customer->getImage(), 80) }}">
     @if($customer->isOnline())<span></span>@endif
 </div>
 <div class="info_worker clearfix">
@@ -12,13 +12,13 @@
         <div class="enter clearfix">
             <span class="name">Рейтинг:</span>
             <span class="rating">{{ $customer->rating }}</span>
-            {% if offer.new_rating %}<span class="bonus">+ $offer.new_rating </span>{% endif %}
+            @if($customer->getNewRating())<span class="bonus">+{{$customer->getNewRating()}}</span>@endif
         </div>
         <div class="enter_like clearfix">
             <img src="{{ asset('catalog/assets/img/icons/like.svg') }}">
-            <span class="like"> offer.total_reviews_positive }}</span>
+            <span class="like"> {{ $customer->getCountPositiveReviews() }}</span>
             <img src="{{ asset('catalog/assets/img/icons/dislike.svg') }}">
-            <span class="dislike"> offer.total_reviews_negative }}</span>
+            <span class="dislike"> {{ $customer->getCountNegativeReviews() }}</span>
         </div>
     </div>
 </div>

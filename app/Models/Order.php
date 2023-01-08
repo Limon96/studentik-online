@@ -34,6 +34,11 @@ class Order extends Model
         return $this->belongsTo(Customer::class, 'customer_id', 'customer_id');
     }
 
+    public function attachments()
+    {
+        return $this->hasManyThrough(Attachment::class, OrderAttachment::class, 'order_id', 'attachment_id', 'order_id', 'attachment_id');
+    }
+
     public function section()
     {
         return $this->belongsTo(Section::class, 'section_id', 'id');
@@ -66,12 +71,16 @@ class Order extends Model
 
     public function getSeoUrl()
     {
-        return SeoUrl::select('query', 'keyword')->where('query', 'order_id=' . $this->attributes[$this->primaryKey])->first()->keyword ?? '';
+        if (!isset($this->attributes['seo_url'])) {
+            $this->attributes['seo_url'] = SeoUrl::select('query', 'keyword')->where('query', 'order_id=' . $this->attributes[$this->primaryKey])->first()->keyword ?? '';
+        }
+
+        return $this->attributes['seo_url'];
     }
 
     public function getDateEnd()
     {
-        return $this->attributes['date_end'] !== '0000-00-00' ? format_date($this->attributes['date_end'], 'full_date') : 'не указан';
+        return $this->attributes['date_end'] == '0000-00-00' ? 'Не указан' : format_date($this->attributes['date_end'], 'full_date');
     }
 
     public function getPrice()
@@ -97,7 +106,7 @@ class Order extends Model
 
     public function isOwner()
     {
-        return (int)$this->attributes['customer_id'] === auth()->user()->id ?? 0;
+        return (int)$this->attributes['customer_id'] === auth()?->user()?->id ?? 0;
     }
 
 }

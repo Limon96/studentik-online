@@ -104,4 +104,9 @@ class Customer extends Model
         $this->save();
     }
 
+    public function isPro()
+    {
+        return false; // TODO NICK: add real data
+    }
+
 }

@@ -46,7 +46,10 @@ class OrderRepository extends CoreRepository
         return $this
             ->startConditions()
             ->with([
-                'section', 'subject', 'work_type', 'customer', 'offers', 'plagiarism_check'
+                'section', 'subject', 'work_type', 'customer', 'plagiarism_check',
+                'offers' => function ($query) {
+                    return $query->orderByDesc('created_at');
+                },
             ])
             ->where('order_id', $orderId)
             ->first();
