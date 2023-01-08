@@ -59,9 +59,19 @@ class Order extends Model
         return $this->belongsTo(OrderStatus::class, 'order_status_id', 'order_status_id');
     }
 
+    public function offerAssigned()
+    {
+        return $this->belongsTo(Offer::class, 'order_id', 'order_id')->where('assigned', 1);
+    }
+
     public function offers()
     {
         return $this->hasMany(Offer::class, 'order_id', 'order_id');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'order_id', 'order_id');
     }
 
     public function plagiarism_check()
@@ -109,4 +119,13 @@ class Order extends Model
         return (int)$this->attributes['customer_id'] === auth()?->user()?->id ?? 0;
     }
 
+    public function isOrderStatusInArray(array $array = [])
+    {
+        return in_array($this->attributes['order_status_id'], $array);
+    }
+
+    public function isNotExistsReview()
+    {
+        return $this->reviews()->exists() === false;
+    }
 }
