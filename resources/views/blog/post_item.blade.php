@@ -9,13 +9,13 @@
 
         <div class="article">
             <div class="left_fon">
-                <a href="{{ route('blog.index', $post->slug) }}">
+                <a href="{{ route('blog.show', $post->slug) }}">
                     <div class="img_r" style="background-image: url('{{ thumbnail($post->image, 400) }}')"></div>
                 </a>
             </div>
             <div class="rigt_content">
                 <div class="hesde">
-                    <a href="{{ route('blog.index', $post->slug) }}">
+                    <a href="{{ route('blog.show', $post->slug) }}">
                         <div class="title">{{ $post->title }}</div>
                     </a>
                     <div class="extention">
