@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('title')
-    Лента заказов
+    Разместить заказ
 @endsection
 @section('description')
     Все заказы по гуманитарным, экономическим, техническим и другим дисциплинам. Воспользуйтесь фильтром для поиска подходящего заказа.
@@ -47,7 +47,8 @@
 
             $('.has-error, .alert').remove();
 
-            // $('#order-create textarea').val($('#textarea-description').html());
+            //$('#order-create textarea').val($('#textarea-description').html());
+
             $.ajax({
                 url : "/create-order",
                 data : $('#order-create input[type=date], #order-create input[type=text], #order-create input[type=hidden], #order-create input[type=checkbox]:checked, #order-create select, #order-create textarea'),
@@ -82,7 +83,7 @@
                             $('#order-create select[name=work_type]').after('<div class="has-error">' + json['errors']['work_type'] + '</div>');
                         }
                         if (json['errors']['date_end']) {
-                            $('#order-create input[name=date_end]').after('<div class="has-error">' + json['errors']['date_end'] + '</div>');
+                            $('#order-create input#input-date_end').after('<div class="has-error">' + json['errors']['date_end'] + '</div>');
                         }
                         if (json['errors']['description']) {
                             $('#order-create textarea[name=description]').after('<div class="has-error">' + json['errors']['description'] + '</div>');
@@ -200,11 +201,11 @@
                                     </div>
                                 </div>
                                 <div class="date_rools">
-                                    <input type="date" name="date_end" value="{{ old('date_end', session('order.date_end', '')) }}">
+                                    <input type="date" id="input-date_end" name="date_end" value="{{ old('date_end', session('order.date_end', '')) }}">
                                 </div>
                                 <div class="know_date">
                                     <label class="container_ch">Срок неизвестен
-                                        <input type="checkbox" name="date_unknown" value="1" @if(old('date_unknown', session('order.date_unknown', 0)) == 1) checked @endif>
+                                        <input type="checkbox" name="date_end" value="0000-00-00" @if(old('date_end', session('order.date_end', 0)) == '0000-00-00') checked @endif>
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
