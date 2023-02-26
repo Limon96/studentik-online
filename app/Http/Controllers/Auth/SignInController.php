@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Models\CustomerAuth;
+use App\Models\CustomerGroup;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Repositories\CustomerGroupRepository;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
@@ -43,7 +45,11 @@ class SignInController extends Controller
      */
     public function showLoginForm()
     {
-        return view('auth.sign_in');
+        $customer_groups = app(CustomerGroupRepository::class)->all();
+
+        return view('auth.sign_in', compact(
+            'customer_groups'
+        ));
     }
 
     /**
