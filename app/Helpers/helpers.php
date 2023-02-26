@@ -81,7 +81,7 @@ if (!function_exists('format_date')) {
 
 if (!function_exists('format_currency')) {
 
-    function format_currency(float $number = 0, string $currency = 'RUB', $thousands_separator = ' ', string $decimal_separator = '.')
+    function format_currency(float $number = 0, string $currency = 'RUB', $thousands_separator = '', string $decimal_separator = '.')
     {
         return \App\Currencies\Currency::format($number, $currency, $thousands_separator, $decimal_separator);
     }

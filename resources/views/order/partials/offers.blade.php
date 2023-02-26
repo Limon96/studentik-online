@@ -15,13 +15,13 @@
                             @if($offer->earned)
                             <div class="amount">
                                 <img src="{{ asset('catalog/assets/img/icons/eye_ser.svg') }}">
-                                <span>{{ $offer->earned }}</span>
+                                <span>{{ format_currency($offer->earned) }}</span>
                             </div>
                             @endif
                             @endif
                             <div class="amount">
                                 <img src="{{ asset('catalog/assets/img/icons/eye_ser.svg') }}">
-                                <span>{{ $offer->bet }}</span>
+                                <span>{{ format_currency($offer->bet) }}</span>
                             </div>
                         </div>
                         <div class="unswer_text">
