@@ -30,6 +30,6 @@ function isLaravelUrl()
         || isPregMatch('create-order')
         || isPregMatch('_autocomplete')
         || isPregMatch('order')
-        || isPregMatch('edit')
+        //|| isPregMatch('edit')
     ;
 }
