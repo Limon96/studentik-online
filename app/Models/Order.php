@@ -39,6 +39,11 @@ class Order extends Model
         return $this->hasManyThrough(Attachment::class, OrderAttachment::class, 'order_id', 'attachment_id', 'order_id', 'attachment_id');
     }
 
+    public function offerAttachments()
+    {
+        return $this->hasManyThrough(Attachment::class, OrderOfferAttachment::class, 'order_id', 'attachment_id', 'order_id', 'attachment_id');
+    }
+
     public function section()
     {
         return $this->belongsTo(Section::class, 'section_id', 'id');
@@ -59,14 +64,19 @@ class Order extends Model
         return $this->belongsTo(OrderStatus::class, 'order_status_id', 'order_status_id');
     }
 
-    public function offerAssigned()
-    {
-        return $this->belongsTo(Offer::class, 'order_id', 'order_id')->where('assigned', 1);
-    }
-
     public function offers()
     {
         return $this->hasMany(Offer::class, 'order_id', 'order_id');
+    }
+
+    public function isExistsOffer()
+    {
+        return $this->offers()->where('customer_id', auth()?->user()?->id ?? 0)->exists();
+    }
+
+    public function offerAssigned()
+    {
+        return $this->belongsTo(Offer::class, 'order_id', 'order_id')->where('assigned', 1);
     }
 
     public function reviews()

@@ -23,4 +23,9 @@ class Offer extends Model
         return (int)$this->attributes['customer_id'] === auth()->user()->id ?? 0;
     }
 
+    public function isAssigned()
+    {
+        return (int)$this->attributes['assigned'] === 1;
+    }
+
 }

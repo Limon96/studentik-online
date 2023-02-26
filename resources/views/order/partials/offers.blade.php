@@ -2,9 +2,9 @@
     <div class="unswer">
         <h3>Ответы</h3>
         <div class="wrap_ofers">
-            @if($item->offers)
+            @if($item->offers->count())
                 @foreach($item->offers as $offer)
-                    <div class="item_unswer clearfix @if($offer->assigned) assigned @endif">
+                    <div class="item_unswer clearfix @if($offer->isAssigned()) assigned @endif">
                         <div class="lefter clearfix">
                             <div class="item_worker clearfix">
                                 @include('order.partials.customer', ['customer' => $offer->customer])
@@ -28,12 +28,12 @@
                             <p>{{ $offer->text }}</p>
                         </div>
                         <div class="btn_uprava clearfix">
-                            {% if is_owner or offer.is_owner or auth()->user()->isAdmin() %}<a class="send_wopr" data-offer_id="{{ $offer->offer_id }}">Обсудить заказ</a>{% endif %}
-                            {% if is_owner %}<a href="offer.chat }}" class="go_chat">Перейти в чат</a>{% endif %}
-                            {% if is_owner %}{% if order_status_id == config_open_order_status_id %}<a class="go_worck assign_offer" data-order_id="{{ $offer->order_id }}" data-offer_id="{{ $offer->offer_id }}">Выбрать исполнителем</a>{% endif %}{% endif %}
-                            {% if order_status_id == config_pending_order_status_id and offer.is_owner and offer.assigned %}<a href="#" id="accept_offer" class="accepted" data-order_id="{{ $offer->order_id }}" data-offer_id="{{ $offer->offer_id }}">Принять</a>{% endif %}
-                            {% if order_status_id == config_pending_order_status_id and (offer.is_owner or is_owner) and offer.assigned %}<a href="#" class="blocked cancel_offer" data-order_id="{{ $offer->order_id }}" data-offer_id="{{ $offer->offer_id }}">Отклонить предложение</a>{% endif %}
-                            {% if order_status_id == config_open_order_status_id and offer.is_owner %}<a class="edit_my_ofer" data-order_id="{{ $offer->order_id }}" data-offer_id="{{ $offer->offer_id }}">Редактировать</a>{% endif %}
+                            @if($order->isOwner()or $offer->isOwner() or auth()->user()->isAdmin())<a class="send_wopr" data-offer_id="{{ $offer->offer_id }}">Обсудить заказ</a>@endif
+                            @if($order->isOwner())<a href="{{ route('messages', ['chat_id' => $offer->customer_id]) }}" class="go_chat">Перейти в чат</a>@endif
+                            @if($order->isOwner() and $order->isOrderStatusInArray([1]))<a class="go_worck assign_offer" data-order_id="{{ $offer->order_id }}" data-offer_id="{{ $offer->offer_id }}">Выбрать исполнителем</a>@endif
+                            @if($order->isOrderStatusInArray([2]) and $offer->isOwner() and $offer->isAssigned())<a href="#" id="accept_offer" class="accepted" data-order_id="{{ $offer->order_id }}" data-offer_id="{{ $offer->offer_id }}">Принять</a>@endif
+                            @if($order->isOrderStatusInArray([2]) and ($offer->isOwner() or $order->isOwner()) and $offer->isAssigned())<a href="#" class="blocked cancel_offer" data-order_id="{{ $offer->order_id }}" data-offer_id="{{ $offer->offer_id }}">Отклонить предложение</a>@endif
+                            @if($order->isOrderStatusInArray([1]) and $offer->isOwner())<a class="edit_my_ofer" data-order_id="{{ $offer->order_id }}" data-offer_id="{{ $offer->offer_id }}">Редактировать</a>@endif
                         </div>
                         @if(auth()->check() and ($order->isOwner() or $offer->isOwner() or auth()->user()->isAdmin()))
                         <div id="message-form-unswer-offer{{ $offer->offer_id }}" class="unswer_com footer_chat clearfix">
@@ -67,11 +67,11 @@
 @if(auth()->check() and auth()->user()->isAuthor())
     <div id="offer" class="my_unswer">
         <h3>Моё предложение</h3>
-        {% if exist_offer %}
+        @if($item->isExistsOffer())
         <div class="block_my_u clearfix">
             Вы уже ответили на заказ
         </div>
-        {% else %}
+        @else
         <div class="block_offer_form clearfix">
             <div class="block_my_u clearfix">
                 <input type="hidden" name="order_id" value="{{ $item->order_id }}">
@@ -97,6 +97,6 @@
                 </div>
             </div>
         </div>
-        {% endif %}
+        @endif
     </div>
 @endif

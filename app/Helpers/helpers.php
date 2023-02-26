@@ -97,3 +97,10 @@ if (!function_exists('format_size')) {
         return round(pow(1024, $base - floor($base)), $decimals) . ' ' . $suffixes[floor($base)];
     }
 }
+
+if (!function_exists('setting')) {
+    function setting(string $key)
+    {
+        return \App\Models\Setting::where('key', htmlspecialchars($key))->select('value')->first()->value ?? '';
+    }
+}
