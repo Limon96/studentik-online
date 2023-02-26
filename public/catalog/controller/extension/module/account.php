@@ -192,31 +192,156 @@ class ControllerExtensionModuleAccount extends Controller
                 $data['total_claims_close_href'] = $this->url->link('claim/claim', 'filter_status_off=1');
 
             } elseif ($this->customer->getGroupId() == 2) {
+
+                /* Мои работы Заказчик */
+                $filter_data = [
+                    'filter_offer_id' => $this->customer->getId(),
+                ];
+
+                $data['total_orders'] = $this->model_account_order->getTotalOrders($filter_data);
+
+                $data['orders'] = [];
+                // open order status
+
+                /*$order_status = $this->model_localisation_order_status->getOrderStatus($this->config->get('config_open_order_status_id'));
+
+                $filter_data = [
+                    'filter_order_status_id' => $order_status['order_status_id'],
+                    'filter_offer_id' => $this->customer->getId(),
+                ];
+
+                $total_orders = $this->model_account_order->getTotalOrders($filter_data);
+
+                $data['orders'][] = [
+                    'order_status_id' => $order_status['order_status_id'],
+                    'name' => $order_status['name'],
+                    'total_orders' => $total_orders,
+                    'href' => $this->url->link('account/order', 'filter_order_status_id=' . $order_status['order_status_id'])
+                ];*/
+
+                // progress order status
+                $order_status = $this->model_localisation_order_status->getOrderStatus($this->config->get('config_progress_order_status_id'));
+
+                $filter_data = [
+                    'filter_order_status_id' => $order_status['order_status_id'],
+                    'filter_offer_id' => $this->customer->getId(),
+                ];
+
+                $total_orders = $this->model_account_order->getTotalOrders($filter_data);
+
+                $data['orders'][] = [
+                    'order_status_id' => $order_status['order_status_id'],
+                    'name' => $order_status['name'],
+                    'total_orders' => $total_orders,
+                    'href' => $this->url->link('account/order', 'filter_order_status_id=' . $order_status['order_status_id'])
+                ];
+
+                // awaiting order status
+                $order_status = $this->model_localisation_order_status->getOrderStatus($this->config->get('config_awaiting_order_status_id'));
+
+                $filter_data = [
+                    'filter_order_status_id' => $order_status['order_status_id'],
+                    'filter_offer_id' => $this->customer->getId(),
+                ];
+
+                $total_orders = $this->model_account_order->getTotalOrders($filter_data);
+
+                $data['orders'][] = [
+                    'order_status_id' => $order_status['order_status_id'],
+                    'name' => $order_status['name'],
+                    'total_orders' => $total_orders,
+                    'href' => $this->url->link('account/order', 'filter_order_status_id=' . $order_status['order_status_id'])
+                ];
+
+                // pending order status
+                $order_status = $this->model_localisation_order_status->getOrderStatus($this->config->get('config_pending_order_status_id'));
+
+                $filter_data = [
+                    'filter_order_status_id' => $order_status['order_status_id'],
+                    'filter_offer_id' => $this->customer->getId(),
+                ];
+
+                $total_orders = $this->model_account_order->getTotalOrders($filter_data);
+
+                $data['orders'][] = [
+                    'order_status_id' => $order_status['order_status_id'],
+                    'name' => $order_status['name'],
+                    'total_orders' => $total_orders,
+                    'href' => $this->url->link('account/order', 'filter_order_status_id=' . $order_status['order_status_id'])
+                ];
+
+                // verification order status
+                $order_status = $this->model_localisation_order_status->getOrderStatus($this->config->get('config_verification_order_status_id'));
+
+                $filter_data = [
+                    'filter_order_status_id' => $order_status['order_status_id'],
+                    'filter_offer_id' => $this->customer->getId(),
+                ];
+
+                $total_orders = $this->model_account_order->getTotalOrders($filter_data);
+
+                $data['orders'][] = [
+                    'order_status_id' => $order_status['order_status_id'],
+                    'name' => $order_status['name'],
+                    'total_orders' => $total_orders,
+                    'href' => $this->url->link('account/order', 'filter_order_status_id=' . $order_status['order_status_id'])
+                ];
+
+                // revision order status
+                $order_status = $this->model_localisation_order_status->getOrderStatus($this->config->get('config_revision_order_status_id'));
+
+                $filter_data = [
+                    'filter_order_status_id' => $order_status['order_status_id'],
+                    'filter_offer_id' => $this->customer->getId(),
+                ];
+
+                $total_orders = $this->model_account_order->getTotalOrders($filter_data);
+
+                $data['orders'][] = [
+                    'order_status_id' => $order_status['order_status_id'],
+                    'name' => $order_status['name'],
+                    'total_orders' => $total_orders,
+                    'href' => $this->url->link('account/order', 'filter_order_status_id=' . $order_status['order_status_id'])
+                ];
+
+                // complete order status
+                $order_status = $this->model_localisation_order_status->getOrderStatus($this->config->get('config_complete_order_status_id'));
+
+                $filter_data = [
+                    'filter_order_status_id' => $order_status['order_status_id'],
+                    'filter_offer_id' => $this->customer->getId(),
+                ];
+
+                $total_orders = $this->model_account_order->getTotalOrders($filter_data);
+
+                $data['orders'][] = [
+                    'order_status_id' => $order_status['order_status_id'],
+                    'name' => $order_status['name'],
+                    'total_orders' => $total_orders,
+                    'href' => $this->url->link('account/order', 'filter_order_status_id=' . $order_status['order_status_id'])
+                ];
+
+                // canceled order status
+                /*$order_status = $this->model_localisation_order_status->getOrderStatus($this->config->get('config_canceled_order_status_id'));
+
+                $filter_data = [
+                    'filter_order_status_id' => $order_status['order_status_id'],
+                    'filter_offer_id' => $this->customer->getId(),
+                ];
+
+                $total_orders = $this->model_account_order->getTotalOrders($filter_data);
+
+                $data['orders'][] = [
+                    'order_status_id' => $order_status['order_status_id'],
+                    'name' => $order_status['name'],
+                    'total_orders' => $total_orders,
+                    'href' => $this->url->link('account/order', 'filter_order_status_id=' . $order_status['order_status_id'])
+                ];*/
+
                 /* Мои Отклики Автор */
 
-                $total_offers_assigned = $this->model_account_order->getTotalOrders([
-                    'filter_assigned' => 1
-                ]);
 
-                $total_offers_not_assigned = $this->model_account_order->getTotalOrders([
-                    'filter_assigned' => 0
-                ]);
 
-                $data['total_offers'] = $total_offers_assigned + $total_offers_not_assigned;
-
-                $data['offers'] = array();
-
-                $data['offers'][] = [
-                    "name" => $this->language->get('text_assigned'),
-                    "total_offers" => $total_offers_assigned,
-                    "href" => $this->url->link('account/order', 'filter_assigned=1'),
-                ];
-
-                $data['offers'][] = [
-                    "name" => $this->language->get('text_not_assigned'),
-                    "total_offers" => $total_offers_not_assigned,
-                    "href" => $this->url->link('account/order', 'filter_assigned=0'),
-                ];
                 $filter_data = [
                     'filter_customer_id' => $this->customer->getId(),
                 ];

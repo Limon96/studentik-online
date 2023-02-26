@@ -62,15 +62,17 @@
                 <button class="accordion_one clearfix">
                     <img class="img_title" src="../../../../catalog/assets/img/icons/massage_green.svg">
                     <span class="name_k">Мои отклики</span>
-                    <span class="how_k">{{ total_offers }}</span>
+                    <span class="how_k">{{ total_orders }}</span>
                     <img class="arrow_tr" src="../../../../catalog/assets/img/icons/arrow.svg">
 
                 </button>
                 <div class="panel_clim">
                     <ul>
-                        {% for offer in offers %}
-                            <li><a href="{{ offer.href }}">{{ offer.name }} <span>{{ offer.total_offers }}</span></a></li>
+
+                        {% for order in orders %}
+                            <li><a href="{{ order.href }}">{{ order.name }} <span>{{ order.total_orders }}</span></a></li>
                         {% endfor %}
+
                     </ul>
                 </div>
             </li>

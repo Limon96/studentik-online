@@ -154,7 +154,7 @@
                     {% if is_logged %}
 
                         {% if work_type_id == 20 %}
-                            {% if is_owner and customer_group_id == 2 %}
+                            {% if customer_group_id == 2 %}
 
                                 <div class="baner_micro">
                                     <div class="left_svg_r">
@@ -172,7 +172,7 @@
                                     </div>
                                 </div>
 
-                            {% elseif customer_group_id == 1 %}
+                            {% elseif is_owner and customer_group_id == 1 %}
 
                                 <div class="baner_micro">
                                     <div class="left_svg_r">
@@ -447,6 +447,9 @@
                                                 $('#content').load(location.href + ' #content > div');
 
                                                 alertSuccess(json['success']);
+                                                {% if customer_group_id == 1 %}
+                                                $('#review').show();
+                                                {% endif %}
                                             }
                                         }
                                     });
@@ -804,5 +807,27 @@
         </div>
     </div>
 </div>
+
+
+{% if not is_exists_review %}
+    {% if customer_group_id == 1 %}
+
+        <!-- Modal -->
+        <div class="modal fade" id="review" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog take_man" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#review').hide();"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Оцените работу эксперта!</h4>
+                    </div>
+                    <div class="modal-body ">
+                        <a href="{{ review_add }}" class="review_add">Оставить отзыв</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}
+
 {{ footer }}
 

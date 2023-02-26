@@ -9,11 +9,14 @@ class ControllerCommonAccount extends Controller {
         $data['logout']     = HTTPS_SERVER . 'logout';
         $data['finance']    = $this->url->link('account/finance');
         $data['edit']    = $this->url->link('account/edit');
+        $data['partner']    = $this->url->link('account/partner');
         $data['event']    = $this->url->link('account/event');
         $data['promo_code']    = $this->url->link('account/promo_code');
         $data['password']    = $this->url->link('account/password');
         $data['pro']    = $this->url->link('sale/pro');
         $data['chat']    = $this->url->link('message/chat');
+
+        $data['shop_partner_link'] = $this->customer->getPartnerCode() ? true: false;
 
         if ($this->customer->isLogged()) {
             $this->load->model('tool/image');

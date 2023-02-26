@@ -3437,7 +3437,7 @@ input::placeholder{
     display: inline-block;
 }
 
-.order-control .review_add {
+.order-control .review_add, #review .review_add {
     width: auto;
     background: #1cb7ad;
     box-shadow: 0px 4px 15px rgb(28 183 173);
@@ -3451,6 +3451,22 @@ input::placeholder{
     padding: 6px 25px;
     border: 0;
     display: inline-block;
+}
+
+#review_add .review_add {
+    width: auto;
+    background: #1cb7ad;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 20px 15px 0 5px;
+    padding: 14px 19px;
+    border: 0;
+    display: inline-block;
+    height: 50px;
 }
 .order-control .claim {
     width: auto;
@@ -6412,6 +6428,14 @@ input::placeholder{
     background: #d62929;
 }
 
+.strips_work .item_work .item_worker .work_zrobl span.neutral{
+    width: 40%;
+    display: block;
+    height: 100%;
+    float: left;
+    background: #adadad;
+}
+
 
 /***********************************account/edit********************************************/
 
@@ -7410,6 +7434,13 @@ input::placeholder{
     }
 
 
+#review .modal-dialog {
+    margin: 70px auto;
+}
+
+#review .modal-body {
+    text-align: center;
+}
 
 .modal-body{
 

@@ -32,6 +32,7 @@ Route::prefix('_manager')->group(function() {
 
             Route::get('newsletter', [\App\Http\Controllers\Feedback\Admin\NewsletterController::class, 'index'])->name('newsletter.index');
             Route::post('newsletter', [\App\Http\Controllers\Feedback\Admin\NewsletterController::class, 'send'])->name('newsletter.send');
+            Route::get('preview', [\App\Http\Controllers\Feedback\Admin\PreviewMailController::class, 'index'])->name('preview.index');
         });
     });
 });

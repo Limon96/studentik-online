@@ -31,6 +31,7 @@ $_['library_autoload']   = array();
 // Actions
 $_['action_pre_action']  = array(
 	'startup/session',
+	'startup/referral',
 	'startup/startup',
 	'startup/error',
 	'startup/event',

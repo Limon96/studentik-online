@@ -12,11 +12,11 @@ class ModelMessageMessage extends Model
         }
 
         if (isset($data['filter_sender_id']) && $data['filter_sender_id'] > 0) {
-            $sql .= " AND sender_id = '" . (int)$data['filter_sender_id'] . "'";
+            $sql .= " AND (sender_id = '" . (int)$data['filter_sender_id'] . "' OR recipient_id = '" . (int)$data['filter_sender_id'] . "')";
         }
 
         if (isset($data['filter_recipient_id']) && $data['filter_recipient_id'] > 0) {
-            $sql .= " AND recipient_id = '" . (int)$data['filter_recipient_id'] . "'";
+            $sql .= " AND (recipient_id = '" . (int)$data['filter_recipient_id'] . "' OR sender_id = '" . (int)$data['filter_recipient_id'] . "')";
         }
 
         if (isset($data['filter_viewed']) && $data['filter_viewed'] == '0') {

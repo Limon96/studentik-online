@@ -128,4 +128,15 @@ class Order extends Model
     {
         return $this->reviews()->exists() === false;
     }
+
+    public function getId()
+    {
+        return $this->attributes['order_id'];
+    }
+
+    public function getSlug()
+    {
+        return SeoUrl::where('query', 'order_id=' . $this->attributes['order_id'])->first()->keyword ?? null;
+    }
+
 }

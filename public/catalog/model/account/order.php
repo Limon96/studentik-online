@@ -45,6 +45,10 @@ class ModelAccountOrder extends Model
             $sql .= " AND customer_id = '" . (int)$data['filter_customer_id'] . "'";
         }
 
+        if (isset($data['filter_offer_id']) && $data['filter_offer_id']) {
+            $sql .= " AND o.order_id IN (SELECT order_id FROM " . DB_PREFIX . "offer WHERE customer_id = '" . (int)$data['filter_offer_id'] . "' AND assigned = 1)";
+        }
+
         if (isset($data['filter_customer']) && $data['filter_customer']) {
             $sql .= " AND customer_id IN (SELECT c.customer_id FROM " . DB_PREFIX . "customer c WHERE c.login LIKE '%" . $this->db->escape($data['filter_customer']) . "%' AND c.status = 1)";
         }
@@ -138,6 +142,10 @@ class ModelAccountOrder extends Model
 
         if (isset($data['filter_customer_id']) && $data['filter_customer_id']) {
             $sql .= " AND customer_id = '" . (int)$data['filter_customer_id'] . "'";
+        }
+
+        if (isset($data['filter_offer_id']) && $data['filter_offer_id']) {
+            $sql .= " AND o.order_id IN (SELECT order_id FROM " . DB_PREFIX . "offer WHERE customer_id = '" . (int)$data['filter_offer_id'] . "' AND assigned = 1)";
         }
 
         if (isset($data['filter_customer']) && $data['filter_customer']) {

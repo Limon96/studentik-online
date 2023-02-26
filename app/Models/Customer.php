@@ -109,4 +109,9 @@ class Customer extends Model
         return false; // TODO NICK: add real data
     }
 
+    public function getSlug()
+    {
+        return SeoUrl::where('query', 'customer_id=' . $this->attributes['customer_id'])->first()->keyword ?? null;
+    }
+
 }

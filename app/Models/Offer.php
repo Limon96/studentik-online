@@ -22,4 +22,5 @@ class Offer extends Model
     {
         return (int)$this->attributes['customer_id'] === auth()->user()->id ?? 0;
     }
+
 }

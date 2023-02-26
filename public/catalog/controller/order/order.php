@@ -490,41 +490,39 @@ class ControllerOrderOrder extends Controller
             $data['offers'] = array();
             if ($offers) {
                 foreach ($offers as $offer) {
-                    if ($order_info['is_owner'] || $offer['is_owner'] || $this->customer->getPro() || $this->customer->isAdmin()) {
-                        if ($offer['image']) {
-                            $image = $this->model_tool_image->resize($offer['image'], 80, 80);
-                        } else {
-                            $image = $this->model_tool_image->resize('profile.png', 80, 80);
-                        }
-
-                        if ($offer['bet']) {
-                            $bet = $this->currency->format($offer['bet'], $this->config->get('config_currency'));
-                            $earned = $this->currency->format($offer['earned'], $this->config->get('config_currency'));
-                        } else {
-                            $bet = 'Без ставки';
-                            $earned = false;
-                        }
-
-                        $data['offers'][] = [
-                            'offer_id' => $offer['offer_id'],
-                            'is_owner' => $offer['is_owner'],
-                            'login' => $offer['login'],
-                            'bet' => $bet,
-                            'earned' => $earned,
-                            'pro' => $offer['pro'],
-                            'online' => $offer['online'],
-                            'text' => $offer['text'],
-                            'assigned' => $offer['assigned'],
-                            'rating' => (isset($offer['rating']) ? $offer['rating']: 0),
-                            'new_rating' => (isset($offer['new_rating']) ? $offer['new_rating']: 0),
-                            'total_reviews_positive' => (isset($offer['total_reviews_positive']) ? $offer['total_reviews_positive']: 0),
-                            'total_reviews_negative' => (isset($offer['total_reviews_negative']) ? $offer['total_reviews_negative']: 0),
-                            'image' => $image,
-                            'date_added' => format_date($offer['date_added'], 'd.m.Y в H:i'),
-                            'chat' => $this->url->link('message/chat', 'chat_id=' . $offer['customer_id']),
-                            'href' => $this->url->link('account/customer', 'customer_id=' . $offer['customer_id']),
-                        ];
+                    if ($offer['image']) {
+                        $image = $this->model_tool_image->resize($offer['image'], 80, 80);
+                    } else {
+                        $image = $this->model_tool_image->resize('profile.png', 80, 80);
                     }
+
+                    if ($offer['bet']) {
+                        $bet = $this->currency->format($offer['bet'], $this->config->get('config_currency'));
+                        $earned = $this->currency->format($offer['earned'], $this->config->get('config_currency'));
+                    } else {
+                        $bet = 'Без ставки';
+                        $earned = false;
+                    }
+
+                    $data['offers'][] = [
+                        'offer_id' => $offer['offer_id'],
+                        'is_owner' => $offer['is_owner'],
+                        'login' => $offer['login'],
+                        'bet' => $bet,
+                        'earned' => $earned,
+                        'pro' => $offer['pro'],
+                        'online' => $offer['online'],
+                        'text' => $offer['text'],
+                        'assigned' => $offer['assigned'],
+                        'rating' => (isset($offer['rating']) ? $offer['rating']: 0),
+                        'new_rating' => (isset($offer['new_rating']) ? $offer['new_rating']: 0),
+                        'total_reviews_positive' => (isset($offer['total_reviews_positive']) ? $offer['total_reviews_positive']: 0),
+                        'total_reviews_negative' => (isset($offer['total_reviews_negative']) ? $offer['total_reviews_negative']: 0),
+                        'image' => $image,
+                        'date_added' => format_date($offer['date_added'], 'd.m.Y в H:i'),
+                        'chat' => $this->url->link('message/chat', 'chat_id=' . $offer['customer_id']),
+                        'href' => $this->url->link('account/customer', 'customer_id=' . $offer['customer_id']),
+                    ];
                 }
             }
 

@@ -468,6 +468,12 @@ class ControllerMessageMessage extends Controller {
                 'text'                      => nl2br($this->observeText($result['text'])),
                 'viewed'                    => $result['viewed'],
                 'date_added'                => format_date($result['date_added'], 'H:i d.m.Y'),
+                'view_chat' => $this->url->link('message/message', 'user_token=' . $this->session->data['user_token']
+                    . '&filter_recipient_id=' . $result['recipient']['customer_id']
+                    . '&filter_recipient=' . $result['recipient']['login']
+                    . '&filter_sender_id=' . $result['sender']['customer_id']
+                    . '&filter_sender=' . $result['sender']['login']
+                )
             );
         }
 
