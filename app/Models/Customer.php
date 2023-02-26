@@ -76,7 +76,7 @@ class Customer extends Model
 
     public function isOnline()
     {
-        return time() - $this->last_seen > 900;
+        return time() - $this->last_seen < 900;
     }
 
     public function isCustomer()
