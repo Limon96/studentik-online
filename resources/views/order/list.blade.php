@@ -49,7 +49,7 @@
                                 <h1>@yield('title')</h1>
                                 <ul class="breadcrumb clearfix">
                                     <li><a href="https://studentik.online/"><i class="fa fa-home"></i></a></li>
-                                    <li><a href="{{ route('order.index') }}">@yield('title')</a></li>
+                                    <li>@yield('title')</li>
                                 </ul>
                             </div>
                             <div id="order-search" class="parametrs clearfix">

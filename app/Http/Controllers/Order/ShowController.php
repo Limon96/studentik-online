@@ -17,6 +17,8 @@ class ShowController extends Controller
             return abort(404);
         }
 
+        $item->incrementViewed();
+
         return view('order.show', compact(
             'item'
         ));

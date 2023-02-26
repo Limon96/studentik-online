@@ -10,6 +10,7 @@ use App\Repositories\SectionRepository;
 use App\Repositories\WorkTypeRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CreateController extends Controller
 {
@@ -41,7 +42,19 @@ class CreateController extends Controller
             $this->customer()->deductBalanceTransfer($amount);
         }
 
-        $order = Order::create($request->validated());
+        $data = $request->validated();
+
+        $order = Order::create($data);
+        $order->setHistory(auth()->user()->customer, __('order.history.create'));
+
+        if (isset($data['attachment']) && is_array($data['attachment']) && count($data['attachment']) > 0) {
+            DB::table('order_attachment')->insert(array_map(function ($attachment_id) use ($order) {
+                return [
+                    'order_id' => $order->order_id,
+                    'attachment_id' => $attachment_id,
+                ];
+            }, $data['attachment']));
+        }
 
         return $this->responceSuccess($order->getSeoUrl());
     }

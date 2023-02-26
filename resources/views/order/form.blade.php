@@ -129,7 +129,6 @@
         });
     </script>
 @endsection
-
 @section("content")
     <div class="wrap_content">
 
@@ -188,7 +187,7 @@
                             <div class="date_file clearfix">
                                 <div class="errors"></div>
                                 <div class="add_file">
-                                    <form id="form-upload">
+                                    <div id="form-upload">
                                         <label class="add_works">
                                             <span>
                                                 <svg style="position: relative;width: 10px" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" class="sw-icon">
@@ -198,7 +197,7 @@
                                             <input type="file" name="file[]" multiple="multiple" accept=".bmp,.djvu,.doc,.docx,.dwg,.csv,.gif,.jpeg,.jpg,.odf,.odt,.pdf,.png,.ppt,.pptx,.rar,.rtf,.svg,.tga,.tiff,.txt,.xls,.xlsx,.zip,.a3d,.cdt,.cdw,.m3d,.dwf,.cdr,.ai,.ics">
                                             Добавить файл
                                         </label>
-                                    </form>
+                                    </div>
                                 </div>
                                 <div class="date_rools">
                                     <input type="date" name="date_end" value="{{ old('date_end', session('order.date_end', '')) }}">
@@ -220,12 +219,13 @@
                                         timer = setInterval(function() {
                                             if ($('#form-upload input[type=file]').val() != '') {
                                                 clearInterval(timer);
-
+                                                var formData = new FormData();
+                                                formData.append('file[]', $('#form-upload input').prop('files')[0]);
                                                 $.ajax({
                                                     url: 'index.php?route=common/upload/upload',
                                                     type: 'post',
                                                     dataType: 'json',
-                                                    data: new FormData($('#form-upload')[0]),
+                                                    data: formData,
                                                     cache: false,
                                                     contentType: false,
                                                     processData: false,

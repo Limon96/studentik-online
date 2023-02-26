@@ -34,6 +34,11 @@ class Order extends Model
         return $this->belongsTo(Customer::class, 'customer_id', 'customer_id');
     }
 
+    public function history()
+    {
+        return $this->hasMany(OrderHistory::class, 'order_id', 'order_id');
+    }
+
     public function attachments()
     {
         return $this->hasManyThrough(Attachment::class, OrderAttachment::class, 'order_id', 'attachment_id', 'order_id', 'attachment_id');
@@ -149,4 +154,20 @@ class Order extends Model
         return SeoUrl::where('query', 'order_id=' . $this->attributes['order_id'])->first()->keyword ?? null;
     }
 
+    public function setHistory(Customer $customer, string $text)
+    {
+        return $this->history()->insert([
+            'order_id' => $this->order_id,
+            'customer_id' => $customer->customer_id,
+            'text' => $text,
+            'date_added' => time()
+        ]);
+    }
+
+    public function incrementViewed()
+    {
+        $this->attributes['viewed']++;
+
+        $this->save();
+    }
 }

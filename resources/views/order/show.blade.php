@@ -259,7 +259,7 @@
                                     @endif
                                 @endif
 
-                                @if($item->isOwner() or auth()->user()->isAuthor() or auth()->user()->isAdmin())
+                                @if($item->isOwner() or ($item->offerAssigned and $item->offerAssigned->isOwner()) or auth()->user()->isAdmin())
                                     @include('order.partials.history', ['order' => $item])
                                 @endif
 

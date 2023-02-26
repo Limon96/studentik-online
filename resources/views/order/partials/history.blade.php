@@ -10,8 +10,8 @@
             @if($order->history)
                 @foreach($order->history as $history)
                     <div class="item_history">
-                        <span class="date_root">{{ $item->date_added }}</span>
-                        <p class="wincent">{{ $item->text }}</p>
+                        <span class="date_root">{{ format_date($history->date_added, 'd.m.Y H:i') }}</span>
+                        <p class="wincent">{!! $history->render() !!}</p>
                     </div>
                 @endforeach
            @endif

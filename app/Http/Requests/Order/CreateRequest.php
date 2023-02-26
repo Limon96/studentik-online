@@ -37,6 +37,7 @@ class CreateRequest extends FormRequest
             "plagiarism_check_id" => "",
             "plagiarism" => "",
             "price" => "",
+            "attachment" => "",
         ];
     }
 
