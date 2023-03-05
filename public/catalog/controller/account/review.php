@@ -292,7 +292,7 @@ class ControllerAccountReview extends Controller
             $json['error_positive'] = $this->language->get('error_positive');
         }
 
-        if (!isset($this->request->post['text']) || strlen($this->request->post['text']) < 3) {
+        if (!isset($this->request->post['text']) || strlen($this->request->post['text']) < 20) {
             $json['error_text'] = $this->language->get('error_text');
         }
 

@@ -14,8 +14,8 @@ $(document).on('click', '#review_add .sub_rev', function() {
         error = true;
     }
 
-    if (text == '' || text.length < 3) {
-        $('#review_add textarea[name=text]').parents('.wrap_otziv').append('<p class="warning">Текст отзыва должен содержать от 3 символов</p>');
+    if (text == '' || text.length < 20) {
+        $('#review_add .wrap_otziv').append('<p class="warning">Текст отзыва должен содержать от 20 символов</p>');
         error = true;
     }
 
