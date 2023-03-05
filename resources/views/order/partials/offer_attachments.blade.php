@@ -118,7 +118,7 @@
                                             $('#files-offer').append(tmpl);
 
                                             $.ajax({
-                                                url: '{{ asset('index.php?route=order/order/addOfferAttachment&order_id=' .$order->order_id) }}',
+                                                url: '../index.php?route=order/order/addOfferAttachment&order_id={{ $order->order_id }}',
                                                 type: 'post',
                                                 dataType: 'json',
                                                 data: {
@@ -130,7 +130,7 @@
                                             });
                                             @if($order->isOrderStatusInArray([3, 7]))
                                             $.ajax({
-                                                url : '{{ asset("index.php?route=order/offer/awaitingOffer&order_id=". $order->order_id) }}',
+                                                url : '../index.php?route=order/offer/awaitingOffer&order_id={{ $order->order_id }}',
                                                 method : 'GET',
                                                 success : function (json) {
                                                     if (json['success']) {
