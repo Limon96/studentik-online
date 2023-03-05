@@ -55,6 +55,8 @@ Route::get('sign_in', [\App\Http\Controllers\Auth\SignInController::class, 'show
 Route::post('sign_in', [\App\Http\Controllers\Auth\SignInController::class, 'login']);
 Route::get('logout', [\App\Http\Controllers\Auth\SignInController::class, 'logout'])->name('sign_in.logout');
 
+Route::post('sign_up', [\App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('sign_up');
+
 Route::get('/user/{slug}', function ($slug) {
     return $slug;
 })->name('user.show');

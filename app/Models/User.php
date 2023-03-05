@@ -63,4 +63,13 @@ class User extends Authenticatable
     {
         return $this->customer->isAuthor();
     }
+
+    public function setLogin($login)
+    {
+        $this->login = $login;
+
+        $this->save();
+
+        return $this;
+    }
 }

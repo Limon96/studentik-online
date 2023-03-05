@@ -73,12 +73,12 @@ $(document).on('submit', '#form-register', function (e) {
                     $('#form-register').prepend('<div class="error">' + json['error_warning'] + '</div>');
                     $('#form-register button[type=submit]').btnLoading('off');
                 }
-                if (json['error_email']) {
-                    $('#form-register').find('input[name=email]').after('<div class="error">' + json['error_email'] + '</div>');
+                if (json['errors']['email'][0]) {
+                    $('#form-register').find('input[name=email]').after('<div class="error">' + json['errors']['email'][0] + '</div>');
                     $('#form-register button[type=submit]').btnLoading('off');
                 }
-                if (json['error_password']) {
-                    $('#form-register').find('input[name=password]').after('<div class="error">' + json['error_password'] + '</div>');
+                if (json['errors']['password'][0]) {
+                    $('#form-register').find('input[name=password]').after('<div class="error">' + json['errors']['password'][0] + '</div>');
                     $('#form-register button[type=submit]').btnLoading('off');
                 }
                 if (json['error_customer_group_id']) {
@@ -92,6 +92,20 @@ $(document).on('submit', '#form-register', function (e) {
                         location.href = json['redirect'].replace('&amp;', '&');
                     }
                 }
+            },
+            error: function (response) {
+                var json = response.responseJSON;
+
+                if (json['errors']['email'] && json['errors']['email'][0]) {
+                    $('#form-register').find('input[name=email]').after('<div class="error">' + json['errors']['email'][0] + '</div>');
+                }
+                if (json['errors']['password'] && json['errors']['password'][0]) {
+                    $('#form-register').find('input[name=password]').after('<div class="error">' + json['errors']['password'][0] + '</div>');
+                }
+                if (json['error_customer_group_id']) {
+                    $('#form-register').find('input[name=customer_group_id]').parent().append('<div class="error">' + json['error_customer_group_id'] + '</div>');
+                }
+                $('#form-register button[type=submit]').btnLoading('off');
             }
         });
     }

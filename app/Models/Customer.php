@@ -11,6 +11,31 @@ class Customer extends Model
 
     protected $table = 'customer';
     protected $primaryKey = 'customer_id';
+    protected $fillable = [
+        'customer_id',
+        'customer_group_id',
+        'customer_status_id',
+        'customer_gender_id',
+        'store_id',
+        'language_id',
+        'login',
+        'firstname',
+        'bdate',
+        'country_id',
+        'email',
+        'telephone',
+        'gender',
+        'image',
+        'languages',
+        'comment',
+        'ip',
+        'timezone',
+        'status',
+        'last_seen',
+        'safe',
+        'setting_email_notify',
+        'setting_email_new_order',
+    ];
 
     public function rating()
     {

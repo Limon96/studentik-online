@@ -1,4 +1,4 @@
-<form id="form-register" action="{{ asset('index.php?route=account/register') }}" method="post">
+<form id="form-register" action="{{ route('sign_up') }}" method="post">
     @csrf
     <div class="includ clearfix">
         <i class="fas fa-envelope"></i>
