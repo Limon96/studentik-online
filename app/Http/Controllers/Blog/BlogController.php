@@ -26,6 +26,10 @@ class BlogController extends Controller {
 
         $item = $blogCategoryRepository->findSlug($slug);
 
+        if ($slug && !$item) {
+            abort(404);
+        }
+
         $blogCategories = $blogCategoryRepository->all($item->id ?? 0);
 
         $blogCategoriesIds = [];
