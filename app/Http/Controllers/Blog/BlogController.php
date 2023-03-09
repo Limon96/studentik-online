@@ -45,11 +45,14 @@ class BlogController extends Controller {
             $blogPosts = $blogPostRepository->paginate(10);
         }
 
+        $currentPage = request()->get('page', 1);
+
         return view('blog_category.index', compact(
             'item',
             'blogCategories',
             'blogPosts',
-            'categoryPath'
+            'categoryPath',
+            'currentPage',
         ));
     }
 

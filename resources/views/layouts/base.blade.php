@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     @yield('styles')
+    @yield('links')
 
     <title>@yield('title')</title>
     <meta name="description" content="@yield('description')">

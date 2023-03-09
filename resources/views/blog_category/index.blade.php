@@ -1,9 +1,17 @@
 @extends('layouts.base')
 
-@section('title'){{ $item->meta_title ?? 'Полезные материалы' }}@endsection
-@section('description'){{ $item->meta_description ?? 'Полезные материалы от Studentik' }}@endsection
+@section('title'){{ ($item->meta_title ?? 'Полезные материалы') . ($currentPage > 1 ? ' - страница ' . $currentPage : '') }}@endsection
+@section('description'){{ ($item->meta_description ?? 'Полезные материалы от Studentik') . ($currentPage > 1 ? '. Страница ' . $currentPage . '.' : '') }}@endsection
 @section('keywords'){{ $item->meta_keywords ?? 'блог, полезные материалы, studentik' }}@endsection
 
+@section('links')
+@if($categoryPath)
+@php $endCategory = end($categoryPath) @endphp
+<link href="{{ route('blog.index', $endCategory->slug) }}" rel="canonical">
+@else
+<link href="{{ route('blog.index') }}" rel="canonical">
+@endif
+@endsection
 
 @section("content")
 

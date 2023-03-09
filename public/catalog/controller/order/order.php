@@ -9,9 +9,6 @@ class ControllerOrderOrder extends Controller
     {
         $this->load->language('order/order');
 
-        $this->document->setTitle('Лента заказов – Онлайн сервис студенческих работ ' . $this->config->get('config_name'));
-        $this->document->setDescription('Все заказы по гуманитарным, экономическим, техническим и другим дисциплинам. Воспользуйтесь фильтром для поиска подходящего заказа.');
-
         $this->document->addScript('../catalog/assets/js/offer.js', 'footer');
 
         if (isset($this->request->get['filter_section_id'])) {
@@ -61,6 +58,15 @@ class ControllerOrderOrder extends Controller
         } else {
             $search = '';
         }
+
+        if ($page > 1) {
+            $this->document->setTitle('Лента заказов – Онлайн сервис студенческих работ ' . $this->config->get('config_name') . ' — страница ' . $page);
+            $this->document->setDescription('Все заказы по гуманитарным, экономическим, техническим и другим дисциплинам. Воспользуйтесь фильтром для поиска подходящего заказа. Страница ' . $page . '.');
+        } else {
+            $this->document->setTitle('Лента заказов – Онлайн сервис студенческих работ ' . $this->config->get('config_name'));
+            $this->document->setDescription('Все заказы по гуманитарным, экономическим, техническим и другим дисциплинам. Воспользуйтесь фильтром для поиска подходящего заказа.');
+        }
+        $this->document->addLink($this->url->link('order/order'), 'canonical');
 
         $filter_order_status_id = $this->config->get('config_open_order_status_id');
 
