@@ -16,6 +16,8 @@ class BlogController extends Controller {
 
     use HasBlogCategory;
 
+    const POST_LIMIT = 1;
+
     /**
      * @return Application|Factory|View
      */
@@ -32,7 +34,6 @@ class BlogController extends Controller {
 
         $blogCategories = $blogCategoryRepository->all($item->id ?? 0);
 
-        $blogCategoriesIds = [];
         $categoryPath = [];
 
         if ($item) {
@@ -40,9 +41,9 @@ class BlogController extends Controller {
 
             $categoryPath = $this->getFullPathCategories($item);
 
-            $blogPosts = $blogPostRepository->fromCategory($blogCategoriesIds, 10);
+            $blogPosts = $blogPostRepository->fromCategory($blogCategoriesIds, self::POST_LIMIT);
         } else {
-            $blogPosts = $blogPostRepository->paginate(10);
+            $blogPosts = $blogPostRepository->paginate(self::POST_LIMIT);
         }
 
         $currentPage = request()->get('page', 1);
