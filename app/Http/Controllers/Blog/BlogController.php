@@ -16,7 +16,7 @@ class BlogController extends Controller {
 
     use HasBlogCategory;
 
-    const POST_LIMIT = 1;
+    const POST_LIMIT = 15;
 
     /**
      * @return Application|Factory|View
