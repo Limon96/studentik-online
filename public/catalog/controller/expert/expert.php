@@ -7,9 +7,6 @@ class ControllerExpertExpert extends Controller
     {
         $this->load->language('expert/expert');
 
-        $this->document->setTitle('Рейтинг исполнителей студенческих работ');
-        $this->document->setDescription('Лучшие авторы студенческих работ биржи ' . $this->config->get('config_name') . ': помощь студентам с курсовыми, контрольными и другими работами срочно и недорого.');
-
         if (isset($this->request->get['filter_section_id'])) {
             $filter_section_id = $this->request->get['filter_section_id'];
         } else {
@@ -52,6 +49,17 @@ class ControllerExpertExpert extends Controller
             $page = 1;
         }
 
+        if ($page > 1) {
+            $this->document->setTitle('Рейтинг исполнителей студенческих работ — страница ' . $page);
+            $this->document->setDescription('Лучшие авторы студенческих работ биржи ' . $this->config->get('config_name') . ': помощь студентам с курсовыми, контрольными и другими работами срочно и недорого. Страница ' . $page . '.');
+
+        } else {
+            $this->document->setTitle('Рейтинг исполнителей студенческих работ');
+            $this->document->setDescription('Лучшие авторы студенческих работ биржи ' . $this->config->get('config_name') . ': помощь студентам с курсовыми, контрольными и другими работами срочно и недорого.');
+        }
+
+        $this->document->addLink($this->url->link('expert/expert'), 'canonical');
+
         $data['breadcrumbs'] = array();
 
         $data['breadcrumbs'][] = array(
@@ -87,7 +95,7 @@ class ControllerExpertExpert extends Controller
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('text_expert'),
-            'href' => $this->url->link('order/order', $url, true)
+            'href' => $this->url->link('expert/expert', $url, true)
         );
 
         $data['is_logged'] = $this->customer->isLogged();

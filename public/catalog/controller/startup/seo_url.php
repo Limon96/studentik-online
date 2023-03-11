@@ -56,6 +56,12 @@ class ControllerStartupSeoUrl extends Controller {
 				}
 			}
 
+            if (isset($this->request->get['order_id']) && !isset($this->request->get['route'])) {
+                return $this->response->redirect(
+                    $this->url->link('order/order/info', ['order_id' => $this->request->get['order_id']])
+                );
+            }
+
 			if (!isset($this->request->get['route'])) {
 				if (isset($this->request->get['order_id'])) {
 					$this->request->get['route'] = 'order/order/info';
@@ -70,7 +76,7 @@ class ControllerStartupSeoUrl extends Controller {
 				}
 			}
 
-		// Redirect 301   
+		// Redirect 301
 		} elseif (isset($this->request->get['route']) && empty($this->request->post) && !isset($this->request->get['token']) && $this->config->get('config_seo_url')) {
 			$arg = '';
 			$cat_path = false;
@@ -94,7 +100,7 @@ class ControllerStartupSeoUrl extends Controller {
 				$categorys_id = explode('_', $this->request->get['path']);
 				$cat_path = '';
 				foreach ($categorys_id as $category_id) {
-					$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "seo_url` WHERE `query` = 'category_id=" . (int)$category_id . "' AND `store_id` = '" . (int)$this->config->get('config_store_id') . "' AND `language_id` = '" . (int)$this->config->get('config_language_id') . "'");   
+					$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "seo_url` WHERE `query` = 'category_id=" . (int)$category_id . "' AND `store_id` = '" . (int)$this->config->get('config_store_id') . "' AND `language_id` = '" . (int)$this->config->get('config_language_id') . "'");
 					if ($query->num_rows && $query->row['keyword'] /**/ ) {
 						$cat_path .= '/' . $query->row['keyword'];
 					} else {
