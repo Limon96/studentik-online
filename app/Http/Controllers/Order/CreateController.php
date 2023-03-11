@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers\Order;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Order\CreateRequest;
 use App\Models\Order;
 use App\Repositories\PlagiarismCheckRepository;
 use App\Repositories\SectionRepository;
 use App\Repositories\WorkTypeRepository;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CreateController extends Controller
@@ -45,7 +42,10 @@ class CreateController extends Controller
         $data = $request->validated();
 
         $order = Order::create($data);
-        $order->setHistory(auth()->user()->customer, __('order.history.create'));
+        $order->setHistory(
+            $this->customer(),
+            __('order.history.create')
+        );
 
         if (isset($data['attachment']) && is_array($data['attachment']) && count($data['attachment']) > 0) {
             DB::table('order_attachment')->insert(array_map(function ($attachment_id) use ($order) {
@@ -93,11 +93,6 @@ class CreateController extends Controller
             'success' => 1,
             'redirect' => route('order.show', $slug)
         ]);
-    }
-
-    private function customer()
-    {
-        return Auth::user()->customer;
     }
 
 }

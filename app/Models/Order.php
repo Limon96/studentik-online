@@ -164,6 +164,12 @@ class Order extends Model
         ]);
     }
 
+    public function setStatus(int $order_status_id)
+    {
+        $this->order_status_id = $order_status_id;
+        $this->save();
+    }
+
     public function incrementViewed()
     {
         $this->attributes['viewed']++;

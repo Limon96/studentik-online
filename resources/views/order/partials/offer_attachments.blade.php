@@ -12,9 +12,9 @@
                         <span class="weigt">{{ $attachment->size }}</span>
                     </div>
                     <div class="right_cop">
-                        <span>{{ $attachment->date_added }}</span>
+                        <span>{{ format_date($attachment->date_added, 'full_datetime') }}</span>
                         <p class="delete_file_cust clearfix">
-                            <a href="../index.php?route=common/download&attachment_id={{ $attachment->attachment_id }}" download>Загрузить файл</a>
+                            <a class="download-offer-attach" href="../index.php?route=common/download&attachment_id={{ $attachment->attachment_id }}" download>Загрузить файл</a>
                             @if($order->offerAssigned->isOwner())
                                 <button class="delete_file delete_offer_file" data-attachment-id="{{ $attachment->attachment_id }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="329pt" viewBox="0 0 329.26933 329" width="329pt"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"></path></svg>
@@ -50,6 +50,22 @@
         </script>
     @endif
 
+    @if($order->isOwner() and $order->isOrderStatusInArray([4]))
+        <script>
+            $(document).on('click', '.download-offer-attach', function () {
+                $(document).off('click', '.download-offer-attach');
+
+                $.ajax({
+                    url: '{{ route('order.to_verification', $order->order_id) }}',
+                    method: 'GET',
+                    success: function (json) {
+                        console.log(json);
+                        $('#content').load(location.href + ' #content > *');
+                    }
+                });
+            });
+        </script>
+    @endif
     @if($order->offerAssigned and $order->offerAssigned->isOwner() and $order->isOrderStatusInArray([3, 4, 5, 6, 7]))
         <div>
             <form id="form-upload-complete" class="file_clear">
