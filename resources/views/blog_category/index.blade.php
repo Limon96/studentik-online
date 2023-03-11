@@ -118,7 +118,9 @@
 
                             </div>
 
-
+                            @if(isset($blogPosts) && $blogPosts->total() > $blogPosts->count())
+                                {{ $blogPosts->withQueryString()->links('components.paginate', ['paginator' => $blogPosts]) }}
+                            @endif
                         </div>
 
 
