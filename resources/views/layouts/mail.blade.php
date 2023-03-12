@@ -123,7 +123,7 @@
                                     style="font-size:0px;padding:5px 28px;word-break:break-word">
                                     <div style="font-family:'PT Sans','Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:160%;text-align:left;color:#999999">
                                         2020 -
-                                        2022 <a href="https://studentik.online/"
+                                        {{ date('Y') }} <a href="https://studentik.online/"
                                                 style="color:#22638f;text-decoration:none" target="_blank"
                                                 data-saferedirecturl="https://studentik.online/">Studentik.online</a>
 

@@ -9,7 +9,7 @@
                     </div>
                     <div class="left_cop">
                         <span>{{ $attachment->name }}</span>
-                        <span class="weigt">{{ $attachment->size }}</span>
+                        <span class="weigt">{{ format_size($attachment->size) }}</span>
                     </div>
                     <div class="right_cop">
                         <span>{{ format_date($attachment->date_added, 'full_datetime') }}</span>

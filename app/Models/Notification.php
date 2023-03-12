@@ -11,5 +11,13 @@ class Notification extends Model
 
     protected $table = 'notification';
     protected $primaryKey = 'notification_id';
+    protected $fillable = [
+        'customer_id',
+        'text',
+        'comment',
+        'type',
+        'viewed',
+        'date_added',
+    ];
 
 }
