@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Feedback;
+namespace App\Http\Controllers\Feedback\Admin;
 
 use App\Filters\Admin\Feedback\SentEmailFilter;
 use App\Http\Controllers\Controller;

@@ -35,7 +35,7 @@
 
         $(document).on('click', '#button-complete-order', function() {
             $.ajax({
-                url: '{{ asset('index.php?route=order/offer/completeOffer&order_id=' . $item->order_id) }}',
+                url: '../index.php?route=order/offer/completeOffer&order_id={{ $item->order_id }}',
                 type: 'get',
                 dataType: 'json',
                 success: function(json) {
@@ -50,7 +50,7 @@
 
         $(document).on('click', '#button-revision-order', function() {
             $.ajax({
-                url: '{{ asset('index.php?route=order/offer/revisionOffer&order_id=' . $item->order_id) }}',
+                url: '../index.php?route=order/offer/revisionOffer&order_id={{ $item->order_id }}',
                 type: 'get',
                 dataType: 'json',
                 success: function(json) {
@@ -248,22 +248,20 @@
                                 @include('components.similar_work', ['work_type_id' => $item->work_type_id])
                             @endif
 
-                            @if(auth()->check())
-                                @if($item->attachments or $item->isOwner() or auth()->user()->isAdmin())
-                                    @include('order.partials.attachments', ['order' => $item])
-                                @endif
-
-                                @if($item->isOwner() or ($item->offerAssigned and $item->offerAssigned->isOwner()) or auth()->user()->isAdmin())
-                                    @if($item->isOrderStatusInArray([3, 4, 5, 6, 7]))
-                                        @include('order.partials.offer_attachments', ['order' => $item])
-                                    @endif
-                                @endif
-
-                                @if($item->isOwner() or ($item->offerAssigned and $item->offerAssigned->isOwner()) or auth()->user()->isAdmin())
-                                    @include('order.partials.history', ['order' => $item])
-                                @endif
-
+                            @if(($item->attachments->count() and !$item->isOwner()) or $item->isOwner() or auth()->user()->isAdmin())
+                                @include('order.partials.attachments', ['order' => $item])
                             @endif
+
+                            @if($item->isOwner() or ($item->offerAssigned and $item->offerAssigned->isOwner()) or auth()->user()->isAdmin())
+                                @if($item->isOrderStatusInArray([3, 4, 5, 6, 7]))
+                                    @include('order.partials.offer_attachments', ['order' => $item])
+                                @endif
+                            @endif
+
+                            @if($item->isOwner() or ($item->offerAssigned and $item->offerAssigned->isOwner()) or auth()->user()->isAdmin())
+                                @include('order.partials.history', ['order' => $item])
+                            @endif
+
                         </div>
                         @if(auth()->check())
                             @include('order.partials.offers', ['order' => $item])

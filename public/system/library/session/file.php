@@ -25,7 +25,9 @@ class File {
 	public function write($session_id, $data) {
 		$file = DIR_SESSION . $session_id;
 
-		$handle = fopen($file, 'w');
+        file_put_contents($file, serialize($data));
+
+		/*$handle = fopen($file, 'w');
 
 		flock($handle, LOCK_EX);
 
@@ -35,7 +37,7 @@ class File {
 
 		flock($handle, LOCK_UN);
 
-		fclose($handle);
+		fclose($handle);*/
 
 		return true;
 	}
