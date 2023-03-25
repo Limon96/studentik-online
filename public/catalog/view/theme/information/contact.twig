@@ -26,15 +26,12 @@
                             </div>
                             <div class="item">
                                 <div class="img_cath">
-                                    <img src="catalog/assets/img/icons/comment.png">
+                                    <img src="/catalog/assets/img/icons/comment.png">
                                 </div>
                                 <div class="txt_right">
                                     <div class="kr">Напишите нам</div>
                                     <div class="pr">И мы постараемся решить вашу проблему и ответить на вопросы</div>
-                                    <div class="btn_g">
-                                        <button class="open_jivo">Написать сообщение</button>
-                                    </div>
-                                    <!--Для НЕ авторизированных пользователей-->
+                                    {% if is_auth %}
                                     <div class="suppurt_tab clearfix">
                                         <div class="body_claim clearfix">
                                             <div id="form-contact-support" class="text_claim clearfix">
@@ -84,12 +81,17 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {% else %}
+                                        <div class="btn_g">
+                                            <button class="open_jivo" onclick="jivo_api.open();">Написать сообщение</button>
+                                        </div>
 
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="item">
                                 <div class="img_cath">
-                                    <img src="catalog/assets/img/icons/email.png">
+                                    <img src="/catalog/assets/img/icons/email.png">
                                 </div>
                                 <div class="txt_right">
                                     <div class="kr">E-mail поддержка</div>
