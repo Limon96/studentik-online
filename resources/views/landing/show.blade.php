@@ -434,6 +434,45 @@
     </div>
 </section>
 
+<section class="cifra_f">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3>Studentik в цифрах</h3>
+                <div class="flex_perk">
+                    <div class="pert">
+                        <div class="block_img">
+                            <img src="../image/landing/ty1.webp">
+                        </div>
+                        <div class="txt">
+                            <p>{{ $totals->students }}</p>
+                            <span>студента</span>
+                        </div>
+                    </div>
+                    <div class="pert">
+                        <div class="block_img">
+                            <img src="../image/landing/ty2.webp">
+                        </div>
+                        <div class="txt">
+                            <p>{{ $totals->experts }}</p>
+                            <span>исполнителей</span>
+                        </div>
+                    </div>
+                    <div class="pert">
+                        <div class="block_img">
+                            <img src="../image/landing/ty3.png">
+                        </div>
+                        <div class="txt">
+                            <p>{{ $totals->order_completed }}</p>
+                            <span>выполненных заказов</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 @if($item->blocks)
     @foreach($item->blocks as $block)
         @includeIf('pagebuilder.blocks.' . $block['type'], $block)
