@@ -63,7 +63,9 @@
 @endif
 
 <script>
-    $('header').load('/orders header > *');
+    $('header').load('/orders header > *', function () {
+        activateMenuItem();
+    });
 
 
 

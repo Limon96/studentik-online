@@ -225,6 +225,8 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){
+
+
     var accr = document.getElementsByClassName("accordion_faq");
     var h;
 
