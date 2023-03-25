@@ -8528,7 +8528,8 @@ input::placeholder{
 
 
 
-/*header .menu_nav ul.menu_drest {
+/*
+header .menu_nav ul.menu_drest {
     position: absolute;
     width: 150px;
     background: #fff;
@@ -8541,7 +8542,8 @@ input::placeholder{
 
 header .menu_nav ul.menu_drest.active {
     display: block;
-}*/
+}
+*/
 
 
 

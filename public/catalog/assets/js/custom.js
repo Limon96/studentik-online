@@ -22,7 +22,7 @@ $( document ).ready(function() {
 
 function activateMenuItem()
 {
-    $('header .menu_drestt li').each(function () {
+    $('header .menu_drest li').each(function () {
         if (location.href === $(this).find('a').attr('href') || location.pathname === $(this).find('a').attr('href')) {
             $(this).find('a').addClass('active');
         }

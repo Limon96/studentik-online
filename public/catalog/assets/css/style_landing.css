@@ -307,6 +307,7 @@ header .menu_nav ul {
     -ms-align-items: center;
     align-items: center;
     list-style: none;
+
 }
 
 header .menu_nav ul li{
@@ -327,7 +328,6 @@ header .menu_nav ul li a:hover {
     color: #1CB7AD;
     border-bottom: 1px solid #1CB7AD;
 }
-
 
 
 
@@ -3506,6 +3506,16 @@ footer .colling ul.massengers li a img{
     }
 
 
+    header .menu_nav ul{
+        display: none;
+    }
+
+
+    header .menu_nav ul.active{
+        display: flex;
+    }
+
+
 
 }
 
@@ -4307,9 +4317,14 @@ footer .colling ul.massengers li a img{
 
 
 
+    header .menu_nav ul{
+        display: none;
+    }
 
 
-
+    header .menu_nav ul.active{
+        display: flex;
+    }
 
 
 

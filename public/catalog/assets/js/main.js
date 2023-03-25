@@ -104,7 +104,7 @@ $(document).ready(function(){
 
     $(document).on('click', '.toogle_menu', function(){
         $( ".toogle_menu" ).toggleClass('active');
-        $( ".menu_drest" ).toggleClass('active');
+        $( ".menu_drestt" ).toggleClass('active');
 
     });
 
