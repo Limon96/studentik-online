@@ -1118,7 +1118,7 @@ input {
 }
 
 
-.preim .wrap_work img {
+.preim .wrap_work svg {
     max-width: 460px;
     width: 100%;
 }
@@ -1281,7 +1281,13 @@ input {
     margin: 0 auto 0;
 }
 
-
+.uslug p.poster{
+    margin: 8px auto 0;
+}
+.uslug p.poster strong{
+    font-weight: 600;
+    font-size: 16px;
+}
 
 .uslug a.btn_gr{
     background: #B2E228;
@@ -1372,6 +1378,11 @@ input {
     margin: 0 auto;
     display: block;
 }
+
+.catacomba svg {
+    margin: 0 auto;
+    display: block;
+}
 .catacomba span {
     display: flex;
     justify-content: center;
@@ -1400,11 +1411,132 @@ input {
 
 
 /*************************************otziv************************************************/
+.my_owerf{
+    padding: 0px 0 80px;
+}
+.otzivi_g {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 310px;
+    margin: 0 auto;
+}
+.otzivi_g .vk_o{
+
+}
+.otzivi_g .vk_o a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.otzivi_g .vk_o a .img_f{
+
+}
+.otzivi_g .vk_o a .img_f img{
+    max-width: 23px;
+}
+.otzivi_g .vk_o a .txt {
+    margin-left: 7px;
+}
+.otzivi_g .vk_o a .txt strong{
+    font-weight: 700;
+}
+.otzivi_g .in_o{
+
+}
+.otzivi_g .in_o a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.otzivi_g .in_o a .img_f{
+
+}
+.otzivi_g .in_o a .img_f img{
+    max-width: 22px;
+}
+.otzivi_g .in_o a .txt {
+    margin-left: 7px;
+}
+.otzivi_g .in_o a .txt strong{
+    font-weight: 700;
+}
+
+
+
+.obyen {
+    background-image: url(../../../image/landing/bg2.webp);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 90px 0 100px;
+}
+
+
+.cifra_f {
+    padding-bottom: 100px;
+    padding-top: 100px;
+}
+
+.cifra_f h3{
+    font-size: 30px;
+    line-height: 37px;
+    font-weight: 700;
+    text-align: center;
+    color: #00324F;
+    margin: 0 auto 60px;
+}
+.cifra_f .flex_perk {
+    display: flex;
+    justify-content: center;
+}
+.cifra_f .flex_perk .pert {
+    width: 308px;
+    display: flex;
+    padding: 0 0px;
+    margin: 0 0 15px 0;
+    align-items: center;
+}
+.cifra_f .flex_perk .pert .block_img{
+
+}
+.cifra_f .flex_perk .pert .block_img img {
+    width: 80px;
+}
+
+.cifra_f .flex_perk .pert .txt {
+    padding-left: 12px;
+}
+.cifra_f .flex_perk .pert .txt p {
+    margin: 0px 0 10px 0;
+    font-weight: 700;
+    font-size: 20px;
+    color: #3d82c7;
+}
+.cifra_f .flex_perk .pert .txt span{
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.cifra_f .flex_perk .pert:nth-child(3){
+    width: 321px;
+}
+
+.cifra_f .flex_perk .pert:nth-child(3) .block_img{
+    margin-right: 13px;
+}
+
+
+
+
+
+
 
 
 
 .otziv{
-    padding: 150px 0 150px;
+    padding: 150px 0 70px;
 }
 
 
@@ -2080,6 +2212,236 @@ footer .colling ul.massengers li a img{
 
 
 
+/***********************************************************************************************/
+.last_works {
+    padding: 60px 0 100px;
+}
+.last_works h3{
+    font-size: 30px;
+    line-height: 37px;
+    font-weight: 700;
+    text-align: center;
+    color: #00324F;
+    margin: 0 auto 60px;
+}
+
+.last_works .works_s {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.last_works .works_s .lst_of_us {
+    width: 50%;
+    background: #f8f8f8;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.last_works .works_s .lst_of_us .in_last {
+    height: 385px;
+    overflow-y: scroll;
+    padding: 3px 16px 3px 4px;
+}
+
+
+.last_works .works_s .lst_of_us .in_last::-webkit-scrollbar {
+    width: 8px;
+}
+
+.last_works .works_s .lst_of_us .in_last::-webkit-scrollbar-track {
+    background: #eaeaea;
+}
+
+.last_works .works_s .lst_of_us .in_last::-webkit-scrollbar-thumb {
+    background-color: #7acfc9;
+    border-radius: 20px;
+}
+
+
+
+
+.last_works .works_s .lst_of_us .in_last .item {
+    width: 100%;
+    background: #ffffff;
+    margin: 0 0 12px 0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 3px #7acfc9;
+}
+
+.last_works .works_s .lst_of_us .in_last .item .name{
+    margin-bottom: 15px;
+}
+
+.last_works .works_s .lst_of_us .in_last .item .name a{
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+
+.last_works .works_s .lst_of_us .in_last .item:hover{
+    background: #dbf19d1f;
+}
+
+
+.last_works .works_s .lst_of_us .in_last .item .name a:hover{
+    color: #0b6661;
+}
+
+
+
+.last_works .works_s .lst_of_us .in_last .item .param{
+    margin-bottom: 15px;
+}
+
+.last_works .works_s .lst_of_us .in_last .item .date{
+    display: flex;
+    align-items: center;
+}
+
+.last_works .works_s .lst_of_us .in_last .item .date .svg{
+    margin-right: 6px;
+}
+
+.last_works .works_s .lst_of_us .in_last .item .date .svg svg{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 2px;
+}
+
+.last_works .works_s .lst_of_us .in_last .item .date .txt{
+
+}
+
+.politik_asset {
+    padding: 0 29px;
+}
+
+.politik_asset p{
+    font-size: 12px;
+    color: #919191;
+}
+
+.politik_asset p a{
+    font-size: 12px;
+    color: #1cb7ad;
+}
+
+
+.in_last .item .grops {
+    display: flex;
+    align-items: center;
+
+}
+.in_last .item .grops .money {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+.in_last .item .grops .money .txt{
+
+}
+.in_last .item .grops .money .svg{
+    margin-right: 5px;
+}
+.in_last .item .grops .money .svg img{
+    width: 20px;
+}
+.in_last .item .grops .uspeh{
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+.in_last .item .grops .uspeh .txt{
+
+}
+.in_last .item .grops .uspeh .svg{
+    margin-right: 5px;
+}
+.in_last .item .grops .uspeh .svg img{
+    width: 20px;
+}
+
+
+
+.last_works .works_s .pomoch {
+    width: 50%;
+    padding-left: 50px;
+}
+.last_works .works_s .pomoch .gray_block {
+    background: #b2e22873;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+.last_works .works_s .pomoch .gray_block .item_pom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+.last_works .works_s .pomoch .gray_block .item_pom .one{
+    font-size: 16px;
+    font-weight: 600;
+}
+.last_works .works_s .pomoch .gray_block .item_pom .two{
+    display: flex;
+    align-items: center;
+}
+.last_works .works_s .pomoch .gray_block .item_pom .two .txt{
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+.last_works .works_s .pomoch .gray_block .item_pom .two .svg{
+
+}
+.last_works .works_s .pomoch .gray_block .item_pom .two .svg svg {
+    width: 15px;
+    height: 15px;
+}
+
+.last_works .works_s .pomoch .btn_gre{
+
+}
+
+.last_works .works_s .pomoch .btn_gre .learn_more{
+    background: #1CB7AD;
+    box-shadow: 0px 4px 15px rgb(28 183 173 / 25%);
+    border-radius: 25px;
+    border: 0;
+    height: 50px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 252px;
+    color: #fff;
+}
+.last_works .works_s .pomoch .btn_gre .learn_more:hover{
+    background: #179a92;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /********************************************register/login/pass*****************************************************/
 
 
@@ -2187,7 +2549,10 @@ footer .colling ul.massengers li a img{
     .header_lend {
         padding: 65px 0 0 0;
     }
-
+    .last_works .works_s .pomoch {
+        width: 50%;
+        padding-left: 8px;
+    }
 
 
 
@@ -2405,10 +2770,146 @@ footer .colling ul.massengers li a img{
     .register .content_f .img_wrap {
         padding-right: 15px;
     }
+
+
+
+
+
+
+
+    .in_last .item .grops {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .last_works .works_s .lst_of_us .in_last .item .date {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .in_last .item .grops .money {
+        margin-left: 0;
+        width: 40%;
+    }
+    .in_last .item .grops .uspeh{
+        margin-left: 0;
+        width: 60%;
+    }
+    .last_works .works_s .pomoch {
+        width: 50%;
+        padding-left: 15px;
+    }
+
+    .last_works .works_s .pomoch .gray_block {
+        padding: 10px;
+    }
+    .last_works .works_s .pomoch .gray_block .item_pom .one {
+        font-size: 14px;
+    }
+    .last_works .works_s .pomoch .gray_block .item_pom .two .txt {
+        font-size: 14px;
+    }
+    .find_predmet .zaglavd {
+        padding: 0 15px;
+    }
+    .price_mod .blok_legasy .img_trim img {
+        width: 50px;
+        height: 50px;
+    }
+    .price_mod .blok_legasy .text_o {
+        margin-left: 10px;
+    }
+    .price_mod .blok_legasy .text_o p {
+        margin: 7px 0 6px 0;
+        font-size: 18px;
+    }
+    .price_mod .blok_legasy .text_o .dop {
+        font-size: 15px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
 @media (min-width: 480px) and (max-width: 767px){
+    .last_works {
+        padding: 60px 0 10px;
+    }
+    .last_works .works_s {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+    .last_works .works_s .lst_of_us {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    .last_works .works_s .lst_of_us .in_last {
+        height: 248px;
+        overflow-y: scroll;
+        padding: 3px 16px 3px 4px;
+    }
+    .last_works .works_s .lst_of_us .in_last .item {
+        padding: 15px;
+    }
+    .last_works .works_s .lst_of_us .in_last .item .name a {
+        font-size: 12px;
+    }
+    .last_works .works_s .lst_of_us .in_last .item .param {
+        margin-bottom: 5px;
+        font-size: 12px;
+    }
+    .last_works .works_s .lst_of_us .in_last .item .date {
+        display: flex;
+        align-items: center;
+        margin-top: 7px;
+    }
+    .last_works .works_s .lst_of_us .in_last .item .date .svg svg {
+        width: 15px;
+        height: 15px;
+        position: relative;
+        top: 2px;
+    }
+    .last_works .works_s .lst_of_us .in_last .item .date .txt {
+        font-size: 12px;
+    }
+    .last_works .works_s .pomoch {
+        width: 100%;
+        padding-left: 0;
+    }
+    .last_works .works_s .pomoch .gray_block {
+        padding: 14px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+    .last_works .works_s .pomoch .gray_block .item_pom .two .txt {
+        font-size: 13px;
+        margin-right: 7px;
+    }
+    .last_works .works_s .pomoch .gray_block .item_pom .one {
+        font-size: 13px;
+    }
+
+    /***************************************************/
+
+
+
+
+
+
 
     .header_lend .block_regist .form_bl .line_inp2.ff4 input {
         padding-left: 105px;
@@ -2432,7 +2933,7 @@ footer .colling ul.massengers li a img{
         display: none;
     }
 
-    .preim .wrap_work img {
+    .preim .wrap_work svg {
         display: none;
     }
 
@@ -2873,11 +3374,226 @@ footer .colling ul.massengers li a img{
         font-size: 12px;
     }
 
+    .cifra_f {
+        padding-bottom: 30px;
+
+    }
+    .cifra_f .flex_perk {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cifra_f .flex_perk .pert {
+        width: 100%;
+        display: flex;
+        padding: 0 0px;
+        margin: 0 0 26px 0;
+        align-items: center;
+        flex-direction: column;
+    }
+    .cifra_f .flex_perk .pert .txt {
+        padding: 10px 0 0 0;
+        text-align: center;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .price_mod {
+        padding: 0px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        border-radius: 8px;
+        flex-direction: column;
+    }
+    .price_mod .blok_legasy {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .price_mod .blok_legasy .img_trim img {
+        width: 64px;
+        height: 64px;
+    }
+
+    .price_mod .blok_legasy .text_o p {
+        margin: 7px 0 6px 0;
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .price_mod .blok_legasy .text_o .dop {
+        color: #818181;
+        font-size: 16px;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .wrap_work svg{
+        width: 100%;
+        max-width: 320px;
+        display: block;
+        margin: 0 auto;
+    }
+    .in_last .item .grops {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .last_works .works_s .lst_of_us .in_last .item .date {
+        display: flex;
+        align-items: center;
+        margin-top: 7px;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .in_last .item .grops .money {
+        display: flex;
+        align-items: center;
+        margin-left: 0;
+    }
+    .in_last .item .grops .money .svg img {
+        width: 15px;
+    }
+    .in_last .item .grops .uspeh .svg img {
+        width: 15px;
+    }
+    .ac_faq .name_k {
+        font-size: 16px;
+        line-height: 1.2;
+    }
+
+    .find_predmet {
+        margin-bottom: 90px;
+        margin-top: 50px;
+    }
+    .find_predmet h2 {
+        margin: 0 0 0px 0;
+    }
+
+    .find_predmet .zaglavd {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    .find_predmet .zaglavd .list_links ul li {
+        width: 50%;
+        margin-bottom: 20px;
+        padding: 0 10px 0 0;
+    }
+
+    .find_predmet .zaglavd .list_links ul li a {
+        font-size: 12px;
+    }
+
 
 
 }
 
 @media (min-width: 320px) and (max-width: 479px){
+    .last_works {
+        padding: 60px 0 10px;
+    }
+    .last_works .works_s {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+    .last_works .works_s .lst_of_us {
+         width: 100%;
+         border-radius: 10px;
+         margin-bottom: 20px;
+     }
+    .last_works .works_s .lst_of_us .in_last {
+        height: 248px;
+        overflow-y: scroll;
+        padding: 3px 16px 3px 4px;
+    }
+    .last_works .works_s .lst_of_us .in_last .item {
+        padding: 15px;
+    }
+    .last_works .works_s .lst_of_us .in_last .item .name a {
+        font-size: 12px;
+    }
+    .last_works .works_s .lst_of_us .in_last .item .param {
+        margin-bottom: 5px;
+        font-size: 12px;
+    }
+    .last_works .works_s .lst_of_us .in_last .item .date {
+        display: flex;
+        align-items: center;
+        margin-top: 7px;
+    }
+    .last_works .works_s .lst_of_us .in_last .item .date .svg svg {
+        width: 15px;
+        height: 15px;
+        position: relative;
+        top: 2px;
+    }
+    .last_works .works_s .lst_of_us .in_last .item .date .txt {
+        font-size: 12px;
+    }
+    .last_works .works_s .pomoch {
+        width: 100%;
+        padding-left: 0;
+    }
+    .last_works .works_s .pomoch .gray_block {
+        padding: 14px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+    .last_works .works_s .pomoch .gray_block .item_pom .two .txt {
+        font-size: 13px;
+        margin-right: 7px;
+    }
+    .last_works .works_s .pomoch .gray_block .item_pom .one {
+        font-size: 13px;
+    }
+
+/***************************************************/
+    .cifra_f {
+        padding-bottom: 30px;
+    }
+    .cifra_f .flex_perk {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cifra_f .flex_perk .pert {
+        width: 100%;
+        display: flex;
+        padding: 0 0px;
+        margin: 0 0 26px 0;
+        align-items: center;
+        flex-direction: column;
+    }
+    .cifra_f .flex_perk .pert .txt {
+        padding: 10px 0 0 0;
+        text-align: center;
+    }
+
     .header_lend .col-5{
         width: 100%;
     }
@@ -2890,7 +3606,7 @@ footer .colling ul.massengers li a img{
         display: none;
     }
 
-    .preim .wrap_work img {
+    .preim .wrap_work svg {
         display: none;
     }
 
@@ -3493,6 +4209,117 @@ footer .colling ul.massengers li a img{
         font-weight: 500;
         font-size: 12px;
     }
+
+
+
+
+
+    .price_mod {
+        padding: 0px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        border-radius: 8px;
+        flex-direction: column;
+    }
+    .price_mod .blok_legasy {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .price_mod .blok_legasy .img_trim img {
+        width: 64px;
+        height: 64px;
+    }
+
+    .price_mod .blok_legasy .text_o p {
+        margin: 7px 0 6px 0;
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .price_mod .blok_legasy .text_o .dop {
+        color: #818181;
+        font-size: 16px;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .wrap_work svg{
+        width: 100%;
+        max-width: 320px;
+        display: block;
+        margin: 0 auto;
+    }
+    .in_last .item .grops {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .last_works .works_s .lst_of_us .in_last .item .date {
+        display: flex;
+        align-items: center;
+        margin-top: 7px;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .in_last .item .grops .money {
+        display: flex;
+        align-items: center;
+        margin-left: 0;
+    }
+    .in_last .item .grops .money .svg img {
+        width: 15px;
+    }
+    .in_last .item .grops .uspeh .svg img {
+        width: 15px;
+    }
+    .ac_faq .name_k {
+        font-size: 16px;
+        line-height: 1.2;
+    }
+
+    .find_predmet {
+        margin-bottom: 90px;
+        margin-top: 50px;
+    }
+    .find_predmet h2 {
+        margin: 0 0 0px 0;
+    }
+
+    .find_predmet .zaglavd {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+    .find_predmet .zaglavd .list_links ul li {
+        width: 50%;
+        margin-bottom: 20px;
+        padding: 0 10px 0 0;
+    }
+
+    .find_predmet .zaglavd .list_links ul li a {
+        font-size: 12px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 

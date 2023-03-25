@@ -33,8 +33,7 @@
                                     <h2>Студенческий блог</h2>
                                 @endif
                                 <ul class="breadcrumb clearfix">
-                                    <li><a href="https://studentik.online/"><i
-                                                class="fa fa-home"></i></a></li>
+                                    <li><a href="https://studentik.online/">Главная</a></li>
 
                                     <li><a href="{{ route('blog.index') }}">Блог</a></li>
 

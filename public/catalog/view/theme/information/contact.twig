@@ -7,77 +7,144 @@
             <div class="center_content_resp">
                 <div class="clearfix console_wrap">
                     <div class="clearfix search_panel">
+
+
+
+
                         <div class="heads">
                             <h2>Написать в поддержку</h2>
-                            <!--  <ul class="breadcrumb clearfix">
-                                {% for breadcrumb in breadcrumbs %}
-                                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
-                                {% endfor %}
-                            </ul>-->
+                             <ul class="breadcrumb clearfix">
+                                    <li><a href="/">Главная</a></li>
+                                    <li><a href="#">Контакты</a></li>
+                            </ul>
                         </div>
-                        <div class="suppurt_tab clearfix">
-                            <div class="body_claim clearfix">
-                                <div id="form-contact-support" class="text_claim clearfix">
-                                   <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam aliquid consequuntur, cum delectus dolore dolorum esse explicabo facilis fugiat ipsam itaque libero natus odio, possimus rerum tempora temporibus unde.</p>
--->
-                                    <div class="razdel_wrap">
-                                        <p class="event1">Тема сообщения</p>
-                                        <select name="subject" class="temelect2">
 
-                                            <option>Пополнение счёта</option>
-                                            <option>Вывод средств</option>
-                                            <option>Настройки профиля</option>
-                                            <option>Общие вопросы</option>
-                                            <option>Проблема с загрузкой файлов</option>
-                                            <option>Проблема с почтой</option>
-                                            <option>Ошибка на сайте</option>
-                                            <option>Помощь по претензии</option>
-                                            <option>Проблема с экспертом</option>
-                                            <option>Проблема с заказчиком</option>
-                                            <option>Другое</option>
-                                        </select>
+                        <div class="suppurt_no_reg">
+                            <div class="time">
+                                <div class="info1">Быстро ответим на все интересующие вопросы и решим все проблемы.</div>
+                                <div class="info_time">Работаем по будням с 10:00 до 20:00 по МСК</div>
+                            </div>
+                            <div class="item">
+                                <div class="img_cath">
+                                    <img src="catalog/assets/img/icons/comment.png">
+                                </div>
+                                <div class="txt_right">
+                                    <div class="kr">Напишите нам</div>
+                                    <div class="pr">И мы постараемся решить вашу проблему и ответить на вопросы</div>
+                                    <div class="btn_g">
+                                        <button class="open_jivo">Написать сообщение</button>
                                     </div>
+                                    <!--Для НЕ авторизированных пользователей-->
+                                    <div class="suppurt_tab clearfix">
+                                        <div class="body_claim clearfix">
+                                            <div id="form-contact-support" class="text_claim clearfix">
+                                                <div class="razdel_wrap">
+                                                    <p class="event1">Тема сообщения</p>
+                                                    <select name="subject" class="temelect2">
 
-                                    <div class="textt_input_go clearfix">
-                                        <p class="event2">Описание</p>
-                                        <textarea class="textarea" placeholder="Напишите сообщение..." name="text"></textarea>
-                                    </div>
+                                                        <option>Пополнение счёта</option>
+                                                        <option>Вывод средств</option>
+                                                        <option>Настройки профиля</option>
+                                                        <option>Общие вопросы</option>
+                                                        <option>Проблема с загрузкой файлов</option>
+                                                        <option>Проблема с почтой</option>
+                                                        <option>Ошибка на сайте</option>
+                                                        <option>Помощь по претензии</option>
+                                                        <option>Проблема с экспертом</option>
+                                                        <option>Проблема с заказчиком</option>
+                                                        <option>Другое</option>
+                                                    </select>
+                                                </div>
 
-                                    <div id="files" class="files_rools"></div>
-                                    <div class="add_file">
-                                        <form id="form-upload">
-                                            <label class="add_works">
+                                                <div class="textt_input_go clearfix">
+                                                    <p class="event2">Описание</p>
+                                                    <textarea class="textarea" placeholder="Напишите сообщение..." name="text"></textarea>
+                                                </div>
+
+                                                <div id="files" class="files_rools"></div>
+                                                <div class="add_file">
+                                                    <form id="form-upload">
+                                                        <label class="add_works">
                                         <span>
                                             <svg style="position: relative;width: 10px" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg" class="sw-icon">
                                                 <path d="M288 248v28c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-28c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm-12 72H108c-6.6 0-12 5.4-12 12v28c0 6.6 5.4 12 12 12h168c6.6 0 12-5.4 12-12v-28c0-6.6-5.4-12-12-12zm108-188.1V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V48C0 21.5 21.5 0 48 0h204.1C264.8 0 277 5.1 286 14.1L369.9 98c9 8.9 14.1 21.2 14.1 33.9zm-128-80V128h76.1L256 51.9zM336 464V176H232c-13.3 0-24-10.7-24-24V48H48v416h288z"></path>
                                             </svg>
                                         </span>
-                                                <input type="file" name="file[]" multiple="multiple" accept=".bmp,.djvu,.doc,.docx,.dwg,.csv,.gif,.jpeg,.jpg,.odf,.odt,.pdf,.png,.ppt,.pptx,.rar,.rtf,.svg,.tga,.tiff,.txt,.xls,.xlsx,.zip,.a3d,.cdt,.cdw,.m3d,.dwf,.cdr,.ai,.ics">
-                                                {{ button_attachment }}
-                                            </label>
-                                        </form>
-                                        <input type="hidden" name="type" value="{{ type }}">
-                                        <input type="hidden" name="object_id" value="{{ object_id }}">
-                                        <input type="hidden" name="defendant_id" value="{{ defendant_id }}">
+                                                            <input type="file" name="file[]" multiple="multiple" accept=".bmp,.djvu,.doc,.docx,.dwg,.csv,.gif,.jpeg,.jpg,.odf,.odt,.pdf,.png,.ppt,.pptx,.rar,.rtf,.svg,.tga,.tiff,.txt,.xls,.xlsx,.zip,.a3d,.cdt,.cdw,.m3d,.dwf,.cdr,.ai,.ics">
+                                                            {{ button_attachment }}
+                                                        </label>
+                                                    </form>
+                                                    <input type="hidden" name="type" value="{{ type }}">
+                                                    <input type="hidden" name="object_id" value="{{ object_id }}">
+                                                    <input type="hidden" name="defendant_id" value="{{ defendant_id }}">
+                                                </div>
+                                                <div class="clearfix wrap_add_claim">
+                                                    <button class="add_claim">Отправить</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="clearfix wrap_add_claim">
-                                        <button class="add_claim">Отправить</button>
+
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="img_cath">
+                                    <img src="catalog/assets/img/icons/email.png">
+                                </div>
+                                <div class="txt_right">
+                                    <div class="kr">E-mail поддержка</div>
+                                    <div class="pr"><a href="mailto:studentik.oline@mail.ru">studentik.oline@mail.ru</a></div>
+                                </div>
+                            </div>
+
+
+                            <div class="item_f">
+                                <div class="left_ras">
+                                    <div class="img_fert">
+                                        <img src="catalog/assets/img/icons/pin.png" alt="">
+                                    </div>
+                                    <div class="txt_fert">
+                                        <p>Наш адрес</p>
+                                        <span>г. Москва, Каспийская ул., 22., корп. 1, стр. 5</span>
+                                    </div>
+                                </div>
+                                <div class="left_ras">
+                                    <div class="img_fert">
+                                        <img src="catalog/assets/img/icons/phone-call.png" alt="">
+                                    </div>
+                                    <div class="txt_fert">
+                                        <p>Звоните нам</p>
+                                        <span><a href="tel:+79991801558">+7 (999) 180-15-58</a></span>
                                     </div>
                                 </div>
                             </div>
-                          <!--  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam aliquid consequuntur, cum delectus dolore dolorum esse explicabo facilis fugiat ipsam itaque libero natus odio, possimus rerum tempora temporibus unde.</p>
--->
-                            <div class="loonsa">
-                                <h4>Мы в соцсетях</h4>
-                                <ul class="social clearfix">
-                                    <li><a target="_blank" href="https://vk.com/studentik.online"><img src="catalog/assets/img/icons/vk.svg"></a></li>
-                                    <li><a href="tg://resolve?domain=studentikonline"><img src="catalog/assets/img/icons/telegram.svg"></a></li>
-                                    <li><a target="_blank" href="https://www.instagram.com/studentik.online/"><img src="catalog/assets/img/icons/instg.svg"></a></li>
-                                </ul>
+
+
+                            <div class="item_m">
+                                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A5f755c0d212cd70c3c2681f6ec099fc4227637516256e646325111efa585d7fb&amp;width=300&amp;height=300&amp;lang=ru_RU&amp;scroll=true"></script>
                             </div>
 
 
+
+                            <div class="item">
+                                <div class="img_cath">
+                                    <img src="catalog/assets/img/icons/socialmedia.png">
+                                </div>
+                                <div class="txt_right">
+                                    <div class="kr">Мы в соцсетях</div>
+                                    <div class="civil">
+                                        <ul class="social">
+                                            <li><a target="_blank" href="https://vk.com/studentik.online"><img src="catalog/assets/img/icons/vk.svg"></a></li>
+                                            <li><a href="tg://resolve?domain=studentikonline"><img src="catalog/assets/img/icons/telegram.svg"></a></li>
+                                            <li><a target="_blank" href="https://www.instagram.com/studentik.online/"><img src="catalog/assets/img/icons/instg.svg"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
+
+
                     </div>
                 </div>
             </div>

@@ -10,7 +10,7 @@ $_['datetime_format'] = 'd/m/Y H:i:s';
 $_['decimal_point'] = '.';
 $_['thousand_point'] = '';
 
-$_['text_home'] = '<i class="fa fa-home"></i>';
+$_['text_home'] = 'Главная';
 $_['text_yes'] = 'Да';
 $_['text_no'] = 'Нет';
 $_['text_none'] = ' --- Не выбрано --- ';

@@ -14,13 +14,13 @@
                     <span></span>
                     <span></span>
                 </button>
-                <ul class="clearfix menu_drest">
+                <ul class="clearfix menu_drestt q5">
                     <li><a href="/orders">Лента заказов</a></li>
                     {{--@if(!auth()->check())<li><a href="/services">Услуги</a></li>@endif--}}
                     <li><a href="/blog">Блог</a></li>
                     <li><a href="/experts">Рейтинг авторов</a></li>
                     <li><a href="/faq">FAQ</a></li>
-                    <li><a href="/contacts">Поддержка</a></li>
+                    <li><a href="/contacts">Контакты</a></li>
                 </ul>
 
             </div>
@@ -45,13 +45,13 @@
                     <span></span>
                     <span></span>
                 </button>
-                <ul class="clearfix menu_drest">
+                <ul class="clearfix menu_drestt q6">
                     <li><a href="/orders">Лента заказов</a></li>
                    {{-- @if(!auth()->check())<li><a href="/services">Услуги</a></li>@endif--}}
                     <li><a href="/blog">Блог</a></li>
                     <li><a href="/experts">Рейтинг авторов</a></li>
                     <li><a href="/faq">FAQ</a></li>
-                    <li><a href="/contacts">Поддержка</a></li>
+                    <li><a href="/contacts">Контакты</a></li>
                 </ul>
             </div>
             {{-- account --}}

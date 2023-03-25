@@ -44,8 +44,7 @@
                             <div class="heads">
                                 <h1 class="blog_title">{{ $item->title }}</h1>
                                 <ul class="breadcrumb clearfix">
-                                    <li><a href="https://studentik.online/"><i
-                                                class="fa fa-home"></i></a></li>
+                                    <li><a href="https://studentik.online/">Главная</a></li>
                                     <li><a href="{{ route('blog.index') }}">Блог</a></li>
 
                                     @foreach($categoryPath as $category)

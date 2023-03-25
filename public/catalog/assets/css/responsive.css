@@ -3762,6 +3762,56 @@
 
 
 @media (min-width: 320px) and (max-width: 680px){
+    header .akk .log_name {
+        max-width: 47px;
+    }
+    .suppurt_no_reg .item_f {
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 25px;
+        flex-direction: column;
+    }
+    .suppurt_no_reg .item_f .left_ras {
+        margin-bottom: 25px;
+    }
+    .suppurt_no_reg .item_f {
+        margin-bottom: 0px;
+    }
+
+    .suppurt_tab .razdel_wrap {
+        width: 100%;
+    }
+
+    .suppurt_tab .body_claim .text_claim .wrap_add_claim .add_claim {
+        max-width: 100%;
+    }
+
+    .history_reviews.otziv .nazva_otziv .headers {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .history_reviews.otziv .nazva_otziv .contents {
+        text-align: left;
+    }
+    .jkdsiim_rr p {
+        text-align: left;
+    }
+    .header_lend .block_regist .form_bl .line_inp2 .has-error {
+        bottom: -16px;
+        left: 12px;
+        font-size: 10px;
+        color: #971919;
+    }
+    .header_lend .block_regist .form_bl .line_inp1 .has-error {
+        bottom: -16px;
+        left: 12px;
+        font-size: 10px;
+        color: #971919;
+    }
+
+    #review_add .review_add {
+        height: 67px;
+    }
 
     .blog_wrap .kat_wrap .list_category_blog {
         display: flex;

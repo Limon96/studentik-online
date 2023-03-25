@@ -672,7 +672,7 @@ header .coast a {
 header .akk {
     float: right;
     width: 200px;
-    padding-top: 6px;
+    padding-top: 8px;
 }
 
 
@@ -687,15 +687,18 @@ header .akk a {
 
 header .akk .avatarka {
     border-radius: 50px;
-    margin: 0 6px 0 0;
-    width: 40px;
+    margin: 0 4px 0 0;
+    width: 35px;
 }
 
 header .akk .log_name {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 25px;
     color: #1CB7AD;
     margin: 0 5px 0 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 67px;
 }
 
 
@@ -925,6 +928,140 @@ header .akk .dropdown-content a {
     margin: 0 0 10px 0;
 }
 
+.suppurt_no_reg{
+
+}
+
+.suppurt_no_reg .time{
+    margin: 10px 0 35px;
+}
+.suppurt_no_reg .time .info1{
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.suppurt_no_reg .time .info_time{
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.suppurt_no_reg .suppurt_tab{
+   margin-top: 20px;
+}
+
+.suppurt_no_reg .item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.suppurt_no_reg .item .img_cath{
+    width: 50px;
+}
+
+.suppurt_no_reg .item .img_cath img{
+    max-width: 50px;
+}
+
+.suppurt_no_reg .item .txt_right{
+    width: calc(100% - 50px);
+    padding-left: 10px;
+}
+.suppurt_no_reg .item .txt_right .kr{
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 4px;
+}
+.suppurt_no_reg .item .txt_right .pr{
+
+}
+.suppurt_no_reg .item .txt_right .btn_g{
+
+}
+.suppurt_no_reg .item .txt_right .btn_g{
+
+}
+.suppurt_no_reg .item .txt_right .btn_g .open_jivo{
+    border-radius: 21px;
+    padding: 11px 7px;
+    margin: 0px 0 0px 0px;
+    background: #1cb7ad;
+    font-size: 14px;
+    color: #fff;
+    display: block;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    border: 0;
+    max-width: 200px;
+    margin-top: 20px;
+}
+
+.suppurt_no_reg .item_f {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 25px;
+}
+
+.suppurt_no_reg .item_m {
+    margin-bottom: 25px;
+}
+
+.suppurt_no_reg .item_m iframe{
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0px 0px 5px #00000054;
+}
+
+
+
+
+.suppurt_no_reg .item_f .left_ras {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-right: 15px;
+}
+.suppurt_no_reg .item_f .left_ras .img_fert{
+
+}
+.suppurt_no_reg .item_f .left_ras .img_fert img{
+    width: 50px;
+}
+.suppurt_no_reg .item_f .left_ras .txt_fert{
+
+}
+.suppurt_no_reg .item_f .left_ras .txt_fert p {
+    margin: 4px 0 5px 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.suppurt_no_reg .item_f .left_ras .txt_fert span{
+    display: block;
+    margin: 0 0 0 10px;
+}
+
+.suppurt_no_reg .item .civil{
+
+}
+.suppurt_no_reg .item .civil .social {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.suppurt_no_reg .item .civil .social li{
+    margin-right: 10px;
+}
+.suppurt_no_reg .item .civil .social li a{
+
+}
+.suppurt_no_reg .item .civil .social li a img{
+    width: 25px;
+}
+
+
+
 
 
 
@@ -942,10 +1079,23 @@ ul.breadcrumb li {
     float: left;
     color: #1cb7ad;
 }
+
+ul.breadcrumb li:last-child a{
+    color: #000;
+    pointer-events: none;
+    cursor: default;
+}
+ul.breadcrumb li:last-child a:hover{
+    color: #000;
+}
+
+
+
+
 ul.breadcrumb li:after {
     content: "/";
     margin: 0 4px 0 4px;
-    color: #1cb7ad;
+    color: #000;
 }
 ul.breadcrumb li:last-child:after{
    content: "";
@@ -1875,8 +2025,8 @@ input::placeholder{
 }
 
 
-.contact_right{
-
+.contact_right {
+    padding-bottom: 80px;
 }
 
 .contact_right h3{
@@ -3432,7 +3582,7 @@ input::placeholder{
     text-align: center;
     color: #FFFFFF;
     margin: 0px 18px 15px 0;
-    padding: 14px 25px;
+    padding: 7px 18px;
     border: 0;
     display: inline-block;
 }
@@ -5778,6 +5928,36 @@ input::placeholder{
 
 
 /***********************************services/services********************************************/
+.breadcrumbs_tip {
+    display: flex;
+    padding: 27px 0 0px 0px;
+    max-width: 1027px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+.breadcrumbs_tip li{
+    position: relative;
+}
+
+.breadcrumbs_tip li a{
+    color: #1cb6ac;
+    padding-right: 20px;
+}
+
+.breadcrumbs_tip li a:before{
+    content: ">";
+    display: block;
+    position: absolute;
+    right: 6px;
+    top: 0px;
+    font-family: monospace;
+    color: #000;
+
+}
+
+
+
+
 
 .nevol{
 
@@ -5789,7 +5969,8 @@ input::placeholder{
     max-width: 600px;
     line-height: 1.1;
     font-weight: 700;
-    margin: 60px auto 60px;}
+    margin: 46px auto 60px;
+}
 
 .nevol p {
     text-align: center;
@@ -5846,6 +6027,11 @@ input::placeholder{
     height: 60px;
 }
 
+.wrap_stert .img_wrap svg {
+    width: 60px;
+    height: 60px;
+}
+
 .wrap_stert h4 {
     margin: 10px 0 0 0;
     height: 35px;
@@ -5856,10 +6042,18 @@ input::placeholder{
 }
 
 .wrap_stert p {
-    margin: 10px 0 20px 0;
+    margin: 10px 0 10px 0;
 }
 
 .wrap_stert p span {
+    font-weight: 700;
+}
+
+.wrap_stert p.timer {
+    margin: 10px 0 10px 0;
+}
+
+.wrap_stert p.timer strong {
     font-weight: 700;
 }
 
@@ -6238,6 +6432,10 @@ input::placeholder{
 }
 
 .uslugs_top .wrap_soks .wrap_clear_one .con_text p span{
+    font-weight:700 ;
+}
+
+.uslugs_top .wrap_soks .wrap_clear_one .con_text p strong{
     font-weight:700 ;
 }
 
@@ -8360,6 +8558,11 @@ header .menu_nav ul li a:hover{
     border-bottom: 1px solid #1CB7AD;
 }
 
+header .menu_nav ul li a.active{
+    color: #1CB7AD;
+    border-bottom: 1px solid #1CB7AD;
+}
+
 
 
 
@@ -9383,12 +9586,12 @@ header .menu_nav ul li a:hover{
     line-height: 15px;
     color: #000000;
     padding: 10px 15px;
-    min-height: 300px;
-    max-height: 400px;
+    min-height: 120px;
     resize: vertical;
     width: 100%;
     margin: 10px 0 10px;
     overflow-y: scroll;
+    max-width: 333px;
 }
 .textt_input_go .placeholder {
     position: absolute;
@@ -9426,7 +9629,7 @@ header .menu_nav ul li a:hover{
 
 
 .loonsa{
-
+    margin-left: 15px;
 }
 
 
@@ -9542,6 +9745,7 @@ header .menu_nav ul li a:hover{
     align-items: center;
     border: 0;
     height: 38px;
+    max-width: 162px;
 }
 .suppurt_tab .body_claim .text_claim .wrap_add_claim .add_claim:hover{
     background: #b82222;
