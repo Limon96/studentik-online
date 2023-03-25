@@ -42,6 +42,12 @@ class ControllerCommonHome extends Controller {
         $data['telephone'] = $this->config->get('config_telephone');
         $data['email'] = $this->config->get('config_email');
 
+        $this->load->model('tool/statistic');
+
+        $data['total_experts'] = $this->model_tool_statistic->totalExperts();
+        $data['total_students'] = $this->model_tool_statistic->totalStudents();
+        $data['total_order_completed'] = $this->model_tool_statistic->totalOrderCompleted();
+
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
 		$data['content_top'] = $this->load->controller('common/content_top');
