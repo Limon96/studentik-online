@@ -88,12 +88,45 @@
 
 <section id="form_main" class="header_lend">
     <div class="container">
+        <div class="col-md-12">
+            <ul class="breadcrumbs_tip">
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Услуги</a></li>
+                <li>Реферат</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
         <div class="row reverse">
             <div class="col-7    my-col-7">
                 <div class="block_regist">
                     <div class="heads clearfix">
-                        <h1>{{ $item->title }}</h1>
+                        <h2>{{ $item->title }}</h2>
                         <p>Разместите заказ на бирже и обсудите работу напрямую с исполнителем</p>
+                    </div>
+                    <div class="new_bloc_price">
+                        <div class="price_mod">
+                            <div class="blok_legasy">
+                                <div class="img_trim">
+                                    <img src="{{ asset('img/ru1.png') }}" alt="">
+                                </div>
+                                <div class="text_o">
+                                    <!--   <span>от 9458 р.</span>-->
+                                    <p>от 7950 р.</p>
+                                    <div class="dop">цена</div>
+                                </div>
+                            </div>
+                            <div class="blok_legasy">
+                                <div class="img_trim">
+                                    <img src="{{ asset('img/ru2.webp') }}" alt="">
+                                </div>
+                                <div class="text_o">
+                                    <span></span>
+                                    <p>от 7 дней</p>
+                                    <div class="dop">срок</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div id="formLand" class="form_bl clearfix ">
                         <form id="guest-order-form">
@@ -125,6 +158,10 @@
                         <div class="right_rek">
                             <button id="guest-order">Узнать стоимость</button>
                         </div>
+                    </div>
+                    <div class="politik_asset">
+                        <p>Я принимаю условия <a href="https://studentik.online/index.php?route=information/information&information_id=5">пользовательского соглашения</a>
+                            и <a href="https://studentik.online/index.php?route=information/information&information_id=3">политики конфиденциальности</a></p>
                     </div>
                 </div>
             </div>
@@ -235,9 +272,7 @@
 </section>
 
 
-<section class="bac_fone">
-    <div class="bg_absolut"></div>
-</section>
+
 
 
 <section class="preim">
@@ -471,6 +506,217 @@
             </div>
         </div>
     </div>
+</section>
+
+
+<section class="find_predmet">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Курсовые работы по предметам</h2>
+            </div>
+            <div class="col-md-12">
+                <div class="list_letters_search">
+                    <ul>
+                        <li><a href="#">a</a></li>
+                        <li><a href="#">c</a></li>
+                        <li><a href="#">d</a></li>
+                        <li><a href="#">f</a></li>
+                        <li><a href="#">g</a></li>
+                        <li><a href="#">в</a></li>
+                        <li><a href="#">в</a></li>
+                        <li><a href="#">а</a></li>
+                        <li><a href="#" class="active">к</a></li>
+                        <li><a href="#">п</a></li>
+                        <li><a href="#">р</a></li>
+                        <li><a href="#">о</a></li>
+                        <li><a href="#">л</a></li>
+                        <li><a href="#">е</a></li>
+                        <li><a href="#">g</a></li>
+                        <li><a href="#">в</a></li>
+                        <li><a href="#">в</a></li>
+                        <li><a href="#">а</a></li>
+                        <li><a href="#">п</a></li>
+                        <li><a href="#">р</a></li>
+                        <li><a href="#">о</a></li>
+                        <li><a href="#">g</a></li>
+                        <li><a href="#">в</a></li>
+                        <li><a href="#">в</a></li>
+                        <li><a href="#">а</a></li>
+                        <li><a href="#">п</a></li>
+                        <li><a href="#">р</a></li>
+                        <li><a href="#">о</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="zaglavd">
+                    <div class="title">К</div>
+                    <div class="list_links">
+                        <ul>
+                            <li><a href="#">Предмет длинное название</a></li>
+                            <li><a href="#">Просто название</a></li>
+                            <li><a href="#">Названиеазвание</a></li>
+                            <li><a href="#">Предмет длинное название</a></li>
+                            <li><a href="#">Просто название</a></li>
+                            <li><a href="#">Названиеазвание</a></li>
+                            <li><a href="#">Предмет длинное название</a></li>
+                            <li><a href="#">Просто название</a></li>
+                            <li><a href="#">Названиеазвание</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="staty_news">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3>Интересные статьи в нашем блоге</h3>
+            </div>
+            <div class="col-12">
+                <div class="news_slider">
+                    <div class="item_slick">
+                        <div class="ststya">
+                            <a href="#">
+                                <div class="wrap_img" style="background-image: url(../image/rev/dan.webp)">
+                                </div>
+                                <div class="title">Название статьи возможно длинное</div>
+                                <div class="descript">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa modi nulla odit porro. Aperiam architecto aspernatur doloremque eligendi ex exercitationem expedita fuga, illo maiores, modi molestias obcaecati quibusdam reprehenderit rerum?</div>
+                                <div class="info">
+                                    <div class="comunity">
+                                        <div class="svg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                <path d="M10 0C15.523 0 20 4.477 20 10C20 15.523 15.523 20 10 20C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0ZM10 2C7.87827 2 5.84344 2.84285 4.34315 4.34315C2.84285 5.84344 2 7.87827 2 10C2 12.1217 2.84285 14.1566 4.34315 15.6569C5.84344 17.1571 7.87827 18 10 18C12.1217 18 14.1566 17.1571 15.6569 15.6569C17.1571 14.1566 18 12.1217 18 10C18 7.87827 17.1571 5.84344 15.6569 4.34315C14.1566 2.84285 12.1217 2 10 2ZM10 5C11.0526 5.0004 12.0782 5.33297 12.9307 5.95034C13.7832 6.56771 14.4192 7.43837 14.748 8.4383C15.0767 9.43822 15.0815 10.5164 14.7617 11.5192C14.4419 12.522 13.8137 13.3984 12.9668 14.0233C12.1198 14.6483 11.0972 14.99 10.0446 14.9998C8.99211 15.0096 7.96332 14.687 7.10486 14.0779C6.24639 13.4688 5.60204 12.6043 5.26361 11.6076C4.92517 10.611 4.90991 9.53287 5.22 8.527C5.45392 9.04971 5.86027 9.47622 6.37106 9.73516C6.88184 9.9941 7.46606 10.0698 8.02595 9.94946C8.58584 9.82916 9.08743 9.52022 9.44677 9.07433C9.80612 8.62844 10.0014 8.07267 10 7.5C10.0001 7.01847 9.8612 6.54714 9.59989 6.14268C9.33858 5.73821 8.96603 5.41781 8.527 5.22C8.993 5.077 9.487 5 10 5Z" fill="#999999"/>
+                                            </svg>
+                                        </div>
+                                        <div class="txt">82</div>
+                                    </div>
+                                    <div class="date">
+                                        <div class="txt">1 Мар 2023 в 16:23</div>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item_slick">
+                        <div class="ststya">
+                            <a href="#">
+                                <div class="wrap_img" style="background-image: url(../image/rev/dan.webp)">
+                                </div>
+                                <div class="title">Название статьи возможно длинное</div>
+                                <div class="descript">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa modi nulla odit porro. Aperiam architecto aspernatur doloremque eligendi ex exercitationem expedita fuga, illo maiores, modi molestias obcaecati quibusdam reprehenderit rerum?</div>
+                                <div class="info">
+                                    <div class="comunity">
+                                        <div class="svg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                <path d="M10 0C15.523 0 20 4.477 20 10C20 15.523 15.523 20 10 20C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0ZM10 2C7.87827 2 5.84344 2.84285 4.34315 4.34315C2.84285 5.84344 2 7.87827 2 10C2 12.1217 2.84285 14.1566 4.34315 15.6569C5.84344 17.1571 7.87827 18 10 18C12.1217 18 14.1566 17.1571 15.6569 15.6569C17.1571 14.1566 18 12.1217 18 10C18 7.87827 17.1571 5.84344 15.6569 4.34315C14.1566 2.84285 12.1217 2 10 2ZM10 5C11.0526 5.0004 12.0782 5.33297 12.9307 5.95034C13.7832 6.56771 14.4192 7.43837 14.748 8.4383C15.0767 9.43822 15.0815 10.5164 14.7617 11.5192C14.4419 12.522 13.8137 13.3984 12.9668 14.0233C12.1198 14.6483 11.0972 14.99 10.0446 14.9998C8.99211 15.0096 7.96332 14.687 7.10486 14.0779C6.24639 13.4688 5.60204 12.6043 5.26361 11.6076C4.92517 10.611 4.90991 9.53287 5.22 8.527C5.45392 9.04971 5.86027 9.47622 6.37106 9.73516C6.88184 9.9941 7.46606 10.0698 8.02595 9.94946C8.58584 9.82916 9.08743 9.52022 9.44677 9.07433C9.80612 8.62844 10.0014 8.07267 10 7.5C10.0001 7.01847 9.8612 6.54714 9.59989 6.14268C9.33858 5.73821 8.96603 5.41781 8.527 5.22C8.993 5.077 9.487 5 10 5Z" fill="#999999"/>
+                                            </svg>
+                                        </div>
+                                        <div class="txt">82</div>
+                                    </div>
+                                    <div class="date">
+                                        <div class="txt">1 Мар 2023 в 16:23</div>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item_slick">
+                        <div class="ststya">
+                            <a href="#">
+                                <div class="wrap_img" style="background-image: url(../image/rev/dan.webp)">
+                                </div>
+                                <div class="title">Название статьи возможно длинное</div>
+                                <div class="descript">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa modi nulla odit porro. Aperiam architecto aspernatur doloremque eligendi ex exercitationem expedita fuga, illo maiores, modi molestias obcaecati quibusdam reprehenderit rerum?</div>
+                                <div class="info">
+                                    <div class="comunity">
+                                        <div class="svg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                <path d="M10 0C15.523 0 20 4.477 20 10C20 15.523 15.523 20 10 20C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0ZM10 2C7.87827 2 5.84344 2.84285 4.34315 4.34315C2.84285 5.84344 2 7.87827 2 10C2 12.1217 2.84285 14.1566 4.34315 15.6569C5.84344 17.1571 7.87827 18 10 18C12.1217 18 14.1566 17.1571 15.6569 15.6569C17.1571 14.1566 18 12.1217 18 10C18 7.87827 17.1571 5.84344 15.6569 4.34315C14.1566 2.84285 12.1217 2 10 2ZM10 5C11.0526 5.0004 12.0782 5.33297 12.9307 5.95034C13.7832 6.56771 14.4192 7.43837 14.748 8.4383C15.0767 9.43822 15.0815 10.5164 14.7617 11.5192C14.4419 12.522 13.8137 13.3984 12.9668 14.0233C12.1198 14.6483 11.0972 14.99 10.0446 14.9998C8.99211 15.0096 7.96332 14.687 7.10486 14.0779C6.24639 13.4688 5.60204 12.6043 5.26361 11.6076C4.92517 10.611 4.90991 9.53287 5.22 8.527C5.45392 9.04971 5.86027 9.47622 6.37106 9.73516C6.88184 9.9941 7.46606 10.0698 8.02595 9.94946C8.58584 9.82916 9.08743 9.52022 9.44677 9.07433C9.80612 8.62844 10.0014 8.07267 10 7.5C10.0001 7.01847 9.8612 6.54714 9.59989 6.14268C9.33858 5.73821 8.96603 5.41781 8.527 5.22C8.993 5.077 9.487 5 10 5Z" fill="#999999"/>
+                                            </svg>
+                                        </div>
+                                        <div class="txt">82</div>
+                                    </div>
+                                    <div class="date">
+                                        <div class="txt">1 Мар 2023 в 16:23</div>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item_slick">
+                        <div class="ststya">
+                            <a href="#">
+                                <div class="wrap_img" style="background-image: url(../image/rev/dan.webp)">
+                                </div>
+                                <div class="title">Название статьи возможно длинное</div>
+                                <div class="descript">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa modi nulla odit porro. Aperiam architecto aspernatur doloremque eligendi ex exercitationem expedita fuga, illo maiores, modi molestias obcaecati quibusdam reprehenderit rerum?</div>
+                                <div class="info">
+                                    <div class="comunity">
+                                        <div class="svg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                <path d="M10 0C15.523 0 20 4.477 20 10C20 15.523 15.523 20 10 20C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0ZM10 2C7.87827 2 5.84344 2.84285 4.34315 4.34315C2.84285 5.84344 2 7.87827 2 10C2 12.1217 2.84285 14.1566 4.34315 15.6569C5.84344 17.1571 7.87827 18 10 18C12.1217 18 14.1566 17.1571 15.6569 15.6569C17.1571 14.1566 18 12.1217 18 10C18 7.87827 17.1571 5.84344 15.6569 4.34315C14.1566 2.84285 12.1217 2 10 2ZM10 5C11.0526 5.0004 12.0782 5.33297 12.9307 5.95034C13.7832 6.56771 14.4192 7.43837 14.748 8.4383C15.0767 9.43822 15.0815 10.5164 14.7617 11.5192C14.4419 12.522 13.8137 13.3984 12.9668 14.0233C12.1198 14.6483 11.0972 14.99 10.0446 14.9998C8.99211 15.0096 7.96332 14.687 7.10486 14.0779C6.24639 13.4688 5.60204 12.6043 5.26361 11.6076C4.92517 10.611 4.90991 9.53287 5.22 8.527C5.45392 9.04971 5.86027 9.47622 6.37106 9.73516C6.88184 9.9941 7.46606 10.0698 8.02595 9.94946C8.58584 9.82916 9.08743 9.52022 9.44677 9.07433C9.80612 8.62844 10.0014 8.07267 10 7.5C10.0001 7.01847 9.8612 6.54714 9.59989 6.14268C9.33858 5.73821 8.96603 5.41781 8.527 5.22C8.993 5.077 9.487 5 10 5Z" fill="#999999"/>
+                                            </svg>
+                                        </div>
+                                        <div class="txt">82</div>
+                                    </div>
+                                    <div class="date">
+                                        <div class="txt">1 Мар 2023 в 16:23</div>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item_slick">
+                        <div class="ststya">
+                            <a href="#">
+                                <div class="wrap_img" style="background-image: url(../image/rev/dan.webp)">
+                                </div>
+                                <div class="title">Название статьи возможно длинное</div>
+                                <div class="descript">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa modi nulla odit porro. Aperiam architecto aspernatur doloremque eligendi ex exercitationem expedita fuga, illo maiores, modi molestias obcaecati quibusdam reprehenderit rerum?</div>
+                                <div class="info">
+                                    <div class="comunity">
+                                        <div class="svg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                <path d="M10 0C15.523 0 20 4.477 20 10C20 15.523 15.523 20 10 20C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0ZM10 2C7.87827 2 5.84344 2.84285 4.34315 4.34315C2.84285 5.84344 2 7.87827 2 10C2 12.1217 2.84285 14.1566 4.34315 15.6569C5.84344 17.1571 7.87827 18 10 18C12.1217 18 14.1566 17.1571 15.6569 15.6569C17.1571 14.1566 18 12.1217 18 10C18 7.87827 17.1571 5.84344 15.6569 4.34315C14.1566 2.84285 12.1217 2 10 2ZM10 5C11.0526 5.0004 12.0782 5.33297 12.9307 5.95034C13.7832 6.56771 14.4192 7.43837 14.748 8.4383C15.0767 9.43822 15.0815 10.5164 14.7617 11.5192C14.4419 12.522 13.8137 13.3984 12.9668 14.0233C12.1198 14.6483 11.0972 14.99 10.0446 14.9998C8.99211 15.0096 7.96332 14.687 7.10486 14.0779C6.24639 13.4688 5.60204 12.6043 5.26361 11.6076C4.92517 10.611 4.90991 9.53287 5.22 8.527C5.45392 9.04971 5.86027 9.47622 6.37106 9.73516C6.88184 9.9941 7.46606 10.0698 8.02595 9.94946C8.58584 9.82916 9.08743 9.52022 9.44677 9.07433C9.80612 8.62844 10.0014 8.07267 10 7.5C10.0001 7.01847 9.8612 6.54714 9.59989 6.14268C9.33858 5.73821 8.96603 5.41781 8.527 5.22C8.993 5.077 9.487 5 10 5Z" fill="#999999"/>
+                                            </svg>
+                                        </div>
+                                        <div class="txt">82</div>
+                                    </div>
+                                    <div class="date">
+                                        <div class="txt">1 Мар 2023 в 16:23</div>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
 </section>
 
 @if($item->blocks)

@@ -20,12 +20,18 @@
                     @endif
                 </div>
                 <div class="money">
+                    <div class="clue">
+                        Стоимость выполнения
+                    </div>
                     <div class="svg">
                         <img src="../image/landing/ruble.png" alt="">
                     </div>
                     <div class="txt">{{ $item->offerAssigned->bet }}р</div>
                 </div>
                 <div class="uspeh">
+                    <div class="clue">
+                        Уникальность работы
+                    </div>
                     <div class="svg">
                         <img src="../image/landing/shield.png" alt="">
                     </div>

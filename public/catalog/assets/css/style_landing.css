@@ -2342,6 +2342,7 @@ footer .colling ul.massengers li a img{
     display: flex;
     align-items: center;
     margin-left: 15px;
+    position: relative;
 }
 .in_last .item .grops .money .txt{
 
@@ -2352,10 +2353,34 @@ footer .colling ul.massengers li a img{
 .in_last .item .grops .money .svg img{
     width: 20px;
 }
+.in_last .item .grops .money .clue{
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    font-size: 10px;
+    line-height: 1.2;
+    background: #f0ffca;
+    box-shadow: 0 0 3px #4455666b;
+    padding: 1px 3px;
+    text-align: center;
+    width: 80px;
+    display: none;
+}
+.in_last .item .grops .money:hover .clue{
+    display: block;
+}
+
+
+
+
+
+
 .in_last .item .grops .uspeh{
     display: flex;
     align-items: center;
     margin-left: 15px;
+    position: relative;
 }
 .in_last .item .grops .uspeh .txt{
 
@@ -2367,6 +2392,23 @@ footer .colling ul.massengers li a img{
     width: 20px;
 }
 
+.in_last .item .grops .uspeh .clue{
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    font-size: 10px;
+    line-height: 1.2;
+    background: #f0ffca;
+    box-shadow: 0 0 3px #4455666b;
+    padding: 1px 3px;
+    text-align: center;
+    width: 80px;
+    display: none;
+}
+.in_last .item .grops .uspeh:hover .clue{
+    display: block;
+}
 
 
 .last_works .works_s .pomoch {

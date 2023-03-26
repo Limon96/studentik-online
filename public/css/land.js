@@ -755,7 +755,7 @@ $(document).ready(function(){
 
     $(document).on('click', '.toogle_menu', function(){
         $( ".toogle_menu" ).toggleClass('active');
-        $( ".menu_drest" ).toggleClass('active');
+        $( ".menu_drestt" ).toggleClass('active');
 
     });
 
@@ -867,7 +867,33 @@ $(document).ready(function(){
             }
         ]
     });
+    $('.news_slider').slick({
+        dots: true,
+        infinite: false,
+        speed: 1000,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        responsive: [
 
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
 
 
 });
