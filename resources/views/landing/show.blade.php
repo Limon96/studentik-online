@@ -104,30 +104,36 @@
                         <h2>{{ $item->title }}</h2>
                         <p>Разместите заказ на бирже и обсудите работу напрямую с исполнителем</p>
                     </div>
+                    @if($item->price || $item->term)
                     <div class="new_bloc_price">
                         <div class="price_mod">
+                            @if($item->price)
                             <div class="blok_legasy">
                                 <div class="img_trim">
                                     <img src="{{ asset('img/ru1.png') }}" alt="">
                                 </div>
                                 <div class="text_o">
                                     <!--   <span>от 9458 р.</span>-->
-                                    <p>от 7950 р.</p>
+                                    <p>{{ $item->price }}</p>
                                     <div class="dop">цена</div>
                                 </div>
                             </div>
+                            @endif
+                            @if($item->term)
                             <div class="blok_legasy">
                                 <div class="img_trim">
                                     <img src="{{ asset('img/ru2.webp') }}" alt="">
                                 </div>
                                 <div class="text_o">
                                     <span></span>
-                                    <p>от 7 дней</p>
+                                    <p>{{ $item->term }}</p>
                                     <div class="dop">срок</div>
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </div>
+                    @endif
                     <div id="formLand" class="form_bl clearfix ">
                         <form id="guest-order-form">
                             <div class="line_inp1 clearfix">
