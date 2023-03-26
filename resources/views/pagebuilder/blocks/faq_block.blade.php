@@ -38,3 +38,16 @@
         </div>
     </div>
 </section>
+
+<section class="moree">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Теперь вы знаете всё. <br> Разместите задание и проверьте, как работает сервис.<br> Это быстро и бесплатно:</h2>
+            </div>
+            <div class="col-md-12">
+                <a href="#form_main" class="btn_grdarck">Разместить заказ</a>
+            </div>
+        </div>
+    </div>
+</section>
