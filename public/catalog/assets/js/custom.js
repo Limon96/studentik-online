@@ -27,6 +27,12 @@ function activateMenuItem()
             $(this).find('a').addClass('active');
         }
     });
+
+    $('header .menu_drestt li').each(function () {
+        if (location.href === $(this).find('a').attr('href') || location.pathname === $(this).find('a').attr('href')) {
+            $(this).find('a').addClass('active');
+        }
+    });
 }
 
 
