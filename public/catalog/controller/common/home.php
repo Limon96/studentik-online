@@ -50,9 +50,10 @@ class ControllerCommonHome extends Controller {
 
         $this->load->model('order/order');
         $this->load->model('order/offer');
+        $this->load->model('order/history');
         $filter_data = [
             'filter_order_status_id' => 6,
-            'limit' => 6,
+            'limit' => 10,
             'order' => 'DESC'
         ];
         $last_orders = $this->model_order_order->getOrders($filter_data);
@@ -64,10 +65,9 @@ class ControllerCommonHome extends Controller {
 
                 if (isset($order['completed_at']) && $order['completed_at']) {
                     $completed_at = format_date($order['completed_at'], 'dMt');
-                } elseif (isset($order['date_end']) && $order['date_end']) {
-                    $completed_at = format_date($order['date_end'], 'dM');
                 } else {
-                    $completed_at = format_date($order['date_modified'], 'dMt');
+                    $lastHistoryRecord = $this->model_order_history->lastHistoryRecord($order['order_id']);
+                    $completed_at = format_date($lastHistoryRecord['date_added'], 'dMt');
                 }
 
                 $data['last_orders'][] = [

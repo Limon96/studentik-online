@@ -13,10 +13,8 @@
                     </div>
                     @if($item->completed_at)
                         <div class="txt">Завершён {{ format_date($item->completed_at, 'dMt') }}</div>
-                    @elseif($item->date_end != '0000-00-00')
-                        <div class="txt">Завершён {{ format_date($item->date_end, 'dM') }}</div>
                     @else
-                        <div class="txt">Завершён {{ format_date($item->date_modified, 'dMt') }}</div>
+                        <div class="txt">Завершён {{ format_date($item->history()->orderByDesc('order_history_id')->first()->date_added, 'dMt') }}</div>
                     @endif
                 </div>
                 <div class="money">

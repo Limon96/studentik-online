@@ -29,7 +29,7 @@ class LastOrdersComponent extends Component
         if ($this->work_type) {
             $lastOrders = Order
                 ::where('work_type_id', $this->work_type)
-                ->where('order_status_id', 6)
+                ->where('order_status_id', 10)
                 ->limit(6)
                 ->orderByDesc('order_id')
                 ->get();
@@ -37,7 +37,7 @@ class LastOrdersComponent extends Component
 
         } else {
             $lastOrders = Order
-                ::where('order_status_id', 6)
+                ::where('order_status_id', 10)
                 ->limit(6)
                 ->orderByDesc('order_id')
                 ->get();

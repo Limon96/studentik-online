@@ -37,6 +37,11 @@ class Order extends Model
         return $this->hasMany(Offer::class, 'order_id', 'order_id');
     }
 
+    public function history()
+    {
+        return $this->hasMany(OrderHistory::class, 'order_id', 'order_id');
+    }
+
     public function offerAssigned()
     {
         return $this->belongsTo(Offer::class, 'order_id', 'order_id')->where('assigned', 1);
