@@ -487,7 +487,7 @@
                         </div>
                         <div class="txt">
                             <p>{{ $totals->students }}</p>
-                            <span>студента</span>
+                            <span>{{ num_word($totals->students, ['студент', 'студента', 'студентов'], false) }}</span>
                         </div>
                     </div>
                     <div class="pert">
@@ -496,7 +496,7 @@
                         </div>
                         <div class="txt">
                             <p>{{ $totals->experts }}</p>
-                            <span>исполнителей</span>
+                            <span>{{ num_word($totals->experts, ['исполнитель', 'исполнителя', 'исполнителей'], false) }}</span>
                         </div>
                     </div>
                     <div class="pert">
@@ -505,7 +505,7 @@
                         </div>
                         <div class="txt">
                             <p>{{ $totals->order_completed }}</p>
-                            <span>выполненных заказов</span>
+                            <span> {{ num_word($totals->experts, ['выполненный заказ', 'выполненных заказа', 'выполненных заказов'], false) }}</span>
                         </div>
                     </div>
                 </div>

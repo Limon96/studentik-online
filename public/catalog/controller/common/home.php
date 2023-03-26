@@ -45,8 +45,11 @@ class ControllerCommonHome extends Controller {
         $this->load->model('tool/statistic');
 
         $data['total_experts'] = $this->model_tool_statistic->totalExperts();
+        $data['text_total_experts'] = num_word($data['total_experts'], ['исполнитель', 'исполнителя', 'исполнителей'], false) ;
         $data['total_students'] = $this->model_tool_statistic->totalStudents();
+        $data['text_total_students'] = num_word($data['total_students'], ['студент', 'студента', 'студентов'], false);
         $data['total_order_completed'] = $this->model_tool_statistic->totalOrderCompleted();
+        $data['text_total_order_completed'] = num_word($data['total_order_completed'], ['выполненный заказ', 'выполненных заказа', 'выполненных заказов'], false);
 
         $this->load->model('order/order');
         $this->load->model('order/offer');

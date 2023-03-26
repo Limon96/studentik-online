@@ -49,7 +49,8 @@ if (!function_exists('get_widget')) {
 
 if (!function_exists('format_date')) {
 
-    function format_date($str, $format = "d.m.Y") {
+    function format_date($str, $format = "d.m.Y")
+    {
 
         if (is_numeric($str)) {
             $str = date("Y-m-d H:i:s", $str);
@@ -92,4 +93,32 @@ if (!function_exists('format_date')) {
         }
     }
 
+}
+
+
+if (!function_exists('num_word')) {
+    function num_word($value, $words, $show = true)
+    {
+        $num = $value % 100;
+        if ($num > 19) {
+            $num = $num % 10;
+        }
+
+        $out = ($show) ? $value . ' ' : '';
+        switch ($num) {
+            case 1:
+                $out .= $words[0];
+                break;
+            case 2:
+            case 3:
+            case 4:
+                $out .= $words[1];
+                break;
+            default:
+                $out .= $words[2];
+                break;
+        }
+
+        return $out;
+    }
 }
