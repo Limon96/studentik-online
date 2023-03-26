@@ -59,6 +59,14 @@
                         <input id="input-slug" type="text" name="slug" class="form-control" value="{{ old('slug', $item->slug) }}">
                     </div>
                     <div class="form-group">
+                        <label for="input-term">Сроки</label>
+                        <input id="input-term" type="text" name="term" class="form-control" value="{{ old('term', $item->term) }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-price">Цена</label>
+                        <input id="input-price" type="text" name="price" class="form-control" value="{{ old('price', $item->price) }}">
+                    </div>
+                    <div class="form-group">
                         <label class="form-label" for="select-type_page">Тип страницы</label>
                         <select class="form-control" type="text" id="select-type_page" name="type_page">
                             <option value="1" @if($item->type_page == 1) selected @endif>Тип работы</option>

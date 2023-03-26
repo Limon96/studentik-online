@@ -120,6 +120,8 @@ class LandingController extends Controller
             'meta_keywords' => $item->meta_keywords,
             'components' => json_decode($item->components),
             'type_page' => $item->type_page,
+            'term' => $item->term,
+            'price' => $item->price,
             'slug' => $item->slug . '_copy',
             'status' => 0,
         ]);

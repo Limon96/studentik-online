@@ -19,5 +19,7 @@ class Landing extends Model
         'slug',
         'type_page',
         'status',
+        'price',
+        'term',
     ];
  }

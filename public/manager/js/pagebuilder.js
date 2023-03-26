@@ -35,11 +35,14 @@ function page_builder_submit(url, method)
             'meta_keywords': $('#input-meta_keywords').val(),
             'type_page': $('#select-type_page').val(),
             'status': $('#select-status').val(),
+            'term': $('#input-term').val(),
+            'price': $('#input-price').val(),
         },
         success: function (response) {
             /*console.log(response);*/
 
             if (response['redirect']) {
+                alert(response.success)
                 location.href = response['redirect'];
             }
         }
