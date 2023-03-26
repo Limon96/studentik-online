@@ -21,7 +21,7 @@
             <div class="sh-pagetitle-icon"><i class="icon ion-ios-home"></i></div>
             <div class="sh-pagetitle-title">
                 <span>Форма редактирования страницы</span>
-                <h2>Новая страница</h2>
+                @if($item->exists) <h2>Редактирование страницы</h2> @else <h2>Новая страница</h2> @endif
             </div><!-- sh-pagetitle-left-title -->
         </div><!-- sh-pagetitle-left -->
     </div><!-- sh-pagetitle -->

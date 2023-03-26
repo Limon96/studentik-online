@@ -4,7 +4,8 @@ namespace App\Components\PageBuilder\Library\Blocks;
 
 use App\Components\PageBuilder\Library\PageBuilderBlock;
 
-class Block implements IBlock {
+class Block implements IBlock
+{
 
     protected $title;
     protected $type;
@@ -42,7 +43,8 @@ class Block implements IBlock {
     /**
      * @param array $data
      */
-    public function setData(array $data): void {
+    public function setData(array $data): void
+    {
         if (!empty($data)) {
             foreach ($data as $field) {
                 if ($field['type'] == 'fields') {
@@ -54,6 +56,9 @@ class Block implements IBlock {
         }
     }
 
+    /**
+     * @return array
+     */
     public function toArray(): array
     {
         return [

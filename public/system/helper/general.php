@@ -2,21 +2,21 @@
 function token($length = 32) {
 	// Create random token
 	$string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-	
+
 	$max = strlen($string) - 1;
-	
+
 	$token = '';
-	
+
 	for ($i = 0; $i < $length; $i++) {
 		$token .= $string[mt_rand(0, $max)];
-	}	
-	
+	}
+
 	return $token;
 }
 
 /**
  * Backwards support for timing safe hash string comparisons
- * 
+ *
  * http://php.net/manual/en/function.hash-equals.php
  */
 
@@ -74,6 +74,22 @@ function format_date($str, $format = "d.m.Y") {
         $m = $month[date('n', $ts)];
 
         return str_replace('%', $m, date('j % Y', $ts));
+    } elseif ($format == "dMt") {
+        $month = ['', 'Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
+
+        $ts = strtotime($str);
+
+        $m = $month[date('n', $ts)];
+
+        return str_replace('%', $m, date('j % H:i', $ts));
+    } elseif ($format == "dM") {
+        $month = ['', 'Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
+
+        $ts = strtotime($str);
+
+        $m = $month[date('n', $ts)];
+
+        return str_replace('%', $m, date('j %', $ts));
     } else {
         return date($format, strtotime($str));
     }

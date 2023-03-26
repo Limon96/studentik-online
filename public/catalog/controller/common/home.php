@@ -48,6 +48,40 @@ class ControllerCommonHome extends Controller {
         $data['total_students'] = $this->model_tool_statistic->totalStudents();
         $data['total_order_completed'] = $this->model_tool_statistic->totalOrderCompleted();
 
+        $this->load->model('order/order');
+        $this->load->model('order/offer');
+        $filter_data = [
+            'filter_order_status_id' => 6,
+            'limit' => 6,
+        ];
+        $last_orders = $this->model_order_order->getOrders($filter_data);
+        $data['last_orders'] = [];
+        if ($last_orders) {
+            foreach ($last_orders as $order) {
+
+                $offer_info = $this->model_order_offer->getOfferAssigned($order['order_id']);
+
+                if (isset($order['completed_at']) && $order['completed_at']) {
+                    $completed_at = format_date($order['completed_at'], 'dMt');
+                } elseif (isset($order['date_end']) && $order['date_end']) {
+                    $completed_at = format_date($order['date_end'], 'dM');
+                } else {
+                    $completed_at = format_date($order['date_modified'], 'dMt');
+                }
+
+                $data['last_orders'][] = [
+                    "order_id" => $order['order_id'],
+                    "title" => $order['title'],
+                    "subject" => mb_strtolower($order['subject']),
+                    "work_type" => $order['work_type'],
+                    "plagiarism_check" => $order['plagiarism_check'] ?? '75%',
+                    "completed_at" => $completed_at,
+                    "bet" => $offer_info['bet'] ?? 0,
+                    "href" => $this->url->link('order/order/info', 'order_id=' . $order['order_id'], true),
+                ];
+            }
+        }
+
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
 		$data['content_top'] = $this->load->controller('common/content_top');

@@ -6,6 +6,7 @@
             <option value="group_text_block">Группа текстовых блоков</option>
             <option value="faq_block">Блок FAQ</option>
             <option value="reviews_block">Блок отзывов</option>
+            <option value="last_orders">Блок с последними заказами</option>
         </select>
         <span class="input-group-btn">
             <button type="button" class="btn btn-primary add-block"><i class="fa fa-plus"></i></button>

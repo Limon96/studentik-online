@@ -130,6 +130,10 @@ class ModelOrderOrder extends Model {
     public function setOrderStatus($order_id, $order_status_id)
     {
         $this->db->query("UPDATE `" . DB_PREFIX . "order` SET order_status_id = '" . (int)$order_status_id . "' WHERE order_id = '" . (int)$order_id . "'");
+
+        if ($order_status_id == $this->config->get('config_complete_order_status_id')) {
+            $this->db->query("UPDATE `" . DB_PREFIX . "order` SET completed_at = '" . date('Y-m-d H:i:s') . "' WHERE order_id = '" . (int)$order_id . "'");
+        }
     }
 
     public function getOrder($order_id) {

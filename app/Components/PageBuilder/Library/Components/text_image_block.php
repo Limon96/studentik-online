@@ -7,7 +7,7 @@ return [
         [
             'label' => 'Заголовок',
             'name' => 'title',
-            'type' => 'string',
+            'type' => 'select',
         ],
         [
             'label' => 'Ссылка на изображение',

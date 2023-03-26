@@ -71,6 +71,22 @@ if (!function_exists('format_date')) {
             $m = $month[date('n', $ts)];
 
             return str_replace('%', $m, date('j % Y', $ts));
+        } elseif ($format == "dMt") {
+            $month = ['', 'Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
+
+            $ts = strtotime($str);
+
+            $m = $month[date('n', $ts)];
+
+            return str_replace('%', $m, date('j % H:i', $ts));
+        } elseif ($format == "dM") {
+            $month = ['', 'Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
+
+            $ts = strtotime($str);
+
+            $m = $month[date('n', $ts)];
+
+            return str_replace('%', $m, date('j %', $ts));
         } else {
             return date($format, strtotime($str));
         }

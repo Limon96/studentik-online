@@ -199,7 +199,7 @@ $(document).on('click', '#page-builder .new-block .add-block', function () {
 
 function getUrl()
 {
-    return location.origin + '/new-order/_manager/';
+    return location.origin + '/_manager/';
 
 }
 
