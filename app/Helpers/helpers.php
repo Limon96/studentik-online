@@ -78,7 +78,7 @@ if (!function_exists('format_date')) {
 
             $m = $month[date('n', $ts)];
 
-            return str_replace('%', $m, date('j % H:i', $ts));
+            return str_replace('%', $m, date('j % в H:i', $ts));
         } elseif ($format == "dM") {
             $month = ['', 'Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
 
