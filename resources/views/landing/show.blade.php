@@ -67,7 +67,7 @@
                     <li><a href="https://studentik.online/services">Услуги</a></li>
                     <li><a href="https://studentik.online/experts">Рейтинг авторов</a></li>
                     <li><a href="https://studentik.online/faq">FAQ</a></li>
-                    <li><a href="https://studentik.online/faq/contacts">Контакты</a></li>
+                    <li><a href="https://studentik.online/contacts">Контакты</a></li>
                 </ul>
             </div>
             <div class="akk_enter">
