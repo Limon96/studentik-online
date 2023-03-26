@@ -53,6 +53,7 @@ class ControllerCommonHome extends Controller {
         $filter_data = [
             'filter_order_status_id' => 6,
             'limit' => 6,
+            'order' => 'DESC'
         ];
         $last_orders = $this->model_order_order->getOrders($filter_data);
         $data['last_orders'] = [];
