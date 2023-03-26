@@ -8,6 +8,7 @@ return [
             'label' => 'Тип работы',
             'name' => 'work_type',
             'type' => 'select',
+            'value' => '',
             'values' => \App\Models\WorkType::selectRaw('`name`, `work_type_id` as `value`')->orderBy('name')->get()->map(function ($item) {
                 return [
                     'name' => $item->name,
