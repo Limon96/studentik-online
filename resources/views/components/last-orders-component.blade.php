@@ -2,7 +2,7 @@
     <div class="in_last">
         @foreach($lastOrders as $item)
         <div class="item">
-            <div class="name"><a href="#">{{ $item->title }}</a></div>
+            <div class="name"><a href="/order/{{ $item->getSlug() }}">{{ $item->title }}</a></div>
             <div class="param">{{ $item->work_type->name }}, {{ mb_strtolower($item->subject->name) }}</div>
             <div class="grops">
                 <div class="date">
