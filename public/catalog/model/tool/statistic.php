@@ -4,7 +4,7 @@ class ModelToolStatistic extends Model
 
     public function totalExperts()
     {
-        $query = $this->db->query("SELECT COUNT(1) as total FROM " . DB_PREFIX . "customer WHERE customer_group_id = '2'");
+        $query = $this->db->query("SELECT COUNT(1) as total FROM " . DB_PREFIX . "customer WHERE status = 1 AND customer_group_id = '2'");
 
         if ($query->row['total']) {
             return (int)$query->row['total'];
@@ -15,7 +15,7 @@ class ModelToolStatistic extends Model
 
     public function totalStudents()
     {
-        $query = $this->db->query("SELECT COUNT(1) as total FROM " . DB_PREFIX . "customer WHERE customer_group_id = '1'");
+        $query = $this->db->query("SELECT COUNT(1) as total FROM " . DB_PREFIX . "customer WHERE status = 1 AND customer_group_id = '1'");
 
         if ($query->row['total']) {
             return (int)$query->row['total'];

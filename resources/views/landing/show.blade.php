@@ -1,4 +1,4 @@
-<!doctype html>
+@php $v = '0.17'; @endphp<!doctype html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,7 @@
     <meta name="description" content="{{ \Illuminate\Support\Str::limit(strip_tags($item->meta_description), 155) }}">
     <meta name="keywords" content="{{ $item->meta_keywords }}">
 
-    <link rel="stylesheet" href="{{ asset('css/land.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/land.css') }}?v={{ $v }}">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <meta property="vk:image" content="{{ asset('img/logo_razmetki.png') }}" />
@@ -90,9 +90,9 @@
     <div class="container">
         <div class="col-md-12">
             <ul class="breadcrumbs_tip">
-                <li><a href="#">Главная</a></li>
-                <li><a href="#">Услуги</a></li>
-                <li>Реферат</li>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/services">Услуги</a></li>
+                <li>{{ $item->menu_title }}</li>
             </ul>
         </div>
     </div>
@@ -515,6 +515,12 @@
 </section>
 
 
+@if($item->blocks)
+    @foreach($item->blocks as $block)
+        @includeIf('pagebuilder.blocks.' . $block['type'], $block)
+    @endforeach
+@endif
+
 <section class="find_predmet">
     <div class="container">
         <div class="row">
@@ -524,53 +530,48 @@
             <div class="col-md-12">
                 <div class="list_letters_search">
                     <ul>
-                        <li><a href="#">a</a></li>
-                        <li><a href="#">c</a></li>
-                        <li><a href="#">d</a></li>
-                        <li><a href="#">f</a></li>
-                        <li><a href="#">g</a></li>
-                        <li><a href="#">в</a></li>
-                        <li><a href="#">в</a></li>
-                        <li><a href="#">а</a></li>
-                        <li><a href="#" class="active">к</a></li>
-                        <li><a href="#">п</a></li>
-                        <li><a href="#">р</a></li>
-                        <li><a href="#">о</a></li>
-                        <li><a href="#">л</a></li>
-                        <li><a href="#">е</a></li>
-                        <li><a href="#">g</a></li>
-                        <li><a href="#">в</a></li>
-                        <li><a href="#">в</a></li>
-                        <li><a href="#">а</a></li>
-                        <li><a href="#">п</a></li>
-                        <li><a href="#">р</a></li>
-                        <li><a href="#">о</a></li>
-                        <li><a href="#">g</a></li>
-                        <li><a href="#">в</a></li>
-                        <li><a href="#">в</a></li>
-                        <li><a href="#">а</a></li>
-                        <li><a href="#">п</a></li>
-                        <li><a href="#">р</a></li>
-                        <li><a href="#">о</a></li>
+                        @foreach($subjects as $key => $items)
+                            <li><a href="#tab-{{ mb_strtolower($key) }}" @if($loop->index === 1) class="active" @endif>{{ $key }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
             <div class="col-md-12">
-                <div class="zaglavd">
-                    <div class="title">К</div>
-                    <div class="list_links">
-                        <ul>
-                            <li><a href="#">Предмет длинное название</a></li>
-                            <li><a href="#">Просто название</a></li>
-                            <li><a href="#">Названиеазвание</a></li>
-                            <li><a href="#">Предмет длинное название</a></li>
-                            <li><a href="#">Просто название</a></li>
-                            <li><a href="#">Названиеазвание</a></li>
-                            <li><a href="#">Предмет длинное название</a></li>
-                            <li><a href="#">Просто название</a></li>
-                            <li><a href="#">Названиеазвание</a></li>
-                        </ul>
+                {{--@foreach($subjects as $key => $items)
+                    <div id="tab-{{ mb_strtolower($key) }}" class="zaglavd @if($loop->index === 1) active @endif">
+                        <div class="title">{{ $key }}</div>
+                        <div class="list_links">
+                            <ul>
+                                @foreach($items as $subject)
+                                    <li><a href="{{ route('landing.subject', [$item->slug, 'subject_slug' => \Illuminate\Support\Str::slug($subject->name)]) }}">{{ $subject->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
+                @endforeach--}}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="all_foon">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Другие типы работ</h2>
+            </div>
+            <div class="col-md-12">
+                <div class="fool_roop">
+                    @foreach($type_work_pages as $twp)
+                        <div class="item_link">
+                            <a href="{{ route('landing.show', $twp['slug']) }}">
+                                <div class="wrap_comp">
+                                    <span>{{ mb_substr($twp['menu_title'], 0, 1) }}</span>
+                                    <p>{{ $twp['menu_title'] }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -585,180 +586,39 @@
             </div>
             <div class="col-12">
                 <div class="news_slider">
-                    <div class="item_slick">
-                        <div class="ststya">
-                            <a href="#">
-                                <div class="wrap_img" style="background-image: url(../image/rev/dan.webp)">
-                                </div>
-                                <div class="title">Название статьи возможно длинное</div>
-                                <div class="descript">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa modi nulla odit porro. Aperiam architecto aspernatur doloremque eligendi ex exercitationem expedita fuga, illo maiores, modi molestias obcaecati quibusdam reprehenderit rerum?</div>
-                                <div class="info">
-                                    <div class="comunity">
-                                        <div class="svg">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                                <path d="M10 0C15.523 0 20 4.477 20 10C20 15.523 15.523 20 10 20C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0ZM10 2C7.87827 2 5.84344 2.84285 4.34315 4.34315C2.84285 5.84344 2 7.87827 2 10C2 12.1217 2.84285 14.1566 4.34315 15.6569C5.84344 17.1571 7.87827 18 10 18C12.1217 18 14.1566 17.1571 15.6569 15.6569C17.1571 14.1566 18 12.1217 18 10C18 7.87827 17.1571 5.84344 15.6569 4.34315C14.1566 2.84285 12.1217 2 10 2ZM10 5C11.0526 5.0004 12.0782 5.33297 12.9307 5.95034C13.7832 6.56771 14.4192 7.43837 14.748 8.4383C15.0767 9.43822 15.0815 10.5164 14.7617 11.5192C14.4419 12.522 13.8137 13.3984 12.9668 14.0233C12.1198 14.6483 11.0972 14.99 10.0446 14.9998C8.99211 15.0096 7.96332 14.687 7.10486 14.0779C6.24639 13.4688 5.60204 12.6043 5.26361 11.6076C4.92517 10.611 4.90991 9.53287 5.22 8.527C5.45392 9.04971 5.86027 9.47622 6.37106 9.73516C6.88184 9.9941 7.46606 10.0698 8.02595 9.94946C8.58584 9.82916 9.08743 9.52022 9.44677 9.07433C9.80612 8.62844 10.0014 8.07267 10 7.5C10.0001 7.01847 9.8612 6.54714 9.59989 6.14268C9.33858 5.73821 8.96603 5.41781 8.527 5.22C8.993 5.077 9.487 5 10 5Z" fill="#999999"/>
-                                            </svg>
+                    @foreach($blogPosts as $blogPost)
+                        <div class="item_slick">
+                            <div class="ststya">
+                                <a href="{{ route('blog.show', $blogPost->slug) }}">
+                                    <div class="wrap_img" style="background-image: url({{ thumbnail($blogPost->image, 300) }})">
+                                    </div>
+                                    <div class="title">{{ $blogPost->title }}</div>
+                                    <div class="descript">{{ $blogPost->intro }}</div>
+                                    <div class="info">
+                                        <div class="comunity">
+                                            <div class="svg">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                    <path d="M10 0C15.523 0 20 4.477 20 10C20 15.523 15.523 20 10 20C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0ZM10 2C7.87827 2 5.84344 2.84285 4.34315 4.34315C2.84285 5.84344 2 7.87827 2 10C2 12.1217 2.84285 14.1566 4.34315 15.6569C5.84344 17.1571 7.87827 18 10 18C12.1217 18 14.1566 17.1571 15.6569 15.6569C17.1571 14.1566 18 12.1217 18 10C18 7.87827 17.1571 5.84344 15.6569 4.34315C14.1566 2.84285 12.1217 2 10 2ZM10 5C11.0526 5.0004 12.0782 5.33297 12.9307 5.95034C13.7832 6.56771 14.4192 7.43837 14.748 8.4383C15.0767 9.43822 15.0815 10.5164 14.7617 11.5192C14.4419 12.522 13.8137 13.3984 12.9668 14.0233C12.1198 14.6483 11.0972 14.99 10.0446 14.9998C8.99211 15.0096 7.96332 14.687 7.10486 14.0779C6.24639 13.4688 5.60204 12.6043 5.26361 11.6076C4.92517 10.611 4.90991 9.53287 5.22 8.527C5.45392 9.04971 5.86027 9.47622 6.37106 9.73516C6.88184 9.9941 7.46606 10.0698 8.02595 9.94946C8.58584 9.82916 9.08743 9.52022 9.44677 9.07433C9.80612 8.62844 10.0014 8.07267 10 7.5C10.0001 7.01847 9.8612 6.54714 9.59989 6.14268C9.33858 5.73821 8.96603 5.41781 8.527 5.22C8.993 5.077 9.487 5 10 5Z" fill="#999999"/>
+                                                </svg>
+                                            </div>
+                                            <div class="txt">{{ $blogPost->views }}</div>
                                         </div>
-                                        <div class="txt">82</div>
-                                    </div>
-                                    <div class="date">
-                                        <div class="txt">1 Мар 2023 в 16:23</div>
-                                    </div>
-
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item_slick">
-                        <div class="ststya">
-                            <a href="#">
-                                <div class="wrap_img" style="background-image: url(../image/rev/dan.webp)">
-                                </div>
-                                <div class="title">Название статьи возможно длинное</div>
-                                <div class="descript">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa modi nulla odit porro. Aperiam architecto aspernatur doloremque eligendi ex exercitationem expedita fuga, illo maiores, modi molestias obcaecati quibusdam reprehenderit rerum?</div>
-                                <div class="info">
-                                    <div class="comunity">
-                                        <div class="svg">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                                <path d="M10 0C15.523 0 20 4.477 20 10C20 15.523 15.523 20 10 20C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0ZM10 2C7.87827 2 5.84344 2.84285 4.34315 4.34315C2.84285 5.84344 2 7.87827 2 10C2 12.1217 2.84285 14.1566 4.34315 15.6569C5.84344 17.1571 7.87827 18 10 18C12.1217 18 14.1566 17.1571 15.6569 15.6569C17.1571 14.1566 18 12.1217 18 10C18 7.87827 17.1571 5.84344 15.6569 4.34315C14.1566 2.84285 12.1217 2 10 2ZM10 5C11.0526 5.0004 12.0782 5.33297 12.9307 5.95034C13.7832 6.56771 14.4192 7.43837 14.748 8.4383C15.0767 9.43822 15.0815 10.5164 14.7617 11.5192C14.4419 12.522 13.8137 13.3984 12.9668 14.0233C12.1198 14.6483 11.0972 14.99 10.0446 14.9998C8.99211 15.0096 7.96332 14.687 7.10486 14.0779C6.24639 13.4688 5.60204 12.6043 5.26361 11.6076C4.92517 10.611 4.90991 9.53287 5.22 8.527C5.45392 9.04971 5.86027 9.47622 6.37106 9.73516C6.88184 9.9941 7.46606 10.0698 8.02595 9.94946C8.58584 9.82916 9.08743 9.52022 9.44677 9.07433C9.80612 8.62844 10.0014 8.07267 10 7.5C10.0001 7.01847 9.8612 6.54714 9.59989 6.14268C9.33858 5.73821 8.96603 5.41781 8.527 5.22C8.993 5.077 9.487 5 10 5Z" fill="#999999"/>
-                                            </svg>
+                                        <div class="date">
+                                            <div class="txt">{{ format_date($blogPost->publish_at, 'full_datetime') }}</div>
                                         </div>
-                                        <div class="txt">82</div>
+
                                     </div>
-                                    <div class="date">
-                                        <div class="txt">1 Мар 2023 в 16:23</div>
-                                    </div>
-
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item_slick">
-                        <div class="ststya">
-                            <a href="#">
-                                <div class="wrap_img" style="background-image: url(../image/rev/dan.webp)">
-                                </div>
-                                <div class="title">Название статьи возможно длинное</div>
-                                <div class="descript">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa modi nulla odit porro. Aperiam architecto aspernatur doloremque eligendi ex exercitationem expedita fuga, illo maiores, modi molestias obcaecati quibusdam reprehenderit rerum?</div>
-                                <div class="info">
-                                    <div class="comunity">
-                                        <div class="svg">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                                <path d="M10 0C15.523 0 20 4.477 20 10C20 15.523 15.523 20 10 20C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0ZM10 2C7.87827 2 5.84344 2.84285 4.34315 4.34315C2.84285 5.84344 2 7.87827 2 10C2 12.1217 2.84285 14.1566 4.34315 15.6569C5.84344 17.1571 7.87827 18 10 18C12.1217 18 14.1566 17.1571 15.6569 15.6569C17.1571 14.1566 18 12.1217 18 10C18 7.87827 17.1571 5.84344 15.6569 4.34315C14.1566 2.84285 12.1217 2 10 2ZM10 5C11.0526 5.0004 12.0782 5.33297 12.9307 5.95034C13.7832 6.56771 14.4192 7.43837 14.748 8.4383C15.0767 9.43822 15.0815 10.5164 14.7617 11.5192C14.4419 12.522 13.8137 13.3984 12.9668 14.0233C12.1198 14.6483 11.0972 14.99 10.0446 14.9998C8.99211 15.0096 7.96332 14.687 7.10486 14.0779C6.24639 13.4688 5.60204 12.6043 5.26361 11.6076C4.92517 10.611 4.90991 9.53287 5.22 8.527C5.45392 9.04971 5.86027 9.47622 6.37106 9.73516C6.88184 9.9941 7.46606 10.0698 8.02595 9.94946C8.58584 9.82916 9.08743 9.52022 9.44677 9.07433C9.80612 8.62844 10.0014 8.07267 10 7.5C10.0001 7.01847 9.8612 6.54714 9.59989 6.14268C9.33858 5.73821 8.96603 5.41781 8.527 5.22C8.993 5.077 9.487 5 10 5Z" fill="#999999"/>
-                                            </svg>
-                                        </div>
-                                        <div class="txt">82</div>
-                                    </div>
-                                    <div class="date">
-                                        <div class="txt">1 Мар 2023 в 16:23</div>
-                                    </div>
-
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item_slick">
-                        <div class="ststya">
-                            <a href="#">
-                                <div class="wrap_img" style="background-image: url(../image/rev/dan.webp)">
-                                </div>
-                                <div class="title">Название статьи возможно длинное</div>
-                                <div class="descript">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa modi nulla odit porro. Aperiam architecto aspernatur doloremque eligendi ex exercitationem expedita fuga, illo maiores, modi molestias obcaecati quibusdam reprehenderit rerum?</div>
-                                <div class="info">
-                                    <div class="comunity">
-                                        <div class="svg">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                                <path d="M10 0C15.523 0 20 4.477 20 10C20 15.523 15.523 20 10 20C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0ZM10 2C7.87827 2 5.84344 2.84285 4.34315 4.34315C2.84285 5.84344 2 7.87827 2 10C2 12.1217 2.84285 14.1566 4.34315 15.6569C5.84344 17.1571 7.87827 18 10 18C12.1217 18 14.1566 17.1571 15.6569 15.6569C17.1571 14.1566 18 12.1217 18 10C18 7.87827 17.1571 5.84344 15.6569 4.34315C14.1566 2.84285 12.1217 2 10 2ZM10 5C11.0526 5.0004 12.0782 5.33297 12.9307 5.95034C13.7832 6.56771 14.4192 7.43837 14.748 8.4383C15.0767 9.43822 15.0815 10.5164 14.7617 11.5192C14.4419 12.522 13.8137 13.3984 12.9668 14.0233C12.1198 14.6483 11.0972 14.99 10.0446 14.9998C8.99211 15.0096 7.96332 14.687 7.10486 14.0779C6.24639 13.4688 5.60204 12.6043 5.26361 11.6076C4.92517 10.611 4.90991 9.53287 5.22 8.527C5.45392 9.04971 5.86027 9.47622 6.37106 9.73516C6.88184 9.9941 7.46606 10.0698 8.02595 9.94946C8.58584 9.82916 9.08743 9.52022 9.44677 9.07433C9.80612 8.62844 10.0014 8.07267 10 7.5C10.0001 7.01847 9.8612 6.54714 9.59989 6.14268C9.33858 5.73821 8.96603 5.41781 8.527 5.22C8.993 5.077 9.487 5 10 5Z" fill="#999999"/>
-                                            </svg>
-                                        </div>
-                                        <div class="txt">82</div>
-                                    </div>
-                                    <div class="date">
-                                        <div class="txt">1 Мар 2023 в 16:23</div>
-                                    </div>
-
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item_slick">
-                        <div class="ststya">
-                            <a href="#">
-                                <div class="wrap_img" style="background-image: url(../image/rev/dan.webp)">
-                                </div>
-                                <div class="title">Название статьи возможно длинное</div>
-                                <div class="descript">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa modi nulla odit porro. Aperiam architecto aspernatur doloremque eligendi ex exercitationem expedita fuga, illo maiores, modi molestias obcaecati quibusdam reprehenderit rerum?</div>
-                                <div class="info">
-                                    <div class="comunity">
-                                        <div class="svg">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                                <path d="M10 0C15.523 0 20 4.477 20 10C20 15.523 15.523 20 10 20C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0ZM10 2C7.87827 2 5.84344 2.84285 4.34315 4.34315C2.84285 5.84344 2 7.87827 2 10C2 12.1217 2.84285 14.1566 4.34315 15.6569C5.84344 17.1571 7.87827 18 10 18C12.1217 18 14.1566 17.1571 15.6569 15.6569C17.1571 14.1566 18 12.1217 18 10C18 7.87827 17.1571 5.84344 15.6569 4.34315C14.1566 2.84285 12.1217 2 10 2ZM10 5C11.0526 5.0004 12.0782 5.33297 12.9307 5.95034C13.7832 6.56771 14.4192 7.43837 14.748 8.4383C15.0767 9.43822 15.0815 10.5164 14.7617 11.5192C14.4419 12.522 13.8137 13.3984 12.9668 14.0233C12.1198 14.6483 11.0972 14.99 10.0446 14.9998C8.99211 15.0096 7.96332 14.687 7.10486 14.0779C6.24639 13.4688 5.60204 12.6043 5.26361 11.6076C4.92517 10.611 4.90991 9.53287 5.22 8.527C5.45392 9.04971 5.86027 9.47622 6.37106 9.73516C6.88184 9.9941 7.46606 10.0698 8.02595 9.94946C8.58584 9.82916 9.08743 9.52022 9.44677 9.07433C9.80612 8.62844 10.0014 8.07267 10 7.5C10.0001 7.01847 9.8612 6.54714 9.59989 6.14268C9.33858 5.73821 8.96603 5.41781 8.527 5.22C8.993 5.077 9.487 5 10 5Z" fill="#999999"/>
-                                            </svg>
-                                        </div>
-                                        <div class="txt">82</div>
-                                    </div>
-                                    <div class="date">
-                                        <div class="txt">1 Мар 2023 в 16:23</div>
-                                    </div>
-
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-
-
-
-
-
-
-
-
-
-                </div>
-            </div>
-
-
-
-        </div>
-    </div>
-
-</section>
-
-@if($item->blocks)
-    @foreach($item->blocks as $block)
-        @includeIf('pagebuilder.blocks.' . $block['type'], $block)
-    @endforeach
-@endif
-
-<section class="all_foon">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Другие типы работ</h2>
-            </div>
-            <div class="col-md-12">
-                <div class="fool_roop">
-                    @foreach($type_work_pages as $twp)
-                    <div class="item_link">
-                        <a href="{{ route('landing.show', $twp['slug']) }}">
-                            <div class="wrap_comp">
-                                <span>{{ mb_substr($twp['menu_title'], 0, 1) }}</span>
-                                <p>{{ $twp['menu_title'] }}</p>
+                                </a>
                             </div>
-                        </a>
-                    </div>
+                        </div>
                     @endforeach
+
                 </div>
             </div>
+
         </div>
     </div>
 </section>
-
-
-
-
-
 
 
 <footer>
@@ -814,7 +674,7 @@
 
 
 <div class="notification_top"></div>
-<script src="{{ asset('css/land.js') }}"></script>
+<script src="{{ asset('css/land.js') }}?v={{ $v }}"></script>
 <script>
     $(document).on('click', '#guest-order', function () {
         $('#guest-order-form').submit();

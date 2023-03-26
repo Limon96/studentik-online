@@ -3124,6 +3124,10 @@ input {
 .find_predmet .zaglavd{
     max-width: 800px;
     margin: 0 auto;
+    display: none;
+}
+.find_predmet .zaglavd.active{
+    display: block;
 }
 
 

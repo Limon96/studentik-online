@@ -1315,6 +1315,13 @@ $.fn.btnLoader = function(stage) {
 
 
 
+$(document).on('click', '.find_predmet .list_letters_search a', function () {
+    $('.find_predmet .list_letters_search a, .find_predmet .zaglavd').removeClass('active');
+    $(this).addClass('active');
+    $($(this).attr('href')).addClass('active');
+
+    return false;
+});
 
 
 

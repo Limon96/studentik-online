@@ -18,6 +18,7 @@ include 'admin.php';
 Route::prefix('new-order')->group(function () {
     Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/{slug}', [\App\Http\Controllers\Landing\LandingController::class, 'index'])->name('landing.show');
+    Route::get('/{work_type_slug}/{subject_slug}', [\App\Http\Controllers\Landing\LandingController::class, 'subject'])->name('landing.subject');
 });
 
 
