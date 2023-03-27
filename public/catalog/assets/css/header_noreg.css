@@ -50,6 +50,7 @@ header .menu_nav ul {
     -ms-align-items: center;
     align-items: center;
     list-style: none;
+    display: none;
 }
 
 header .menu_nav ul li{

@@ -1906,7 +1906,9 @@ input {
     border-left: 5px solid #B2E228;
     margin-bottom: 30px;
 }
-.header_lend .wrap_man .zagol h1{
+
+
+.header_lend .wrap_man .zagol h2{
     font-weight: bold;
     font-size: 22px;
     line-height: 27px;

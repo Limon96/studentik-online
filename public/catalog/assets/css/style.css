@@ -9593,8 +9593,30 @@ header .menu_nav ul li a.active{
     width: 100%;
     margin: 10px 0 10px;
     overflow-y: scroll;
+}
+.textt_input_go .textarea.thecond {
+    background: #FFFFFF;
+    border: 1px solid rgba(206, 192, 213, 0.3);
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #000000;
+    padding: 10px 15px;
+    min-height: 120px;
+    resize: vertical;
+    width: 100%;
+    margin: 10px 0 10px;
+    overflow-y: scroll;
     max-width: 333px;
 }
+
+
+
+
+
 .textt_input_go .placeholder {
     position: absolute;
     top: 20px;
