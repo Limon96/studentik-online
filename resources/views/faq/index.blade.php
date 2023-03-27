@@ -29,9 +29,13 @@
                 <div class="center_content_resp">
                     <div class="wrap_faq">
                         <div class="info_faq">
+
                             <h1 class="heading-title"> FAQ – Часто задаваемые вопросы</h1>
                             <span class="title-tag">{{ format_date($lastUpdated, 'full_datetime') }}</span>
-
+                             <ul class="breadcrumb clearfix">
+                                <li><a href="/">Главная</a></li>
+                                <li> <span> FAQ</span></li>
+                            </ul>
                             @if($items->count())
                             @foreach($items as $category)
                                 <h2 class="faq_h2">{{ $category->title }}</h2>

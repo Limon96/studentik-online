@@ -65,6 +65,7 @@
                 <ul class="clearfix menu_drestt q7">
                     <li><a href="https://studentik.online/orders">Лента заказов</a></li>
                     <li><a href="https://studentik.online/services">Услуги</a></li>
+                    <li><a href="https://studentik.online/blog">Блог</a></li>
                     <li><a href="https://studentik.online/experts">Рейтинг авторов</a></li>
                     <li><a href="https://studentik.online/faq">FAQ</a></li>
                     <li><a href="https://studentik.online/contacts">Контакты</a></li>
@@ -590,7 +591,7 @@
                                             <a href="{{ route('blog.show', $blogPost->slug) }}">
                                                 <div class="wrap_img" style="background-image: url({{ thumbnail($blogPost->image, 300) }})">
                                                 </div>
-                                                <div class="title">{{ $blogPost->title }}</div>
+                                                <div class="title"><p>{{ $blogPost->title }}</p></div>
                                                 <div class="descript">{{ $blogPost->intro }}</div>
                                                 <div class="info">
                                                     <div class="comunity">
