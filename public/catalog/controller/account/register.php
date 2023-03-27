@@ -58,7 +58,7 @@ class ControllerAccountRegister extends Controller {
             $this->load->language('account/register');
             $this->load->model('account/customer');
 
-            if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateRegister()) {
+            if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateRegisterGuest()) {
 
                 $customer_id = $this->model_account_customer->addCustomerFromOrder($this->request->post);
 
@@ -87,12 +87,6 @@ class ControllerAccountRegister extends Controller {
                     $json['error_email'] = $this->error['email'];
                 } else {
                     $json['error_email'] = '';
-                }
-
-                if (isset($this->error['work_type'])) {
-                    $json['error_work_type'] = $this->error['work_type'];
-                } else {
-                    $json['error_work_type'] = '';
                 }
 
                 if (isset($this->error['title'])) {
@@ -309,6 +303,32 @@ class ControllerAccountRegister extends Controller {
        /* if (!isset($this->request->post['work_type']) || $this->request->post['work_type'] < 1) {
             $this->error['work_type'] = $this->language->get('error_work_type');
         }*/
+
+        return !$this->error;
+    }
+
+    private function validateRegisterGuest() {
+
+        if ((utf8_strlen($this->request->post['email']) > 96) || !filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
+            $this->error['email'] = $this->language->get('error_email');
+        }
+
+        $this->load->model('tool/check_email');
+        if(!$this->model_tool_check_email->execute($this->request->post['email'])) {
+            $this->error['email'] = "Email не существует";
+        }
+
+        if ($this->checkDomainEmailInBlackList($this->request->post['email'])) {
+            $this->error['warning'] = $this->language->get('error_email_black_list');
+        }
+
+        if ($this->model_account_customer->getTotalCustomersByEmail($this->request->post['email'])) {
+            $this->error['warning'] = $this->language->get('error_exists');
+        }
+
+        if (!isset($this->request->post['title']) || utf8_strlen($this->request->post['title']) < 3 || utf8_strlen($this->request->post['title']) > 150) {
+            $this->error['title'] = $this->language->get('error_title');
+        }
 
         return !$this->error;
     }

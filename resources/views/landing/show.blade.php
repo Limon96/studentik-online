@@ -141,11 +141,11 @@
                             </div>
                             <div class="line_inp1 ff1 clearfix">
                                 <select name="subject" id="select-section-subject" class="tempSelectLand">
-                                    <option value="0">Все предметы</option>
+                                    <option value="0">Введите название предмета</option>
                                     @foreach($sections as $section)
                                         <optgroup label="{{ $section->name }}">
                                             @foreach($section->subjects as $subject)
-                                                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                                                <option value="{{ $subject->subject_id }}">{{ $subject->name }}</option>
                                             @endforeach
                                         </optgroup>
                                     @endforeach
@@ -687,7 +687,7 @@
         e.preventDefault();
         $('.has-error').remove();
 
-        if (!$('#guest-order-form select[name=subject]').val()) {
+        if (!$('#guest-order-form select[name=subject]').val() || $('#guest-order-form select[name=subject]').val() == '0') {
             $('#guest-order-form select[name=subject]').before('<div class="has-error">Выберите предмет</div>');
         }
 
