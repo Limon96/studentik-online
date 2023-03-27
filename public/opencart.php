@@ -2,7 +2,7 @@
 
 // Version
 const VERSION = '3.0.3.7';
-const VERSION_SCRIPTS = '0.0.16.17';
+const VERSION_SCRIPTS = '0.0.16.34';
 
 // Configuration
 if (is_file('config.php')) {
