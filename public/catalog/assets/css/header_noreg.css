@@ -50,7 +50,6 @@ header .menu_nav ul {
     -ms-align-items: center;
     align-items: center;
     list-style: none;
-    display: none;
 }
 
 header .menu_nav ul li{
@@ -1178,6 +1177,7 @@ footer .colling ul.massengers li a img{
         align-items: center!important;
         list-style: none!important;
     }
+
     header .menu_nav ul li{
         width: auto;
     }
@@ -1569,6 +1569,10 @@ footer .colling ul.massengers li a img{
     }
 
 
+    header .menu_nav ul {
+        display: none!important;
+    }
+
 
 
 
@@ -1663,6 +1667,10 @@ footer .colling ul.massengers li a img{
 
     .header_lend .block_regist .mini_hed p {
         font-size: 13px;
+    }
+
+    header .menu_nav ul {
+        display: none!important;
     }
 
     header .menu_nav ul li a {
