@@ -52,11 +52,12 @@ class LandingRepository extends CoreRepository
             ->paginate($limit);
     }
 
-    public function all()
+    public function all(int $parent_id = 0)
     {
         return $this
             ->startConditions()
-            ->orderBy('created_at', 'asc')
+            ->where('parent_id', $parent_id)
+            ->orderBy('title', 'asc')
             ->get();
     }
 

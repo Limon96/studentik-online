@@ -37,6 +37,7 @@ function page_builder_submit(url, method)
             'status': $('#select-status').val(),
             'term': $('#input-term').val(),
             'price': $('#input-price').val(),
+            'parent_id': $('#select-parent_id').val(),
         },
         success: function (response) {
             /*console.log(response);*/

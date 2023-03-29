@@ -31,7 +31,6 @@
                     <table id="datatable" class="table display responsive nowrap">
                         <thead>
                         <tr>
-                            <th class="wd-5p">#</th>
                             <th class="wd-25p">Название</th>
                             <th class="wd-5p">Статус</th>
                             <th class="wd-10p">Дата создания</th>
@@ -42,8 +41,9 @@
                         <tbody>
                             @foreach($items as $item)
                                 <tr>
-                                    <td>{{ $item->id }}</td>
-                                    <td>{{ $item->title }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.landing.index', ['parent_id' => $item->id]) }}">{{ $item->title }}</a>
+                                    </td>
                                     <td>@if($item->status) Опубликован @else Черновик @endif</td>
                                     <td>{{ $item->created_at }}</td>
                                     <td>{{ $item->updated_at }}</td>
@@ -60,6 +60,28 @@
                                         </form>
                                     </td>
                                 </tr>
+                                @if($item->id === $parent_id)
+                                    @foreach($children as $child)
+                                        <tr>
+                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $child->title }}</td>
+                                            <td>@if($child->status) Опубликован @else Черновик @endif</td>
+                                            <td>{{ $child->created_at }}</td>
+                                            <td>{{ $child->updated_at }}</td>
+                                            <td>
+                                                <a href="{{ route('landing.show', $child->slug) }}" class="btn btn-sm btn-info" target="_blank"><i class="fa fa-eye"></i></a>
+                                                <a href="{{ route('admin.landing.copy', $child->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-copy"></i></a>
+                                                <a href="{{ route('admin.landing.edit', $child->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+                                                <form method="post" class="form-delete"
+                                                      action="{{ route('admin.landing.destroy', $child->id) }}">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit"
+                                                            class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             @endforeach
                         </tbody>
                     </table>
@@ -73,7 +95,7 @@
     <script src="{{ asset('manager/lib/datatables/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('manager/lib/select2/js/select2.min.js') }}"></script>
     <script>
-        $('#datatable').DataTable({
+        /*$('#datatable').DataTable({
             responsive: true,
             language: {
                 searchPlaceholder: 'Поиск...',
@@ -85,8 +107,9 @@
                     next:       "Вперед",
                     previous:   "Назад"
                 },
-            }
-        });
+            },
+            paging: false,
+        });*/
 
         // Select2
         $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });

@@ -21,5 +21,6 @@ class Landing extends Model
         'status',
         'price',
         'term',
+        'parent_id',
     ];
  }

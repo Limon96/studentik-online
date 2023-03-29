@@ -17,11 +17,23 @@ class LandingController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $items = app(LandingRepository::class)->all();
 
-        return view('landing.admin.index', compact('items'));
+        $parent_id = (int)$request->get('parent_id', 0);
+
+        $children = [];
+
+        if ($parent_id) {
+            $children = app(LandingRepository::class)->all($parent_id);
+        }
+
+        return view('landing.admin.index', compact(
+            'items',
+            'children',
+            'parent_id',
+        ));
     }
 
     /**
@@ -36,10 +48,13 @@ class LandingController extends Controller
         $pageBuilder = (new PageBuilder())
             ->run();
 
+        $landings = app(LandingRepository::class)->all();
+
         return view('landing.admin.form',
             compact(
                 'pageBuilder',
-                'item'
+                'item',
+                'landings'
             )
         );
     }
@@ -95,10 +110,13 @@ class LandingController extends Controller
             )
             ->run();
 
+        $landings = app(LandingRepository::class)->all();
+
         return view('landing.admin.form',
             compact(
                 'pageBuilder',
-                'item'
+                'item',
+                'landings',
             )
         );
     }
@@ -128,7 +146,7 @@ class LandingController extends Controller
 
         if ($copy_item) {
             return redirect()
-                ->route('admin.landing.index')
+                ->route('admin.landing.edit', $copy_item->id)
                 ->with(['success' => "Создана копия <a href='" . route('admin.landing.edit', $copy_item->id) ."'>id[{$copy_item->id}]</a> записи"]);
         } else {
             return back()

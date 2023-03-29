@@ -74,6 +74,15 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label class="form-label" for="select-parent_id">Родительская страница</label>
+                        <select class="form-control" type="text" id="select-parent_id" name="parent_id">
+                            <option value="0">Не выбрана</option>
+                            @foreach($landings as $landing)
+                            <option value="{{ $landing->id }}" @if($landing->id == $item->parent_id) selected @endif>{{ $landing->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label class="form-label" for="select-status">Статус</label>
                         <select class="form-control" type="text" id="select-status" name="status">
                             @if(old('status', $item->status) == 1)
@@ -100,7 +109,7 @@
     <link href="{{ asset('manager/lib/summernote/summernote-bs4.css') }}" rel="stylesheet">
     <script src="{{ asset('manager/lib/summernote/summernote.min.js') }}"></script>
     <script src="{{ asset('manager/lib/summernote/summernote-bs4.min.js') }}"></script>
-    <script src="{{ asset('manager/js/pagebuilder.js') }}?v=2"></script>
+    <script src="{{ asset('manager/js/pagebuilder.js') }}?v=3"></script>
     <script>
 
         initPageBuilder();
