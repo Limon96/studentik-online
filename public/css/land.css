@@ -2774,6 +2774,11 @@ input {
     font-weight: 600;
     color: #003255;
 }
+.info_work .grafop  h3 span{
+    font-size: 18px!important;
+    font-weight: 600;
+    color: #003255;
+}
 
 
 .info_work .grafop  ul{
@@ -2789,7 +2794,7 @@ input {
 }
 
 .info_work .grafop  ol li {
-    list-style: disc;
+    list-style: decimal;
     padding-left: 0;
     margin-left: 30px;
     margin-bottom: 10px;
@@ -3803,7 +3808,12 @@ footer .colling ul.massengers li a img{
 
 /********************************************register/login/pass*****************************************************/
 
-
+@media (min-width: 2100px) and (max-width: 2600px){
+    .staty_news{
+        padding: 220px 0;
+        margin-top: 20px;
+    }
+}
 
 
 
