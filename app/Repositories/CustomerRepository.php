@@ -24,6 +24,7 @@ class CustomerRepository extends CoreRepository
         $query = $this->startConditions()
             ->select(['customer_id AS id', 'customer_id', 'email', 'firstname', 'login'])
             ->where('setting_email_notify', 1)
+            ->where('status', 1)
             ->orderBy('date_added');
 
         $emails = [];

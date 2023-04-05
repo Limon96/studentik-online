@@ -51,9 +51,8 @@ class NewsletterController extends Controller
 
     private function getMailTemplates()
     {
-        $mail_path = '/mail/completed_template/';
         $view_path = config('view.paths')[0];
-        $view_path .= $mail_path;
+        $view_path .= '/mail/completed_template/';
 
         $files = File::files($view_path);
 

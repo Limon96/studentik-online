@@ -71,7 +71,7 @@
             <tr>
                 <td style="direction:ltr;font-size:0px;padding:0;text-align:center;vertical-align:top">
                     <div class="m_2493251215983378131mj-column-per-100"
-                         style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;padding:15px;">
+                         style="font-size:13px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;padding:15px 0;">
                         @yield('content')
                     </div>
                 </td>
@@ -123,7 +123,7 @@
                                     style="font-size:0px;padding:5px 28px;word-break:break-word">
                                     <div style="font-family:'PT Sans','Helvetica Neue',Arial,sans-serif;font-size:16px;line-height:160%;text-align:left;color:#999999">
                                         2020 -
-                                        2022 <a href="https://studentik.online/"
+                                        {{ date('Y') }} <a href="https://studentik.online/"
                                                 style="color:#22638f;text-decoration:none" target="_blank"
                                                 data-saferedirecturl="https://studentik.online/">Studentik.online</a>
 
