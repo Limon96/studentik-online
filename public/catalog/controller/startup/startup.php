@@ -91,7 +91,12 @@ class ControllerStartupStartup extends Controller {
 			$code = $this->config->get('config_language');
 		}
 
-        $this->session->data['language'] = 'ru-ru';
+        if (isset($this->session->data)) {
+            $this->session->data['language'] = 'ru-ru';
+        } else {
+            $this->session->data = [];
+            $this->session->data['language'] = 'ru-ru';
+        }
 
 		if (!isset($this->request->cookie['language']) || $this->request->cookie['language'] != $code) {
 			setcookie('language', $code, time() + 60 * 60 * 24 * 30, '/', $this->request->server['HTTP_HOST']);
