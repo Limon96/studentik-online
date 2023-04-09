@@ -93,6 +93,7 @@
             <ul class="breadcrumbs_tip">
                 <li><a href="/">Главная</a></li>
                 <li><a href="/services">Услуги</a></li>
+                <li><a href="{{ route('landing.show', $parentItem->slug) }}">{{ $parentItem->menu_title }}</a></li>
                 <li>{{ $item->menu_title }}</li>
             </ul>
         </div>
@@ -106,34 +107,34 @@
                         <p>Разместите заказ на бирже и обсудите работу напрямую с исполнителем</p>
                     </div>
                     @if($item->price || $item->term)
-                    <div class="new_bloc_price">
-                        <div class="price_mod">
-                            @if($item->price)
-                            <div class="blok_legasy">
-                                <div class="img_trim">
-                                    <img src="{{ asset('img/ru1.png') }}" alt="">
-                                </div>
-                                <div class="text_o">
-                                    <!--   <span>от 9458 р.</span>-->
-                                    <p>{{ $item->price }}</p>
-                                    <div class="dop">цена</div>
-                                </div>
+                        <div class="new_bloc_price">
+                            <div class="price_mod">
+                                @if($item->price)
+                                    <div class="blok_legasy">
+                                        <div class="img_trim">
+                                            <img src="{{ asset('img/ru1.png') }}" alt="">
+                                        </div>
+                                        <div class="text_o">
+                                            <!--   <span>от 9458 р.</span>-->
+                                            <p>{{ $item->price }}</p>
+                                            <div class="dop">цена</div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @if($item->term)
+                                    <div class="blok_legasy">
+                                        <div class="img_trim">
+                                            <img src="{{ asset('img/ru2.webp') }}" alt="">
+                                        </div>
+                                        <div class="text_o">
+                                            <span></span>
+                                            <p>{{ $item->term }}</p>
+                                            <div class="dop">срок</div>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
-                            @endif
-                            @if($item->term)
-                            <div class="blok_legasy">
-                                <div class="img_trim">
-                                    <img src="{{ asset('img/ru2.webp') }}" alt="">
-                                </div>
-                                <div class="text_o">
-                                    <span></span>
-                                    <p>{{ $item->term }}</p>
-                                    <div class="dop">срок</div>
-                                </div>
-                            </div>
-                            @endif
                         </div>
-                    </div>
                     @endif
                     <div id="formLand" class="form_bl clearfix ">
                         <form id="guest-order-form">
@@ -484,7 +485,7 @@
                 <div class="flex_perk">
                     <div class="pert">
                         <div class="block_img">
-                            <img src="../image/landing/ty1.webp">
+                            <img src="/image/landing/ty1.webp">
                         </div>
                         <div class="txt">
                             <p>{{ $totals->students }}</p>
@@ -493,7 +494,7 @@
                     </div>
                     <div class="pert">
                         <div class="block_img">
-                            <img src="../image/landing/ty2.webp">
+                            <img src="/image/landing/ty2.webp">
                         </div>
                         <div class="txt">
                             <p>{{ $totals->experts }}</p>
@@ -502,7 +503,7 @@
                     </div>
                     <div class="pert">
                         <div class="block_img">
-                            <img src="../image/landing/ty3.png">
+                            <img src="/image/landing/ty3.png">
                         </div>
                         <div class="txt">
                             <p>{{ $totals->order_completed }}</p>
@@ -519,12 +520,13 @@
 @if($item->blocks)
     @foreach($item->blocks as $block)
         @if($block['type'] == 'text_block' && $loop->index == 3)
+            @dd($subjects)
             @if($subjects)
             <section class="find_predmet">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2>{{ $item->menu_titles ? $item->menu_titles : $item->menu_title }} по предметам</h2>
+                            <h2>{{ $parentItem->menu_titles ? $parentItem->menu_titles : $parentItem->menu_title }} по предметам</h2>
                         </div>
                         <div class="col-md-12">
                             <div class="list_letters_search">
@@ -542,7 +544,7 @@
                                     <div class="list_links">
                                         <ul>
                                             @foreach($items as $subject)
-                                                <li><a href="{{ route('landing.subject', ['work_type_slug' => $item->slug, 'subject_slug' => $subject->slug]) }}">{{ $subject->menu_title }}</a></li>
+                                                <li><a href="{{ route('landing.subject', ['work_type_slug' => $parentItem->slug, 'subject_slug' => $subject->slug]) }}">{{ $subject->menu_title }}</a></li>
                                             @endforeach
                                         </ul>
                                     </div>
@@ -742,28 +744,28 @@
 
 
 
-/*
+    /*
 
-    h1{
-        font-weight: bold;
-        font-size: 22px;
-        line-height: 27px;
-        margin: 0 0 25px 0;
-        font-family: 'Montserrat', sans-serif;
-    }
-
-
+        h1{
+            font-weight: bold;
+            font-size: 22px;
+            line-height: 27px;
+            margin: 0 0 25px 0;
+            font-family: 'Montserrat', sans-serif;
+        }
 
 
-    .header_lend .block_regist .heads h2 {
-        font-weight: bold;
-        font-size: 30px;
-        line-height: 37px;
-        color: #00324F;
-        margin: 0 0 10px 0;
-        font-family: 'Montserrat', sans-serif;
-    }
-*/
+
+
+        .header_lend .block_regist .heads h2 {
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 37px;
+            color: #00324F;
+            margin: 0 0 10px 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+    */
 
 
     @media (min-width: 320px) and (max-width: 435px) {
@@ -771,15 +773,15 @@
             font-size: 8px;
         }
 
-     /*   .header_lend .block_regist .heads h2 {
-            font-weight: bold;
-            font-size: 24px;
-            line-height: 37px;
-            color: #00324F;
-            margin: 0 0 10px 0;
+        /*   .header_lend .block_regist .heads h2 {
+               font-weight: bold;
+               font-size: 24px;
+               line-height: 37px;
+               color: #00324F;
+               margin: 0 0 10px 0;
 
-        }
-*/
+           }
+   */
 
 
     }

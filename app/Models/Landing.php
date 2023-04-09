@@ -12,6 +12,7 @@ class Landing extends Model
     protected $fillable = [
         'title',
         'menu_title',
+        'menu_titles',
         'meta_title',
         'meta_description',
         'meta_keywords',

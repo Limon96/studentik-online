@@ -133,6 +133,8 @@ class LandingController extends Controller
 
         $copy_item = Landing::create([
             'title' => $item->title . ' копия',
+            'menu_title' => $item->menu_title,
+            'menu_titles' => $item->menu_titles,
             'meta_title' => $item->meta_title,
             'meta_description' => $item->meta_description,
             'meta_keywords' => $item->meta_keywords,

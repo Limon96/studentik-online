@@ -38,7 +38,7 @@ class LandingController extends Controller
         $totals->experts = Customer::where('status', 1)->where('customer_group_id', '2')->count();
         $totals->order_completed = Order::where('order_status_id', '6')->count();
 
-        $subjects = $this->getSubjects();
+        $subjects = $this->getSubjects($item->id);
 
         $blogPosts = BlogPost::orderByDesc('created_at')->limit(8)->get();
 
@@ -75,11 +75,12 @@ class LandingController extends Controller
         $totals->experts = Customer::where('customer_group_id', 2)->count();
         $totals->order_completed = Order::where('order_status_id', 6)->count();
 
-        $subjects = $this->getSubjects();
+        $subjects = $this->getSubjects($parentItem->id);
 
-        return view('landing.show',
+        return view('landing.subject',
             compact(
                 'item',
+                'parentItem',
                 'sections',
                 'type_work_pages',
                 'subject_pages',
@@ -88,16 +89,17 @@ class LandingController extends Controller
             )
         );
     }
-    protected function getSubjects()
+    protected function getSubjects($parent_id)
     {
-        $subjects = Subject
-            ::orderBy('name')
+        $subjects = Landing
+            ::where('parent_id', $parent_id)
+            ->orderBy('menu_title')
             ->get();
 
         $results = [];
 
         foreach ($subjects as $subject) {
-            $key = mb_substr($subject->name, 0, 1);
+            $key = mb_substr($subject->menu_title, 0, 1);
             $results[$key][] = $subject;
         }
 

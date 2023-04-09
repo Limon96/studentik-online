@@ -29,6 +29,7 @@ function page_builder_submit(url, method)
             'components': tree,
             'title': $('#input-title').val(),
             'menu_title': $('#input-menu_title').val(),
+            'menu_titles': $('#input-menu_titles').val(),
             'slug': $('#input-slug').val(),
             'meta_title': $('#input-meta_title').val(),
             'meta_description': $('#input-meta_description').val(),

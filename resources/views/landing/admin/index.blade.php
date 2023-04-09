@@ -31,11 +31,11 @@
                     <table id="datatable" class="table display responsive nowrap">
                         <thead>
                         <tr>
-                            <th class="wd-25p">Название</th>
+                            <th class="wd-20p">Название</th>
                             <th class="wd-5p">Статус</th>
                             <th class="wd-10p">Дата создания</th>
                             <th class="wd-10p">Дата обновления</th>
-                            <th class="wd-5p">Действие</th>
+                            <th class="wd-10p">Действие</th>
                         </tr>
                         </thead>
                         <tbody>

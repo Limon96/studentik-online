@@ -168,7 +168,7 @@
         e.preventDefault();
         $('.eror').remove();
         $.ajax({
-            url : 'https://studentik.online/index.php?route=account/register/landingOrder',
+            url : '/index.php?route=account/register/landingOrder',
             method : 'post',
             data : $('#guest-order-form input[type=text], #guest-order-form input[type=email], #guest-order-form input[type=checkbox]:checked, #guest-order-form select'),
             dataType : 'json',

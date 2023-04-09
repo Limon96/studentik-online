@@ -43,6 +43,10 @@
                         <input id="input-menu_title" type="text" name="menu_title" class="form-control" value="{{ old('menu_title', $item->menu_title) }}">
                     </div>
                     <div class="form-group">
+                        <label for="input-menu_titles">Название в множественном числе</label>
+                        <input id="input-menu_titles" type="text" name="menu_titles" class="form-control" value="{{ old('menu_titles', $item->menu_titles) }}">
+                    </div>
+                    <div class="form-group">
                         <label for="input-meta_title">Meta title</label>
                         <input id="input-meta_title" type="text" name="meta_title" class="form-control" value="{{ old('meta_title', $item->meta_title) }}">
                     </div>
@@ -109,7 +113,7 @@
     <link href="{{ asset('manager/lib/summernote/summernote-bs4.css') }}" rel="stylesheet">
     <script src="{{ asset('manager/lib/summernote/summernote.min.js') }}"></script>
     <script src="{{ asset('manager/lib/summernote/summernote-bs4.min.js') }}"></script>
-    <script src="{{ asset('manager/js/pagebuilder.js') }}?v=3"></script>
+    <script src="{{ asset('manager/js/pagebuilder.js') }}?v=4"></script>
     <script>
 
         initPageBuilder();
