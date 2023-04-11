@@ -115,40 +115,31 @@ class ModelAccountCustomer extends Model {
 
             $data['approval_link'] = $this->url->link('account/register/approval', 'customer_token=' . $customer_token);
 
-            $mail = new Mail($this->config->get('config_mail_engine'));
-            $mail->parameter = $this->config->get('config_mail_parameter');
-            $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-            $mail->smtp_username = $this->config->get('config_mail_smtp_username');
-            $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-            $mail->smtp_port = $this->config->get('config_mail_smtp_port');
-            $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
-
-            $mail->setTo($data['email']);
-            $mail->setFrom($this->config->get('config_mail_smtp_sender_mail'));
-            $mail->setSender(html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
-            $mail->setSubject(sprintf($this->language->get('text_subject'), html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8')));
-            $mail->setHTML($this->load->view('mail/register_approval', $data));
-            $mail->send();
+            $this->taskManager->set([
+                'channel' => 'emails',
+                'type' => 'email_send',
+                'time_exec' => time(),
+                'object' => [
+                    'to' => $data['email'],
+                    'subject' => sprintf($this->language->get('text_subject'), html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8')),
+                    'message' => $this->load->view('mail/register_approval', $data),
+                ]
+            ]);
 
         } else {
-
-            $mail = new Mail($this->config->get('config_mail_engine'));
-            $mail->parameter = $this->config->get('config_mail_parameter');
-            $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-            $mail->smtp_username = $this->config->get('config_mail_smtp_username');
-            $mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-            $mail->smtp_port = $this->config->get('config_mail_smtp_port');
-            $mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
-
-            $mail->setTo($data['email']);
-            $mail->setFrom($this->config->get('config_mail_smtp_sender_mail'));
-            $mail->setSender(html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8'));
-            $mail->setSubject(html_entity_decode(sprintf(
-                $this->language->get('text_subject'),
-                $this->config->get('config_name')
-            ), ENT_QUOTES, 'UTF-8'));
-            $mail->setHtml($this->load->view('mail/register_from_order', $data));
-            $mail->send();
+            $this->taskManager->set([
+                'channel' => 'emails',
+                'type' => 'email_send',
+                'time_exec' => time(),
+                'object' => [
+                    'to' => $data['email'],
+                    'subject' => html_entity_decode(sprintf(
+                        $this->language->get('text_subject'),
+                        $this->config->get('config_name')
+                    ), ENT_QUOTES, 'UTF-8'),
+                    'message' => $this->load->view('mail/register_from_order', $data)
+                ]
+            ]);
         }
 
 		return $customer_id;
