@@ -21,18 +21,8 @@ class LandingController extends Controller
     {
         $items = app(LandingRepository::class)->all();
 
-        $parent_id = (int)$request->get('parent_id', 0);
-
-        $children = [];
-
-        if ($parent_id) {
-            $children = app(LandingRepository::class)->all($parent_id);
-        }
-
         return view('landing.admin.index', compact(
             'items',
-            'children',
-            'parent_id',
         ));
     }
 

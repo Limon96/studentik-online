@@ -24,4 +24,10 @@ class Landing extends Model
         'term',
         'parent_id',
     ];
+
+    public function children()
+    {
+        return $this->hasMany(Landing::class, 'parent_id', 'id');
+    }
+
  }

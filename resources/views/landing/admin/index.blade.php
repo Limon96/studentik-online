@@ -42,7 +42,7 @@
                             @foreach($items as $item)
                                 <tr>
                                     <td>
-                                        <a href="{{ route('admin.landing.index', ['parent_id' => $item->id]) }}">{{ $item->title }}</a>
+                                        <a href="#" class="landing-parent" data-selector="landings-{{ $item->id }}">{{ $item->title }}</a>
                                     </td>
                                     <td>@if($item->status) Опубликован @else Черновик @endif</td>
                                     <td>{{ $item->created_at }}</td>
@@ -60,15 +60,15 @@
                                         </form>
                                     </td>
                                 </tr>
-                                @if($item->id === $parent_id)
-                                    @foreach($children as $child)
-                                        <tr>
+                                @if($item->children->count())
+                                    @foreach($item->children as $child)
+                                        <tr style="display: none" class="landing-child landings-{{ $item->id }}">
                                             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $child->title }}</td>
                                             <td>@if($child->status) Опубликован @else Черновик @endif</td>
                                             <td>{{ $child->created_at }}</td>
                                             <td>{{ $child->updated_at }}</td>
                                             <td>
-                                                <a href="{{ route('landing.show', $child->slug) }}" class="btn btn-sm btn-info" target="_blank"><i class="fa fa-eye"></i></a>
+                                                <a href="{{ route('landing.subject', [$item->slug, $child->slug]) }}" class="btn btn-sm btn-info" target="_blank"><i class="fa fa-eye"></i></a>
                                                 <a href="{{ route('admin.landing.copy', $child->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-copy"></i></a>
                                                 <a href="{{ route('admin.landing.edit', $child->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
                                                 <form method="post" class="form-delete"
@@ -113,5 +113,15 @@
 
         // Select2
         $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+    </script>
+    <script>
+        $(document).on('click', '.landing-parent', function(e){
+            e.preventDefault();
+            var selector = $(this).data('selector');
+
+            $('.' + selector).toggle();
+
+            return false;
+        });
     </script>
 @endsection
