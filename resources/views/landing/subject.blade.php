@@ -740,7 +740,7 @@
     .reverse .my-col-5{
         float: right;
     }
-
+ 
 
 
 
