@@ -45,6 +45,72 @@
         });
     </script>
     <!-- /Yandex.Metrika counter -->
+
+
+    <style>
+
+
+        .reverse .my-col-7{
+            float: right;
+        }
+
+        .reverse .my-col-5{
+            float: right;
+        }
+
+
+
+
+        /*
+
+            h1{
+                font-weight: bold;
+                font-size: 22px;
+                line-height: 27px;
+                margin: 0 0 25px 0;
+                font-family: 'Montserrat', sans-serif;
+            }
+
+
+
+
+            .header_lend .block_regist .heads h2 {
+                font-weight: bold;
+                font-size: 30px;
+                line-height: 37px;
+                color: #00324F;
+                margin: 0 0 10px 0;
+                font-family: 'Montserrat', sans-serif;
+            }
+        */
+
+
+        @media (min-width: 320px) and (max-width: 435px) {
+            .header_lend .block_regist .form_bl .line_inp1 .has-error {
+                font-size: 8px;
+            }
+
+            /*   .header_lend .block_regist .heads h2 {
+                   font-weight: bold;
+                   font-size: 24px;
+                   line-height: 37px;
+                   color: #00324F;
+                   margin: 0 0 10px 0;
+
+               }
+       */
+
+
+        }
+
+
+
+
+
+
+
+    </style>
+
 </head>
 <body>
 
@@ -729,70 +795,6 @@
     });
 </script>
 
-
-<style>
-
-
-    .reverse .my-col-7{
-        float: right;
-    }
-
-    .reverse .my-col-5{
-        float: right;
-    }
- 
-
-
-
-    /*
-
-        h1{
-            font-weight: bold;
-            font-size: 22px;
-            line-height: 27px;
-            margin: 0 0 25px 0;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-
-
-
-        .header_lend .block_regist .heads h2 {
-            font-weight: bold;
-            font-size: 30px;
-            line-height: 37px;
-            color: #00324F;
-            margin: 0 0 10px 0;
-            font-family: 'Montserrat', sans-serif;
-        }
-    */
-
-
-    @media (min-width: 320px) and (max-width: 435px) {
-        .header_lend .block_regist .form_bl .line_inp1 .has-error {
-            font-size: 8px;
-        }
-
-        /*   .header_lend .block_regist .heads h2 {
-               font-weight: bold;
-               font-size: 24px;
-               line-height: 37px;
-               color: #00324F;
-               margin: 0 0 10px 0;
-
-           }
-   */
-
-
-    }
-
-
-
-
-
-
-
-</style>
 
 
 </body>
