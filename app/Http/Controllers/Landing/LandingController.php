@@ -77,6 +77,8 @@ class LandingController extends Controller
 
         $subjects = $this->getSubjects($parentItem->id);
 
+        $blogPosts = BlogPost::orderByDesc('created_at')->limit(8)->get();
+
         return view('landing.subject',
             compact(
                 'item',
@@ -86,6 +88,7 @@ class LandingController extends Controller
                 'subject_pages',
                 'totals',
                 'subjects',
+                'blogPosts',
             )
         );
     }
