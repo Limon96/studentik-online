@@ -586,7 +586,6 @@
 @if($item->blocks)
     @foreach($item->blocks as $block)
         @if($block['type'] == 'text_block' && $loop->index == 3)
-            @dd($subjects)
             @if($subjects)
             <section class="find_predmet">
                 <div class="container">
