@@ -71,9 +71,9 @@ class LandingController extends Controller
         $subject_pages = app(LandingRepository::class)->getSubjectPages();
 
         $totals = new \stdClass();
-        $totals->students = Customer::where('customer_group_id', 1)->count();
-        $totals->experts = Customer::where('customer_group_id', 2)->count();
-        $totals->order_completed = Order::where('order_status_id', 6)->count();
+        $totals->students = Customer::where('status', 1)->where('customer_group_id', '1')->count();
+        $totals->experts = Customer::where('status', 1)->where('customer_group_id', '2')->count();
+        $totals->order_completed = Order::where('order_status_id', '6')->count();
 
         $subjects = $this->getSubjects($parentItem->id);
 
