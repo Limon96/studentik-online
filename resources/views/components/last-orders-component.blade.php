@@ -22,7 +22,7 @@
                         Стоимость выполнения
                     </div>
                     <div class="svg">
-                        <img src="../image/landing/ruble.png" alt="">
+                        <img src="{{ asset('image/landing/ruble.png') }}" alt="">
                     </div>
                     <div class="txt">{{ $item->offerAssigned->bet }}р</div>
                 </div>
@@ -31,7 +31,7 @@
                         Уникальность работы
                     </div>
                     <div class="svg">
-                        <img src="../image/landing/shield.png" alt="">
+                        <img src="{{ asset('image/landing/shield.png') }}" alt="">
                     </div>
                     @if($item->plagiarism_check_id)
                         <div class="txt">{{ $item->plagiarism_check->name }}</div>
