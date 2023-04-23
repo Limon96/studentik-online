@@ -29,6 +29,10 @@ class LandingController extends Controller
             return redirect('https://studentik.online/not_found');
         }
 
+        if ($item->parent_id > 0) {
+            return redirect('https://studentik.online/not_found');
+        }
+
         $sections = app(SectionRepository::class)->getForSelect();
         $type_work_pages = app(LandingRepository::class)->getTypeWorkPages();
         $subject_pages = app(LandingRepository::class)->getSubjectPages();
@@ -59,10 +63,15 @@ class LandingController extends Controller
     {
         $parentItem = app(LandingRepository::class)
             ->getBySlug($work_type_slug);
+
         $item = app(LandingRepository::class)
             ->getBySlug($subject_slug);
 
         if (is_null($item)) {
+            return redirect('https://studentik.online/not_found');
+        }
+
+        if ($item->parent_id == 0) {
             return redirect('https://studentik.online/not_found');
         }
 
