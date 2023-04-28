@@ -156,7 +156,7 @@ class ControllerExtensionPaymentYookassa extends Controller {
         $this->load->model('payment/payment');
 
         if (!$this->customer->isLogged()) {
-            $this->session->data['redirect'] = $this->url->link('extension/payment/yookassa/confirm', '', true);
+            //$this->session->data['redirect'] = $this->url->link('extension/payment/yookassa/confirm', '', true);
 
             $this->response->redirect($this->url->link('account/login', '', true));
         }
