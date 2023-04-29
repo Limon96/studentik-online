@@ -195,24 +195,23 @@ class ControllerExtensionPaymentYookassa extends Controller {
                     unset($this->session->data['yookassa_payment_id']);
                     unset($this->session->data['payment_id']);
 
-                    $this->response->redirect($this->url->link('account/finance/success', 'stat=2', true));
+                    $this->response->redirect($this->url->link('account/finance/success', '', true));
                 } elseif ($payment_info && $paymentInfo->status == 'canceled') {
                     $this->model_payment_payment->setPaymentStatus($payment_id, 3); // Статус оплаты: Отменен
 
                     unset($this->session->data['yookassa_payment_id']);
                     unset($this->session->data['payment_id']);
-                    $this->response->redirect($this->url->link('account/finance/canceled', 'stat=3', true));
+                    $this->response->redirect($this->url->link('account/finance/canceled', '', true));
                 } elseif ($payment_info && $paymentInfo->status == 'pending') {
                     $this->model_payment_payment->setPaymentStatus($payment_id, 1); // Статус оплаты: Отменен
 
-                    $this->response->redirect($this->url->link('account/finance/pending', 'stat=1', true));
+                    $this->response->redirect($this->url->link('account/finance/pending', '', true));
                 }
             } else {
 
                 unset($this->session->data['yookassa_payment_id']);
                 unset($this->session->data['payment_id']);
                 $this->model_payment_payment->setPaymentStatus($payment_id, 4); // Статус оплаты: Ошибка
-                $this->response->redirect($this->url->link('account/finance/canceled', 'stat=4', true));
             }
 
         } else {
@@ -222,7 +221,7 @@ class ControllerExtensionPaymentYookassa extends Controller {
             $this->model_payment_payment->setPaymentStatus($payment_id, 4);  // Статус оплаты: Ошибка
         }
 
-        $this->response->redirect($this->url->link('account/finance/canceled', 'stat=5', true));
+        $this->response->redirect($this->url->link('account/finance/canceled', '', true));
     }
 
 }
