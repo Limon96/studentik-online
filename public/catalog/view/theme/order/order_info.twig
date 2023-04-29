@@ -438,11 +438,17 @@
                                 });
 
                                 $(document).on('click', '#button-complete-order', function() {
+                                    $('#confirm-complete-order-modal').modal('show');
+                                });
+
+                                $(document).on('click', '#confirm-complete-order-button', function() {
                                     $.ajax({
                                         url: '../index.php?route=order/offer/completeOffer&order_id={{ order_id }}',
                                         type: 'get',
                                         dataType: 'json',
                                         success: function(json) {
+                                            $('#confirm-complete-order-modal').modal('hide');
+
                                             if (json['success']) {
                                                 $('#content').load(location.href + ' #content > div');
 
@@ -804,6 +810,22 @@
                 <h4 class="modal-title" id="myModalLabel">Выбор исполнителя</h4>
             </div>
             <div class="modal-body "></div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="confirm-complete-order-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog take_man" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Подтвердить выполнение</h4>
+            </div>
+            <div class="modal-body ">
+                <p>Не подтверждайте, если не уверены в правильности работы!</p>
+                <button id="confirm-complete-order-button" class="btn btn-success">Подтвердить</button>
+            </div>
+
         </div>
     </div>
 </div>
