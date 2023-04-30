@@ -25,14 +25,14 @@ class Emailing {
             ->getCustomersFromFilter([
                 'customer_group_id' => 2,
                 'setting_email_new_order' => 1,
-                'subject_id' => $object->order->subject_id
+                'subject_id' => $order->subject_id
             ]);
 
         if ($result) {
             // собираем письмо
             $medata = [];
             // Получаем заказчика
-            $customer_info =  (new Customer($this->db))->get($object->order->customer_id);
+            $customer_info =  (new Customer($this->db))->get($order->customer_id);
 
             if ($customer_info['image']) {
                 $image = (new Image($this->db))->resize($customer_info['image'], 80, 80);
@@ -44,14 +44,16 @@ class Emailing {
             $unsubscribe_token = (new \Model\Subscribe($this->db))->generateUnsubscribeToken($customer_info['email']);
             $medata['unsubscribe'] = HTTPS_SERVER . 'index.php?route=account/unsubscribe&key=' . $unsubscribe_token;
 
-            $medata['title'] = $object->order->title;
-            $medata['section'] = $object->order->section;
-            $medata['subject'] = $object->order->subject;
-            $medata['work_type'] = $object->order->work_type;
-            $medata['price'] = $object->order->price;
-            $medata['description'] = nl2br(htmlspecialchars_decode($object->order->description));
-            $medata['link'] = HTTPS_SERVER . 'index.php?route=order/order/info&order_id=' . $object->order->order_id;
-            $medata['date_end'] = ($object->order->date_end != '0000-00-00'? format_date($object->order->date_end, 'full_date') : 'Не указан');
+            $order = (new \Model\Order($this->db))->get($order->order_id);
+
+            $medata['title'] = $order->title;
+            $medata['section'] = $order->section;
+            $medata['subject'] = $order->subject;
+            $medata['work_type'] = $order->work_type;
+            $medata['price'] = $order->price;
+            $medata['description'] = nl2br(htmlspecialchars_decode($order->description));
+            $medata['link'] = HTTPS_SERVER . 'index.php?route=order/order/info&order_id=' . $order->order_id;
+            $medata['date_end'] = ($order->date_end != '0000-00-00'? format_date($order->date_end, 'full_date') : 'Не указан');
 
             $tpl = new Twig();
             $tpl->set('login', $customer_info['login']);
@@ -78,7 +80,7 @@ class Emailing {
                         'time_exec' => time(),
                         'object' => [
                             'to' => $customer['email'],
-                            'subject' => "Новый заказ по предмету \"" . $object->order->subject . "\" №" . $object->order->order_id,
+                            'subject' => "Новый заказ по предмету \"" . $order->subject . "\" №" . $order->order_id,
                             'message' => htmlspecialchars($message)
                         ],
                         'status' => 0

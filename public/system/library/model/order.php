@@ -4,9 +4,15 @@ namespace Model;
 
 class Order extends Model {
 
-    public function get()
+    public function get($order_id)
     {
+        $result = $this->db->query("SELECT * FROM `" . DB_PREFIX ."order` WHERE order_id = '" . $order_id . "'");
 
+        if (isset($result->row) && $result->row) {
+            return $result->row;
+        }
+
+        return false;
     }
 
     public function getOrderStatus($order_id)
