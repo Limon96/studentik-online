@@ -7,9 +7,9 @@ class Order extends Model {
     public function get($order_id)
     {
         $result = $this->db->query("SELECT o.*,
-                (SELECT s.name FROM `" .DB_PREFIX  ."section` s WHERE s.language_id = '" . (int)$this->config->get('config_language_id') . "' AND s.section_id = o.section_id) AS `section`,
-                (SELECT sj.name FROM `" .DB_PREFIX  ."subject` sj WHERE sj.language_id = '" . (int)$this->config->get('config_language_id') . "' AND sj.subject_id = o.subject_id) AS `subject`,
-                (SELECT wt.name FROM `" .DB_PREFIX  ."work_type` wt WHERE wt.language_id = '" . (int)$this->config->get('config_language_id') . "' AND wt.work_type_id = o.work_type_id) AS `work_type`
+                (SELECT s.name FROM `" .DB_PREFIX  ."section` s WHERE s.language_id = '1' AND s.section_id = o.section_id) AS `section`,
+                (SELECT sj.name FROM `" .DB_PREFIX  ."subject` sj WHERE sj.language_id = '1' AND sj.subject_id = o.subject_id) AS `subject`,
+                (SELECT wt.name FROM `" .DB_PREFIX  ."work_type` wt WHERE wt.language_id = '1' AND wt.work_type_id = o.work_type_id) AS `work_type`
                  FROM `" . DB_PREFIX ."order` o WHERE o.order_id = '" . $order_id . "'");
 
         if (isset($result->row) && $result->row) {
