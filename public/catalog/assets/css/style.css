@@ -3569,7 +3569,24 @@ input::placeholder{
     border: 0;
     display: inline-block;
 }
-
+.modal-content .button-complete-order {
+    width: auto;
+    background: #B2E228;
+    box-shadow: 0px 4px 15px rgb(178 226 40 / 25%);
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0 18px 0 0;
+    padding: 14px 25px;
+    border: 0;
+    display: inline-block;
+}
+#confirm-complete-order-modal .modal-body p {
+    margin: 10px 0 25px 1px;
+}
 
 .order-control .button-revision-order {
     width: auto;

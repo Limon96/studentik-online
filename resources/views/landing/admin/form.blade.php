@@ -125,7 +125,7 @@
     <link href="{{ asset('manager/lib/summernote/summernote-bs4.css') }}" rel="stylesheet">
     <script src="{{ asset('manager/lib/summernote/summernote.min.js') }}"></script>
     <script src="{{ asset('manager/lib/summernote/summernote-bs4.min.js') }}"></script>
-    <script src="{{ asset('manager/js/pagebuilder.js') }}?v=4"></script>
+    <script src="{{ asset('manager/js/pagebuilder.js') }}?v=0.36"></script>
     <script>
 
         initPageBuilder();
