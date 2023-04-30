@@ -41,7 +41,6 @@ function page_builder_submit(url, method)
             'parent_id': $('#select-parent_id').val(),
         },
         success: function (response) {
-            /*console.log(response);*/
 
             if (response['redirect']) {
                 alert(response.success)
@@ -94,6 +93,8 @@ function parseElement (elem) {
         return parseInput($(elem).children('input'), label);
     } else if ($(elem).children('textarea').length) {
         return parseTextarea($(elem).children('textarea'), label);
+    } else if ($(elem).children().children('textarea').length) {
+        return parseSummernote($(elem).children().children('textarea'), label);
     } else if ($(elem).children('select').length) {
         return parseSelect($(elem).children('select'), label);
     }
@@ -146,6 +147,19 @@ function parseTextarea(elem, label){
     };
 }
 
+function parseSummernote(elem, label){
+    var type = 'summernote',
+        name = $(elem).attr('name'),
+        value = $(elem).val();
+
+    return {
+        'label': label,
+        'type': type,
+        'name': name,
+        'value': value,
+    };
+}
+
 function parseSelect(elem, label){
     var type = 'select',
         name = $(elem).attr('name'),
@@ -160,6 +174,7 @@ function parseSelect(elem, label){
 }
 
 function renderTree(arr, t){
+    console.log(arr, t);
     $.each(arr, function (i, o) {
 
         if (o.fields) {

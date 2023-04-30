@@ -12,7 +12,7 @@ return [
         [
             'label' => 'Описание',
             'name' => 'text',
-            'type' => 'summernote' // textarea
+            'type' => 'summernote', // textarea
         ]
     ]
 ];
