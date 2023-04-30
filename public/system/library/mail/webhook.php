@@ -16,7 +16,7 @@ class WebHook
     {
         $myCurl = curl_init();
         curl_setopt_array($myCurl, array(
-            CURLOPT_URL => 'http://studentik.dvl.to/api/smtp',
+            CURLOPT_URL => 'https://studentik.online/api/smtp',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_POST => true,
             CURLOPT_POSTFIELDS => http_build_query([
