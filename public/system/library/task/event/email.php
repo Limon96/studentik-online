@@ -29,7 +29,7 @@ class Email {
 
         $unsubscribe_token = (new \Model\Subscribe($this->db))->generateUnsubscribeToken($object->to);
 
-        $mail = new \Mail($this->config->get('config_mail_engine'));
+        $mail = new \Mail('webhook');
         $mail->parameter = $this->config->get('config_mail_parameter');
         $mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
         $mail->smtp_username = $this->config->get('config_mail_smtp_username');
