@@ -20,6 +20,7 @@ class Emailing {
 
     public function newOrder($object) : array
     {
+        $order = (new \Model\Order($this->db))->get($object->order->order_id);
         // Получаем список нужных пользователей
         $result = (new Customer($this->db))
             ->getCustomersFromFilter([
@@ -43,8 +44,6 @@ class Emailing {
             // Unsubscribe generate
             $unsubscribe_token = (new \Model\Subscribe($this->db))->generateUnsubscribeToken($customer_info['email']);
             $medata['unsubscribe'] = HTTPS_SERVER . 'index.php?route=account/unsubscribe&key=' . $unsubscribe_token;
-
-            $order = (new \Model\Order($this->db))->get($order->order_id);
 
             $medata['title'] = $order->title;
             $medata['section'] = $order->section;
