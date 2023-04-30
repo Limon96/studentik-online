@@ -160,7 +160,11 @@ class Node implements \Countable, \IteratorAggregate
 
     public function count()
     {
-        return \count($this->nodes);
+        if ($this->nodes) {
+            return \count($this->nodes);
+        }
+
+        return 0;
     }
 
     public function getIterator()
