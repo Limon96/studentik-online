@@ -7540,6 +7540,7 @@ input::placeholder{
     transition: -webkit-transform 0.3s ease-out;
     transition: transform 0.3s ease-out;
     transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out, -o-transform 0.3s ease-out;
+    margin-top: 10%;
 }
 .modal.in .modal-dialog {
     -webkit-transform: translate(0, 0);
@@ -10450,6 +10451,17 @@ h2.h2_article{
     align-items: center;
     justify-content: flex-start;
 }
+
+
+
+
+
+.modal_allready{
+    display: block;
+    height: 100vh;
+    background: #00000063;
+}
+
 
 
 
