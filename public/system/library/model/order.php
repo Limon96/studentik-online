@@ -9,7 +9,7 @@ class Order extends Model {
         $result = $this->db->query("SELECT * FROM `" . DB_PREFIX ."order` WHERE order_id = '" . $order_id . "'");
 
         if (isset($result->row) && $result->row) {
-            return $result->row;
+            return (object)$result->row;
         }
 
         return false;
