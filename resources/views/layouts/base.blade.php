@@ -1,4 +1,4 @@
-@php $v = 0.37; @endphp
+@php $v = 0.38; @endphp
 <!doctype html>
 <html lang="ru">
 <head>
