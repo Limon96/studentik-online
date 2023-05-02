@@ -1410,11 +1410,6 @@ li{
 }
 
 
-.grafop h2 {
-    font-size:18px!important;
-}
-
-
 /********************************************header******************************************************/
 
 
@@ -5875,6 +5870,13 @@ footer .colling ul.massengers li a img{
 
 
 
+
+
+.grafop h2 {
+    font-size:18px;
+    text-align: left;
+    margin: 0;
+}
 
 
 
