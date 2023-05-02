@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h3>Последние выполненные заказы</h3>
+                <h2>Последние выполненные заказы</h2>
                 <div class="works_s">
 
                     <x-last-order-component :workType="$data['work_type']" />

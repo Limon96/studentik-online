@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h3>{{ $data['title'] }}</h3>
+                <h2>{{ $data['title'] }}</h2>
             </div>
             <div class="col-12">
                 <div class="otziv_sl">

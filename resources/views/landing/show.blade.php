@@ -102,7 +102,7 @@
             <div class="col-7    my-col-7">
                 <div class="block_regist">
                     <div class="heads clearfix">
-                        <h2>{{ $item->title }}</h2>
+                        <h1>{{ $item->title }}</h1>
                         <p>Разместите заказ на бирже и обсудите работу напрямую с исполнителем</p>
                     </div>
                     @if($item->price || $item->term)
@@ -288,7 +288,7 @@
             <div class="col-5">
                 <div class="wrap_work">
                     <div class="zagol">
-                        <h3>Studentik – ценит ваше время</h3>
+                        <h2>Studentik – ценит ваше время</h2>
                         <p>Вы можете не заботиться об учебе и заниматься своими любимыми делами</p>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="459" height="379" viewBox="0 0 459 379" fill="none">
@@ -415,7 +415,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h3>Наши преимущества</h3>
+                <h2>Наши преимущества</h2>
             </div>
             <div class="col-4">
                 <div class="wariet">
@@ -480,7 +480,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h3>Studentik в цифрах</h3>
+                <h2>Studentik в цифрах</h2>
                 <div class="flex_perk">
                     <div class="pert">
                         <div class="block_img">
@@ -582,7 +582,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <h3>Интересные статьи в нашем блоге</h3>
+                            <h2>Интересные статьи в нашем блоге</h2>
                         </div>
                         <div class="col-12">
                             <div class="news_slider">

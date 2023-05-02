@@ -1327,7 +1327,12 @@ li{
     padding-top: 65px;
 }
 
-.cifra_f h3{
+.cifra_f h2,
+.catacomba h2,
+.otziv h2,
+.staty_news h2,
+.questions h2,
+.last_works h2 {
     font-size: 30px;
     line-height: 37px;
     font-weight: 700;
@@ -1335,6 +1340,20 @@ li{
     color: #00324F;
     margin: 0 auto 60px;
 }
+.preim .wrap_work .zagol h2 {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 27px;
+    margin: 0 0 25px 0;
+}
+.header_lend .block_regist .heads h1 {
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 37px;
+    color: #00324F;
+    margin: 0 0 10px 0;
+}
+
 .cifra_f .flex_perk {
     display: flex;
     justify-content: center;
