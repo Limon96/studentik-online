@@ -158,6 +158,7 @@ class Node implements \Countable, \IteratorAggregate
         unset($this->nodes[$name]);
     }
 
+    #[\ReturnTypeWillChange]
     public function count()
     {
         try {
@@ -169,6 +170,7 @@ class Node implements \Countable, \IteratorAggregate
 
     }
 
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new \ArrayIterator($this->nodes);
