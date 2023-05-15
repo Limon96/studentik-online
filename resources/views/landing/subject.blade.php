@@ -761,7 +761,7 @@
         }
 
         $.ajax({
-            url : '../index.php?route=account/register/guestOrder',
+            url : '/index.php?route=account/register/guestOrder',
             method : 'post',
             data : $('#guest-order-form input, #guest-order-form select'),
             dataType : 'json',
