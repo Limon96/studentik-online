@@ -29,6 +29,11 @@ class Order extends Model
         'price',
     ];
 
+    public function getForeignKey()
+    {
+        return 'order_id';
+    }
+
     public function customer()
     {
         return $this->belongsTo(Customer::class, 'customer_id', 'customer_id');

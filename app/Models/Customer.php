@@ -37,6 +37,11 @@ class Customer extends Model
         'setting_email_new_order',
     ];
 
+    public function getForeignKey()
+    {
+        return 'customer_id';
+    }
+
     public function rating()
     {
         return $this->hasMany(CustomerRating::class, 'customer_id', $this->primaryKey);

@@ -17,6 +17,10 @@ if (!function_exists('thumbnail')) {
             mkdir(dirname($thumbnailFilePath), 0777, true);
         }
 
+        if (!file_exists($imageFilePath)) {
+            $imageFilePath = storage_path('app/public/image/no_image.jpg');
+        }
+
         $img = \Intervention\Image\Facades\Image::make($imageFilePath);
 
         $img->resize($width, $height, function ($const) {
