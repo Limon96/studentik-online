@@ -55,6 +55,13 @@ class ModelClaimClaim extends Model {
         $this->db->query("UPDATE `" . DB_PREFIX . "order` SET order_status_id='" . (int)$this->config->get('config_complete_order_status_id') . "' WHERE order_id = '" . $claim_info['object_id'] . "'");
     }
 
+    public function cancelOrder($claim_id)
+    {
+        $claim_info = $this->getClaim($claim_id);
+
+        $this->db->query("UPDATE `" . DB_PREFIX . "order` SET order_status_id='" . (int)$this->config->get('config_canceled_order_status_id') . "' WHERE order_id = '" . $claim_info['object_id'] . "'");
+    }
+
     public function closeClaim($claim_id)
     {
         $claim_info = $this->getClaim($claim_id);
@@ -213,40 +220,6 @@ class ModelClaimClaim extends Model {
                 $sql .= ' AND status = 0';
             }
         }
-
-        $sort_data = array(
-            'date_added',
-            'date_updated',
-        );
-
-        if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-            if ($data['sort'] == 'date_updated') {
-                $sql .= " ORDER BY date_updated";
-            } else {
-                $sql .= " ORDER BY " . $data['sort'];
-            }
-        } else {
-            $sql .= " ORDER BY date_added";
-        }
-
-        if (isset($data['order']) && ($data['order'] == 'DESC')) {
-            $sql .= " DESC, status DESC";
-        } else {
-            $sql .= " ASC, status ASC";
-        }
-
-        if (isset($data['start']) || isset($data['limit'])) {
-            if ($data['start'] < 0) {
-                $data['start'] = 0;
-            }
-
-            if ($data['limit'] < 1) {
-                $data['limit'] = 20;
-            }
-
-            $sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
-        }
-
 
         $result = $this->db->query($sql);
 

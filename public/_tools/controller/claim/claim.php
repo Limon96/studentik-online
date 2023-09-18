@@ -363,6 +363,7 @@ class ControllerClaimClaim extends Controller {
             $order_info = $this->model_order_order->getOrder($claim_info['object_id']);
 
             $object_status = $order_info['order_status_id'] == $this->config->get('config_complete_order_status_id');
+            $object_status_canceled = $order_info['order_status_id'] == $this->config->get('config_canceled_order_status_id');
             $object_title = $order_info['title'];
             $object_href = HTTP_CATALOG . 'index.php?route=order/order/info&order_id=' . $order_info['order_id'];
 
@@ -433,6 +434,7 @@ class ControllerClaimClaim extends Controller {
             'object_title' => $object_title,
             'object_href' => $object_href,
             'object_status' => $object_status ?? false,
+            'object_status_canceled' => $object_status_canceled ?? false,
             'customer_login' => $customer_info['login'],
             'customer_href' => HTTP_CATALOG . 'index.php?route=account/customer&customer_id=' . $customer_info['customer_id'],
             'defendant_login' => $defendant_info['login'],
@@ -443,6 +445,7 @@ class ControllerClaimClaim extends Controller {
             'href' => $this->url->link('claim/claim/info', 'user_token=' . $this->session->data['user_token'] .  '&claim_id=' . $claim_info['claim_id']),
             'close' => htmlspecialchars_decode($this->url->link('claim/claim/closeClaim', 'user_token=' . $this->session->data['user_token'] .  '&claim_id=' . $claim_info['claim_id'])),
             'order_close' => htmlspecialchars_decode($this->url->link('claim/claim/closeOrder', 'user_token=' . $this->session->data['user_token'] .  '&claim_id=' . $claim_info['claim_id'])),
+            'order_cancel' => htmlspecialchars_decode($this->url->link('claim/claim/cancelOrder', 'user_token=' . $this->session->data['user_token'] .  '&claim_id=' . $claim_info['claim_id'])),
         ];
 
         $attachments = $this->model_claim_claim->getClaimAttachment($claim_info['claim_id']);
@@ -496,6 +499,22 @@ class ControllerClaimClaim extends Controller {
 
         if (isset($this->request->get['claim_id']) && $this->validateClose()) {
             $this->model_claim_claim->closeOrder($this->request->get['claim_id']);
+
+            $this->response->setOutput(json_encode(['success' => 'Успешно выполнено']));
+        } else {
+            $this->response->setOutput(json_encode(['error' => 'Произошла ошибка']));
+        }
+
+    }
+
+    public function cancelOrder()
+    {
+        $this->load->language('claim/claim');
+        $this->load->model('claim/claim');
+        $this->load->model('customer/customer');
+
+        if (isset($this->request->get['claim_id']) && $this->validateClose()) {
+            $this->model_claim_claim->cancelOrder($this->request->get['claim_id']);
 
             $this->response->setOutput(json_encode(['success' => 'Успешно выполнено']));
         } else {

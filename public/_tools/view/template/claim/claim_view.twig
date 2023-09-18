@@ -200,10 +200,13 @@
                     <h4>Претензия закрыта</h4>
                 {% endif %}
                 <table class="table close-order">
-                    {% if claim.object_status %}
+                    {% if claim.object_status_canceled %}
+                        <tr><td>Заказ отменен</td></tr>
+                    {% elseif claim.object_status %}
                         <tr><td>Заказ выполнен</td></tr>
                     {% else %}
                         <tr><td style="width: 150px">Завершить заказ</td><td><button type="button" onclick="closeOrder();" data-toggle="tooltip" title="{{ button_close }}" class="btn btn-info"><i class="fa fa-check"></i></button></td></tr>
+                        <tr><td style="width: 150px">Отменить заказ</td><td><button type="button" onclick="cancelOrder();" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-warning"><i class="fa fa-undo"></i></button></td></tr>
                     {% endif %}
                 </table>
 
@@ -316,6 +319,12 @@
     function closeOrder(){
         $.get('{{ claim.order_close }}', function () {
             $('.close-order').html('<tr><td>Заказ выполнен</td></tr>');
+        });
+    }
+
+    function cancelOrder(){
+        $.get('{{ claim.order_cancel }}', function () {
+            $('.close-order').html('<tr><td>Заказ отменен</td></tr>');
         });
     }
 </script>
