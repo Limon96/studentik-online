@@ -130,7 +130,7 @@
                             {% endif %}
 
                             {% if not is_exists_review %}
-                            {% if order_status_id == config_verification_order_status_id or order_status_id == config_complete_order_status_id %}
+                            {% if order_status_id != config_open_order_status_id and order_status_id != config_pending_order_status_id %}
                             <a href="{{ review_add }}" class="review_add">Оставить отзыв</a>
                             {% endif %}
                             {% endif %}
