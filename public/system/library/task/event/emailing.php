@@ -30,8 +30,6 @@ class Emailing {
             ]);
 
         if ($result) {
-            // собираем письмо
-            $medata = [];
             // Получаем заказчика
             $customer_info =  (new Customer($this->db))->get($order->customer_id);
 
@@ -41,38 +39,42 @@ class Emailing {
                 $image = (new Image($this->db))->resize('profile.png', 80, 80);
             }
 
-            // Unsubscribe generate
-            $unsubscribe_token = (new \Model\Subscribe($this->db))->generateUnsubscribeToken($customer_info['email']);
-            $medata['unsubscribe'] = HTTPS_SERVER . 'index.php?route=account/unsubscribe&key=' . $unsubscribe_token;
-
-            $medata['title'] = $order->title;
-            $medata['section'] = $order->section;
-            $medata['subject'] = $order->subject;
-            $medata['work_type'] = $order->work_type;
-            $medata['price'] = $order->price;
-            $medata['description'] = nl2br(htmlspecialchars_decode($order->description));
-            $medata['link'] = HTTPS_SERVER . 'index.php?route=order/order/info&order_id=' . $order->order_id;
-            $medata['date_end'] = ($order->date_end != '0000-00-00'? format_date($order->date_end, 'full_date') : 'Не указан');
-
-            $tpl = new Twig();
-            $tpl->set('login', $customer_info['login']);
-            $tpl->set('image', $image);
-            $tpl->set('online', 0);
-            $tpl->set('href', HTTPS_SERVER . 'index.php?route=account/customer&customer_id=' . $customer_info['customer_id']);
-
-            $medata['customer'] = $tpl->render('tool/customer_no_photo');
-
-            $template = new Twig();
-
-            foreach ($medata as $k => $v) {
-                $template->set($k, $v);
-            }
-
-            $message = $template->render('mail/order_new');
 
             $tasks = [];
             foreach ($result as $customer) {
                 if (filter_var($customer['email'], FILTER_VALIDATE_EMAIL)) {
+
+                    // собираем письмо
+                    $medata = [];
+                    // Unsubscribe generate
+                    $unsubscribe_token = (new \Model\Subscribe($this->db))->generateUnsubscribeToken($customer['email']);
+                    $medata['unsubscribe'] = HTTPS_SERVER . 'index.php?route=account/unsubscribe&key=' . $unsubscribe_token;
+
+                    $medata['title'] = $order->title;
+                    $medata['section'] = $order->section;
+                    $medata['subject'] = $order->subject;
+                    $medata['work_type'] = $order->work_type;
+                    $medata['price'] = $order->price;
+                    $medata['description'] = nl2br(htmlspecialchars_decode($order->description));
+                    $medata['link'] = HTTPS_SERVER . 'index.php?route=order/order/info&order_id=' . $order->order_id;
+                    $medata['date_end'] = ($order->date_end != '0000-00-00'? format_date($order->date_end, 'full_date') : 'Не указан');
+
+                    $tpl = new Twig();
+                    $tpl->set('login', $customer_info['login']);
+                    $tpl->set('image', $image);
+                    $tpl->set('online', 0);
+                    $tpl->set('href', HTTPS_SERVER . 'index.php?route=account/customer&customer_id=' . $customer_info['customer_id']);
+
+                    $medata['customer'] = $tpl->render('tool/customer_no_photo');
+
+                    $template = new Twig();
+
+                    foreach ($medata as $k => $v) {
+                        $template->set($k, $v);
+                    }
+
+                    $message = $template->render('mail/order_new');
+
                     $tasks[] = new TaskItem([
                         'channel' => 'emails',
                         'type' => 'email_send',
