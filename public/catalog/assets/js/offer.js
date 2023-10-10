@@ -32,7 +32,9 @@ $(document).on('click', '#assign_offer', function(e){
             success : function (json) {
                 if (json['error']) {
                     if (json['error']['balance']) {
-                        window.open(json['redirect']);
+                        setTimeout(() => {
+                            window.open(json['redirect'], '_blank');
+                        });
                     }
                 }
                 if (json['success']) {
