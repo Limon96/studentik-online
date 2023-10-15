@@ -183,14 +183,14 @@ class ControllerAccountOrder extends Controller {
 		$pagination = new Pagination();
 		$pagination->total = $order_total;
 		$pagination->page = $page;
-		$pagination->limit = 10;
+		$pagination->limit = $limit;
 		$pagination->url = $this->url->link('account/order', 'page={page}', true);
 
         $data['limit'] = $limit * $page;
         $data['total_orders'] = $order_total;
 		$data['pagination'] = $pagination->render();
 
-		$data['results'] = sprintf($this->language->get('text_pagination'), ($order_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($order_total - 10)) ? $order_total : ((($page - 1) * 10) + 10), $order_total, ceil($order_total / 10));
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($order_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($order_total - $limit)) ? $order_total : ((($page - 1) * $limit) + $limit), $order_total, ceil($order_total / $limit));
 
 		$url = '';
 
@@ -219,7 +219,7 @@ class ControllerAccountOrder extends Controller {
         }
 
         if (isset($this->request->get['filter_order_status_id'])) {
-            $url .= '&filter_customer=' . (int)$this->request->get['filter_order_status_id'];
+            $url .= '&filter_order_status_id=' . (int)$this->request->get['filter_order_status_id'];
         }
 
 		$data['account_order'] = $this->url->link('account/order');

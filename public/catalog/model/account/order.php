@@ -73,7 +73,6 @@ class ModelAccountOrder extends Model
             $sql .= " AND title LIKE '%" . $this->db->escape($data['search']) . "%'";
         }
 
-        $sql .= " GROUP BY order_id";
 
         $sort_data = array(
             'name',
@@ -172,26 +171,6 @@ class ModelAccountOrder extends Model
             $sql .= " AND title LIKE '%" . $this->db->escape($data['search']) . "%'";
         }
 
-        $sort_data = array(
-            'name',
-            'date_end',
-        );
-
-        if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
-            if ($data['sort'] == 'name') {
-                $sql .= " ORDER BY name";
-            } else {
-                $sql .= " ORDER BY " . $data['sort'];
-            }
-        } else {
-            $sql .= " ORDER BY date_added";
-        }
-
-        if (isset($data['order']) && ($data['order'] == 'DESC')) {
-            $sql .= " DESC, date_added DESC";
-        } else {
-            $sql .= " ASC, date_added ASC";
-        }
 
         $result = $this->db->query($sql);
 
