@@ -56,7 +56,8 @@ class ControllerAccountCustomer extends Controller
             $data['bdate'] = $customer_info['bdate'];
             $data['country'] = $customer_info['country'];
             $data['languages'] = $customer_info['languages'];
-            $data['comment'] = nl2br($customer_info['comment']);
+            $data['comment'] = nl2br(str_replace(["\n", " \r"], '', $customer_info['comment']));
+
             $data['email'] = $customer_info['email'];
             $data['telephone'] = $customer_info['telephone'];
             $data['firstname'] = $customer_info['firstname'];
