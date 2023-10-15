@@ -48,7 +48,7 @@ class Email {
             $mail->send();
         } catch (\Exception $e) {}
 
-        time_nanosleep(0, 500000000);
+        time_nanosleep(0, 100000000);
 
         return ['success' => 1];
     }
