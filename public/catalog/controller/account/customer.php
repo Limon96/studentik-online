@@ -57,7 +57,7 @@ class ControllerAccountCustomer extends Controller
             $data['country'] = $customer_info['country'];
             $data['languages'] = $customer_info['languages'];
             //$data['comment'] = nl2br(str_replace("\n\r", " ", $customer_info['comment']));
-            $data['comment'] = str_replace("\n\r", "<br>", $customer_info['comment']);
+            $data['comment'] = str_replace("\n\r", "<br><br>", $customer_info['comment']);
             //dd(explode("\n\r", $customer_info['comment']));
 
             $data['email'] = $customer_info['email'];
