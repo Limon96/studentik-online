@@ -82,7 +82,7 @@
                         </div>
                         <div class="block_go">
                             <a href="https://studentik.online/index.php?route=account/login&act=register" target="_blank" class="autor">Вы автор?</a>
-                            <button class="submit">Получить помощь</button>
+                            <button class="submit" onclick="_tmr.push({ type: 'reachGoal', id: 3285339, goal: 'get_help'});">Получить помощь</button>
                         </div>
                         <div class="mini_footer">
                             <label class="container1">
