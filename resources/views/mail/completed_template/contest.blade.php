@@ -7,7 +7,7 @@
                                     style="font-size:0px;padding:5px 28px;word-break:break-word">
                                     <div style="margin-bottom: 30px">
                                         <img
-                                            src="https://studentik.online/mail_letters/actia1.jpg" alt="Розыгрыш в честь дня рождения"
+                                            src="https://studentik.online/mail_letters/actia2.png" alt="Розыгрыш в честь дня рождения"
                                             width="100%"
                                         >
                                     </div>
