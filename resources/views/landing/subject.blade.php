@@ -230,7 +230,7 @@
                     </div>
                     <div class="footert clearfix">
                         <div class="right_rek">
-                            <button id="guest-order">Узнать стоимость</button>
+                            <button id="guest-order" onclick="_tmr.push({ type: 'reachGoal', id: 3285339, goal: 'get_help'});">Узнать стоимость</button>
                         </div>
                     </div>
                     <div class="politik_asset">
