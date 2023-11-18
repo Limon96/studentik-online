@@ -4800,6 +4800,166 @@ input::placeholder{
 
 
 
+/*******************************account/avatar*************************************/
+
+.shadow_modal_avatar{
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #0000004a;
+    width: 100%;
+    height: 100vh;
+    z-index: 55;
+    display: none;
+}
+.shadow_modal_avatar .modal_for_avatere {
+    position: absolute;
+    width: 400px;
+    height: auto;
+    background: #fff;
+    padding: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.shadow_modal_avatar .modal_for_avatere .close_m_a{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+.shadow_modal_avatar .modal_for_avatere .close_m_a svg{
+    width: 15px;
+    height: 15px;
+}
+
+.shadow_modal_avatar .modal_for_avatere .body_a{
+
+}
+
+.shadow_modal_avatar .modal_for_avatere .body_a h2{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 22px;
+    color: #00324F;
+    margin: 15px 0 25px 0;
+    text-align: center;
+}
+
+.shadow_modal_avatar .modal_for_avatere .body_a .choise_avat{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.avatar_p{
+    width: 70px;
+    height: 70px;
+    border-radius: 60px;
+    display: block;
+    padding: 5px;
+
+}
+
+
+/* The container */
+.conteiner_radio_avatar {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 0 6px;
+}
+
+/* Hide the browser's default radio button */
+.conteiner_radio_avatar input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark_avat {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.conteiner_radio_avatar:hover input ~ .checkmark_avat {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.conteiner_radio_avatar input:checked ~ .checkmark_avat {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark_avat:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.conteiner_radio_avatar input:hover ~ .checkmark_avat:after {
+    display: block;
+
+}
+/* Show the indicator (dot/circle) when checked */
+.conteiner_radio_avatar input:checked ~ .checkmark_avat:after {
+    display: block;
+
+}
+
+/* Style the indicator (dot/circle) */
+.conteiner_radio_avatar .checkmark_avat:after {
+    top: 0;
+    left: 0;
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid #91b91d;
+}
+
+
+
+.body_a .in_inform {
+    margin: 20px 0 25px 0;
+    text-align: center;
+    font-size: 12px;
+}
+
+.body_a .upload_my_avatar{
+    border-radius: 21px;
+    padding: 7px 3px;
+    margin: 0 auto;
+    background: #1cb7ad;
+    font-size: 14px;
+    color: #fff;
+    display: block;
+    width: 211px;
+    text-align: center;
+    cursor: pointer;
+    border: 0;
+}
+
+.body_a .upload_my_avatar:hover{
+    background: #16958d;
+}
+
+
+
 /*******************************account/customer*************************************/
 
 
