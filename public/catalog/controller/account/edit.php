@@ -301,6 +301,35 @@ class ControllerAccountEdit extends Controller {
         $this->response->setOutput(json_encode($json));
     }
 
+    public function saveAvatar()
+    {
+        if (!$this->customer->isLogged()) {
+            $json['error'] = 1;
+            $json['message'] = $this->language->get('error_access_denied');
+
+        } else {
+            $this->load->language('account/edit');
+
+            $this->load->model('account/customer');
+
+            if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateSaveAvatar()) {
+                $this->model_account_customer->setCustomerAvatar($this->customer->getId(), $this->request->post['image']);
+
+                $json['success'] = $this->language->get('text_success');
+            } else {
+                $json['error'] = 1;
+                if (isset($this->error['image'])) {
+                    $json['error_image'] = $this->error['image'];
+                } else {
+                    $json['error_image'] = '';
+                }
+            }
+        }
+
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($json));
+    }
+
     protected function validate() {
 		if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
 			$this->error['firstname'] = $this->language->get('error_firstname');
@@ -358,6 +387,14 @@ class ControllerAccountEdit extends Controller {
 					$this->error['custom_field'][$custom_field['custom_field_id']] = sprintf($this->language->get('error_custom_field'), $custom_field['name']);
 				}
 			}
+		}
+
+		return !$this->error;
+	}
+
+    protected function validateSaveAvatar() {
+		if ((utf8_strlen(trim($this->request->post['image'])) < 1) || (utf8_strlen(trim($this->request->post['image'])) > 32)) {
+			$this->error['image'] = $this->language->get('error_image');
 		}
 
 		return !$this->error;

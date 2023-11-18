@@ -537,6 +537,11 @@ class ModelAccountCustomer extends Model {
         $this->db->query("UPDATE " . DB_PREFIX . "customer SET rating = rating + '" . (int)$rating . "' WHERE customer_id = '" . (int)$customer_id . "'");
     }
 
+    public function setCustomerAvatar($customer_id, $image)
+    {
+        $this->db->query("UPDATE " . DB_PREFIX . "customer SET image = '" . $this->db->escape($image) . "' WHERE customer_id = '" . (int)$customer_id . "'");
+    }
+
     public function setBalance($customer_id, $amount, $description = '')
     {
         $this->db->query("UPDATE " . DB_PREFIX . "customer SET balance = balance + '" . (float)$amount . "' WHERE customer_id = '" . (int)$customer_id . "'");
