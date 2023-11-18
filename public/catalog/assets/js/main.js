@@ -1,6 +1,98 @@
 $(document).ready(function(){
 
 
+    /**************************Выбор аватарки***********************/
+
+    $(document).on('click', '.open_avatar_modal', function(){
+        $('.shadow_modal_avatar').show();
+    });
+    $(document).on('click', '.upload_my_avatar', function(){
+        $('.shadow_modal_avatar2').show();
+        $('.shadow_modal_avatar').hide();
+    });
+
+
+    $(document).on('click', '.close_m_a, .close_m_a2', function(){
+        $('.shadow_modal_avatar').hide();
+        $('.shadow_modal_avatar2').hide();
+    });
+
+    $(document).mouseup( function(e){
+        var div = $( ".modal_for_avatere" );
+        if ( !div.is(e.target)
+            && div.has(e.target).length === 0 ) {
+            $('.shadow_modal_avatar').hide();
+        }
+    });
+
+    $(document).mouseup( function(e){
+        var div = $( ".modal_for_avatere2" );
+        if ( !div.is(e.target)
+            && div.has(e.target).length === 0 ) {
+            $('.shadow_modal_avatar2').hide();
+        }
+    });
+
+    $('.input-file input[type=file].cropsim').on('change', function(){
+        let file = this.files[0];
+        $(this).next().html(file.name);
+    });
+
+
+
+
+/*************************************************/
+
+    var resize = $('#upload-demo').croppie({
+        enableExif: true,
+        enableOrientation: true,
+        viewport: { // Default { width: 100, height: 100, type: 'square' }
+            width: 220,
+            height: 220,
+            type: 'circle' //square
+        },
+        boundary: {
+            width: 250,
+            height: 250
+        }
+    });
+
+
+    $('#image').on('change', function () {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            resize.croppie('bind',{
+                url: e.target.result
+            }).then(function(){
+                console.log('jQuery bind complete');
+            });
+        }
+        reader.readAsDataURL(this.files[0]);
+    });
+
+
+    $('.btn-upload-image').on('click', function (ev) {
+        resize.croppie('result', {
+            type: 'canvas',
+            size: 'viewport'
+        }).then(function (img) {
+            // $.ajax({
+            //   url: "image-crop.php",
+            //   type: "POST",
+            //   data: {"image":img},
+            //   success: function (data) {
+            //     html = '<img src="' + img + '" />';
+            //     $("#preview-crop-image").html(html);
+            //   }
+            // });
+            html = '<img src="' + img + '" />';
+            $("#preview-crop-image").html(html);
+        });
+    });
+
+
+
+
 
     /**************************Подсказка***********************/
 

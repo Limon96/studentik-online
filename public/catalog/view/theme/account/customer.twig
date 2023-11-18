@@ -373,7 +373,6 @@
         <div class="body_a">
             <h2>Выберите аватар</h2>
             <form id="modAvat">
-
             <div class="choise_avat">
                 <label class="conteiner_radio_avatar">
 
@@ -396,45 +395,67 @@
                     <span class="checkmark_avat"><img src="../img/a4.jpg" class="avatar_p"></span>
                 </label>
             </div>
-
+            </form>
                 <p class="in_inform">Выберите аватар из предложенных или загрузите свой</p>
                 <button class="upload_my_avatar">Загрузить свой аватар</button>
 
-
-
-            </form>
-
-
         </div>
-
     </div>
 </div>
 
 
-    <script>
+<div class="shadow_modal_avatar2">
+    <div class="modal_for_avatere2">
+        <div class="close_m_a2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+                <path d="M21.5 21L2.5 2" stroke="#1cb7ad" stroke-width="3"></path>
+                <path d="M2 21L21 2" stroke="#1cb7ad" stroke-width="3"></path>
+            </svg>
+        </div>
+
+        <div class="body_av2">
+            <h2>Загрузка аватара</h2>
+
+            <div class="raps_2">
+                <div class="left_g">
+                    <div id="upload-demo"></div>
+                </div>
+                <div class="right_g">
+
+                    <div id="preview-crop-image"></div>
 
 
 
-        $(document).on('click', '.open_avatar_modal', function(){
-            $('.shadow_modal_avatar').show();
-        });
+                    <label class="input-file">
+                        <input type="file" id="image" class="cropsim">
+                        <span>Выберите файл</span>
+                    </label>
 
 
-        $(document).on('click', '.close_m_a', function(){
-            $('.shadow_modal_avatar').hide();
-        });
-
-        $(document).mouseup( function(e){
-            var div = $( ".modal_for_avatere" );
-            if ( !div.is(e.target)
-                && div.has(e.target).length === 0 ) {
-                $('.shadow_modal_avatar').hide();
-            }
-        });
+                    <button class="btn btn-success btn-block btn-upload-image">Загрузить аватар</button>
 
 
 
-    </script>
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
