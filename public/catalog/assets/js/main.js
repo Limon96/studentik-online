@@ -33,10 +33,10 @@ $(document).ready(function(){
         }
     });
 
-    $('.input-file input[type=file].cropsim').on('change', function(){
+    /*$('.input-file input[type=file].cropsim').on('change', function(){
         let file = this.files[0];
         $(this).next().html(file.name);
-    });
+    });*/
 
 
 
@@ -76,18 +76,50 @@ $(document).ready(function(){
             type: 'canvas',
             size: 'viewport'
         }).then(function (img) {
-            // $.ajax({
-            //   url: "image-crop.php",
-            //   type: "POST",
-            //   data: {"image":img},
-            //   success: function (data) {
-            //     html = '<img src="' + img + '" />';
-            //     $("#preview-crop-image").html(html);
-            //   }
-            // });
-            html = '<img src="' + img + '" />';
-            $("#preview-crop-image").html(html);
+            $.ajax({
+               url: "/index.php?route=account/edit/uploadAvatar",
+               type: "POST",
+               data: {"image":img},
+               success: function (data) {
+                   console.log(data);
+
+                   if (data.success) {
+                       html = '<img src="' + img + '" />';
+                       $("#preview-crop-image").html(html);
+
+                       $('img.avatarka').attr('src', data.image);
+                       $('img.img_user').attr('src', data.image);
+
+                       $('.shadow_modal_avatar').hide();
+                       $('.shadow_modal_avatar2').hide();
+                   } else if (data.error) {
+                       console.error(data.error);
+                   }
+               }
+            });
         });
+    });
+
+    $('.btn-select-image').on('click', function (ev) {
+        $.ajax({
+           url: "/index.php?route=account/edit/saveAvatar",
+           type: "POST",
+           data: $('#modAvat').serialize(),
+           success: function (data) {
+               console.log(data);
+
+               if (data.success) {
+                   $('img.avatarka').attr('src', data.image);
+                   $('img.img_user').attr('src', data.image);
+
+                   $('.shadow_modal_avatar').hide();
+                   $('.shadow_modal_avatar2').hide();
+               } else if (data.error) {
+                   console.error(data.error);
+               }
+           }
+        });
+
     });
 
 
