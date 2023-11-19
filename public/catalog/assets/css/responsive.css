@@ -368,7 +368,9 @@
         opacity: 1;
     }
 
-
+    header .menu_nav ul li a {
+        font-size: 14px;
+    }
 
 
 }
@@ -378,6 +380,12 @@
     .body_output .larets button{
         margin: 0px 0 0px 0;
     }
+
+    header .menu_nav ul li a {
+        padding: 18px 5px 0px 5px;
+        font-size: 14px;
+    }
+
 }
 
 
@@ -418,7 +426,8 @@
 
 
     header .logo {
-        padding: 5px 0 0 0px;
+        padding: 8px 0 0 8px;
+        margin-left: 0px;
     }
 
 

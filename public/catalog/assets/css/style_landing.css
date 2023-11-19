@@ -2712,7 +2712,7 @@ footer .colling ul.massengers li a img{
     }
 
     header .menu_nav ul li a {
-        font-size: 14px!important;
+        font-size: 13px!important;
         padding: 10px 8px 0px 0px!important;
     }
 
@@ -3367,6 +3367,7 @@ footer .colling ul.massengers li a img{
 
     header .logo {
         padding: 0px 0 0 10px!important;
+        margin: 0;
     }
 
 

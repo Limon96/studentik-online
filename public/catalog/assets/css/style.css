@@ -4986,8 +4986,9 @@ input::placeholder{
 
 .shadow_modal_avatar .modal_for_avatere .body_a .choise_avat{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 
