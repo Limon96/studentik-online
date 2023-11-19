@@ -23,7 +23,24 @@
 <div class="upay clearfix">
     <h3>К оплате</h3>
     <div class="clearfix pay_line">
-        <p>Ставка автора {% if commission %} <span>+{{ commission}}%</span> {% endif %}</p>
+        <p>Ставка автора {% if commission %} <span>+{{ commission}}%</span>
+
+            {% endif %}</p><span class="infors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 48 48">
+                          <title>information-circle</title>
+                          <g id="Layer_2" data-name="Layer 2">
+                            <g id="invisible_box" data-name="invisible box">
+                              <rect width="48" height="48" fill="none"/>
+                            </g>
+                            <g id="icons_Q2" data-name="icons Q2">
+                              <path d="M24,2A22,22,0,1,0,46,24,21.9,21.9,0,0,0,24,2Zm0,40A18,18,0,1,1,42,24,18.1,18.1,0,0,1,24,42Z" fill="#b5b5b5"/>
+                              <path d="M24,20a2,2,0,0,0-2,2V34a2,2,0,0,0,4,0V22A2,2,0,0,0,24,20Z" fill="#b5b5b5"/>
+                              <circle cx="24" cy="14" r="2" fill="#b5b5b5"/>
+                            </g>
+                          </g>
+                        </svg>
+                    <span class="join_this">Комиссия сервиса взимается за обеспечение безопасности и проведение сделки, за поддержание корректной работы сайта.</span>
+                </span>
         <span>{{ earned }}</span>
     </div>
 </div><div class="promo clearfix"></div>

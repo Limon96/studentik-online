@@ -1,6 +1,27 @@
 $(document).ready(function(){
 
 
+
+    $(document).on('click', '.open_all_list', function(){
+
+
+
+        $(this).toggleClass('hiden');
+
+        $(this).parents('.pod_spech').toggleClass('boston');
+
+    });
+
+
+
+
+
+
+
+
+
+
+
     /**************************Выбор аватарки***********************/
 
     $(document).on('click', '.open_avatar_modal', function(){
@@ -282,7 +303,26 @@ $(document).ready(function(){
     };
 
 
-  var acc = document.getElementsByClassName("accordion_history");
+
+
+
+
+
+    $(document).on('click', '.accordion_history2', function(){
+
+        $(this).next().slideToggle('slow');
+        $(this).toggleClass('active');
+
+    });
+
+
+
+
+
+
+
+
+    var acc = document.getElementsByClassName("accordion_history");
     var i;
 
     for (i = 0; i < acc.length; i++) {

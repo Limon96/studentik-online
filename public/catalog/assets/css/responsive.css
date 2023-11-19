@@ -1615,7 +1615,7 @@
         border: 0;
         padding: 5px 9px;
         border-radius: 3px;
-        margin-left: auto;
+        margin-left: 0;
         margin-top: 4px;
     }
 
@@ -1955,6 +1955,18 @@
         width: 100%;
     }
     .specialist .panel_climd .change_wrap .item_history .pod_spech ul li {
+        width: 100%;
+    }
+
+    .specialist .panel_climd2 .change_wrap .item_history .nazva_spech {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 10px 10px 0px 10px;
+    }
+    .specialist .panel_climd2 .change_wrap .item_history .pod_spech {
+        width: 100%;
+    }
+    .specialist .panel_climd2 .change_wrap .item_history .pod_spech ul li {
         width: 100%;
     }
 
@@ -3255,6 +3267,21 @@
 
 
 
+    .specialist .panel_climd2 .change_wrap .item_history .nazva_spech {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 10px 10px 0px 10px;
+    }
+    .specialist .panel_climd2 .change_wrap .item_history .pod_spech {
+        width: 100%;
+    }
+
+    .specialist .panel_climd2 .change_wrap .item_history .pod_spech ul li {
+        width: 100%;
+    }
+
+
+
 
 
     .info_work .about_zak .zak_fom .col-6:first-child .toopfert:last-child {
@@ -3757,7 +3784,47 @@
 }
 
 
+@media (min-width: 681px) and (max-width: 991px){
 
+
+    header .menu_nav ul.active {
+        display: flex;
+        min-width: 100vw;
+        position: fixed;
+        background: #fff;
+        left: 0;
+        top: 50px;
+    }
+
+
+    header .menu_nav ul{
+        display: none;
+    }
+
+    .toogle_menu {
+        margin-left: 0;
+    }
+
+    header .menu_nav ul li a {
+        font-size: 13px;
+        padding: 9px 12px;
+        text-align: center;
+    }
+
+    header .logo {
+        padding: 10px 0 0 0px;
+        margin: 0 11px 0 0;
+    }
+
+
+
+
+
+
+
+
+
+}
 
 
 

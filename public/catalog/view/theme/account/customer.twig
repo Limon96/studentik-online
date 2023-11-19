@@ -87,11 +87,11 @@
 
                         {% if customer_group_id == 2 %}
                         <div class="specialist">
-                                <button class="accordion_history clearfix">
+                                <button class="accordion_history2 clearfix">
                                     <span class="name_k">{{ text_specialization }}</span>
                                     <img class="arrow_tr" src="../catalog/assets/img/icons/arrow.svg">
                                 </button>
-                                <div class="panel_climd" style="">
+                                <div class="panel_climd2 ">
                                     <div class="change_wrap clearfix">
                                         {% for section in sections %}
                                         <div class="item_history clearfix">
@@ -99,11 +99,16 @@
                                                 <p>{{ section.name }}</p>
                                             </div>
                                             <div class="pod_spech clearfix">
-                                                <ul>
+                                                <ul class="list_trops">
                                                     {% for subject in section.subjects %}
-                                                    <li>{{ subject.subject }}</li>
+                                                    <li class="item_trops">{{ subject.subject }}</li>
                                                     {% endfor %}
                                                 </ul>
+                                                <button class="open_all_list">
+                                                    <span class="ff1">Показать всё...</span>
+                                                    <span class="ff2">Скрыть</span>
+                                                </button>
+
                                             </div>
                                         </div>
                                         {% endfor %}
@@ -396,8 +401,10 @@
                 </label>
             </div>
             </form>
+            <button class="btn btn-success btn-block btn-select-image choisethis">Выбрать</button>
+
             <p class="in_inform">Выберите аватар из предложенных или загрузите свой</p>
-            <button class="btn btn-success btn-block btn-select-image">Выбрать</button>
+
             <button class="upload_my_avatar">Загрузить свой аватар</button>
 
         </div>
@@ -446,13 +453,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
 
 
 
