@@ -3115,12 +3115,24 @@
     .item_worker_perfom .info_worker .enter_like {
         float: left;
         width: 100%;
+        text-align: center;
+        margin: 9px 0 0;
     }
     .item_worker_perfom .info_worker .lit_hed {
         min-width: 100%;
+        text-align: center;
     }
-
-
+    .item_worker_perfom .info_worker .lit_foot .enter {
+        float: left;
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+    .item_worker_perfom .info_worker .lit_foot {
+        float: left;
+        width: 100%;
+        margin: 12px 0 0;
+    }
 
     .specialist.otziv .nazva_otziv .headers {
         position: relative;
@@ -3392,7 +3404,7 @@
     .item_worker_perfom .img_face {
         padding-right: 0px;
         width: 100%;
-        margin: 0 0 10px 0;
+        margin: 0 0 0px 0;
         text-align: center;
     }
 
