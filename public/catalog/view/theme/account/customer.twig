@@ -17,7 +17,7 @@
                     <div class="info_work">
                         <div class="item_worker_perfom clearfix">
                             <div class="img_face clearfix">
-                                {% if is_owner %}
+                                {% if is_owner or is_admin %}
                                <a class="open_avatar_modal">
                                     <img src="{{ image }}" alt="{{ login }}" class="img_user">
 
@@ -419,6 +419,9 @@
                     </label>
 
                 </div>
+                {% if is_admin %}
+                <input type="hidden" name="customer_id" value="{{ customer_id }}">
+                {% endif %}
             </form>
             <button class="btn btn-success btn-block btn-select-image choisethis">Выбрать</button>
 

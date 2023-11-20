@@ -318,7 +318,12 @@ class ControllerAccountEdit extends Controller
             if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateSaveAvatar()) {
                 $json['success'] = $this->language->get('text_success');
 
-                $this->model_account_customer->setCustomerAvatar($this->customer->getId(), $this->request->post['image']);
+                if ($this->customer->isAdmin() && isset($this->request->post['customer_id'])) {
+                    $this->model_account_customer->setCustomerAvatar((int)$this->request->post['customer_id'], $this->request->post['image']);
+                } else {
+                    $this->model_account_customer->setCustomerAvatar($this->customer->getId(), $this->request->post['image']);
+                }
+
                 $this->load->model('tool/image');
                 $json['image'] = $this->model_tool_image->resize($this->request->post['image'], 80, 80);
             } else {
@@ -350,7 +355,13 @@ class ControllerAccountEdit extends Controller
                 $json['success'] = $this->language->get('text_success');
 
                 $image = $this->base64_to_jpeg($this->request->post['image'], $this->customer->getCustomerAvatarPath());
-                $this->model_account_customer->setCustomerAvatar($this->customer->getId(), $image);
+
+                if ($this->customer->isAdmin() && isset($this->request->post['customer_id'])) {
+                    $this->model_account_customer->setCustomerAvatar((int)$this->request->post['customer_id'], $image);
+                } else {
+                    $this->model_account_customer->setCustomerAvatar($this->customer->getId(), $image);
+                }
+
                 $this->load->model('tool/image');
                 $json['image'] = $this->model_tool_image->resize($image, 80, 80);
             } else {

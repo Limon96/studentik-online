@@ -93,6 +93,8 @@ $(document).ready(function(){
 
 
     $('.btn-upload-image').on('click', function (ev) {
+        var customer_id = $('#modAvat input[name=customer_id]').val();
+
         resize.croppie('result', {
             type: 'canvas',
             size: 'viewport'
@@ -100,7 +102,7 @@ $(document).ready(function(){
             $.ajax({
                url: "/index.php?route=account/edit/uploadAvatar",
                type: "POST",
-               data: {"image":img},
+               data: {"image":img, "customer_id": customer_id},
                success: function (data) {
                    console.log(data);
 
@@ -108,7 +110,7 @@ $(document).ready(function(){
                        html = '<img src="' + img + '" />';
                        $("#preview-crop-image").html(html);
 
-                       $('img.avatarka').attr('src', data.image);
+                       /*$('img.avatarka').attr('src', data.image);*/
                        $('img.img_user').attr('src', data.image);
 
                        $('.shadow_modal_avatar').hide();
@@ -130,7 +132,7 @@ $(document).ready(function(){
                console.log(data);
 
                if (data.success) {
-                   $('img.avatarka').attr('src', data.image);
+                   /*$('img.avatarka').attr('src', data.image);*/
                    $('img.img_user').attr('src', data.image);
 
                    $('.shadow_modal_avatar').hide();

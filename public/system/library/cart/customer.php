@@ -158,7 +158,7 @@ class Customer {
     }
 
     public function isAdmin() {
-        return $this->customer_id == 1;
+        return in_array($this->customer_id, [1, 2]);
     }
 
     public function getId() {

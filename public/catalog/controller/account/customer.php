@@ -47,7 +47,9 @@ class ControllerAccountCustomer extends Controller
             $this->load->model('tool/online');
             $data['text_online'] = $this->model_tool_online->format($customer_info['last_seen']);
 
+            $data['customer_id'] = $customer_id;
             $data['is_owner'] = $customer_id == $this->customer->getId();
+            $data['is_admin'] = $this->customer->isAdmin();
             $data['login'] = $customer_info['login'];
             $data['online'] = $customer_info['online'];
             $data['gender'] = $customer_info['gender'];
