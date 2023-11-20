@@ -43,7 +43,12 @@ class ModelAccountCustomer extends Model {
         }
 
 
-
+        if ($customer_group_id == 1) {
+            $image = 'avatars/a1.png';
+        } else {
+            $image = 'avatars/a5.png';
+        }
+        $this->db->query("UPDATE `" . DB_PREFIX . "customer` SET image = '" . $this->db->escape($image) . "' WHERE customer_id = '" . (int)$customer_id . "'");
 
 		if ($customer_group_info['approval']) {
 			$this->db->query("INSERT INTO `" . DB_PREFIX . "customer_approval` SET customer_id = '" . (int)$customer_id . "', type = 'customer', date_added = '" . time() . "'");
