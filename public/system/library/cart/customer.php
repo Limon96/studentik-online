@@ -221,6 +221,15 @@ class Customer {
         return $this->partner_code;
     }
 
+    public function getCustomerAvatarPath() {
+        return $this->getCustomerPath() .'avatars/';
+    }
+
+
+    public function getCustomerPath() {
+        return 'customers/user' . $this->customer_id .'/';
+    }
+
     public function getLongPollKey() {
 
         $result = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_longpoll WHERE customer_id = '" . (int)$this->getId() . "' AND expired > '" . (time() + 1800)  . "' ORDER BY date_added DESC LIMIT 1");

@@ -349,7 +349,7 @@ class ControllerAccountEdit extends Controller
             if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateSaveAvatar()) {
                 $json['success'] = $this->language->get('text_success');
 
-                $image = $this->base64_to_jpeg($this->request->post['image'], 'avatars/');
+                $image = $this->base64_to_jpeg($this->request->post['image'], $this->customer->getCustomerAvatarPath());
                 $this->model_account_customer->setCustomerAvatar($this->customer->getId(), $image);
                 $this->load->model('tool/image');
                 $json['image'] = $this->model_tool_image->resize($image, 80, 80);
@@ -443,12 +443,14 @@ class ControllerAccountEdit extends Controller
     {
         $filename = md5(microtime(true) . rand(10000, 99999));
 
-        $output_file .= substr($filename, 0, 2) . '/' . substr($filename, 2, 2) . '/';
-
         $path_output_file = DIR_IMAGE . $output_file;
 
         if (!file_exists($path_output_file)) {
             mkdir($path_output_file, 0777, true);
+        } else {
+            foreach (glob($path_output_file . '*') as $file) {
+                unlink($file);
+            }
         }
 
         $output_file .= $filename . '.png';
