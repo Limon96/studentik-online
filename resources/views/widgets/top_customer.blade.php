@@ -4,7 +4,7 @@
     @foreach($customers as $customer)
     <div class="item_worker clearfix">
         <div class="img_face clearfix">
-            <a href="/user/{{ $customer->login }}"><img src="{{ thumbnail($customer->getImage(), 80) }}" alt="{{ $customer->login }}"></a>
+            <a href="/user/{{ $customer->login }}"><img src="{{ $customer->getImage() }}" alt="{{ $customer->login }}"></a>
         </div>
         <div class="info_worker clearfix">
             <div class="lit_hed clearfix">
