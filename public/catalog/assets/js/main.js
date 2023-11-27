@@ -64,19 +64,21 @@ $(document).ready(function(){
 
 /*************************************************/
 
-    var resize = $('#upload-demo').croppie({
-        enableExif: true,
-        enableOrientation: true,
-        viewport: { // Default { width: 100, height: 100, type: 'square' }
-            width: 220,
-            height: 220,
-            type: 'circle' //square
-        },
-        boundary: {
-            width: 250,
-            height: 250
-        }
-    });
+    if ($('#upload-demo').length) {
+        var resize = $('#upload-demo').croppie({
+            enableExif: true,
+            enableOrientation: true,
+            viewport: { // Default { width: 100, height: 100, type: 'square' }
+                width: 220,
+                height: 220,
+                type: 'circle' //square
+            },
+            boundary: {
+                width: 250,
+                height: 250
+            }
+        });
+    }
 
 
     $('#image').on('change', function () {
