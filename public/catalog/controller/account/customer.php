@@ -1,6 +1,8 @@
 <?php
 class ControllerAccountCustomer extends Controller
 {
+
+    const AVATAR_SIZE = 160;
     public function index()
     {
         $this->load->language('account/customer');
@@ -39,9 +41,9 @@ class ControllerAccountCustomer extends Controller
             $this->load->model('tool/image');
 
             if ($customer_info['image']) {
-                $data['image'] = $this->model_tool_image->resize($customer_info['image'], 80, 80);
+                $data['image'] = $this->model_tool_image->resize($customer_info['image'], self::AVATAR_SIZE, self::AVATAR_SIZE);
             } else {
-                $data['image'] = $this->model_tool_image->resize('profile.png', 80, 80);
+                $data['image'] = $this->model_tool_image->resize('profile.png', self::AVATAR_SIZE, self::AVATAR_SIZE);
             }
 
             $this->load->model('tool/online');
