@@ -31,7 +31,7 @@ class SigmaController extends Controller
                 "Пополнение счета #{$payment->payment_id}"
             ),
             new Settings(
-                4219,
+                config('sigma.project_id'),
                 $payment->payment_method,
                 route('payment.sigma.success', ['pid' => $payment_id, 'cid' => $customer_id]),
                 route('payment.sigma.fail', ['pid' => $payment_id, 'cid' => $customer_id]),
@@ -68,6 +68,7 @@ class SigmaController extends Controller
 
     public function success(Request $request)
     {
+        file_put_contents('sdas.log', file_get_contents('sdas.log') . "\n\r================\n\r" . print_r($request->all(), true));
         return redirect(
             url('/index.php?route=account/finance/success')
         );
@@ -76,12 +77,12 @@ class SigmaController extends Controller
 
     public function callback(Request $request)
     {
-        file_put_contents('sdas.log', file_get_contents('sdas.log') . "\n\r================\n\r" . print_r($request->all(), true));
     }
 
 
     public function fail(Request $request)
     {
+        file_put_contents('sdas.log', file_get_contents('sdas.log') . "\n\r================\n\r" . print_r($request->all(), true));
         return redirect(
             url('/index.php?route=account/finance/canceled')
         );
