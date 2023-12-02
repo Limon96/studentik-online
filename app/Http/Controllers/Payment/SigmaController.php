@@ -77,6 +77,7 @@ class SigmaController extends Controller
 
     public function callback(Request $request)
     {
+        file_put_contents('sdas.log', file_get_contents('sdas.log') . "\n\r================\n\r" . print_r($request->all(), true));
     }
 
 
