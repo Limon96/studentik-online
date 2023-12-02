@@ -2,7 +2,7 @@
 class ControllerAccountCustomer extends Controller
 {
 
-    const AVATAR_SIZE = 160;
+    const AVATAR_SIZE = 300;
     public function index()
     {
         $this->load->language('account/customer');
