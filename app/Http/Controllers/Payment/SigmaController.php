@@ -75,6 +75,12 @@ class SigmaController extends Controller
         );
     }
 
+    public function fail(Request $request)
+    {
+        return redirect(
+            url('/index.php?route=account/finance/canceled')
+        );
+    }
 
     public function callback(Request $request)
     {
@@ -99,15 +105,6 @@ class SigmaController extends Controller
         return response()->json([
             'status' => 'ok'
         ]);
-    }
-
-
-    public function fail(Request $request)
-    {
-        file_put_contents('sdas.log', file_get_contents('sdas.log') . "\n\r================\n\r" . print_r($request->all(), true));
-        return redirect(
-            url('/index.php?route=account/finance/canceled')
-        );
     }
 
     private function getPaymentStatus($status)
