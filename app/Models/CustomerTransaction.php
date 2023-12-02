@@ -23,7 +23,4 @@ class CustomerTransaction extends Model
         'date_added',
     ];
 
-    protected $casts = [
-        'date_added' => 'datetime',
-    ];
 }

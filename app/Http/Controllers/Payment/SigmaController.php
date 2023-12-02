@@ -70,13 +70,6 @@ class SigmaController extends Controller
 
     public function success(Request $request)
     {
-        $payment_id = $request->get('pid');
-
-        $payment = \App\Models\Payment::find($payment_id);
-        $sigma = new SigmaNet();
-
-        $paymentInfo = $sigma->get($payment->platform_payment_id);
-
         return redirect(
             url('/index.php?route=account/finance/success')
         );
@@ -98,8 +91,8 @@ class SigmaController extends Controller
             ]);
 
             if ($status == 'successful') {
-                (new SetCustomerBalance($status->customer, $payment->amount))->handle();
-                (new SetCustomerBalanceTransaction($status->customer, $payment->amount))->handle();
+                (new SetCustomerBalance($payment->customer, $payment->amount))->handle();
+                (new SetCustomerBalanceTransaction($payment->customer, $payment->amount))->handle();
             }
         }
 
