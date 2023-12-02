@@ -1,0 +1,32 @@
+<div class="modal_up_pay clearfix">
+    <div class="modal_logo clearfix">
+        <img src="{{ thumb }}" class="logo_pay">
+    </div>
+    <h3>{{ name }}</h3>
+    <p>Комиссия : {{ commission }} </p>
+    <div class="color_bink clearfix">
+        <input type="text" name="amount" value="{{ amount }}" placeholder="Сумма пополнения">
+        <div class="wrap_btn_ultima clearfix">
+            <button type="button" class="popolnyan">Пополнить</button>
+        </div>
+        <script>
+            $(document).on('click', '.modal_up_pay button.popolnyan',function (e) {
+                e.preventDefault();
+                $('.alert-error').remove();
+                $.ajax({
+                    url : '{{ action }}&amount=' + parseInt($(this).parents('.modal_up_pay').find('input[name=amount]').val()),
+                    method : 'GET',
+                    dataType : 'json',
+                    success : function (json) {
+                        if (json['error']) {
+                            $('.modal_up_pay').prepend('<div class="alert-error">' + json['error'] + '</div>');
+                        }
+                        if (json['redirect']) {
+                            location.href = json['redirect'].replace('&amp;', '&');
+                        }
+                    }
+                });
+            });
+        </script>
+    </div>
+</div>
