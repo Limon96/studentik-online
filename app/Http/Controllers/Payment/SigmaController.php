@@ -9,6 +9,8 @@ use App\Payments\SigmaNet\Classes\Payment;
 use App\Payments\SigmaNet\Classes\Receipt;
 use App\Payments\SigmaNet\Classes\Settings;
 use App\Payments\SigmaNet\SigmaNet;
+use App\Services\SetCustomerBalance;
+use App\Services\SetCustomerBalanceTransaction;
 use Illuminate\Http\Request;
 
 class SigmaController extends Controller
@@ -74,7 +76,7 @@ class SigmaController extends Controller
         $sigma = new SigmaNet();
 
         $paymentInfo = $sigma->get($payment->platform_payment_id);
-        dd($paymentInfo);
+
         return redirect(
             url('/index.php?route=account/finance/success')
         );
@@ -84,6 +86,22 @@ class SigmaController extends Controller
     public function callback(Request $request)
     {
         file_put_contents('sdas.log', file_get_contents('sdas.log') . "\n\r================\n\r" . print_r($request->all(), true));
+
+        $token = $request->get('token');
+        $status = $request->get('status');
+
+        $payment = \App\Models\Payment::where('platform_payment_id', $token)->first();
+
+        if ($payment->payment_status_id == 1) {
+            $payment->update([
+                'payment_status_id' => $this->getPaymentStatus($status)
+            ]);
+
+            if ($status == 'successful') {
+                (new SetCustomerBalance($status->customer, $payment->amount))->handle();
+                (new SetCustomerBalanceTransaction($status->customer, $payment->amount))->handle();
+            }
+        }
 
         return response()->json([
             'status' => 'ok'
@@ -97,6 +115,16 @@ class SigmaController extends Controller
         return redirect(
             url('/index.php?route=account/finance/canceled')
         );
+    }
+
+    private function getPaymentStatus($status)
+    {
+        return match ($status) {
+            "process" => 1,
+            "successful" => 2,
+            "canceled" => 3,
+            default => 4,
+        };
     }
 
 }
