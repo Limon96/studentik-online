@@ -23,6 +23,21 @@ class SigmaNet implements PaymentMethod
             ->json();
     }
 
+    public function get($token)
+    {
+        return Http
+            ::withHeaders([
+                'Authorization' => 'Bearer ' . config('sigma.email') . ':' . config('sigma.api_key')
+            ])
+            ->post(
+                'https://api.sigma.net/v1/payment/get',
+                [
+                    'token' => $token
+                ]
+            )
+            ->json();
+    }
+
     public function callback()
     {
         // TODO: Implement callback() method.

@@ -68,7 +68,13 @@ class SigmaController extends Controller
 
     public function success(Request $request)
     {
-        file_put_contents('sdas.log', file_get_contents('sdas.log') . "\n\r================\n\r" . print_r($request->all(), true));
+        $payment_id = $request->get('pid');
+
+        $payment = \App\Models\Payment::find($payment_id);
+        $sigma = new SigmaNet();
+
+        $paymentInfo = $sigma->get($payment->platform_payment_id);
+        dd($paymentInfo);
         return redirect(
             url('/index.php?route=account/finance/success')
         );
