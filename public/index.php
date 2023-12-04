@@ -8,7 +8,7 @@ if (isLaravelUrl()) {
 
 function getPrep($str)
 {
-    return '/\/' . addslashes($str) . '(.*)/m';
+    return '/^\/' . $str . '(.*)/m';
 }
 
 function isLaravelUrl()
@@ -19,5 +19,6 @@ function isLaravelUrl()
         || preg_match(getPrep('_manager'), $_SERVER['REQUEST_URI'])
         || preg_match(getPrep('_debugbar'), $_SERVER['REQUEST_URI'])
         || preg_match(getPrep('api'), $_SERVER['REQUEST_URI'])
+        || preg_match(getPrep('payment\/sigma'), $_SERVER['REQUEST_URI'])
     ;
 }

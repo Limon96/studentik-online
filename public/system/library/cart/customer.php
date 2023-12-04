@@ -158,7 +158,7 @@ class Customer {
     }
 
     public function isAdmin() {
-        return $this->customer_id == 1;
+        return in_array($this->customer_id, [1, 2]);
     }
 
     public function getId() {
@@ -219,6 +219,15 @@ class Customer {
 
     public function getPartnerCode() {
         return $this->partner_code;
+    }
+
+    public function getCustomerAvatarPath() {
+        return $this->getCustomerPath() .'avatars/';
+    }
+
+
+    public function getCustomerPath() {
+        return 'customers/user' . $this->customer_id .'/';
     }
 
     public function getLongPollKey() {

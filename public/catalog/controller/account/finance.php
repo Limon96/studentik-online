@@ -1,4 +1,5 @@
 <?php
+
 class ControllerAccountFinance extends Controller
 {
     private $error = array();
@@ -117,36 +118,54 @@ class ControllerAccountFinance extends Controller
 
         $data['payment_methods'] = [
 
-            [
+            /*[
                 'name' => 'СПБ',
                 'thumb' => HTTP_SERVER . 'catalog/assets/img/sbp.png',
                 'commission' => '1%',
                 'href' => str_replace('&amp;','&',$this->url->link('extension/payment/yookassa', 'type=sbp' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('1%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/sbp.png&name=Система Быстрых Платежей'))
-            ],
-
-            [
+            ],*/
+            /*[
                 'name' => 'Банковской картой',
                 'thumb' => HTTP_SERVER . 'catalog/assets/img/bans.png',
                 'commission' => '3%',
                 'href' => str_replace('&amp;','&',$this->url->link('extension/payment/yookassa', 'type=bank_card' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('3%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/bans.png&name=Банковской картой'))
-            ],
-            [
+            ],*/
+            /*[
                 'name' => 'ЮMoney',
                 'thumb' => HTTP_SERVER . 'catalog/assets/img/yuyu.png',
                 'commission' => '4%',
                 'href' => str_replace('&amp;','&',$this->url->link('extension/payment/yookassa', 'type=yoo_money' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('4%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/yuyu.png&name=ЮMoney'))
-            ],
+            ],*/
             /*[
                 'name' => 'WebMoney',
                 'thumb' => HTTP_SERVER . 'catalog/assets/img/webmoney.png',
                 'commission' => '6%',
                 'href' => str_replace('&amp;','&',$this->url->link('extension/payment/yookassa', 'type=webmoney' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('6%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/webmoney.png&name=WebMoney'))
             ],*/
-            [
+            /*[
                 'name' => 'QIWI',
                 'thumb' => HTTP_SERVER . 'catalog/assets/img/qiwi.png',
                 'commission' => '6%',
                 'href' => str_replace('&amp;','&',$this->url->link('extension/payment/yookassa', 'type=qiwi' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('6%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/qiwi.png&name=QIWI'))
+            ],*/
+            [
+                'name' => 'QIWI (Sigma)',
+                'thumb' => HTTP_SERVER . 'catalog/assets/img/qiwi.png',
+                'commission' => '6%',
+                'href' => str_replace('&amp;', '&', $this->url->link('extension/payment/sigma', 'type=qiwi' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('6%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/qiwi.png&name=QIWI'))
+            ],
+            [
+                'name' => 'СПБ',
+                'thumb' => HTTP_SERVER . 'catalog/assets/img/sbp.png',
+                'commission' => '1%',
+                'href' => str_replace('&amp;', '&', $this->url->link('extension/payment/sigma', 'type=sbp' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('1%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/sbp.png&name=Система Быстрых Платежей'))
+            ],
+
+            [
+                'name' => 'Банковской картой',
+                'thumb' => HTTP_SERVER . 'catalog/assets/img/bans.png',
+                'commission' => '3%',
+                'href' => str_replace('&amp;', '&', $this->url->link('extension/payment/sigma', 'type=bank_card' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('3%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/bans.png&name=Банковской картой'))
             ],
         ];
 
@@ -231,8 +250,6 @@ class ControllerAccountFinance extends Controller
 
         $this->response->setOutput($this->load->view('account/finance_output', $data));
     }
-
-
 
 
     public function success()

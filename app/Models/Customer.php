@@ -30,10 +30,10 @@ class Customer extends Model
     public function getImage()
     {
         if (empty($this->attributes['image'])) {
-            return 'storage/image/profile.png';
+            return '/storage/image/profile.png';
         }
 
-        return $this->attributes['image'];
+        return '/image/' . $this->attributes['image'];
     }
 
     public function getCountPositiveReviews()

@@ -46,6 +46,11 @@ Route::get('/user/{slug}', function ($slug) {
     return $slug;
 })->name('user.show');
 
+Route::get('/payment/sigma/create', [\App\Http\Controllers\Payment\SigmaController::class, 'create'])->name('payment.sigma.create');
+Route::post('/payment/sigma/callback', [\App\Http\Controllers\Payment\SigmaController::class, 'callback'])->name('payment.sigma.callback');
+Route::get('/payment/sigma/success', [\App\Http\Controllers\Payment\SigmaController::class, 'success'])->name('payment.sigma.success');
+Route::get('/payment/sigma/fail', [\App\Http\Controllers\Payment\SigmaController::class, 'fail'])->name('payment.sigma.fail');
+
 #Route::get('sign_in', [\App\Http\Controllers\Auth\SignInController::class, 'showLoginForm'])->name('sign_in');
 #Route::post('sign_in', [\App\Http\Controllers\Auth\SignInController::class, 'login']);
 
