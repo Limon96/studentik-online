@@ -5320,8 +5320,8 @@ input[type=range].cr-slider::-webkit-slider-thumb {
 
 .item_worker_perfom .img_face .change_foto {
     margin: 0;
-    width: 85px;
-    height: 85px;
+    width: 100%;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
