@@ -23,7 +23,7 @@ class SigmaController extends Controller
 
         $payment = \App\Models\Payment::find($payment_id);
         $customer = \App\Models\Customer::find($customer_id);
-        
+
         $telephone = $request->get('telephone', $customer->telephone);
 
         $sigma = new SigmaNet();
