@@ -2,9 +2,6 @@
 
 class ControllerExtensionPaymentSigma extends Controller
 {
-
-
-
     private $white_list = ['card', 'qiwi', 'sbp'];
 
     public function index()
@@ -40,6 +37,8 @@ class ControllerExtensionPaymentSigma extends Controller
                 $commission = $this->language->get('text_unknown');
             }
 
+            $data['telephone'] = $this->customer->getTelephone();
+            $data['type'] = $type;
             $data['amount'] = $amount;
             $data['name'] = $name;
             $data['commission'] = $commission;
@@ -82,7 +81,7 @@ class ControllerExtensionPaymentSigma extends Controller
         if (isset($this->request->get['type']) && in_array($this->request->get['type'], $this->white_list)) {
             $type = $this->request->get['type'];
         } else {
-            $type = 'bank_card';
+            $type = 'card';
         }
 
         $json = [];
@@ -102,8 +101,11 @@ class ControllerExtensionPaymentSigma extends Controller
                 'ip' => $this->request->server['HTTP_X_REAL_IP']
             ]);
 
-
-            $json['redirect'] = HTTPS_SERVER . 'payment/sigma/create?pid=' . (int)$payment_id . '&cid=' . $this->customer->getId();
+            if ($this->request->get['type'] == 'qiwi') {
+                $json['redirect'] = HTTPS_SERVER . 'payment/sigma/create?pid=' . (int)$payment_id . '&cid=' . $this->customer->getId() . '&telephone=' . $this->request->get['telephone'];
+            } else {
+                $json['redirect'] = HTTPS_SERVER . 'payment/sigma/create?pid=' . (int)$payment_id . '&cid=' . $this->customer->getId();
+            }
         }
 
         $this->response->addHeader('Content-Type: application/json');

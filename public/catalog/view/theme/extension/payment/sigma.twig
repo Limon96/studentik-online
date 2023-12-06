@@ -5,6 +5,9 @@
     <h3>{{ name }}</h3>
     <p>Комиссия : {{ commission }} </p>
     <div class="color_bink clearfix">
+        {% if type == 'qiwi' %}
+            <input type="text" name="telephone" value="{{ telephone }}" placeholder="Номер телефона">
+        {% endif %}
         <input type="text" name="amount" value="{{ amount }}" placeholder="Сумма пополнения">
         <div class="wrap_btn_ultima clearfix">
             <button type="button" class="popolnyan">Пополнить</button>
@@ -14,7 +17,7 @@
                 e.preventDefault();
                 $('.alert-error').remove();
                 $.ajax({
-                    url : '{{ action }}&amount=' + parseInt($(this).parents('.modal_up_pay').find('input[name=amount]').val()),
+                    url : '{{ action }}&amount=' + parseInt($(this).parents('.modal_up_pay').find('input[name=amount]').val()) + '&telephone=' + $(this).parents('.modal_up_pay').find('input[name=telephone]').val(),
                     method : 'GET',
                     dataType : 'json',
                     success : function (json) {
