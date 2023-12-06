@@ -149,18 +149,17 @@ class ControllerAccountFinance extends Controller
                 'href' => str_replace('&amp;','&',$this->url->link('extension/payment/yookassa', 'type=qiwi' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('6%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/qiwi.png&name=QIWI'))
             ],*/
             [
-                'name' => 'QIWI (Sigma)',
-                'thumb' => HTTP_SERVER . 'catalog/assets/img/qiwi.png',
-                'commission' => '6%',
-                'href' => str_replace('&amp;', '&', $this->url->link('extension/payment/sigma', 'type=qiwi' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('6%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/qiwi.png&name=QIWI'))
-            ],
-            [
                 'name' => 'СПБ',
                 'thumb' => HTTP_SERVER . 'catalog/assets/img/sbp.png',
                 'commission' => '1%',
                 'href' => str_replace('&amp;', '&', $this->url->link('extension/payment/sigma', 'type=sbp' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('1%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/sbp.png&name=Система Быстрых Платежей'))
             ],
-
+            [
+                'name' => 'QIWI (Sigma)',
+                'thumb' => HTTP_SERVER . 'catalog/assets/img/qiwi.png',
+                'commission' => '6%',
+                'href' => str_replace('&amp;', '&', $this->url->link('extension/payment/sigma', 'type=qiwi' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('6%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/qiwi.png&name=QIWI'))
+            ],
             [
                 'name' => 'Банковской картой',
                 'thumb' => HTTP_SERVER . 'catalog/assets/img/bans.png',
