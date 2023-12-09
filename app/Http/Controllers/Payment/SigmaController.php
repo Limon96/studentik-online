@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Payment;
 
 use App\Http\Controllers\Controller;
+use App\Models\Setting;
 use App\Payments\SigmaNet\Classes\Item;
 use App\Payments\SigmaNet\Classes\Order;
 use App\Payments\SigmaNet\Classes\Payment;
@@ -40,7 +41,7 @@ class SigmaController extends Controller
                 route('payment.sigma.success', ['pid' => $payment_id, 'cid' => $customer_id]),
                 route('payment.sigma.fail', ['pid' => $payment_id, 'cid' => $customer_id]),
                 route('payment.sigma.success', ['pid' => $payment_id, 'cid' => $customer_id]),
-                8617,
+                Setting::get('wallet_id'),
                 true
             ),
             new Receipt(

@@ -74,5 +74,11 @@
                 @endif
             </ul>
         </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.setting') }}" class="nav-link @if(Route::is('admin.setting')) active @endif">
+                <i class="icon ion-ios-gear-outline"></i>
+                <span>Настройки</span>
+            </a>
+        </li><!-- nav-item -->
     </ul>
 </div>

@@ -34,5 +34,10 @@ Route::prefix('_manager')->group(function() {
             Route::post('newsletter', [\App\Http\Controllers\Feedback\Admin\NewsletterController::class, 'send'])->name('newsletter.send');
             Route::get('preview', [\App\Http\Controllers\Feedback\Admin\PreviewMailController::class, 'index'])->name('preview.index');
         });
+
+        /* Settings */
+
+        Route::get('/settings', [\App\Http\Controllers\Setting\Admin\SettingController::class, 'index'])->name('admin.setting');
+        Route::post('/settings', [\App\Http\Controllers\Setting\Admin\SettingController::class, 'update']);
     });
 });
