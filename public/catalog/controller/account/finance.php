@@ -151,8 +151,8 @@ class ControllerAccountFinance extends Controller
             [
                 'name' => 'СПБ',
                 'thumb' => HTTP_SERVER . 'catalog/assets/img/sbp.png',
-                'commission' => '1%',
-                'href' => str_replace('&amp;', '&', $this->url->link('extension/payment/sigma', 'type=sbp' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('1%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/sbp.png&name=Система Быстрых Платежей'))
+                'commission' => '1.5%',
+                'href' => str_replace('&amp;', '&', $this->url->link('extension/payment/sigma', 'type=sbp' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('1.5%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/sbp.png&name=Система Быстрых Платежей'))
             ],
             [
                 'name' => 'QIWI (Sigma)',
@@ -163,8 +163,8 @@ class ControllerAccountFinance extends Controller
             [
                 'name' => 'Банковской картой',
                 'thumb' => HTTP_SERVER . 'catalog/assets/img/bans.png',
-                'commission' => '3%',
-                'href' => str_replace('&amp;', '&', $this->url->link('extension/payment/sigma', 'type=bank_card' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('3%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/bans.png&name=Банковской картой'))
+                'commission' => '3.5%',
+                'href' => str_replace('&amp;', '&', $this->url->link('extension/payment/sigma', 'type=bank_card' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('3.5%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/bans.png&name=Банковской картой'))
             ],
         ];
 

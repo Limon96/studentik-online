@@ -95,7 +95,7 @@ class ControllerExtensionPaymentSigma extends Controller
             $payment_id = $this->model_payment_payment->addPayment([
                 'customer_id' => $this->customer->getId(),
                 'payment_method' => $type,
-                'amount' => $amount,
+                'amount' => $this->calcAmountWithPercent($amount, $type),
                 'currency' => $this->config->get('config_currency'),
                 'payment_status_id' => 1, // Статус оплаты: Ожидает оплаты
                 'ip' => $this->request->server['HTTP_X_REAL_IP']
@@ -110,6 +110,21 @@ class ControllerExtensionPaymentSigma extends Controller
 
         $this->response->addHeader('Content-Type: application/json');
         $this->response->setOutput(json_encode($json));
+    }
+
+    private function calcAmountWithPercent($amount, $payment_method)
+    {
+        switch ($payment_method){
+            case "card":
+                return $amount * 1.035;
+            case "qiwi":
+                return $amount * 1.06;
+            case "sbp":
+                return $amount * 1.015;
+
+            default:
+                return 0;
+        }
     }
 
 }
