@@ -119,7 +119,9 @@ class ControllerExtensionPaymentSigma extends Controller
 
     private function calcAmountWithPercent($amount, $payment_method)
     {
-        switch ($payment_method){
+        return $amount;
+
+        /*switch ($payment_method){
             case "card":
                 return $amount * 1.035;
             case "qiwi":
@@ -129,7 +131,7 @@ class ControllerExtensionPaymentSigma extends Controller
 
             default:
                 return 0;
-        }
+        }*/
     }
 
 }
