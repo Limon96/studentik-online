@@ -40,7 +40,7 @@ class SigmaController extends Controller
                 $payment->payment_method,
                 route('payment.sigma.success', ['pid' => $payment_id, 'cid' => $customer_id]),
                 route('payment.sigma.fail', ['pid' => $payment_id, 'cid' => $customer_id]),
-                route('payment.sigma.success', ['pid' => $payment_id, 'cid' => $customer_id]),
+                route('payment.sigma.fail', ['pid' => $payment_id, 'cid' => $customer_id]),
                 Setting::get('wallet_id'),
                 true
             ),
@@ -82,6 +82,13 @@ class SigmaController extends Controller
     {
         return redirect(
             url('/index.php?route=account/finance/canceled')
+        );
+    }
+
+    public function pending(Request $request)
+    {
+        return redirect(
+            url('/index.php?route=account/finance/pending')
         );
     }
 
