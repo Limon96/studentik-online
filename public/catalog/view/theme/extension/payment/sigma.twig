@@ -13,6 +13,8 @@
             <button type="button" class="popolnyan">Пополнить</button>
         </div>
         <script>
+            $(document).off('click', '.modal_up_pay button.popolnyan');
+
             $(document).on('click', '.modal_up_pay button.popolnyan',function (e) {
                 e.preventDefault();
                 $('.alert-error').remove();

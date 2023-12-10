@@ -88,8 +88,13 @@ class ControllerExtensionPaymentSigma extends Controller
 
         if ($amount < $this->config->get('config_payment_min')) {
             $json['error'] = sprintf($this->language->get('error_amount'), $this->currency->format($this->config->get('config_payment_min'), $this->config->get('config_currency')));
-        } else {
+        }
 
+        if ($type == 'qiwi' && (!isset($this->request->get['telephone']) || trim($this->request->get['telephone']) == '')) {
+            $json['error'] = $this->language->get('error_telephone');
+        }
+
+        if (!$json) {
             $this->load->model('payment/payment');
 
             $payment_id = $this->model_payment_payment->addPayment([
