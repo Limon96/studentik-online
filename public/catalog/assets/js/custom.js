@@ -489,7 +489,7 @@ function setChat(chat) {
 function beep()
 {
     var audio = new Audio();
-    audio.src = "../catalog/assets/sound/s2.wav";
+    audio.src = "../catalog/assets/sound/getsound.wav";
     audio.autoplay = true;
 }
 
