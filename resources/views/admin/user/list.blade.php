@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    Администраторы
+    Пользователи
 @endsection
 @section('styles')
 @endsection

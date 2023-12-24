@@ -15,7 +15,7 @@
     <div class="sh-breadcrumb">
         <nav class="breadcrumb">
             <a class="breadcrumb-item" href="{{ route('admin.dashboard') }}">Панель управления</a>
-            <a class="breadcrumb-item" href="{{ route('admin.user.index') }}">Администраторы</a>
+            <a class="breadcrumb-item" href="{{ route('admin.user.index') }}">Пользователи</a>
             <span class="breadcrumb-item active">@yield('title')</span>
         </nav>
     </div><!-- sh-breadcrumb -->
