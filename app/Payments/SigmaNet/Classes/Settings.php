@@ -15,7 +15,8 @@ class Settings implements Arrayable
         public string $fail_url = '',
         public string $back_url = '',
         public string $wallet_id = '',
-        public bool $is_test = false
+        public bool $is_test = false,
+        public bool $hide_form_methods = true
     )
     {
 
@@ -31,6 +32,7 @@ class Settings implements Arrayable
             'back_url' => $this->back_url,
             'wallet_id' => $this->wallet_id,
             'is_test' => $this->is_test,
+            'hide_form_methods' => $this->hide_form_methods,
         ];
     }
 }

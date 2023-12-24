@@ -75,6 +75,12 @@
             </ul>
         </li>
         <li class="nav-item">
+            <a href="{{ route('admin.withdrawal.index') }}" class="nav-link @if(Route::is('admin.withdrawal.index')) active @endif">
+                <i class="icon ion-card"></i>
+                <span>Заявки на вывод</span>
+            </a>
+        </li><!-- nav-item -->
+        <li class="nav-item">
             <a href="{{ route('admin.setting') }}" class="nav-link @if(Route::is('admin.setting')) active @endif">
                 <i class="icon ion-ios-gear-outline"></i>
                 <span>Настройки</span>

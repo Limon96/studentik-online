@@ -29,6 +29,7 @@ Route::prefix('_manager')->group(function() {
                 'faq_category' => \App\Http\Controllers\FAQ\Admin\FAQCategoryController::class,
                 'work_type' => \App\Http\Controllers\Order\Admin\WorkTypeController::class,
             ]);
+            Route::resource('withdrawal', \App\Http\Controllers\Withdrawal\Admin\WithdrawalController::class)->only(['index', 'destroy']);
 
             Route::get('newsletter', [\App\Http\Controllers\Feedback\Admin\NewsletterController::class, 'index'])->name('newsletter.index');
             Route::post('newsletter', [\App\Http\Controllers\Feedback\Admin\NewsletterController::class, 'send'])->name('newsletter.send');
