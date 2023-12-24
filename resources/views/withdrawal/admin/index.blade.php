@@ -77,6 +77,8 @@
                                     <td>{{ format_date($item->date_added, 'Y.m.d H:i:s') }}</td>
                                     <td>{{ format_date($item->date_updated, 'Y.m.d H:i:s') }}</td>
                                     <td>
+                                        <a href="{{ route('admin.withdrawal.confirm', $item->withdrawal_id) }}" class="btn btn-success btn-sm point_c" title="Подтвердить выплату"><i class="fa fa-money"></i></a>
+                                        <a href="{{ route('admin.withdrawal.cancel', $item->withdrawal_id) }}" class="btn btn-warning btn-sm point_c" title="Отказать в выплате"><i class="fa fa-close"></i></a>
                                         <form method="post" class="form-delete"
                                               action="{{ route('admin.withdrawal.destroy', $item->withdrawal_id) }}">
                                             @method('DELETE')
