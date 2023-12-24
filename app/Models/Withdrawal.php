@@ -9,9 +9,10 @@ class Withdrawal extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $table = 'withdrawal';
     protected $primaryKey = 'withdrawal_id';
-
     protected $fillable = [
         'status',
         'amount',

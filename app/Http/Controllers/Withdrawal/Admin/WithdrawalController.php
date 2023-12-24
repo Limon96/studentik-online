@@ -41,8 +41,7 @@ class WithdrawalController extends Controller
             )
         ));
 
-        dd($result);
-
+        return response()->json($result);
     }
 
     public function cancel($id)
@@ -53,7 +52,8 @@ class WithdrawalController extends Controller
         $item->save();
 
         return response()->json([
-            'success' => true
+            'success' => true,
+            'message' => "Отказ, выплата не выполнена"
         ]);
     }
 

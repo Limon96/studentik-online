@@ -77,8 +77,8 @@
                                     <td>{{ format_date($item->date_added, 'Y.m.d H:i:s') }}</td>
                                     <td>{{ format_date($item->date_updated, 'Y.m.d H:i:s') }}</td>
                                     <td>
-                                        <a href="{{ route('admin.withdrawal.confirm', $item->withdrawal_id) }}" class="btn btn-success btn-sm point_c" title="Подтвердить выплату"><i class="fa fa-money"></i></a>
-                                        <a href="{{ route('admin.withdrawal.cancel', $item->withdrawal_id) }}" class="btn btn-warning btn-sm point_c" title="Отказать в выплате"><i class="fa fa-close"></i></a>
+                                        <a href="{{ route('admin.withdrawal.confirm', $item->withdrawal_id) }}" class="btn btn-success btn-sm point_c btn-confirm" title="Подтвердить выплату"><i class="fa fa-money"></i></a>
+                                        <a href="{{ route('admin.withdrawal.cancel', $item->withdrawal_id) }}" class="btn btn-warning btn-sm point_c btn-cancel" title="Отказать в выплате"><i class="fa fa-close"></i></a>
                                         <form method="post" class="form-delete"
                                               action="{{ route('admin.withdrawal.destroy', $item->withdrawal_id) }}">
                                             @method('DELETE')
@@ -120,5 +120,53 @@
 
         // Select2
         $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+    </script>
+
+    <script>
+        $(document).on('click', '.btn-confirm', function () {
+            var $that = $(this);
+
+            $.ajax({
+                url: $(this).attr('href'),
+                method: "GET",
+                dataType: "json",
+                success: function (json) {
+                    if (json.success) {
+                        $that.closest('tr').find('select').val(1);
+                        $that.closest('tr').find('textarea').val(json.message);
+                    }
+                    if (json.error) {
+                        alert(json.message);
+                        console.error(json);
+                    }
+                },
+                error: function (jqXHR, exception) {
+                    alert(jqXHR.data);
+                    console.error(exception);
+                }
+            });
+
+            return false;
+        });
+    </script>
+
+    <script>
+        $(document).on('click', '.btn-cancel', function () {
+            var $that = $(this);
+
+            $.ajax({
+                url: $(this).attr('href'),
+                method: "GET",
+                dataType: "json",
+                success: function (json) {
+                    if (json.success) {
+                        $that.closest('tr').find('select').val(2);
+                        $that.closest('tr').find('textarea').val(json.message);
+                    }
+                }
+            });
+
+            return false;
+        });
     </script>
 @endsection
