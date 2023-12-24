@@ -1,0 +1,5 @@
+@php $key = str_replace('-', '.', $field_id) @endphp
+<div class="form-group">
+    <label for="input-{{ $field_id }}">{{ $label }}</label>
+    <input type="email" id="input-{{ $field_id }}" class="form-control" name="{{ $name }}" value="{{ old($key, $value) }}">
+</div>

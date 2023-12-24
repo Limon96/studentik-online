@@ -7,14 +7,17 @@
                 <span>Панель управления</span>
             </a>
         </li><!-- nav-item -->
+        @if(auth()->user()->hasRole('admin'))
         <li class="nav-item">
             <a href="{{ route('admin.landing.index') }}" class="nav-link @if(Route::is('admin.landing.index')) active @endif">
                 <i class="icon ion-ios-bookmarks-outline"></i>
                 <span>Страницы</span>
             </a>
         </li><!-- nav-item -->
+        @endif
 
 
+        @if(auth()->user()->hasRole('admin'))
         <li class="nav-item">
             <a href="#" class="nav-link with-sub">
                 <i class="icon ion-ios-briefcase-outline"></i>
@@ -22,26 +25,29 @@
             </a>
             <ul class="nav-sub">
                 @if(\Illuminate\Support\Facades\Route::has('admin.work_type.index'))
-                    <li class="nav-item"><a href="{{ route('admin.work_type.index') }}" class="nav-link @if(Route::is('admin.work_type.index ')) active @endif">Типы работ</a></li>
+                    <li class="nav-item"><a href="{{ route('admin.work_type.index') }}" class="nav-link @if(Route::is('admin.work_type.*')) active @endif">Типы работ</a></li>
                 @endif
             </ul>
         </li>
+        @endif
 
 
         <li class="nav-item">
-            <a href="#" class="nav-link with-sub">
+            <a href="#" class="nav-link with-sub @if(Route::is('admin.blog_category.*') || Route::is('admin.blog.*')) active @endif">
                 <i class="icon ion-ios-paper-outline"></i>
                 <span>Блог</span>
             </a>
             <ul class="nav-sub">
                 @if(\Illuminate\Support\Facades\Route::has('admin.blog_category.index'))
-                    <li class="nav-item"><a href="{{ route('admin.blog_category.index') }}" class="nav-link @if(Route::is('admin.blog_category.index')) active @endif">Категории</a></li>
+                    <li class="nav-item"><a href="{{ route('admin.blog_category.index') }}" class="nav-link @if(Route::is('admin.blog_category.*')) active @endif">Категории</a></li>
                 @endif
                 @if(\Illuminate\Support\Facades\Route::has('admin.blog.index'))
-                    <li class="nav-item"><a href="{{ route('admin.blog.index') }}" class="nav-link @if(Route::is('admin.blog.index')) active @endif">Статьи</a></li>
+                    <li class="nav-item"><a href="{{ route('admin.blog.index') }}" class="nav-link @if(Route::is('admin.blog.*')) active @endif">Статьи</a></li>
                 @endif
             </ul>
         </li>
+
+        @if(auth()->user()->hasRole('admin'))
         <li class="nav-item">
             <a href="#" class="nav-link with-sub">
                 <i class="icon ion-ios-help-outline"></i>
@@ -56,7 +62,9 @@
                 @endif
             </ul>
         </li>
+        @endif
 
+        @if(auth()->user()->hasRole('admin'))
         <li class="nav-item">
             <a href="#" class="nav-link with-sub">
                 <i class="icon ion-ios-email-outline"></i>
@@ -74,17 +82,30 @@
                 @endif
             </ul>
         </li>
+        @endif
+        @if(auth()->user()->hasRole('admin'))
         <li class="nav-item">
             <a href="{{ route('admin.withdrawal.index') }}" class="nav-link @if(Route::is('admin.withdrawal.index')) active @endif">
                 <i class="icon ion-card"></i>
                 <span>Заявки на вывод</span>
             </a>
         </li><!-- nav-item -->
+        @endif
+        @if(auth()->user()->hasRole('admin'))
         <li class="nav-item">
             <a href="{{ route('admin.setting') }}" class="nav-link @if(Route::is('admin.setting')) active @endif">
                 <i class="icon ion-ios-gear-outline"></i>
                 <span>Настройки</span>
             </a>
         </li><!-- nav-item -->
+        @endif
+        @if(auth()->user()->hasRole('admin'))
+            <li class="nav-item">
+                <a href="{{ route('admin.user.index') }}" class="nav-link @if(Route::is('admin.user.*')) active @endif">
+                    <i class="icon ion-ios-people-outline"></i>
+                    <span>Пользователи</span>
+                </a>
+            </li><!-- nav-item -->
+        @endif
     </ul>
 </div>
