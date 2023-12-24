@@ -19,7 +19,7 @@
     <div class="sh-pagetitle">
         <div class="input-group" style="width: fit-content;">
             <form action="{{ route('admin.user.index') }}" class="input-group">
-                <input type="search" name="search" class="form-control" placeholder="Поиск">
+                <input type="search" name="search" class="form-control" placeholder="Поиск" value="{{ request('search') }}">
                     <span class="input-group-btn">
                     <button class="btn"><i class="fa fa-search"></i></button>
                 </span>
