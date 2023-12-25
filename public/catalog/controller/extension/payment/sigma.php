@@ -37,7 +37,6 @@ class ControllerExtensionPaymentSigma extends Controller
                 $commission = $this->language->get('text_unknown');
             }
 
-            $data['telephone'] = $this->customer->getTelephone();
             $data['type'] = $type;
             $data['amount'] = $amount;
             $data['name'] = $name;
