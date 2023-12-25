@@ -123,7 +123,7 @@ class ControllerExtensionPaymentSigma extends Controller
             case "sbp":
                 return $amount * 1.015;
             case "card":
-                return $amount * 1.035;
+                return $amount * 1.03;
             case "qiwi":
                 return $amount * 1.06;
 

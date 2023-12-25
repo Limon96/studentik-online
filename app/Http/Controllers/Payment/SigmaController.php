@@ -41,7 +41,7 @@ class SigmaController extends Controller
                 route('payment.sigma.success', ['pid' => $payment_id, 'cid' => $customer_id]),
                 route('payment.sigma.fail', ['pid' => $payment_id, 'cid' => $customer_id]),
                 route('payment.sigma.fail', ['pid' => $payment_id, 'cid' => $customer_id]),
-                Setting::get('wallet_id'),
+                $this->getWalletId($payment->payment_method),
                 true
             ),
             new Receipt(
@@ -115,6 +115,14 @@ class SigmaController extends Controller
         return response()->json([
             'status' => 'ok'
         ]);
+    }
+
+    private function getWalletId($payment_method)
+    {
+        return match ($payment_method) {
+            "card" => config('sigma.payout_wallet_id'),
+            default => Setting::get('wallet_id', config('sigma.wallet_id')),
+        };
     }
 
     private function getPaymentStatus($status)

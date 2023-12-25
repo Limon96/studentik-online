@@ -23,9 +23,9 @@ class Setting extends Model
      * @param string $key
      * @return mixed|null
      */
-    public static function get(string $key): mixed
+    public static function get(string $key, mixed $default = null): mixed
     {
-        return static::findKey($key)->value ?? null;
+        return static::findKey($key)->value ?? $default;
     }
 
     /**
