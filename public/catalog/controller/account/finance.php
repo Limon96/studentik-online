@@ -163,8 +163,8 @@ class ControllerAccountFinance extends Controller
             [
                 'name' => 'Банковской картой',
                 'thumb' => HTTP_SERVER . 'catalog/assets/img/bans.png',
-                'commission' => '3%',
-                'href' => str_replace('&amp;', '&', $this->url->link('extension/payment/sigma', 'type=bank_card' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('3%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/bans.png&name=Банковской картой'))
+                'commission' => '2.8%',
+                'href' => str_replace('&amp;', '&', $this->url->link('extension/payment/sigma', 'type=bank_card' . ($amount ? '&amount=' . $amount : '') . '&commission=' . urlencode('2.8%') . '&thumb=' . HTTP_SERVER . 'catalog/assets/img/bans.png&name=Банковской картой'))
             ],
         ];
 
