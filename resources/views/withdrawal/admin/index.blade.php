@@ -67,11 +67,14 @@
                                     <td>{{ $item->method }}</td>
                                     <td>{{ $item->card_number }}</td>
                                     <td>
-                                        <select name="status" id="" class="select2">
+                                        @foreach([0 => 'Ожидание', 1 => 'Выполнен', 2 => 'Не выполнен'] as $status => $name)
+                                            @if($item->status == $status) {{ $name }} @endif
+                                        @endforeach
+                                        {{--<select name="status" id="" class="select2">
                                             @foreach([0 => 'Ожидание', 1 => 'Выполнен', 2 => 'Не выполнен'] as $status => $name)
                                                 <option value="{{ $status }}" @if($item->status == $status) selected @endif >{{ $name }}</option>
                                             @endforeach
-                                        </select>
+                                        </select>--}}
                                     </td>
                                     <td><textarea name="comment" cols="30">{{ $item->comment }}</textarea></td>
                                     <td>{{ format_date($item->date_added, 'Y.m.d H:i:s') }}</td>
@@ -131,10 +134,11 @@
                 method: "GET",
                 dataType: "json",
                 success: function (json) {
-                    if (json.success) {
-                        $that.closest('tr').find('select').val(1);
-                        $that.closest('tr').find('textarea').val(json.message);
+                    if (json.status) {
+                        $that.closest('tr').find('select').val(json.status);
+                        $that.closest('tr').find('textarea').val(json.comment);
                     }
+
                     if (json.error) {
                         alert(json.message);
                         console.error(json);

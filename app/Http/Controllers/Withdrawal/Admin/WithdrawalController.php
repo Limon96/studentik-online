@@ -26,8 +26,15 @@ class WithdrawalController extends Controller
     {
         $item = Withdrawal::findOrFail($id);
 
+        if ($item->status > 0) {
+            return response()->json([
+                'error' => true,
+                'message' => "Выплата уже произведена или отменена",
+            ]);
+        }
+
         $result = SigmaNet::payout(new Payout(
-            $item->withdrawal_id,
+            $item->withdrawal_id. "-" . config('sigma.wallet_id'),
             config('sigma.wallet_id'),
             new PayoutMethodData(
                 'card',
@@ -40,6 +47,17 @@ class WithdrawalController extends Controller
                 'Заявка на вывод #' . $item->withdrawal_id
             )
         ));
+
+        if (in_array($result['status'] , ["init", "process", "successful"])) {
+            $item->status = 1;
+            $item->comment = 'Заявка на вывод #' . $item->withdrawal_id . ' ' . date("d.m.Y H:i");
+            $item->save();
+
+            return response()->json([
+                'status' => $item->status,
+                'comment' => $item->comment
+            ]);
+        }
 
         return response()->json($result);
     }
