@@ -107,14 +107,29 @@ class SigmaController extends Controller
             ]);
 
             if ($status == 'successful') {
-                (new SetCustomerBalance($payment->customer, $payment->amount))->handle();
-                (new SetCustomerBalanceTransaction($payment->customer, $payment->amount))->handle();
+                $amount = $this->getAmountWithoutPercent($payment->payment_method, $payment->amount);
+
+                (new SetCustomerBalance($payment->customer, $amount))->handle();
+                (new SetCustomerBalanceTransaction($payment->customer, $amount))->handle();
             }
         }
 
         return response()->json([
             'status' => 'ok'
         ]);
+    }
+
+    /**
+     * @param $payment_method
+     * @param $amount
+     * @return float
+     */
+    private function getAmountWithoutPercent($payment_method, $amount): float
+    {
+        return match($payment_method) {
+            "sbp" => $amount * 0.985,
+            "card" => $amount * 0.97,
+        };
     }
 
     private function getWalletId($payment_method)
