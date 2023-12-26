@@ -67,14 +67,14 @@
                                     <td>{{ $item->method }}</td>
                                     <td>{{ $item->card_number }}</td>
                                     <td>
-                                        @foreach([0 => 'Ожидание', 1 => 'Выполнен', 2 => 'Не выполнен'] as $status => $name)
+                                        {{--@foreach([0 => 'Ожидание', 1 => 'Выполнен', 2 => 'Не выполнен'] as $status => $name)
                                             @if($item->status == $status) {{ $name }} @endif
-                                        @endforeach
-                                        {{--<select name="status" id="" class="select2">
+                                        @endforeach--}}
+                                        <select name="status" id="" class="select2">
                                             @foreach([0 => 'Ожидание', 1 => 'Выполнен', 2 => 'Не выполнен'] as $status => $name)
                                                 <option value="{{ $status }}" @if($item->status == $status) selected @endif >{{ $name }}</option>
                                             @endforeach
-                                        </select>--}}
+                                        </select>
                                     </td>
                                     <td><textarea name="comment" cols="30">{{ $item->comment }}</textarea></td>
                                     <td>{{ format_date($item->date_added, 'Y.m.d H:i:s') }}</td>
@@ -82,6 +82,7 @@
                                     <td>
                                         <a href="{{ route('admin.withdrawal.confirm', $item->withdrawal_id) }}" class="btn btn-success btn-sm point_c btn-confirm" title="Подтвердить выплату"><i class="fa fa-money"></i></a>
                                         <a href="{{ route('admin.withdrawal.cancel', $item->withdrawal_id) }}" class="btn btn-warning btn-sm point_c btn-cancel" title="Отказать в выплате"><i class="fa fa-close"></i></a>
+                                        <a href="{{ route('admin.withdrawal.update', $item->withdrawal_id) }}" class="btn btn-primary btn-sm point_c btn-update" title="Сохранить изменения"><i class="fa fa-save"></i></a>
                                         <form method="post" class="form-delete"
                                               action="{{ route('admin.withdrawal.destroy', $item->withdrawal_id) }}">
                                             @method('DELETE')
@@ -167,6 +168,24 @@
                         $that.closest('tr').find('select').val(2);
                         $that.closest('tr').find('textarea').val(json.message);
                     }
+                }
+            });
+
+            return false;
+        });
+    </script>
+
+    <script>
+        $(document).on('click', '.btn-update', function (e) {
+            e.preventDefault();
+            var $that = $(this);
+
+            $.ajax({
+                url: $(this).attr('href') + '?status=' + $that.closest('tr').find('select').val() + '&comment=' + encodeURI($that.closest('tr').find('textarea').val()),
+                method: "GET",
+                dataType: "json",
+                success: function (json) {
+                    alert(json.message);
                 }
             });
 

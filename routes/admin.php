@@ -41,6 +41,7 @@ Route::prefix('_manager')->group(function() {
             Route::resource('withdrawal', \App\Http\Controllers\Withdrawal\Admin\WithdrawalController::class)->only(['index', 'destroy']);
             Route::get('withdrawal/{withdrawal}/confirm', [\App\Http\Controllers\Withdrawal\Admin\WithdrawalController::class, 'confirm'])->name('withdrawal.confirm');
             Route::get('withdrawal/{withdrawal}/cancel', [\App\Http\Controllers\Withdrawal\Admin\WithdrawalController::class, 'cancel'])->name('withdrawal.cancel');
+            Route::get('withdrawal/{withdrawal}/update', [\App\Http\Controllers\Withdrawal\Admin\WithdrawalController::class, 'update'])->name('withdrawal.update');
 
             Route::get('newsletter', [\App\Http\Controllers\Feedback\Admin\NewsletterController::class, 'index'])->name('newsletter.index');
             Route::post('newsletter', [\App\Http\Controllers\Feedback\Admin\NewsletterController::class, 'send'])->name('newsletter.send');

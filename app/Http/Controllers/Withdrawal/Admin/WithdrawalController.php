@@ -9,6 +9,7 @@ use App\Payments\SigmaNet\Classes\Payout;
 use App\Payments\SigmaNet\Classes\PayoutMethodData;
 use App\Payments\SigmaNet\SigmaNet;
 use App\Repositories\WithdrawalRepository;
+use Illuminate\Http\Request;
 
 class WithdrawalController extends Controller
 {
@@ -72,6 +73,22 @@ class WithdrawalController extends Controller
         return response()->json([
             'success' => true,
             'message' => "Отказ, выплата не выполнена"
+        ]);
+    }
+
+    public function update($id, Request $request)
+    {
+        $status = $request->get('status', 0);
+        $comment = $request->get('comment', '');
+
+        $item = Withdrawal::findOrFail($id);
+        $item->status = $status;
+        $item->comment = $comment;
+        $item->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => "Успешно сохранено"
         ]);
     }
 
