@@ -42,7 +42,7 @@ class SigmaController extends Controller
                 route('payment.sigma.fail', ['pid' => $payment_id, 'cid' => $customer_id]),
                 route('payment.sigma.fail', ['pid' => $payment_id, 'cid' => $customer_id]),
                 $this->getWalletId($payment->payment_method),
-                true
+                config('sigma.is_test')
             ),
             new Receipt(
                 [
