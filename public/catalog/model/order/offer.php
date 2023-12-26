@@ -4,12 +4,12 @@ class ModelOrderOffer extends Model {
 
     public function addOffer($data)
     {
-        $this->db->query("INSERT INTO " . DB_PREFIX . "offer SET 
-            order_id = '" . $data['order_id'] . "', 
-            customer_id = '" . $this->customer->getId() . "', 
-            bet = '" . $this->db->escape($data['bet']) . "', 
-            earned = '" . $this->db->escape($data['earned']) . "', 
-            text = '" . $this->db->escape($data['text']) . "', 
+        $this->db->query("INSERT INTO " . DB_PREFIX . "offer SET
+            order_id = '" . $data['order_id'] . "',
+            customer_id = '" . $this->customer->getId() . "',
+            bet = '" . $this->db->escape($data['bet']) . "',
+            earned = '" . $this->db->escape($data['earned']) . "',
+            text = '" . $this->db->escape($data['text']) . "',
             date_added = '" . time() . "'
         ");
 
@@ -21,9 +21,9 @@ class ModelOrderOffer extends Model {
     public function editOffer($offer_id, $data)
     {
         $this->db->query("UPDATE " . DB_PREFIX . "offer SET
-             bet = '" . $this->db->escape($data['bet']) . "', 
-            earned = '" . $this->db->escape($data['earned']) . "', 
-            text = '" . $this->db->escape($data['text']) . "', 
+             bet = '" . $this->db->escape($data['bet']) . "',
+            earned = '" . $this->db->escape($data['earned']) . "',
+            text = '" . $this->db->escape($data['text']) . "',
             date_updated = NOW()
             WHERE offer_id = '" . (int)$offer_id . "'
         ");
@@ -172,7 +172,7 @@ class ModelOrderOffer extends Model {
                 // Проверяем хватает ли средств
                 $balance = $this->customer->getBalance();
 
-                $bet = floor($offer_info['bet'] * (100 + $this->config->get('config_commission_customer')) / 100);
+                $bet = ceil($offer_info['bet'] * (100 + $this->config->get('config_commission_customer')) / 100);
 
                 if ($bet > $balance) {
                     $error['balance'] = $this->language->get('error_balance');
