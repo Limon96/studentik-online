@@ -126,10 +126,11 @@ class SigmaController extends Controller
      */
     private function getAmountWithoutPercent($payment_method, $amount): float
     {
-        return match($payment_method) {
+        return $amount;
+        /*return match($payment_method) {
             "sbp" => $amount * 0.985,
             "card" => $amount * 0.97,
-        };
+        };*/
     }
 
     private function getWalletId($payment_method)
