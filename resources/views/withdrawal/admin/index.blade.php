@@ -107,7 +107,7 @@
     <script src="{{ asset('manager/lib/datatables/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('manager/lib/select2/js/select2.min.js') }}"></script>
     <script>
-        $('#datatable').DataTable({
+        var table = $('#datatable').DataTable({
             responsive: true,
             language: {
                 searchPlaceholder: 'Поиск...',
@@ -121,6 +121,11 @@
                 },
             }
         });
+
+        table
+            .column( '8:visible' )
+            .order( 'desc' )
+            .draw();
 
         // Select2
         $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
