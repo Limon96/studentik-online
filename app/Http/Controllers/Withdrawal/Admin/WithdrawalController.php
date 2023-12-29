@@ -35,7 +35,7 @@ class WithdrawalController extends Controller
         }
 
         $result = SigmaNet::payout(new Payout(
-            $item->withdrawal_id. "-" . config('sigma.wallet_id'),
+            $item->withdrawal_id . "-" . config('sigma.wallet_id'),
             config('sigma.wallet_id'),
             new PayoutMethodData(
                 'card',
@@ -49,9 +49,9 @@ class WithdrawalController extends Controller
             )
         ));
 
-        if (in_array($result['status'] , ["init", "process", "successful"])) {
+        if (in_array($result['status'], ["init", "process", "successful"])) {
             $item->status = 1;
-            $item->comment = 'Заявка на вывод #' . $item->withdrawal_id . ' ' . date("d.m.Y H:i");
+            $item->comment = 'Заявка на вывод выполнена ' . date("d.m.Y H:i");
             $item->save();
 
             return response()->json([
@@ -95,7 +95,7 @@ class WithdrawalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
