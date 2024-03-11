@@ -58,10 +58,7 @@
 <div class="menu">
     <div class="container">
         <div class="logo">
-            <a href="https://studentik.online/">
-                <img src="{{ asset('img/logo.webp') }}" alt="logo">
-            </a>
-
+            <img src="{{ asset('img/logo.webp') }}" alt="logo">
         </div>
     </div>
 
@@ -86,7 +83,7 @@
                         </div>
                         <div class="mini_footer">
                             <label class="container1">
-                                <p>Я принимаю <a href="https://studentik.online/index.php?route=information/information&information_id=3" target="_blank">политику обработки персональных данных</a></p>
+                                <p>Я принимаю <a href="/docs/politika_konfidentsialnosti.docx" download>политику обработки персональных данных</a></p>
                                 <input type="checkbox" name="agree" checked="checked">
                                 <span class="checkmark"></span>
                             </label>
