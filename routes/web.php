@@ -26,7 +26,7 @@ Route::prefix('blog')->group(function () {
     Route::get('/{slug?}', [\App\Http\Controllers\Blog\BlogController::class, 'index'])->name('blog.index');
     Route::get('/post/{slug}', [\App\Http\Controllers\Blog\BlogController::class, 'show'])->name('blog.show');
 
-    Route::group(['middleware' => ['role:admin']], function () {
+    Route::group(['middleware' => ['role:admin','role:moder']], function () {
         Route::get('/preview/{slug}', [\App\Http\Controllers\Blog\BlogController::class, 'preview'])->name('blog.preview');
     });
 
