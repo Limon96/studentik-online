@@ -158,7 +158,7 @@ class ControllerExtensionFeedGoogleSitemap extends Controller
             L_DB_PORT
         );
 
-        $result = $db->query("SELECT id, slug, updated_at FROM blog_posts WHERE status = 1 AND publish_at < " . $db->escape(date('Y-m-d H:i:s')) . " ORDER BY created_at DESC");
+        $result = $db->query("SELECT id, slug, updated_at FROM blog_posts WHERE status = 1 AND DATE(publish_at) < '" . $db->escape(date('Y-m-d H:i:s')) . "' ORDER BY created_at DESC");
 
         return $result->rows;
     }
